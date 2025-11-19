@@ -1,0 +1,5 @@
+
+from corsa import *
+
+
+corsa()

@@ -1,0 +1,223 @@
+-- Firmware --
+
+Il firmware è un tipo di software integrato in un componente elettronico. 
+In questo contesto, per componente elettronico si intende qualsiasi circuito integrato intelligente presente in vari dispositivi, inclusi processori, schede grafiche, schede audio, schede di interfaccia di rete e periferiche come stampanti e monitor.
+
+La funzione principale del firmware è quella di inizializzare il componente e facilitarne l'interazione con altri componenti all'interno del dispositivo. 
+Essenzialmente, il firmware fornisce al componente una serie di interfacce e protocolli di comunicazione, consentendogli di utilizzare un linguaggio comune (che comprende sintassi e semantica) per comunicare efficacemente con altri componenti.
+
+Il termine firmware è una combinazione di “firm” e “ware” che indica che il firmware non è facilmente modificabile dall' utente. 
+Funge da ponte tra hardware e software, consentendo ai componenti hardware di comunicare e funzionare secondo le istruzioni del software.
+
+Il BIOS (Basic Input/Output System) è un noto esempio di firmware nei computer. 
+Si trova sulla scheda madre ed è fondamentale per gestire il processo di avvio iniziale del computer, compresa l'inizializzazione dell'hardware e l'avvio del sistema operativo.
+
+All'interno di ogni dispositivo, che si tratti di un PC desktop, un laptop, il computer di bordo di un'auto o il computer interno di un aereo, sono presenti componenti fondamentali simili, come le schede madri. 
+Questi componenti possono differire per dimensioni e specifiche tecniche, ma svolgono funzioni analoghe.
+
+Il firmware è tipicamente memorizzato in una memoria non volatile all'interno del componente o dispositivo elettronico, il che significa che la
+memoria conserva il suo contenuto anche quando l'alimentazione è spenta.
+
+-- Memoria Non-Volatile --
+
+I tipi comuni di memoria non volatile utilizzati per l'archiviazione del firmware includono:
+
+    - ROM (Read-Only Memory): tradizionalmente utilizzata per l'archiviazione del firmware, ma una volta scritta non può essere modificata.
+    - EPROM (Erasable Programmable Read-Only Memory): può essere cancellata e riprogrammata utilizzando la luce UV, ma questo processo non è conveniente come le alternative moderne.
+    - EEPROM (Electrically Erasable Programmable Read-Only Memory): può essere cancellata e riprogrammata utilizzando la carica elettrica, rendendola più flessibile rispetto all'EPROM.
+    - Memoria flash: un tipo di EEPROM che può essere cancellata e riscritta in blocchi, comunemente utilizzata nei dispositivi moderni grazie alla sua flessibilità e alla maggiore capacità di archiviazione.
+
+Questi tipi di memoria sono integrati nel dispositivo, garantendo che il firmware sia facilmente accessibile per inizializzare e controllare i componenti del dispositivo all'accensione.
+
+-- Scheda Madre -- 
+
+Una scheda madre è il circuito stampato principale (PCB) di un computer o di un altro dispositivo elettronico che contiene e consente la comunicazione tra molti dei componenti elettronici fondamentali.
+
+    - Hub centrale: funge da hub centrale che collega tutte le parti del computer, consentendo loro di comunicare e funzionare insieme.
+    - Socket CPU: la scheda madre contiene un socket che contiene l' unità di elaborazione centrale (CPU). È qui che viene installata la CPU.
+    - Slot di memoria: dispone di slot per moduli di memoria (RAM), che consentono al computer di memorizzare temporaneamente i dati e accedervi rapidamente.
+    - BIOS/UEFI: il firmware Basic Input/Output System (BIOS) o Unified Extensible Firmware Interface (UEFI) è memorizzato sulla scheda madre e fornisce le istruzioni necessarie per il processo di avvio iniziale e l'inizializzazione dell'hardware.
+    
+    - Slot di espansione: questi slot consentono di aggiungere schede aggiuntive, come schede grafiche, schede audio, schede di rete e altre periferiche.
+    - Connettori di archiviazione: la scheda madre dispone di connettori per dispositivi di archiviazione, come dischi rigidi e SSD.
+    - Connettori di alimentazione: include connettori per fornire alimentazione alla scheda madre e ai suoi componenti dall'unità di alimentazione (PSU).
+    - Connettori periferici: porte e connettori per periferiche come dispositivi USB, jack audio, cavi di rete e connessioni video (HDMI, DisplayPort).
+
+In sintesi, la scheda madre è la colonna portante di un computer, che integra tutti i componenti critici e garantisce che possano comunicare e funzionare insieme in modo efficace.
+
+-- Sistema di input/output di base (BIOS) --
+
+Il Basic Input/Output System (BIOS) è un insieme di routine software che fornisce la struttura software di base che consente al sistema operativo di interfacciarsi con l'hardware del dispositivo.
+Il BIOS è memorizzato in un chip di memoria non volatile, il che significa che conserva i dati anche senza alimentazione. 
+Oggi, il BIOS è tipicamente memorizzato su una memoria FLASH o EEPROM saldata direttamente sulla scheda madre, che può essere riscritta utilizzando un'apposita procedura di aggiornamento.
+
+-- BIOS - Bootstrap --
+
+Quando un dispositivo viene avviato, prima che il sistema operativo venga caricato, il BIOS esegue diverse operazioni fondamentali:
+    - Visualizzazione della schermata di avvio: presenta una schermata video che consente all'utente di configurare e gestire alcune impostazioni di base del BIOS.
+
+    - Inizializzazione della routine di avvio: il BIOS avvia la routine di avvio per caricare il sistema operativo. 
+                                               Il processo di avvio è incrementale e carica le parti essenziali del sistema operativo dal settore di avvio per portare il sistema a uno stato operativo stabile.
+
+    - Gestione dell'hardware: esegue varie routine di test denominate POST (Power On Self Test) per verificare il corretto funzionamento dei diversi componenti, tra cui la scheda madre, il processore, la memoria e altri.
+
+    - Configurazione delle impostazioni hardware: se durante la fase POST non vengono rilevati errori gravi, il BIOS configura le impostazioni hardware, preparando il sistema per il funzionamento del sistema operativo.
+    
+    - Individuazione dell'MBR: Dopo aver eseguito le routine BIOS di base, la prima istruzione del BIOS è quella di individuare il “punto di partenza” del disco rigido (o di altri supporti di archiviazione di massa) in cui è memorizzato il sistema operativo. 
+                               In questa posizione si trova il Master Boot Record (MBR).
+    
+    - Controllo al sistema operativo: il BIOS legge il contenuto dell'MBR e trasferisce il controllo al sistema operativo (da questo punto in poi, la gestione del dispositivo è interamente gestita dal sistema operativo).
+
+L'MBR contiene informazioni sulla posizione del SETTORE DI AVVIO sul disco rigido (o altro supporto di archiviazione di massa che ospita il sistema operativo).
+Il SETTORE DI AVVIO è il punto di ingresso per l'avvio del sistema operativo.
+Se la tabella MBR è danneggiata, il disco potrebbe non avviarsi.
+
+-- Interfaccia firmware estensibile unificata (UEFI) --
+
+L'Unified Extensible Firmware Interface (UEFI) è una moderna interfaccia firmware progettata per inizializzare i componenti hardware e caricare il sistema operativo all'avvio di un dispositivo.
+
+Processo di avvio simile, ma con vantaggi rispetto al BIOS:
+    - Interfaccia utente grafica (GUI): l'UEFI offre un'interfaccia grafica più intuitiva con supporto del mouse, che semplifica la navigazione e la configurazione delle impostazioni.
+    - Boot Manager: Un programma integrato nell'UEFI che determina quale sistema operativo o boot loader eseguire. Questo aiuta a semplificare il processo di avvio e offre una maggiore flessibilità rispetto al BIOS.
+    - Supporto driver: l'UEFI può caricare direttamente i driver, consentendo una migliore compatibilità hardware e prestazioni durante il processo di avvio.
+    - Sicurezza avanzata: UEFI include funzionalità come Secure Boot, che aiuta a proteggere il sistema assicurando che durante il processo di avvio venga caricato solo software affidabile.
+    - Estensibilità e aggiornamenti: UEFI è modulare e può essere aggiornato o esteso con nuove funzionalità, fornendo un supporto migliore per le nuove tecnologie e una maggiore stabilità del sistema nel tempo.
+
+La tabella delle partizioni GUID (GPT) è un sistema moderno per la gestione delle partizioni su un disco rigido o SSD.
+Fa parte dello standard UEFI (Unified Extensible Firmware Interface) ed è il successore del vecchio MBR (Master Boot Record).
+
+GUID significa Globally Unique Identifier, un identificatore univoco assegnato a ciascuna partizione.
+
+GPT organizza il disco in una struttura più avanzata rispetto a MBR, che include:
+    - Intestazione GPT primaria: memorizza la posizione e la struttura delle partizioni.
+    - Voci di partizione: ogni partizione ha un GUID e una descrizione.
+    - Intestazione GPT secondaria (backup): una copia di backup dell'intestazione primaria situata alla fine del disco.
+
+Questa struttura offre maggiore sicurezza e flessibilità rispetto a MBR.
+
+-- Drivers --
+
+I driver sono programmi software che consentono al sistema operativo e ad altri software di comunicare con i dispositivi hardware.
+I driver fungono da intermediari, traducendo i comandi di alto livello del sistema operativo in comandi di basso livello che l' hardware è in grado di comprendere. Gestiscono l'interazione tra il sistema operativo e l'hardware.
+
+Caratteristiche:
+    - Installati sul sistema operativo.
+    - Facilitano la comunicazione tra il sistema operativo e l'hardware.
+    - Possono essere aggiornati o sostituiti con maggiore frequenza.
+
+-- Firmware vs Drivers --
+
+Differenze principali:
+    - Posizione:
+        - Firmware: integrato nell'hardware.
+        - Driver: installati sul sistema operativo.
+    - Funzione:
+        - Firmware: gestisce e controlla l'hardware a livello fondamentale.
+        - Driver: traduce i comandi del sistema operativo in azioni eseguite dall'hardware.
+    - Frequenza di aggiornamento:
+        - Firmware: aggiornato meno frequentemente, spesso tramite processi di aggiornamento specializzati.
+        - Driver: può essere aggiornato regolarmente per migliorare le prestazioni o aggiungere nuove funzionalità.
+
+-- Sistema Operativo (OS) --
+
+Il sistema operativo (Windows, Linux etc.) è il software fondamentale responsabile della gestione di tutte le operazioni del dispositivo, compreso l'esecuzione di applicazioni, programmi e servizi, nonché l'interazione con l'utente.
+Posizionato tra il livello hardware (incluso il firmware) e il livello applicativo (applicazioni, programmi, servizi), il ruolo chiave del sistema operativo è quello di astrarre le complessità del computer per il livello applicativo.
+
+Nello specifico, il sistema operativo gestisce quattro compiti principali:
+1. Gestione dei componenti hardware
+2. Esecuzione di applicazioni, programmi e servizi
+3. Interfacciamento con dispositivi periferici
+4. Facilitazione dell'interazione con l'utente
+
+In generale, il sistema operativo definisce due aspetti principali di un dispositivo:
+    - Modalità operativa del dispositivo: Questa modalità determina lo scopo e l'ambito di applicazione del dispositivo, spiegando perché viene utilizzato un dispositivo specifico.
+    
+    - Interazione con l'utente: Questa modalità definisce il modo in cui gli utenti possono interagire con il dispositivo e utilizzarlo.
+
+-- Classificazione basata sulle caratteristiche di elaborazione --
+
+- Sistemi operativi batch: questi sistemi operativi eseguono i programmi in modo non interattivo. 
+Gli utenti caricano sia i programmi che i dati e i risultati vengono forniti solo al termine dell'elaborazione.
+
+- Sistemi operativi interattivi a tempo condiviso: questi sistemi operativi eseguono più programmi contemporaneamente, condividendo tra loro le risorse hardware (come il tempo di CPU e la memoria). 
+Gli utenti possono interagire con i programmi durante l'esecuzione, fornendo input e ricevendo output durante tutto il processo.
+
+- Sistemi operativi in tempo reale: questi sistemi operativi garantiscono che i programmi vengano eseguiti in tempo reale (o entro un intervallo di tempo fisso) senza ritardi, latenze o degrado delle prestazioni. 
+Sono tipicamente utilizzati nei processi industriali o nella robotica applicata.
+
+- Sistemi operativi integrati: questi sistemi operativi sono integrati in hardware dedicato, spesso presente in dispositivi specifici come automobili o aerei.
+
+- Sistemi operativi hypervisor: questi sistemi operativi consentono la suddivisione delle risorse hardware in diverse macchine virtuali, permettendo l'esecuzione simultanea di più sistemi operativi, programmi e modalità operative.
+
+-- Classificazione basata sulle caratteristiche funzionali --
+
+- Sistemi operativi mono-task: questi sistemi operativi consentono l'esecuzione di un solo programma (ovvero task) alla volta. Un nuovo programma può essere avviato solo una volta terminato quello corrente.
+
+- Sistemi operativi multi-task: questi sistemi operativi consentono l'esecuzione parallela di più programmi. 
+Le risorse hardware (ad esempio, tempo di CPU, memoria) sono condivise tra vari programmi, consentendo loro di funzionare contemporaneamente.
+
+- Sistemi operativi multi-threading: in questi sistemi operativi, ogni singolo programma è suddiviso in più sottoprogrammi (ovvero thread). Ogni thread viene eseguito sulla CPU (o su un core), migliorando le prestazioni del dispositivo.
+
+- Sistemi operativi mono-utente: questi sistemi operativi sono progettati per interagire con ed eseguire programmi per un solo utente alla volta.
+
+- Sistemi operativi multiutente: questi sistemi operativi possono interagire con ed eseguire programmi per più utenti contemporaneamente.
+
+-- Struttura Sistema Operativo -- 
+
+Un sistema operativo può essere strutturato come segue:
+
+1. Gestione dei programmi e dell'interfaccia utente
+2. Gestione della protezione e della sicurezza
+3. Gestione della memoria secondaria
+4. Gestione delle unità periferiche
+5. Gestione del file system
+6. Gestione della memoria principale
+7. Gestione dei processi (Scheduler)
+
+-- Kernel del sistema operativo --
+
+Il kernel è il componente centrale del sistema operativo. Funge da ponte tra le applicazioni e l'hardware fisico, garantendo un'esecuzione fluida e coordinata delle attività.
+
+In base alla loro struttura interna e al design del kernel, i sistemi operativi possono essere classificati in tre tipi:
+
+    - Sistema operativo con kernel monolitico
+    - Sistema operativo con microkernel
+    - Sistema operativo con kernel ibrido
+
+-- Sistema operativo con kernel monolitico --
+
+Questo sistema implementa un'astrazione completa del computer all'interno del kernel, che esegue il sistema operativo stesso.
+
+Il kernel monolitico include tutte le funzionalità di base necessarie al sistema operativo per gestire l'hardware e i processi di sistema all'interno dello spazio del kernel. 
+Ciò include driver di periferica, gestione della memoria, gestione del file system e chiamate di sistema, tutti eseguiti in un unico spazio di indirizzamento.
+Le applicazioni e le librerie vengono eseguite nello spazio utente.
+
+Eseguendo tutti i servizi essenziali nello spazio del kernel, i kernel monolitici possono raggiungere prestazioni elevate grazie al minimo cambio di contesto tra la modalità utente e la modalità kernel. 
+Ciò riduce il sovraccarico e migliora l' efficienza.
+
+Poiché tutti i componenti vengono eseguiti nello stesso spazio di indirizzamento, un guasto o un bug in una parte del kernel può potenzialmente causare il crash dell'intero sistema.
+
+Il kernel monolitico è meno modulare rispetto al microkernel. L'aggiunta di nuove funzionalità o driver richiede spesso la modifica e la ricompilazione dell'intero kernel, il che può essere macchinoso e limitare la flessibilità.
+
+-- Sistema operativo micro-kernel --
+
+Questo sistema implementa solo le funzioni essenziali del sistema operativo nel kernel. Altre funzionalità sono fornite da programmi di sistema separati come driver di periferica e server.
+
+Il microkernel è progettato per essere modulare. 
+Mantenendo solo le funzioni essenziali come la comunicazione tra processi, la pianificazione di base e l'astrazione hardware minima nello spazio del kernel, altre funzionalità sono gestite da processi separati nello spazio utente. 
+Questo design migliora la modularità e consente aggiornamenti e manutenzione più semplici.
+
+Isolando i driver e i servizi di sistema dal kernel, il microkernel può aumentare la stabilità e la sicurezza del sistema.
+
+I guasti o i bug in un servizio non causano necessariamente il crash dell'intero sistema, come accadrebbe in un kernel monolitico.
+
+-- Sistema operativo con kernel ibrido --
+
+Questo sistema implementa varie funzionalità del sistema operativo all'interno del kernel, ma può caricare moduli aggiuntivi all'avvio per migliorare e completare le caratteristiche del kernel.
+
+Il kernel ibrido offre un equilibrio tra le architetture monolitiche e microkernel. 
+Includendo le funzionalità essenziali all'interno del kernel e consentendo il caricamento di moduli aggiuntivi all'avvio, offrono un approccio flessibile alla progettazione del sistema.
+
+Questa architettura mira a ottenere i vantaggi prestazionali dei kernel monolitici mantenendo un certo grado di modularità.
+
+I sistemi operativi come le versioni moderne di Windows e macOS utilizzano un approccio ibrido al kernel. Questi sistemi dimostrano l'implementazione pratica e i vantaggi dei kernel ibridi in scenari reali.

@@ -1,0 +1,61 @@
+Specifica della classe Opera
+Ogni istanza di questa classe rappresenta un'opera:
+
+[V.Opera.Autore.anno_realizzazione]
+L'anno di realizzazione dell'opera deve essere compreso tra la data di nascita e (se presente) la data di morte.
+
+Per ogni o: Opera, a: Autore con link assoc. (o, a):appartiene, sia
+this.anno_realizzazione > autore.data_nascita (anno) and this.anno_realizzazione < autore.morte se presente.
+
+
+Specifica della classe autore
+Ogni istanza di questa classe rappresenta un autore:
+
+[V.Autore.data_di_nascita]
+Per ogni a: Autore, 
+this.data_di_nascita < this.data_di_morte (se presente)
+
+
+Specifica classe Esposizione
+Ogni istanza di questa classe rappresenta un esposizione:
+
+
+Specifica della classe Temporanea
+Ogni istanza di questa classe rappresenta un esposizione temporanea:
+
+[V.Temporanea.data_inizio]
+Per ogni this,
+this.data_inizio < this.data_fine
+
+
+Specifica della classe Biglietto
+
+[V.Biglietto.istante_vendita]
+
+Per ogni oggetto this:
+this.istante_vendita < this.data_validita
+
+Specifica della classe Standard:
+
+prezzo(): Reale >= 0
+precondizione:
+postcondizione:
+	L'operazione non modifica il livello estensionale.
+	Il valore del risulato ('result') e definito come segue:
+		- sia t: Tariffa tale che biglietto_tariffa(t, this)
+		- result = t.prezzo
+
+
+Specifica della classe Extended_Access:
+
+prezzo(): Reale >= 0
+precondizione:
+postcondizione:
+	L'operazione non modifica il livello estensionale.
+	Il valore del risultato ('result') e definito come segue:
+		- sia t: tariffa tale che biglietto_tariffa(t, this)
+		- sia et: Temporanea
+		- sia E l'insieme di et partecipanti ad un link assoc include(et, this)
+		- sia N la cadinalita di E (il numero degli elementi)
+		- somma_temporanei = 
+		result  = N * et.prezzo + t.prezzo

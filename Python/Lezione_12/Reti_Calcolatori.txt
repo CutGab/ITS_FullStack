@@ -1,0 +1,192 @@
+-- Architettura di rete --
+
+L'architettura di rete è un framework che delinea la struttura e il funzionamento di una rete, costituito da una serie di livelli e protocolli che determinano le modalità di trasmissione e ricezione dei dati.
+
+Proprietà della rete: Reti in cui le decisioni relative alla progettazione e al funzionamento sono prese in modo indipendente dal produttore. Le scelte sono arbitrarie e possono variare notevolmente da un produttore all'altro.
+
+Standard de facto: Specifiche di dominio pubblico ampiamente accettate e utilizzate dal settore (modello TCP/IP).
+
+Standard de iure: Specifiche approvate da organismi internazionali di normazione e di dominio pubblico (modello ISO/OSI).
+
+-- Modello ISO/OSI --
+
+Il modello OSI (Open Systems Interconnection) è stato istituito nel 1984 ed è il risultato del lavoro dell' ISO (International Organization for Standardization). 
+Si tratta di uno standard de iure. Il suo scopo è:
+
+    - Fornire un modello standard con cui confrontare le varie architetture di rete.
+
+Il modello ISO/OSI è una descrizione astratta della comunicazione a livelli e della progettazione dei protocolli di rete informatica. Esso divide l'architettura di rete in sette livelli.
+
+Il modello ISO/OSI è stato progettato secondo i seguenti principi:
+    - Ogni livello deve avere un diverso grado di astrazione;
+    - Ogni livello deve avere una funzione ben definita;
+
+La scelta dei livelli deve:
+    - Ridurre al minimo il passaggio di informazioni tra i livelli;
+    - Evitare un numero eccessivo di funzioni in un unico livello;
+    - Evitare un numero eccessivo di livelli.
+
+-- Livello Fisico --
+
+Il livello fisico è responsabile della connessione fisica tra i dispositivi. Si occupa della trasmissione e della ricezione di flussi di bit grezzi su un supporto fisico.
+
+Principali supporti fisici:
+    - Cavi in rame (ad es. Ethernet, cavo coassiale);
+    - Cavi in fibra ottica;
+    - Frequenze radio (ad es. Wi-Fi, Bluetooth).
+
+-- Cavo Ethernet e Coassiali --
+
+I cavi Ethernet sono tipi di cavi elettrici utilizzati per collegare dispositivi all'interno di una rete locale (LAN) per la trasmissione di dati.
+Utilizzano un cablaggio a doppino intrecciato per ridurre le interferenze e migliorare la qualità del segnale.
+
+Il cavo coassiale è un tipo di cavo elettrico costituito da un conduttore centrale in rame, uno strato isolante, una schermatura metallica e uno strato isolante esterno.
+Questa struttura offre un'eccellente protezione contro le interferenze elettromagnetiche, garantendo l'integrità del segnale su lunghe distanze. Offre inoltre velocità di trasmissione dati più elevate.
+
+-- Fibra Ottica --
+
+Il cavo in fibra ottica è un tipo di cavo di rete che utilizza la luce per trasmettere dati ad alta velocità su lunghe distanze. 
+È costituito da filamenti di fibre di vetro o plastica, ciascuno in grado di trasportare segnali di dati sotto forma di impulsi luminosi. 
+La fibra ottica supporta velocità di trasmissione dati molto più elevate ed è anche immune alle interferenze elettromagnetiche, garantendo una trasmissione dei dati pulita e affidabile.
+
+    - Nucleo: la parte centrale della fibra, realizzata in vetro o plastica, attraverso la quale viaggiano i segnali luminosi.
+    
+    - Rivestimento: circonda il nucleo e riflette la luce all'interno del nucleo, riducendo al minimo la perdita di segnale.
+    
+    - Rivestimento esterno: protegge la fibra da danni e umidità.
+    
+    - Rivestimento esterno: fornisce una protezione aggiuntiva contro i fattori ambientali.
+
+-- Frequenze Radio (Wifi, Bluetooth) --
+
+Il trasferimento dati tramite radiofrequenza (RF) comporta la trasmissione wireless dei dati tramite onde elettromagnetiche.
+Il Wi-Fi e il Bluetooth sono due tecnologie comuni che utilizzano la RF per consentire la comunicazione wireless tra dispositivi.
+
+    - Wi-Fi:
+        - Bande di frequenza: opera principalmente nelle bande di frequenza 2,4 GHz e 5 GHz, con standard più recenti che utilizzano anche la banda 6 GHz.
+        
+        - Portata: copre in genere una distanza fino a 100 metri in ambienti interni, a seconda dell'ambiente e degli ostacoli.
+        
+        - Tipo di rete: in genere fa parte di una rete locale (LAN) in cui più dispositivi si connettono a un router centrale o a un punto di accesso.
+        
+        - Applicazioni: accesso a Internet, servizi di streaming, giochi online, connettività domestica intelligente e reti aziendali.
+        
+    - Bluetooth:
+    
+        - Bande di frequenza: opera nella banda ISM (Industrial, Scientific, and Medical) a 2,4 GHz.
+        
+        - Portata: copre in genere una distanza massima di 10 metri, con alcune versioni (Bluetooth 5) che arrivano fino a 100 metri.
+        
+        - Tipo di rete: in genere forma una rete personale (PAN) in cui i dispositivi si connettono direttamente tra loro o tramite un dispositivo centrale in una topologia a stella.
+        
+        - Applicazioni: connessione di periferiche (ad es. cuffie, tastiere), trasferimento di file tra dispositivi mobili, streaming audio wireless e controllo dei dispositivi domestici intelligenti.
+
+Vantaggi del trasferimento dati RF:
+    - Elimina la necessità di cavi fisici, offrendo maggiore mobilità e praticità.
+    - Semplifica il processo di connessione e comunicazione tra i dispositivi.
+
+-- Frequenza --
+
+La frequenza si riferisce al numero di cicli (oscillazioni) dell'onda che attraversano un punto specifico in un secondo. Si misura in Hertz (Hz), dove un Hertz equivale a un ciclo al secondo.
+
+-- Banda --
+
+La larghezza di banda è l'intervallo di frequenze all'interno di una determinata banda occupato da un segnale. È la differenza tra la frequenza più alta e quella più bassa dell'intervallo ed è misurata in Hertz (Hz).
+
+La larghezza di banda definisce la quantità di dati che può essere trasmessa su una connessione di rete in un determinato intervallo di tempo, solitamente misurata in bit al secondo (bps).
+Una larghezza di banda maggiore indica una maggiore capacità di trasportare più dati, con conseguente trasmissione più veloce dei dati e prestazioni più elevate nelle comunicazioni di rete.
+
+La larghezza di banda effettiva percepita dagli utenti può essere inferiore a causa di fattori quali congestione della rete, distanza dal router, interferenze e capacità dei dispositivi.
+
+Il prodotto larghezza di banda-ritardo definisce la quantità massima di dati (in bit) che può essere in transito nel collegamento di rete in un dato momento.
+
+    - Larghezza di banda: la sezione trasversale del tubo (la quantità di dati che può fluire per unità di tempo).
+    - Ritardo: la lunghezza del tubo (il tempo impiegato dai dati per viaggiare da un'estremità all'altra).
+    - Prodotto larghezza di banda-ritardo: il volume del tubo (quantità totale di dati che può essere in transito in un dato momento). Più lungo è il tubo (maggiore è il ritardo), più tempo impiegano i dati per attraversarlo.
+
+-- Livello Data Link --
+
+Il livello Data Link è il secondo livello del modello OSI, responsabile del trasferimento dei dati da nodo a nodo e del rilevamento e della correzione degli errori.
+
+Funzioni:
+    - Stabilisce e termina le connessioni di collegamento logico.
+    - Gestisce i frame di dati tra i dispositivi sulla stessa rete.
+
+    - Framing: 
+        - Divide i dati in frame per facilitarne la trasmissione. 
+        - Aggiunge header e trailer ai frame per facilitare la comunicazione.
+
+    - Rilevamento e correzione degli errori: 
+        - Rileva gli errori nei frame trasmessi utilizzando tecniche come il CRC (Cyclic Redundancy Check).
+        - Corregge gli errori per garantire un trasferimento dati affidabile.
+
+    - Controllo del flusso:
+        - Gestisce il flusso di dati per prevenire congestioni e perdite di dati.
+    
+    - Indirizzamento:
+        - Utilizza indirizzi MAC (Media Access Control) per identificare i dispositivi sulla rete.
+
+-- Sottolivelli del livello Data Link --
+
+Controllo logico di collegamento (LLC):
+    - Gestisce il controllo degli errori e il controllo di flusso.
+    - Divide i dati in frame per facilitarne la trasmissione.
+    - Aggiunge intestazioni e trailer ai frame per facilitare la comunicazione.
+
+Controllo di accesso al supporto (MAC):
+    - Controlla il modo in cui i dispositivi sulla rete ottengono l'accesso al supporto.
+    - Determina il modo in cui i dati vengono collocati sul supporto.
+
+-- LLC - Framing --
+
+- Preambolo: il preambolo è una serie di bit che aiuta il dispositivo ricevente a prepararsi a comprendere i dati in arrivo. Assicura che sia il mittente che il destinatario siano sincronizzati prima dell'inizio effettivo del messaggio.
+- Indirizzo MAC di destinazione: l'indirizzo fisico del dispositivo di destinazione sulla rete.
+- Indirizzo MAC di origine: l'indirizzo fisico del dispositivo mittente sulla rete.
+- Lunghezza: la dimensione del payload di dati nel frame.
+- Dati: il campo contenente il payload effettivo trasmesso. Può includere intestazioni di livello superiore.
+- Checksum CRC: Il checksum è un valore calcolato dal contenuto del frame per rilevare errori nella trasmissione. 
+                Se il checksum calcolato dal lato ricevente non corrisponde al checksum trasmesso, ciò indica che il frame è stato danneggiato.
+
+-- LLC - Meccanismi di controllo del flusso -- 
+
+- Stop-and-Wait (Stop e attesa)
+Descrizione: Il mittente trasmette un frame e attende una conferma dal destinatario prima di inviare il frame successivo. 
+Ciò garantisce che ogni frame venga ricevuto e confermato prima dell'invio di quello successivo, evitando il sovraccarico di dati e assicurando una consegna ordinata.
+
+Vantaggi: semplice e facile da implementare.
+Svantaggi: inefficiente per le reti ad alta velocità a causa dei tempi di attesa.
+
+- Sliding Window (Finestra scorrevole)
+Descrizione: Consente l'invio di più frame prima di richiedere un riconoscimento. Il mittente può trasmettere diversi frame specificati da una dimensione della “finestra”. 
+Dopo aver inviato questi frame, il mittente attende i riconoscimenti. Man mano che i riconoscimenti vengono ricevuti, la finestra scorre in avanti, consentendo al mittente di trasmettere altri frame.
+
+Vantaggi: uso più efficiente delle risorse di rete, migliori prestazioni nelle reti ad alta velocità.
+Svantaggi: più complesso da implementare.
+
+-- Sottolivelli del MAC (Media access control) --
+
+Il sottolivello MAC controlla il modo in cui i dati vengono inseriti e recuperati dal supporto di rete.
+
+Funzioni:
+    - Indirizzamento: utilizza gli indirizzi MAC per identificare i dispositivi di invio e ricezione sulla rete.
+    - Controllo dell'accesso: determina il modo in cui i dispositivi condividono il supporto di rete per evitare collisioni (quando due dispositivi tentano di inviare dati contemporaneamente).
+
+Esempi di metodi:
+
+- CSMA/CD (Carrier Sense Multiple Access with Collision Detection): Utilizzato nelle reti Ethernet per gestire la trasmissione dei dati e rilevare le collisioni.
+- CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance): Utilizzato nelle reti Wi-Fi per evitare collisioni attendendo che il canale sia libero prima di trasmettere.
+
+Delimitazione dei frame: definisce l'inizio e la fine di un frame, assicurando che i dati siano interpretati correttamente.
+
+-- Switch di rete --
+
+Gli switch di rete sono dispositivi fondamentali in una rete locale (LAN). Consentono la comunicazione tra diversi dispositivi all'interno della stessa rete.
+Uno switch di rete è un dispositivo che riceve, elabora e inoltra i dati a dispositivi specifici all'interno di una rete locale. Opera a livello di collegamento dati del modello ISO/OSI.
+
+Funzionamento di base di uno switch:
+    - Riceve un frame di dati da un dispositivo collegato.
+    - Legge l'indirizzo MAC di destinazione del frame.
+    - Cerca l'indirizzo MAC nella propria tabella degli indirizzi MAC per determinare la porta di destinazione.
+        - La tabella degli indirizzi MAC mappa gli indirizzi MAC ai numeri delle porte dello switch.
+        - Viene creata dinamicamente apprendendo gli indirizzi MAC dai frame che passano attraverso lo switch.
+    - Invia il frame alla porta corretta per raggiungere il dispositivo di destinazione.

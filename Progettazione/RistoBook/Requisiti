@@ -1,0 +1,152 @@
+RistoBook
+
+-- Raffinamento dei requisiti --
+
+1. Dei clienti interessa
+	
+	1.1 Nome
+	1.2 Email
+
+2. Dei ristoranti interessa:
+
+	2.1 Nome
+	2.2 Partita IVA (stringa numerica)
+	2.3 Indirizzo
+	2.4 Città
+	2.5 Cucine offerte (lista amministrata dallo staff)
+	2.6 Giorni e orari prenotabili
+
+3. Delle prenotazioni:
+
+	3.1 Data
+	3.2 Ora
+	3.3 Numero di commensali
+	3.4 Lo stato della prenotazione
+		3.4.1 Nasce nello stato pendente
+		3.4.2 Accettata o rifiutata
+		3.4.3 Se completata (quando il cliente si presenta) o se non utilizzata (quando il cliente non si presenta)
+		3.4.4 Se annullata (entro le 24 ore precedenti all’inizio prenotazione)
+	3.5 Promozione applicata (anche nessuna) (v.req. 4)
+	3.6	 Il cliente (v.req. 1)
+	3.7 Il ristorante (v.req. 2)
+
+4. Delle promozioni:
+
+	4.1 Percentuale di sconto applicata
+	4.2 Ristornate (v.req. 2)
+	4.3 Periodo (data inizio e data fine)
+	4.4 Giorni della settimana e ora inizio/ora fine
+	4.5 Numero massimo di coperti al giorno
+
+
+
+999. Funzionalità:
+	999.1 Al momento della prenotazione, il cliente seleziona  una (o nessuna) delle promozioni disponibili
+
+	999.2 Il sistema deve permettere ristoratori di RistoBook di calcolare alcune statistiche di utilizzo delle loro promozioni. In particolare, dato un periodo di tempo, RistoBook deve permettere calcolare, per ogni promozione del ristorante considerato, il 40 numero medio di clienti al giorno (dove la media è calcolata sui giorni di validità della promozione) che ha utilizzato quella promozione in una prenotazione.
+
+	999.3 Data una città x, un insieme di tipologie di cucina C, un tasso di sconto minimo s ed una data d, i clienti devono poter trovare quali sono i ristoranti nella città x che offrono almeno una delle tipologie di cucina in C e prevedono promozioni con 45 sconti di tasso almeno s nella data d ancora utilizzabili per il numero di coperti che sono interessati a prenotare. 
+
+-- Specifica dei tipi di dato --
+
+GiornoPren: {
+	giorno: Data
+	ora: Ora
+}
+
+Indirizzo: {
+	Via: stringa
+	Civico: Intero > 0
+	CAP: CAP
+}
+
+CAP: stringa numerica di lunghezza cinque
+Piva: stringa numerica di lunghezza N 11
+
+Periodo: {
+	inizio: DataOra
+	fine: DataOra
+}
+
+Giorno: [Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sabato, Domenica]
+
+Sconto: Reale tra 0 e 1.
+
+[V.Periodo.valido] inzio <= fine.
+
+
+-- Specifica della classe Prenotazione --
+
+[V.Annullata.entro24Ore] 
+
+Una prenotazione accettata può essere annullata entro le 24 ore precedenti al giorno e ora di prenotazione.
+
+Per ogni pann:Annullata non esiste pann.giorno_pren - pann.istante < "24 ore".
+
+
+
+[V.Prenotazione.istante_prenMinoreGiorno_pren] 
+
+Per ogni p:Prenotazione deve essere p.istante <= p.giorno_pren
+
+
+[V.Accettata_istante_accMaggioreIstante_pren]
+
+Per ogni p:Accettata deve essere p.istante_acc > p.istante_pren <= p.istante_acc
+
+[V.Annullata.nonCompletataONonUtilizzata]
+
+Una prenotazione di istanza Annullata non può essere né istanza di Completata, né istanza di NonUtilizzata.
+
+Per ogni pan:Annullata tale che pan:Completata 
+
+
+[V.Rifiutata.Istante_rifMaggioreIstante_pren]
+
+...
+
+
+[V.Completata.Istante_rifMaggioreIstante_acc]
+
+...
+
+[V.Non_Utilizzata.Istante_nuMaggioreIstante_acc]
+
+...
+
+[V.Annullata.Istante_annMaggioreIstante_pren]
+
+...
+
+-- Specifica della classe Promozione --
+
+[V.Promozione.orariValidi]
+Per ogni p:Promozione deve essere p.ora_inzio < p.ora_fine
+
+count_vendute(i: DataOra): Intero >= 0
+	precondizioni:
+		Nessuna
+
+
+	postcondizioni:
+		Sia P l'insieme delle p:Prenotazione tale che (p, this):pren_prom, p.giorno_pren.data = d e p:Completata o p:Accettata.
+
+		Il risultato è la somma di p.n:pers, p in P.
+
+	is_superato(d:Data): Booleano
+		precondizioni:
+		postcondizioni:
+			result è true se this.count_vendute(d) >= this.max_coperti.
+
+			result è false altrimenti.
+
+
+-- Specifica dei vincoli esterni --
+
+[V.PrenotazioneCliente.prenotazioniNonConcorrenti]
+
+Per ogni c:Cliente, p1:Prenotazione, p2:Prenotazioni tale che p1 != p2, (c, p1):cl_pren, (c, p2):cl_pren deve essere che p1.giorno_pren != p2.giorno_pren.
+
+[V.PromozionePrenotazione.max_coperti]
+
+Il numero massimo di prenotazioni che utilizzano una certa promozione al giorno è uguale a promozione.max_coperti.

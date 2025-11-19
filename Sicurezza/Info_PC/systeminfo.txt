@@ -1,0 +1,65 @@
+-- INFO WINDOWS --
+
+Nome host:                               ITS-044
+Nome SO:                                 Microsoft Windows 11 Pro
+Versione SO:                             10.0.26100 N/D build 26100
+Produttore SO:                           Microsoft Corporation
+Configurazione SO:                       Workstation autonoma
+Tipo build SO:                           Multiprocessor Free
+Proprietario registrato:                 ITS-054
+Organizzazione registrata:               HP Inc.
+Numero di serie:                         00355-61530-89848-AAOEM
+Data di installazione originale:         27/02/2025, 14:58:12
+Tempo di avvio sistema:                  09/07/2025, 13:47:37
+Produttore sistema:                      HP
+Modello sistema:                         HP ZBook Power 15.6 inch G10 Mobile Workstation PC
+Tipo sistema:                            x64-based PC
+Processore:                              1 processore(i) installati.
+                                         [01]: Intel64 Family 6 Model 186 Stepping 2 GenuineIntel ~2400 Mhz
+Versione BIOS:                           HP V97 Ver. 01.06.03, 15/08/2024
+Directory Windows:                       C:\WINDOWS
+Directory di sistema:                    C:\WINDOWS\system32
+Dispositivo di avvio:                    \Device\HarddiskVolume1
+Impostazioni locali sistema:             it;Italiano (Italia)
+Impostazioni locali di input:            it;Italiano (Italia)
+Fuso orario:                             (UTC+01:00) Amsterdam, Berlino, Berna, Roma, Stoccolma, Vienna
+Memoria fisica totale:                   32.400 MB
+Memoria fisica disponibile:              6.824 MB
+Memoria virtuale: dimensione massima:    37.441 MB
+Memoria virtuale: disponibile:           10.356 MB
+Memoria virtuale: in uso:                27.085 MB
+Posizioni file di paging:                C:\pagefile.sys
+Dominio:                                 WORKGROUP
+Server di accesso:                       \\ITS-044
+Aggiornamenti rapidi:                    3 Aggiornamenti rapidi installati.
+                                         [01]: KB5056579
+                                         [02]: KB5062553
+                                         [03]: KB5063666
+Schede di rete:                          2 NIC installate.
+                                         [01]: Intel(R) Ethernet Connection (16) I219-V
+                                               Nome connessione: Ethernet
+                                               Stato:            Supporto disconnesso
+                                         [02]: Intel(R) Wi-Fi 6E AX211 160MHz
+                                               Nome connessione: Wi-Fi
+                                               DHCP abilitato:   Sì
+                                               Server DHCP:      10.70.0.1
+                                               Indirizzi IP
+                                               [01]: 10.70.0.27
+                                               [02]: fe80::eee1:9d19:76b7:4898
+Sicurezza basata sulla virtualizzazione: Stato: In esecuzione
+                                         Proprietà di sicurezza obbligatorie:
+                                         Proprietà di sicurezza disponibili:
+                                               Supporto virtualizzazione di base
+                                               Protezione DMA
+                                               Codice UEFI di sola lettura
+                                               SMM Security Mitigations 1.0
+                                               Controllo dell'esecuzione basato su modalità
+                                               Virtualizzazione APIC
+                                         Services Configured:
+                                               Integrità del codice applicata da hypervisor
+                                         Services Running:
+                                               Integrità del codice applicata da hypervisor
+                                         App Control for Business policy: Imposto
+                                         App Control for Business user mode policy: Disattivato
+                                         Funzionalità di sicurezza abilitate:
+Requisiti Hyper-V:                       Rilevato hypervisor. Le funzionalità necessarie per Hyper-V non verranno visualizzate.

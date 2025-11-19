@@ -1,0 +1,192 @@
+Evoluzione dei dispositivi di Networking:
+    - Dai Mainframes ai Personal Computers: Iniziale dipendenza su larghi sistemi centralizzati, per poi arrivare ai moderni personal computer personali ormai onnipresenti.
+    - Crescita della tecnologia Mobile: Transizione dai PC statici a smartphones e tablet, dando la possibilità di essere connessi sempre e ovunque.
+
+Espansione dei servizi internet:
+    - Diffusione dei servizi di Streaming: Impatto dell'internet ad alta velocità sull'intrattenimento; dal tradizionale broadcasting alle piattaforme di streaming on-demand come Netflix e Youtube.
+    - Social Media Network: Evoluzione da semplici strumenti di comunicazione a complesse piattaforme che favoriscono a interazioni sociali, di business, e diffusione di informazioni.
+
+Impatto sulla società:
+    - Inclusione digitale e il Villaggio Globale: Il networking avanzato ha avuto un ruolo importante nel colmare le divisioni geografiche e socioeconomiche.
+    - Sfide: Affrontare le minacce alla sicurezza infromatica e le preoccupazioni relative alla privacy in un mondo sempre più interconnesso.
+
+-- COMPUTER NETWORK --
+
+Una rete è un gruppo di sistemi informatici interconnessi e altri dipositivi computazionali che comunicano fra loro per condividere risorse e informazioni.
+Permette molteplici utenti  di potersi scambiare dati, accedere a applicazioni condivise, e utilizzare hardware di tutti i giorni come server e stampanti.
+
+I network possono essere semplici connessioni fra 2 computer così come vaste reti globali come Internet. 
+Tipicamente usano varie tecnologie, protocolli, e infrastrutture fisiche per facilitare una comunicazione continua e il trasferimento di dati tra i dispositivi connessi.
+
+-- USO DELLE RETI INTERNET --
+
+Applicazioni di business:
+    - Condivisione di risorse: Le reti internet permettono l'uso condiviso di dispositivi essenziali tra diversi computer all'interno di una rete.
+                               Questo include stampanti, scanners, e dispositivi fax, permettendo a più utenti di poter utilizzare gli stessi dispositivi fisici in maniera efficiente, riducendo costi e migliorando la produttività.
+
+    - Condivisione di informazioni: Le reti facilitano il continuo scambio di informazioni tra individui, organizzazioni, e tecnologie. 
+                                    Questa capacità e cruciale per la collaborazione e la presa di decisioni, in quanto assicura che i dati rilevanti possono essere accdeuti e utilizzati da molteplici luoghi e piattaforme.
+
+    - Mezzi di comunicazione: Le reti fungono da canali di comunicazione vitali. Supportano vari strumenti di comunicazione come le email, videoconferenze e messaggi istantanei, che sono essenziali per operazioni di business moderne.
+                              Questi strumenti aiutano nel mantenere una comunicazione efficace tra dipendenti, clienti, e partner, indipendentemente dalla loro locazione fisica.
+
+    - E-commerce: Le reti sono fondamentali per attività di e-commerce. Abilitano transazioni come pagamenti online, trasferimento di fondi elettronici e la gestione dei mercati digitali.
+                  Questa infrastruttura digitale è fondamentale per condurre business nel mercato globale, fornendo una piattaforma per comprare e vendere prodotti e servizi online.
+
+Applicazioni di casa:
+    - Accesso ad informazioni da remoto: Le reti internet permettono accesso da remoto a informazioni personali e professionali da virtualmente qualisasi locazione, inclusa la propria casa.
+                                         Questa flessibilità permette agli individui di lavorare ovunque, accedendo a file di lavoro, database, e applicazioni tramite connessioni sicure come le VPN, favorendo produttività e equilibrio lavoro-vita.
+
+    - Comunicazioni tra persone: Le reti sono cruciali per facilitare la diretta comuniazione tra individui usando vari metodi come chiamate, messaggi, e videochiamate.
+                                 Questi strumenti aiutano a mantenere relazioni personali e collaborazioni professinali anche a distanza, riducendo il bisogno di dover viaggiare e favorendo una comunicazione più dinamica e immediata.
+
+    - intrattenimento interattivo: Le reti internet giocano un ruolo fondamentale in quanto connettono utenti con una vasta gamma di contenuti interattivi. 
+                                   Questo include siti internet che permettono la comunicazione tra utenti, piattaforme di gaming e piattaforme di streaming.
+
+Applicazioni mobile:
+    - M-commerce: Questa forma di commercio permette la compravendita di beni e servizi attraverso dispositivi tascabili, come smartphones o tablet. 
+                  Le M-commerce utilizzano reti mobili per fornire transazioni ovunque, permettendo ai consumatori di comprare, gestire le finanze e accedere a servizi ovunque.
+                  Ciò include pagamenti mobili, operazioni bancarie e acquisti tramite app dedicate e siti web ottimizzati per dispositivi mobili, migliorando così la comodità per gli utenti e ampliando la portata di mercato per le aziende.
+
+    - Sistemi di navigazione GPS: Sistemi di navigazione utilizzano le reti per fornire informazioni sulle locazioni e tempo sotto tutti le possibili condizioni metereologiche ovunque. 
+                                  Questi sistemi forniscono istruzioni agli utenti per raggiungere la loro destinazione in maniera efficiente. 
+                                  Sono integrati nei dispositivi mobili e veicoli per aiutare con la pianificazione del percorso e monitoraggio del traffico.
+
+    - Messaggistica istantanea: Le reti supportano una varietà di servizi di messaggistica istantanea che consentono agli utenti di inviare e ricevere messaggi in tempo reale. 
+                                Questi servizi vanno oltre la messaggistica di testo e includono chiamate vocali e la condivisione di file multimediali, come immagini e documenti. 
+                                La messaggistica istantanea ha rivoluzionato la comunicazione, offrendo un metodo rapido, economico e versatile per rimanere in contatto a livello personale e professionale in tutto il mondo.
+
+-- COMUNICAZIONE NELLE RETI --
+
+Point-to-Point: Un link diretto tra due dispositivi.
+
+Broadcast: Un link condiviso tra più dispositivi.
+
+    - Point-to-Point: La rete è strutturata tramite una serie di link e nodi. Un nodo può essere un qualisasi dispositivo come un PC, una switch o un router.
+                      Una switch serve per connettere dispositivi all'interno di una rete, mentre il router connette diverse reti tra loro.
+                      Pacchetti di dati sono trasmessi da una sorgente a una determinata destinazione, potenzialmente attraversando diversi nodi sul suo percorso.
+                      Solo il destinatario, o nodo destinatario, processa il messaggio.
+
+                      La selezione del miglior percorso può essere scelta in base alla "lunghezza", o al "traffico":
+                        - Se in base alla lunghezza, il percorso più breve verrà scelto.
+                        - Se in base al traffico, il percorso meno usato verrà sceto.
+
+    - Broadcast: Un singolo canale di comunicazione viene utilizzato da tutti i computer sulla rete.
+                 In genere, quando un computer manda un messaggio, lo trasmette a tutti i computer connessi.
+
+                    - Broadcast: Il messaggio è inteso per tutti i computer sulla rete.
+                    - Multicast: Il messaggio è diretto a uno specifico gruppo di computer sulla rete.
+                    - Anycast: Il messaggio può essere ricevuto da un qualsiasi computer sulla rete, tipicamente il più vicino alla sorgente.
+                    - Unicast: Il messaggio è distribuito ad ogni computer, ma solo il destinatario specificato nel campo dell'indirizzo del messaggio può elaborarlo.
+
+-- TOPOLOGIE DELLE RETI --
+
+La topologia delle reti internet si riferisce alla disposizione degli elementi (inclusi i nodi e le linee di connessione) all'interno di una rete. 
+Può essere visualizzata come la disposizione fisica o logica di come i dispositivi dei computer, router e switch si interconnettono.
+Ci sono 5 topologie:
+    - Bus
+    - Anello
+    - Stella
+    - Maglia
+    - Albero
+
+    - Bus: Tutti i dispositivi condividono un singolo cavo o linea di comunicazione. I segnali dalla sorgente viaggiano in tutte le direzioni su tutti i dispositivi connessi sulla rete finché non trovano il destinatario.
+
+        - Vantaggi:
+            - Basso costo: Richiede meno cavi rispetto ad altre topologie.
+            - Adatto a piccole reti.
+            - Semplice da capire.
+            - Facilmente espandibile connettendo cavi aggiuntivi.
+
+        - Svantaggi:
+            - Singolo punto di fallimento: Se il cavo principale si guasta, l'intera rete smette di funzionare.
+            - Deterioramento delle prestazioni: La rete rallenta man mano che i nodi aumentano o sotto traffico pesante.
+            - Lunghezza del cavo limitata: La portata della rete è determinata dalla lunghezza del cavo.
+
+    - Anello: I dispositivi sono connessi in un formato circolare, con ogni computer connesso a due altri computer.
+              Questo setup forma un continuo percorso per i segnali attraverso ogni dispositivo, con i dati che viaggiano sull'anello in una singola direzione.
+              Il trasferimento dei dati richiede un token.
+
+        - Vantaggi:
+            - Performance consistente: Mantiene l'efficienza sotto traffico pesante o con tanti nodi, dato che i nodi trasmettono i dati solo se possiedono il token.
+            - Basso costo: Bassi i costi per montarla e espanderla.
+
+        - Svantaggi:
+            - Risoluzione dei problemi complessa: Le diagnosi dei problemi all'interno di questa topologia sono difficili.
+            - Manutenzione dirompente: Aggiungere o rimuovere computer può interrompere il funzionamento della rete.
+            - Stabilità dipendente: Il fallimento di un singolo computer può impattare l'intera rete.
+
+    - Stella: I dispositivi sono connessi ad un hub centrale. I dati su una rete a stella passano per l'hub centrale prima di continuare per arrivare al destinatario. L'hub funge da ripetitore del segnale.
+
+        - Vantaggi:
+            - Scalabilità: La rete può essere allargata facilmente.
+            - Semplice risoluzione dei problemi: Le diagnosi dei problemi sono relativamente velocità.
+            - Resilienza dei nodi non centrali: Il fallimento di un nodo non centrale non compromette l'intera rete.
+
+        - Svantaggi:
+            - Vulnerabilità del nodo centrale: L'intera rete è compromessa se il nodo centrale si guasta.
+            - Grosso carico sul nodo centrale: Tutto il traffico della rete deve passare per il nodo centrale, che può diventare una strettoia.
+
+    - Maglia: I dispositivi sono connessi con molte interconnessioni ridondanti, in una completa topologia a maglia, ogni computer è connesso direttamente con ogni computer.
+              In una topologia a maglia parziale, alcuni computer sono connessi fra loro in maniera indiretta.
+
+        - Vantaggi:
+            - Percorsi di dati indipendenti: Ogni connessione può gestire indipendentemente il proprio traffico di dati.
+            - Alta tolleranza ai guasti: La rete rimane operativa anche al fallimento di connessioni individuali.
+            - Semplice riconoscimento dei problemi.
+
+        - Svantaggi:
+            - Setup complesso: Configurazione e montaggio della rate sono difficili.
+            - Alti costi del cablaggio data la grande quantità di cavi.
+            - Cablaggio esteso: Necessario un grande volume di cavi per collegare ogni nodo in maniera indipendente 
+
+    - Albero: Una variante della topologia a stella che si dirama in altre stelle. Integra molteplici tipologie a stella insieme ad una a bus, combinando le caratteristiche di entrambe.
+
+        - Vantaggi:
+            - Struttura Ibrida: Combina elementi della tipologia a bus e stella.
+            - Scalabilità: Aggiungere nuovi nodi è facile.
+            - Gestione: La rete è semplice da supervisionare e mantenere.
+            - Semplice identificamento di errori.
+
+        - Svantaggi:
+            - Cablaggio esteso.
+            - Costi elevati per la montatura e manutenzione.
+            - Dipendenza dal nodo radice: Tutta la rete si guasta se il nodo radice smette di funzionare.
+            - Manutenzione sempre più complessa man mano che si aggiungono nodi.
+
+-- MODELLO CLIENT-SERVER --
+
+Un'architettura di rete dove molteplici clienti (dispositivi o software) richiedono e ricevono servizi da un server centralizzato. 
+Questo modello centralizza funzioni e risorse principali, offrendo efficienza e scalabilità assegnando compiti tra fornitori (server) e richiedenti (clienti).
+
+    - Client:
+        - Richiede servizi o risorse.
+
+    - Server:
+        - Fornisce risorse e servizi.
+        - Gestisce tutti i processi e l'archiviazione dei dati.
+        - Manda l'output al Client.
+
+-- MODELLO PEER-TO-PEER (P2P) --
+
+Un'architettura di rete decentralizzata dove ogni nodo, o "peer", ha uguali capacità e responsabilità.
+Questo modello permette la diretta condivisione di risorse tra peer senza il bisogno di una coordinazione centralizzata.
+Viene usata spesso per la condivisione di file, comunicazioni, o compiti collaborativi.
+
+    Ogni peer può essere server o client:
+        - Richiede servizi o risorse.
+        - Fornisce risorse e servizi.
+        - Gestisce tutti i processi e l'archiviazione dei dati.
+        - Manda l'output agli altri.
+
+-- TIPI DI RETI INTERNET --
+
+Le reti vengono divise categoricamente in base alla loro distribuzione geografica e la distanza tra i dispositivi connessi. Questa classifica aiuta nel capire lo scopo e i requisiti tecnici delle diverse reti.
+Dai vari dispositivi personali che interagiscono tra loro a metri di distanza a comunicazioni globali che comunicano a chilometri e chilometri di distanza, ogni rete ha diversi obbiettivi.
+
+    - PAN (Personal Area Network) (1 metro)
+    - LAN (Local Area Network) (Stanza (10m), Palazzo(100m), Campus(1Km))
+    - MAN (Metropolitan Area Network) (Città(10Km))
+    - WAN (Wide Area Network) (Nazione(100KM), Continente(100KM))
+    - Internet (Global(10000KM))
+

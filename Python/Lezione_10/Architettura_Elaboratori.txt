@@ -1,0 +1,159 @@
+--- Dati grezzi ---
+
+"Data" si riferisce a fatti grezzi, non processati collezionati da diverse fonti. Questi fatti possono essere numeri, simboli, caratteri, o anche osservazioni.
+
+I dati da soli non hanno nessun significato o contesto finché non vengono processati e interpretati
+
+Esempi di dati includono:
+
+    - Un valore (Es. 35)
+    - Una serie di misurazioni
+    - Un nome
+    - Un colore
+    etc.
+
+Il punto è che i dati sono disorganizzati e non hanno nessun significato da soli.
+
+--- Informazioni e conoscenza ---
+
+L'informazione è ciò che si ottiene quando i dati vengono processati e organizzati, dandogli un contesto.
+
+Esempio di informazione:
+
+    - Un valore associato ad un grado Celsius (Es. 35°C) rappresenta il valore della temperatura
+
+La conoscenza è la comprensione e intiuizione data dall'interpretamento delle Informazioni, rendendole utili per la presa di decisioni. La conoscenza risponde alle domande "Cosa", "Chi", "Quando", "Quanti".
+
+Esempio di conoscenza:
+
+    - Una temperatura di 35°C diventa conoscenza quando viene interpretata come un'ambiente caldo.
+
+--- La gestione di Informazioni ---
+
+Ogni informazione archiviata o recuperata da un dispositivo (Come un PC, laptop, o smartphone) deve essere rappresentata in una lingua che il dispositivo può comprendere. Questo linguaggio è noto come linguaggio binario.
+
+Il linguaggio binario è definito come un sistema di codifica che usa cifre binarie 0 e 1 per rappresentare lettere, numeri, o altri caratteri in un computer o dispositivo elettronico.
+
+Nello specifico, un BIT (Binary Digit) è l'unità base dell'informazione usata dai dispositivi per gestire tutti i tipi di dati. Un singolo bit può esistere in uno dei due stati: 0 o 1.
+
+NOTA: Con un singolo BIT, solo due elementi possono essere rappresentati.
+    - 1 = "A"
+    - 0 = "B"
+
+BITs e Combinazioni:
+    - Ogni bit può avere 2 stati: 0 o 1.
+    - Con N bits puoi creare 2^n combinazioni.
+
+Esempi:
+    - Con 1 bit: 2^1 = 2 combinazioni (0, 1)
+    - Con 2 bit: 2^2 = 4 combinazioni(0, 1, 10, 11)
+    - Con 3 bit: 2^3 = 8 combinazioni (000, 001, 010, 011, 100, 101, 110, 111)
+
+Con N bits, i valori rappresentabili vanno da 0 a 𝟐^𝐍 − 𝟏.
+Examples:
+    - 1 bit: 2^1 − 1 = 1, valori rappresentabili [0,1]
+    - 2 bits: 2^2 − 1 = 3, valori rappresentabili [0,3]
+    - 3 bits: 2^3 − 1 = 7, valori rappresentabili [0,7]
+
+Dentro ogni dispositivo, tutto è rappresentato da una serie di cifre binarie. Nello specifico:
+    - Ogni sistema operativo (Windows, Linux etc.)
+    - Ogni programma/appplicazione (Word, Skype, Firefox)
+    - Ogni comando/interazione (Mouse, Tastiera, Touchpad)
+
+--- Codice ASCII ---
+
+ASCII: Il codice standard Americano per lo scambio di Informazioni tipicamente usa 7 bits per rappresentare ogni carattere, che permette 128 caratteri unici.
+
+ASCII esteso: Il codice ASCII a volte viene esteso a 8 bits, che permette un aggiunta di 128 caratteri, portando il totale a 256. Questa estensione non è standardizzata nella stessa maniera dell'originale.
+              Esistono varie estensioni del codice ASCII, come l'ISO 8859-1 o Windows-1252, che includono caratteri per specifiche lingue o simboli grafici.
+
+Tipi di caratteri:
+    - Alfanumerici (minuscole, maiuscole e i numeri da 0 a 9)
+    - Simboli (punteggiatura così come caratteri speciali come #, @, $ etc.)
+    - Caratteri di controllo (Caratteri non stampabili che controllano il flusso dei messaggi o il loro processo. Esempi sono TAB, LF, CR e BEL)
+
+All'interno di ogni dispositivo, le informazioni sono rappresentate da un determinato numero di bytes:
+    - 16 bits (2 bytes)
+    - 32 bits (4 bytes)
+    - 64 bits (8 bytes)
+
+Il numero di bytes indica la potenza del dispositivo. Maggiore il numero di bytes:
+    - Maggiore l'abilità del dispositivo di svolgere operazioni complesse.
+    - Maggiore la capacità del dispositivo di gestire grandi moli di informazioni.
+    - Maggiore la capacità del dispositivo di processare istruzioni omplesse.
+
+--- Codice Binario: Proprietà ---
+
+Come ogni sistema numerico, il codice binario ha le sue proprietà. Una proprietà chiave, condivisa con altri sistemi posizionali, è l'abilità di convertire i numeri da base numerica a decimale.
+Inoltre, supporta tutte le operazioni matematiche di base (Addizione, Sottrazione, Moltiplicazione e Divisione).
+
+NOTA: Un numero rappresentato usando due cifre è chiamato numero binario (base due).
+      Un numero rappresentato usando dieci cifre è chiamato numero decimale (base dieci).
+
+Per convertire un numero decimale (base 10) in un numero binario (base 2), procedi come segue:
+1. Dividi il numero per 2.
+2. Annota il resto (0 o 1). Questo sarà il bit meno significativo (LSB).
+3. Continua a dividere per 2 il quoziente ottenuto nel passaggio precedente, annotando i resti.
+4. Ripeti fino a quando il quoziente è 0.
+5. Scrivi i resti in ordine inverso: dall'ultimo ottenuto al primo.
+
+Convertire 13 a Binario:
+13 ÷ 2 = 6, resto = 1
+6 ÷ 2 = 3, resto = 0
+3 ÷ 2 = 1, resto = 1
+1 ÷ 2 = 0, resto = 1
+Risultato: 1101
+
+Per convertire un numero binario (base 2) in un numero decimale (base 10), procedi come segue:
+1. Scrivi il numero binario.
+2. Elenca le potenze di 2 da destra a sinistra, iniziando con 2^0 sotto il bit più a destra.
+3. Moltiplica ogni bit per la potenza di 2 corrispondente.
+4. Somma i risultati per ottenere il numero decimale.
+
+Conversione di 1101 in decimale:
+1101 = 1 ∙ 2^3 + 1 ∙ 2^2 + 0 ∙ 2^1 + 1 ∙ 2^0
+ = 8 + 4 + 0 + 1 = 13
+Risultato in decimale: 13
+
+Somma (esempio: 1011₂ + 110₂)
+   1011
++   110
+--------
+  10001
+
+Sottrazione (esempio: 1011₂ − 110₂)
+   1011
+-   110
+--------
+    101
+
+Moltiplicazione (esempio: 101₂ × 11₂)
+    101
+×     11
+--------
+    101
++  101 
+--------
+   1111
+
+L'algebra booleane è una branca dell'algebra che utilizza Vero o False come valori, tipicamente denotati come 1 e 0.
+Fondamentale nel campo dell'informatica e elettronica in quanto viene utilizzata per progettare e analizzare il comportamento dei circuiti digitali e porte logiche.
+
+Concetti chiave:
+- Variabili binarie: rappresentate come 1 (vero) e 0 (falso).
+- Operazioni logiche:
+    - AND (⋅): restituisce vero se entrambi gli operandi sono veri (1 ⋅ 1 = 1).
+    - OR (+): restituisce vero se almeno un operando è vero (1 + 0 = 1).
+    - NOT (¬): restituisce l'inverso dell'operando (¬1 = 0).
+
+--- Modello di Von Neumann ---
+
+L'architettura di Von Neumann è un concetto fondamentale per i moderni sistemi di computazione, caratterizzato dalla sua struttura dove i dati e il codice del programma sono archiviati nello stesso spazio di memoria.
+
+Il tipico modello di Von Neumann consiste in 4 componenti principali:
+    - Memoria: Archivia sia i dati che le istruzioni.
+    - Central Processing Unit:
+        - Arithmetic Logic Unit (ALU): Esegue tutte le operazioni logiche e aritmetiche.
+        - Control Unit (CU): Decodifica le istruzioni dei programmi e controlla che gli altri componenti basati su queste istruzioni.
+    - Input e Output (I/O): Gestisce lo scambio di dati tra il sistema del computer e il mondo esterno.
+    - Bus: Fornisce un sistema di comunicazione che trasferisce dati tra i componenti.

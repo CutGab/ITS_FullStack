@@ -1,0 +1,19 @@
+Pattern	    Meaning
+.	        Any character except newline
+\d	        Digit (0–9)
+\D	        Not a digit
+\w	        Word character (a-z, A-Z, 0-9, _)
+\W	        Not a word character
+\s	        Whitespace (space, tab, newline)
+\S	        Not whitespace
+^	        Start of string
+$	        End of string
+[...]	    Character set (e.g., [aeiou])
+[^...]	    Negated set (not those characters)
+*	        0 or more repetitions
++	        1 or more repetitions
+?	        0 or 1 repetition (optional)
+{n}	        Exactly n times
+{n,}	    n or more times
+{n,m}	    Between n and m times
+(...)	    Grouping / capturing

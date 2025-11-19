@@ -1,0 +1,50 @@
+Il protocollo Diffie–Hellman serve per permettere a due persone di creare una chiave segreta comune, anche se stanno comunicando su Internet, dove tutti possono ascoltare.
+
+La cosa geniale è che la chiave segreta non viene mai inviata: viene “costruita” da entrambe le parti in modo indipendente, ma risulta la stessa.
+
+Alice e Bob vogliono parlare in segreto. Tuttavia, la loro comunicazione passa per una rete dove c’è Eve, un possibile ascoltatore che può vedere tutto ciò che scrivono.
+
+Alice e Bob scelgono un colore base pubblico, ad esempio giallo. Tutti lo conoscono, anche Eve.
+
+Poi, ognuno sceglie un colore segreto:
+
+Alice sceglie rosso,
+
+Bob sceglie blu.
+Questi colori restano privati.
+
+Ognuno mescola il colore base (giallo) con il proprio colore segreto:
+
+Alice ottiene un arancione,
+
+Bob ottiene un verde acqua.
+
+Si scambiano i risultati pubblicamente (cioè i colori mescolati).
+Anche Eve li vede, ma non può sapere esattamente quanto rosso o blu c’è dentro.
+
+Ora ognuno aggiunge di nuovo il proprio colore segreto alla miscela ricevuta:
+
+Alice prende il verde acqua di Bob e aggiunge il suo rosso → ottiene un marrone particolare
+
+Bob prende l’arancione di Alice e aggiunge il suo blu → ottiene lo stesso marrone particolare
+
+🎯 Alla fine entrambi hanno lo stesso colore finale (chiave segreta), anche se non l’hanno mai inviato direttamente.
+
+🔐 Cosa significa in pratica
+
+In informatica, i “colori” sono numeri, e le “mescolanze” sono operazioni matematiche con potenze e moduli.
+Il principio è lo stesso: ognuno contribuisce un segreto, lo combina con qualcosa di pubblico, e il risultato permette a entrambi di arrivare alla stessa chiave.
+
+Chi ascolta la comunicazione può vedere le parti pubbliche, ma non può risalire alla chiave segreta, perché per farlo servirebbe risolvere un problema matematico estremamente difficile (il logaritmo discreto).
+
+💬 In breve
+Concetto	Spiegazione
+Scopo	Creare una chiave segreta condivisa su una rete insicura
+Chiavi	Nessuna chiave viene inviata direttamente
+Sicurezza	Basata su un problema matematico difficile
+Esempio reale	È usato in protocolli come TLS, VPN, Signal, ecc.
+💭 Riassunto finale
+
+Diffie–Hellman è come se due persone si accordassero su un colore segreto identico, mescolando vernici in pubblico, ma in modo che nessuno possa mai ricostruire esattamente la combinazione segreta.
+
+Vuoi che ti spieghi anche la differenza principale tra Diffie–Hellman e RSA (sono spesso confusi ma servono a scopi diversi)?

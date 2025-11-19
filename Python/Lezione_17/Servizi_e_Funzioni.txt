@@ -1,0 +1,195 @@
+-- Gestione del Processo --
+
+Un processo si riferisce a un'istanza di un'applicazione o di un programma in esecuzione. Su un computer o un dispositivo con un sistema operativo multitasking (OS), è possibile eseguire contemporaneamente numerosi processi, sia che
+appartengano ad applicazioni diverse o alla stessa. Il sistema operativo gestisce questi processi attraverso varie attività, tra cui:
+    - Creazione e terminazione dei processi
+    - Sospensione e ripresa dell'esecuzione dei processi
+    - Sincronizzazione e facilitazione della comunicazione tra i processi
+    - Gestione dei deadlock
+
+I processi possono effettuare chiamate di sistema per accedere ai servizi del sistema operativo per la propria gestione, che includono:
+    - Esecuzione di altri processi (exec)
+    - Replica di un processo in esecuzione (fork)
+    - Invio di segnali tra processi (wait/signal)
+    - Terminazione di un processo (kill/terminate)
+
+Utilizzando la chiamata di sistema fork, il sistema operativo può creare processi aggiuntivi in base alla propria configurazione, a partire dal processo di avvio iniziale del sistema.
+
+Ciò determina una gerarchia ad albero padre/figlio tra i processi in esecuzione sul computer. 
+Il processo root, spesso denominato systemd nelle moderne distribuzioni Linux o init in altri sistemi di tipo UNIX, è responsabile dell'inizializzazione del sistema ed è l'antenato di tutti gli altri processi.
+
+Ogni processo è identificato da un ID processo (PID) univoco, un ID processo padre (PPID), che fa riferimento al PID del suo processo padre, e un ID utente (USERID), che indica l'utente che sta eseguendo il processo.
+
+-- Ciclo di vita del processo --
+
+Ogni processo, durante il suo ciclo di vita, può trovarsi in uno dei seguenti stati:
+    - Init: lo stato di caricamento iniziale del processo nella memoria. Il programma viene impostato in uno “stato di esecuzione” all'interno del computer, viene creato il processo principale e viene allocata la memoria necessaria (RAM).
+    - Ready: il processo viene caricato nella memoria (RAM) in uno stato “pronto per l'esecuzione”, in attesa dell'allocazione della CPU.
+    - Running: il processo viene eseguito dalla CPU.
+    - Waiting: il processo è sospeso, in attesa di un evento (ad esempio, il feedback da un dispositivo).
+    - Swapped: il processo, in attesa di un evento, è stato collocato nella memoria virtuale (cioè sul disco rigido) ed è in attesa di essere recuperato nella memoria primaria per essere eseguito.
+    - Zombie: il processo ha completato la sua esecuzione ma rimane in memoria (cioè ha un PID), in attesa che il processo padre lo rilasci definitivamente.
+    - Terminato: il processo è terminato e il sistema operativo dealloca la memoria precedentemente assegnata (RAM).
+
+-- Gestione della memoria principale --
+
+La memoria principale include i registri della CPU, la cache della CPU e la memoria ad accesso casuale (RAM).
+
+Il sistema operativo ha diverse responsabilità nella gestione della memoria principale:
+    - Allocazione e deallocazione della memoria: il sistema operativo assegna la memoria ai processi in base alle necessità e la libera quando non è più necessaria.
+    
+    - Isolamento dei segmenti di memoria: nei sistemi multitasking, il sistema operativo garantisce che i diversi processi abbiano spazi di memoria separati per evitare conflitti e accessi non autorizzati.
+    
+    - Mappatura degli indirizzi: il sistema operativo gestisce la mappatura tra gli indirizzi di memoria logici (utilizzati dai processi) e gli indirizzi di memoria fisici (posizioni effettive nella RAM).
+    
+    - Gestione del paging e della memoria virtuale: il sistema operativo utilizza il paging per spostare parti di un programma tra la memoria primaria (RAM) e la memoria secondaria (spazio di swap),
+                                                    per ottimizzare l'uso della memoria disponibile ed estendere la quantità effettiva di memoria.
+
+-- Mappamento degli indirizzi --
+
+Isolamento: ogni processo (come un'applicazione o un servizio in background) in esecuzione su un computer dispone di un proprio spazio di indirizzi virtuali. 
+Questo spazio è essenzialmente un insieme di indirizzi di memoria che il processo può utilizzare per accedere alla memoria. 
+Il punto chiave è che questo spazio è privato per il processo: nessun altro processo può vedere o accedere direttamente a questo spazio.
+Questo isolamento protegge i processi dall'interferenza reciproca, migliorando la sicurezza e la stabilità.
+
+Coerenza: per il processo stesso, questo spazio di indirizzi virtuali appare come un intervallo continuo e coerente di indirizzi che parte da zero in su. 
+Non importa come sia strutturata la memoria fisica (RAM) o quanta memoria fisica sia effettivamente disponibile.
+
+Mappatura: quando un processo richiede l'accesso a un indirizzo di memoria all'interno del proprio spazio di indirizzi virtuali, non accede direttamente alla memoria fisica. 
+L'indirizzo che utilizza è invece un indirizzo virtuale. 
+Il sistema operativo, con l'aiuto dell'unità di gestione della memoria (MMU), traduce questo indirizzo virtuale in un indirizzo di memoria fisica in cui i dati sono effettivamente memorizzati nella RAM.
+
+Le chiamate di sistema che i processi possono invocare per ottenere i servizi di gestione della memoria dal sistema operativo sono le seguenti:
+    - malloc, calloc, realloc, per l'allocazione dinamica di blocchi di memoria;
+    - free, per la deallocazione dei blocchi di memoria precedentemente allocati.
+
+Vantaggi:
+
+    - Sicurezza: isolando la memoria di ciascun processo, il sistema impedisce che un processo interferisca accidentalmente o maliziosamente con i dati di un altro processo.
+    
+    - Flessibilità: ai processi può essere assegnato uno spazio di indirizzamento maggiore rispetto alla memoria fisica effettivamente disponibile sul sistema. 
+    Ad esempio, a un processo potrebbe essere consentito di utilizzare 4 GB di indirizzi anche se il computer dispone solo di 2 GB di RAM fisica.
+    
+    - Efficienza: il sistema operativo può gestire la memoria in modo più efficace. 
+    Può allocare la memoria fisica dove necessario e utilizzare tecniche come il paging (memorizzazione di parti della memoria virtuale su disco quando la RAM è piena) per ottimizzare l'uso della memoria fisica disponibile.
+
+-- Memoria virtuale e paging --
+
+La memoria virtuale è un sistema in cui il sistema operativo utilizza sia la RAM fisica che una porzione del disco rigido chiamata spazio di swap (o file di paging) per simulare un pool di memoria molto più grande. 
+Questo sistema consente a ciascun processo di avere accesso a uno spazio di indirizzi virtuali privato, che viene mappato sulla memoria fisica e sul disco in base alle necessità.
+
+    - Paging: la memoria virtuale è suddivisa in blocchi chiamati pagine. I blocchi corrispondenti nella memoria fisica sono chiamati frame di pagina. 
+              Non tutte le pagine sono sempre caricate nella memoria fisica; alcune sono conservate sul disco nello spazio di swap.
+              
+    - Tabella delle pagine: il sistema operativo mantiene una tabella delle pagine per ogni processo, che mappa le pagine virtuali ai frame di pagina fisici. 
+                            Se una pagina non è nella memoria fisica (una condizione nota come “errore di pagina”), il sistema operativo la recupera dal disco e la trasferisce in un frame di pagina libero nella memoria fisica
+                            aggiornando la tabella per riflettere questa operazione.
+                            
+    - Swap In/Swap Out: quando la RAM si riempie, il sistema operativo sceglie le pagine utilizzate meno frequentemente e le sposta sul disco (swapping out) per fare spazio alle pagine attive che devono essere caricate nella RAM (swapping in).
+
+-- Sistema di gestione file --
+
+Il file system è un livello di astrazione che il sistema operativo utilizza per gestire i dati su dispositivi di archiviazione secondari (ad esempio, dischi rigidi e SSD). 
+Questo modello è indipendente dal tipo e dal numero di dispositivi di archiviazione secondari.
+
+L'elemento base del file system è il file, ovvero una sequenza di byte memorizzati su un dispositivo di archiviazione secondario. 
+A differenza delle strutture di dati in memoria, i file persistono oltre il processo che li ha creati e spesso terminano con un indicatore EOF (fine del file), sebbene si tratti più di un concetto logico che di un simbolo fisico memorizzato nel file.
+
+Il file system fornisce un framework astratto per organizzare i file sulla memoria secondaria, in genere sotto forma di
+albero di directory gerarchico, che include directory e sottodirectory.
+
+Anche il concetto di directory (o cartella) è un'astrazione. Più precisamente, una directory è un file che contiene puntatori ad altri file, stabilendo una relazione padre-figlio all'interno del file system.
+
+I nomi dei file, l'insieme di caratteri consentiti nei nomi dei file e i metacaratteri utilizzati per indicare la posizione dei file all'interno del file system sono aspetti definiti da ciascun modello specifico di file system.
+
+Esempi:
+“C:\Tom\Data\one.txt”: questo è un percorso assoluto che identifica in modo univoco un file situato nell'unità C in Microsoft Windows.
+NOTA: non fa distinzione tra maiuscole e minuscole e specifica l'identificatore dell'unità fisica in cui è memorizzato il file.
+
+“~Tom/src/minimumSpanningTree.c”: questo percorso è tipico dei sistemi di tipo UNIX.
+Nota: distingue tra maiuscole e minuscole, utilizza la convenzione “~nomeutente” per identificare la directory home di un utente e il percorso è indipendente dalla posizione fisica del file su un dispositivo specifico.
+
+I processi possono richiamare chiamate di sistema per interagire con il file system per varie operazioni, tra cui:
+    - Creazione ed eliminazione di file
+    - Apertura e chiusura di file (fopen / fclose)
+    - Lettura e scrittura di file (fget/ fread / fwrite/ ecc.)
+    - Impostazione degli attributi dei file (come sola lettura, scrivibile, eseguibile)
+
+Il file system implementa meccanismi di protezione per limitare l'accesso ai file, garantendo che solo gli utenti autorizzati possano interagire con essi. 
+Inoltre, gestisce una coda di richieste di accesso ai file provenienti dai processi. 
+In un sistema operativo multiutente, il file system tiene traccia dell'ID del proprietario del file e definisce le regole di accesso per gli altri utenti del sistema, garantendo l'applicazione di controlli di accesso appropriati.
+
+-- Gestione di dispositivi periferici --
+
+Il sistema operativo gestisce la comunicazione con le unità periferiche e fornisce un'astrazione (ovvero funzioni) che consente ai programmi di utilizzare il canale di comunicazione.
+
+Poiché più programmi potrebbero necessitare contemporaneamente dell'accesso a un particolare dispositivo (ad esempio, uscita terminale, input tastiera o stampante), il sistema operativo gestisce una coda di richieste (serializzazione) per evitare conflitti.
+
+Il sistema operativo garantisce una comunicazione efficiente con specifici dispositivi periferici. Utilizza un tipo speciale di memoria chiamata memoria buffer per supportare il processo di comunicazione. 
+Questa memoria buffer agisce come un'area di parcheggio in cui i dati diretti al dispositivo o provenienti da esso possono essere conservati fino a quando non vengono elaborati.
+
+L'interazione con i dispositivi periferici è facilitata da uno specifico modulo software noto come driver di periferica.
+
+-- Gestione della memoria secondaria --
+
+La memoria secondaria è costituita da dispositivi di archiviazione permanenti in grado di conservare le informazioni registrate anche quando la macchina è spenta.
+
+Per ragioni fisiche e tecnologiche, la memoria secondaria ha tempi di accesso e velocità di trasferimento dati molto più elevati rispetto alla memoria primaria (che è priva di componenti meccanici).
+
+I dispositivi di archiviazione secondaria tipici (o di massa) includono dischi rigidi magnetici, dischi ottici, unità a stato solido (SSD), schede di memoria e altro ancora.
+
+Le operazioni tipiche eseguite dal sistema operativo su questi dispositivi includono:
+    - Allocazione e deallocazione dello spazio per l'archiviazione dei dati (file)
+    - Gestione dello spazio libero all'interno dell'unità di memoria di massa
+    - Ottimizzazione, serializzazione e pianificazione delle operazioni all'interno dell'unità di memoria di massa
+
+La gestione del file system e la gestione della memoria secondaria sono due funzioni distinte ma strettamente correlate del sistema operativo.
+
+Il componente del sistema operativo che gestisce la memoria secondaria rende la struttura fisica del dispositivo di archiviazione trasparente ai programmi, consentendo di utilizzare le stesse chiamate di sistema per i file memorizzati su dispositivi diversi.
+
+-- Protezione e Gestione della sicurezza --
+
+In un sistema multitasking e multiutente, il sistema operativo gestisce la protezione delle risorse per garantire la privacy delle risorse e degli utenti.
+
+Il processo di protezione si basa sui seguenti elementi:
+    - Autenticazione: procedura per verificare l'identità dell'utente.
+    - Autorizzazione: procedura per determinare i diritti di accesso a una risorsa di un utente o di un processo.
+
+-- Autorizzazione --
+
+Collegamento dei processi alle autorizzazioni utente:
+    - Ogni processo nel sistema è associato a un utente specifico.
+    - I processi ereditano le autorizzazioni dell'utente associato per l'accesso alle risorse di sistema.
+
+Autorizzazione di alto livello per i processi del sistema operativo:
+    - I processi del sistema operativo vengono eseguiti da utenti con il livello di autorizzazione più alto, come root o amministratore.
+
+Criteri di sicurezza delle risorse:
+    - I criteri di sicurezza delle risorse si basano su regole che mappano le autorizzazioni di accesso alle risorse agli utenti del sistema. 
+    Ad esempio, le autorizzazioni di accesso ai file determinano quali utenti possono leggere, scrivere o eseguire file specifici.
+
+Raggruppamento degli utenti per semplificare l'autorizzazione:
+    - Per semplificare la mappatura delle autorizzazioni, il sistema operativo consente di raggruppare gli utenti in cluster o gruppi. Ogni membro all'interno di un gruppo eredita le autorizzazioni del gruppo.
+
+-- Autenticazione --
+
+Un sistema operativo multiutente implementa procedure di login per l'accesso al sistema. La procedura di login è fondamentale per due motivi principali:
+    - Autentica l'utente in base alle sue credenziali (ovvero nome utente e password).
+    - Verifica se l'utente è autorizzato ad accedere al sistema.
+
+Il processo di accesso si basa su un archivio delle credenziali degli utenti e sulla definizione dei gruppi di utenti, come ad esempio:
+    - I file /etc/passwd , /etc/shadow e /etc/group/ nei sistemi di tipo UNIX.
+    - Altri sistemi esterni di autenticazione e autorizzazione.
+
+NOTA: L'autenticazione basata su nome utente e password è la più comune, anche se non è l'unica né la più sicura.
+
+-- Interfacce uomo-computer e gestione delle applicazioni --
+
+Il sistema operativo fornisce una serie di funzionalità che consentono alle applicazioni di creare strumenti di interazione con l'utente.
+
+In generale, un'interfaccia utente (UI) può essere:
+    - Interfaccia alfanumerica: il sistema operativo offre un modello di terminale astratto per la presentazione delle informazioni su uno schermo che visualizza caratteri alfabetici e numerici. 
+    Inoltre, acquisisce gli input tramite una tastiera.
+    
+    - Interfaccia utente grafica (GUI): il sistema operativo fornisce funzionalità che consentono ai programmi di creare una GUI utilizzando elementi quali finestre e icone. 
+    L'input può essere effettuato utilizzando un mouse o un touch screen, oltre alla tastiera.

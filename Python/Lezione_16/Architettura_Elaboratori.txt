@@ -1,0 +1,253 @@
+-- Livello Network --
+
+Il livello di rete è il terzo livello nel modello ISO/OSI. Determina come i dati vengono inviati ai dispositivi riceventi attraverso più reti. 
+Nello specifico, è responsabile dell'instradamento, dell'inoltro e dell'indirizzamento dei pacchetti di dati attraverso reti diverse.
+
+Funzioni del livello Network:
+
+    - Routing: Determina il percorso ottimale che i dati devono seguire dalla sorgente alla destinazione.
+    - Forwarding: Sposta i pacchetti dall'ingresso del router all'uscita appropriata.
+    - Indirizzamento logico: Utilizza gli indirizzi IP per identificare i dispositivi su una rete.
+    - Frammentazione e riassemblaggio: Scompone i pacchetti di grandi dimensioni in frammenti più piccoli e li riassembla a destinazione.
+
+-- Processo di Routing --
+
+Il processo di routing comprende questi 3 passaggi:
+    1. Determinazione del percorso: i router utilizzano tabelle di routing e algoritmi per determinare il percorso migliore per i pacchetti di dati.
+    2. Commutazione dei pacchetti: i pacchetti di dati vengono inoltrati da un router all'altro in base alla tabella di routing.
+    3. Inoltro al Next-hop: ogni router inoltra il pacchetto al router successivo fino a quando non raggiunge la destinazione.
+
+-- Scelta del percorso --
+
+La determinazione del percorso è il processo mediante il quale i router decidono il percorso migliore che i pacchetti di dati devono seguire dalla sorgente alla destinazione.
+
+    - Tabelle di routing: i router mantengono tabelle di routing che contengono informazioni sulla topologia di rete e sui percorsi disponibili.
+        - Routing statico: i percorsi vengono configurati manualmente dagli amministratori di rete.
+        - Routing dinamico: i percorsi vengono appresi e aggiornati automaticamente utilizzando protocolli di routing.
+        
+    - Algoritmi di routing: algoritmi come Shortest Path First (SPF) di Dijkstra e Distance Vector vengono utilizzati per calcolare il percorso ottimale.
+        - Shortest Path First (SPF): calcola il percorso più breve verso una destinazione in base a metriche di costo cumulative.
+        - Distance Vector: determina il percorso migliore in base a metriche di distanza e aggiornamenti dai router vicini.
+
+-- Packet Switching --
+
+Il packet switching è il processo di spostamento dei pacchetti di dati dalla porta di ingresso di un router alla porta di uscita appropriata, in base alle decisioni di routing.
+
+    - Switching Fabric: l'architettura interna di un router che collega le porte di ingresso alle porte di uscita.
+        - Store-and-Forward: l'intero pacchetto viene ricevuto prima di essere inoltrato al salto successivo.
+        - Cut-Through: il pacchetto viene inoltrato non appena viene letto l'indirizzo di destinazione.
+        
+    - Buffering: memorizzazione temporanea dei pacchetti nella memoria se la porta di uscita è occupata, per evitare la perdita di pacchetti.
+    
+    - Decisione di inoltro: in base all'indirizzo IP di destinazione e alla tabella di routing, il router decide l'hop successivo per il pacchetto.
+
+-- Store-and-Forward Switching --
+
+L'intero pacchetto viene ricevuto dal router prima di essere inoltrato al salto successivo.
+
+Processo:
+1: Il router riceve l'intero pacchetto di dati.
+2: Il pacchetto viene memorizzato temporaneamente nella memoria.
+3: Viene eseguito un controllo degli errori (ad esempio CRC) per garantire l'integrità dei dati.
+4: Il pacchetto viene inoltrato al salto successivo in base all'indirizzo di destinazione.
+
+Vantaggi: Garantisce una trasmissione priva di errori controllando l'intero pacchetto prima dell'inoltro. Adatto a reti in cui l'integrità dei dati è fondamentale.
+
+Svantaggi: Latenza maggiore a causa del tempo necessario per ricevere ed elaborare l'intero pacchetto. Richiede più memoria per memorizzare i pacchetti.
+
+-- Cut Through Switching --
+
+Il pacchetto viene inoltrato non appena viene letto l'indirizzo di destinazione, senza attendere che l'intero pacchetto sia stato ricevuto.
+
+Processo:
+1: Il router inizia a inoltrare il pacchetto non appena legge l'indirizzo MAC di destinazione dall'intestazione del pacchetto.
+2: Il resto del pacchetto continua a essere inoltrato man mano che viene ricevuto.
+
+
+Vantaggi: minore latenza perché l'inoltro inizia quasi immediatamente dopo la lettura dell'indirizzo di destinazione. Trasferimento dati più veloce adatto a reti ad alte prestazioni.
+
+Svantaggi: non controlla la presenza di errori nel pacchetto, il che significa che i pacchetti danneggiati potrebbero essere inoltrati. Può causare potenziali problemi se il pacchetto viene danneggiato durante la trasmissione.
+
+-- Next-Hop Forwarding --
+
+Il Next-Hop Forwarding si riferisce al processo di invio di un pacchetto di dati al router successivo (o destinazione finale) lungo il percorso determinato dall'algoritmo di routing.
+
+- Instradamento hop-by-hop: Ogni router lungo il percorso prende una decisione di inoltro indipendente.
+
+- Indirizzo del salto successivo: L'indirizzo IP del router successivo a cui deve essere inviato il pacchetto.
+
+- Protocollo di risoluzione degli indirizzi (ARP): Traduce gli indirizzi IP in indirizzi MAC per l'inoltro dei pacchetti a livello di collegamento dati.
+
+-- Indirizzamento logico – Indirizzo IP --
+
+Ogni dispositivo su una rete ha un indirizzo IP univoco utilizzato per l'identificazione e la comunicazione.
+
+Indirizzi IPv4: indirizzi a 32 bit, ad esempio 192.168.1.1.
+Indirizzi IPv6: indirizzi a 128 bit, ad esempio 2001:0db8:85a3:0000:0000:8a2e:0370:7334.
+
+-- Struttura Ipv4 --
+
+Formato: notazione decimale punteggiata (ad esempio, 192.168.1.1)
+
+Rappresentazione binaria: 32 bit suddivisi in quattro ottetti da 8 bit.
+
+Esempio: 192.168.1.1 in binario è 11000000.10101000.00000001.00000001.
+
+Classi (per definire la dimensione e lo scopo della rete):
+
+Classe A: da 0.0.0.0 a 127.255.255.255
+Classe B: da 128.0.0.0 a 191.255.255.255
+Classe C: da 192.0.0.0 a 223.255.255.255
+Classe D: da 224.0.0.0 a 239.255.255.255 (Multicast)
+Classe E: da 240.0.0.0 a 255.255.255.255 (Riservata)
+
+-- Struttura Subnet Mask --
+
+La subnet mask è un numero a 32 bit che divide l'indirizzo IP in porzioni di rete e host.
+
+Funzione: 
+    - Determina quale parte dell'indirizzo IP è l'indirizzo di rete e quale parte è l'indirizzo host.
+
+Formato: Notazione decimale punteggiata (ad esempio, 255.255.255.0).
+
+Rappresentazione binaria: corrisponde all'indirizzo IP, utilizzando 1 per la parte di rete e 0 per la parte host.
+
+Esempio: 255.255.255.0 in binario è 11111111.11111111.11111111.00000000.
+
+-- Cominare l'Indirizzo IP e Subnet Mask --
+
+Indirizzo di rete: la parte dell'indirizzo IP identificata dagli 1 della subnet mask.
+Indirizzo host: la parte dell'indirizzo IP identificata dagli 0 della subnet mask.
+
+Esempio:
+• Indirizzo IP: 192.168.1.10
+• Subnet mask: 255.255.255.0
+• Indirizzo di rete: 192.168.1.0
+• Indirizzo host: 10
+
+-- Ipv4 classe A, B, C, D, E --
+
+Classe A
+Intervallo: da 0.0.0.0 a 127.255.255.255
+Intervallo del primo ottetto: da 0 a 127
+Subnet mask predefinita: 255.0.0.0
+Numero di reti: 128 (27)
+Host per rete: oltre 16 milioni (224 - 2)
+Utilizzo: progettata per reti molto grandi con molti dispositivi, come grandi aziende o ISP.
+Esempio: 10.0.0.1
+
+Classe B
+Intervallo: da 128.0.0.0 a 191.255.255.255
+Intervallo del primo ottetto: da 128 a 191
+Subnet mask predefinita: 255.255.0.0
+Numero di reti: 16.384 (214)
+Host per rete: oltre 65k (216 - 2)
+Utilizzo: adatto per reti di medie dimensioni, come università o grandi aziende.
+Esempio: 172.16.0.1
+
+Classe C
+Intervallo: da 192.0.0.0 a 223.255.255.255
+Intervallo del primo ottetto: da 192 a 223
+Subnet mask predefinita: 255.255.255.0
+Numero di reti: oltre 2 milioni (221)
+Host per rete: 254 (28 - 2)
+Utilizzo: ideale per reti di piccole dimensioni, come piccole imprese o reti domestiche.
+Esempio: 192.168.1.1
+
+Classe D
+Intervallo: da 224.0.0.0 a 239.255.255.255
+Intervallo del primo ottetto: da 224 a 239
+Subnet mask predefinita: 255.255.255.255
+Utilizzo: riservata ai gruppi multicast. Consente di inviare un singolo pacchetto a più destinazioni.
+Esempio: 224.0.0.1
+
+Classe E
+Intervallo: da 240.0.0.0 a 255.255.255.255
+Intervallo del primo ottetto: da 240 a 255
+Utilizzo: riservato a scopi sperimentali e uso futuro. Non utilizzato per il networking generale.
+
+-- Indirizzi IP pubblici e privati --
+
+Indirizzi IP privati: Indirizzi IP utilizzati all'interno di una rete privata. Non instradabili su Internet.
+
+Esempio:
+Rete domestica: 192.168.1.1
+Rete aziendale: 10.0.0.1
+
+Indirizzi IP pubblici: Indirizzi IP instradabili su Internet. Assegnati dagli ISP e regolamentati dai registri Internet regionali.
+
+Esempio:
+IP del sito web: 93.184.216.34
+Server aziendale: 203.0.113.10
+
+Network Address Translation (NAT)
+
+    - Scopo: consente a più indirizzi IP privati di condividere un unico indirizzo IP pubblico per l' accesso a Internet.
+    - Funzione: traduce gli indirizzi IP privati in un indirizzo IP pubblico e viceversa.
+    
+    - Esempio: un router domestico utilizza il NAT per consentire a tutti i dispositivi di una rete domestica (con indirizzi IP privati) di accedere a Internet utilizzando l'indirizzo IP pubblico del router.
+
+-- Livello Transport --
+
+Il livello di trasporto è fondamentale per la comunicazione end-to-end tra i dispositivi di una rete.
+
+Funzioni:
+
+    - Comunicazione end-to-end: Gestisce il trasferimento dei dati tra i dispositivi.
+    
+    - Segmentazione e riassemblaggio: Suddivide grandi flussi di dati in segmenti più piccoli e riassemblarli a destinazione.
+    
+    - Rilevamento e correzione degli errori: Garantisce l'integrità e l'affidabilità dei dati.
+    
+    - Controllo del flusso: Gestisce la velocità di trasmissione dei dati tra i dispositivi.
+    
+    - Gestione delle connessioni: Stabilisce, mantiene e termina le connessioni.
+
+-- Sockets --
+
+Le socket sono fondamentali per consentire la comunicazione tra dispositivi su una rete. Fungono da interfacce attraverso le quali i processi (applicazioni) comunicano su una rete di computer.
+La combinazione di indirizzi IP e numeri di porta identifica in modo univoco una connessione di rete (rete, host e applicazioni).
+
+Esempio: 192.168.1.1:80
+
+-- Struttura dell'intestazione del segmento --
+
+Porta di origine (16 bit): numero di porta dell'applicazione mittente.
+Porta di destinazione (16 bit): numero di porta dell'applicazione ricevente.
+Altri campi dell'intestazione: campi che dipendono dai protocolli TCP o UDP.
+
+-- Livello Sessione --
+
+Il livello di sessione gestisce e controlla le connessioni tra i computer.
+
+    - Crea, mantiene e termina le sessioni tra le applicazioni.
+    
+    - Gestisce il dialogo (comunicazione) tra due dispositivi, consentendo loro di comunicare in modalità half-duplex o full-duplex.
+
+Modalità half-duplex: La comunicazione può avvenire in entrambe le direzioni, ma non simultaneamente.
+
+Esempio: una stampante di rete e un computer comunicano in modalità half-duplex, in cui il computer invia un lavoro di stampa e la stampante invia una conferma, ma non inviano dati contemporaneamente.
+
+Modalità full-duplex: La comunicazione può avvenire simultaneamente in entrambe le direzioni.
+
+Esempio: un'applicazione di videoconferenza in cui entrambi i partecipanti possono parlare e ascoltare contemporaneamente, garantendo una comunicazione bidirezionale fluida.
+
+-- Livello Presentation --
+
+Il livello di presentazione traduce i dati tra il livello applicativo e la rete.
+
+    - Traduzione: converte i formati dei dati da formati specifici dell'applicazione a formati di rete e viceversa.
+
+    - Crittografia/decrittografia: garantisce la sicurezza dei dati crittografandoli prima della trasmissione e decrittografandoli al momento della ricezione.
+    
+    - Compressione: riduce le dimensioni dei dati da trasmettere per ottimizzare l'utilizzo delle risorse di rete.
+
+-- Livello Application --
+
+Il livello applicativo fornisce servizi di rete direttamente alle applicazioni utente.
+
+    - Servizi di rete: Consente alle applicazioni utente di interagire con la rete (ad esempio, trasferimento di file, posta elettronica, accesso remoto).
+    
+    - Condivisione delle risorse: Facilita l' accesso alle risorse di rete.
+    
+    - Interfaccia utente: Fornisce un' interfaccia che consente all'utente di interagire con la rete.

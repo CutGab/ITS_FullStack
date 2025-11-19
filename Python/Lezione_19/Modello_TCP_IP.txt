@@ -1,0 +1,182 @@
+-- Modello ISO/OSI vs TCP/IP --
+
+Il modello TCP/IP è un framework conciso utilizzato per standardizzare e garantire una comunicazione dati affidabile attraverso diverse reti interconnesse, compreso Internet.
+È costituito da quattro livelli, ciascuno responsabile di specifiche funzioni nel processo di trasmissione dei dati. 
+Il modello TCP/IP è lo standard de facto per Internet e la comunicazione di rete, ampiamente adottato grazie alla sua robustezza e flessibilità.
+
+-- Livello Application --
+
+Funzioni:
+Fornisce servizi di rete direttamente alle applicazioni utente. Gestisce i protocolli a livello di applicazione.
+
+Protocolli:
+• DNS: risoluzione dei nomi di dominio
+• HTTP/HTTPS: navigazione web
+• FTP: trasferimento di file
+• SMTP/POP3/IMAP: posta elettronica
+• DHCP: gestione dell'assegnazione degli indirizzi IP
+
+-- Domain Name System (DNS) --
+
+Il Domain Name System (DNS) è un sistema di denominazione gerarchico e decentralizzato utilizzato per risolvere nomi di dominio leggibili dall'uomo (come www.cisco.com) in indirizzi IP leggibili dalla macchina (come 198.133.219.25).
+
+Il DNS è una componente fondamentale di Internet, che consente la traduzione dei nomi di dominio leggibili dall'uomo in indirizzi IP.
+
+1. Query DNS: il processo ha inizio quando un utente digita un nome di dominio in un browser web.
+2. Resolver ricorsivo: la query viene inviata a un resolver DNS, che avvia il processo di risoluzione.
+3. Server root: il resolver interroga un server root per trovare il server del dominio di primo livello (TLD) (ad esempio, .com, .org).
+4. Server TLD: il resolver interroga quindi il server TLD per trovare il server DNS autoritativo per il dominio specifico.
+5. Server DNS autoritativo: il server autoritativo fornisce l'indirizzo IP associato al nome di dominio.
+6. Risposta: il resolver restituisce l'indirizzo IP al browser dell'utente, che quindi si connette al server web.
+
+-- HyperText Transfer Protocol (HTTP) --
+
+Il protocollo HTTP (HyperText Transfer Protocol) facilita il trasferimento di documenti ipertestuali, come le pagine HTML, tra un server web e un client (browser).
+
+Che cos'è l'HTTPS?
+Il protocollo HTTPS (HyperText Transfer Protocol Secure) è un'estensione dell'HTTP con funzionalità di sicurezza aggiuntive. 
+Esso garantisce comunicazioni sicure su una rete di computer crittografando i dati scambiati tra il client e il server.
+
+1. Inserimento dell'URL: l'utente digita un URL nella barra degli indirizzi del browser.
+2. Risoluzione DNS: il browser interroga un server DNS per risolvere l'URL in un indirizzo IP.
+3. Connessione al server: il browser stabilisce una connessione con il server identificato.
+4. Invio di una richiesta: utilizzando HTTP o HTTPS, il browser invia una richiesta GET al server, in genere richiedendo il documento predefinito (ad esempio, index.html).
+5. Ricezione della risposta: il server risponde inviando il contenuto HTML della pagina web richiesta al browser.
+6. Rendering della pagina: il browser interpreta il codice HTML e visualizza la pagina web formattata nella finestra del browser.
+
+-- File Transfer Protocol (FTP) --
+
+Il File Transfer Protocol (FTP) è un protocollo di rete standard utilizzato per trasferire file da un host a un altro su una rete basata su TCP, come Internet. 
+Facilita il trasferimento di file tra un client e un server.
+
+1. Stabilire la connessione:
+    - Connessione di controllo: il client stabilisce una connessione di controllo con il server per inviare comandi.
+    - Connessione dati: viene stabilita una connessione dati separata per il trasferimento dei file, che può utilizzare varie porte.
+
+2. Autenticazione:
+    - Nome utente e password: il client fornisce credenziali specifiche per autenticarsi con il server quando accede a file protetti. 
+                              Per i file disponibili pubblicamente, il nome utente predefinito è “anonimo” e la password è in genere impostata su “ospite”.
+3. Trasferimento file:
+    - Comandi: il client invia comandi (ad esempio RETR, STOR) tramite la connessione di controllo.
+    - Trasferimento dati: i file vengono trasferiti tramite la connessione dati.
+
+-- SMTP/POP3/IMAP (Email) --
+
+Che cos'è SMTP?
+Il Simple Mail Transfer Protocol (SMTP) è un protocollo utilizzato per inviare e-mail da un client a un server o tra server.
+
+Che cos'è POP3?
+Il Post Office Protocol versione 3 (POP3) è un protocollo utilizzato per recuperare le e-mail da un server di posta a un client. 
+Scarica le e-mail dal server al client e le e-mail vengono in genere eliminate dal server dopo il download.
+
+Che cos'è IMAP?
+Il protocollo IMAP (Internet Message Access Protocol) è un protocollo di posta elettronica standard utilizzato per accedere e gestire i messaggi di posta elettronica su un server di posta. 
+Consente agli utenti di visualizzare e manipolare i propri messaggi di posta elettronica come se fossero memorizzati localmente sul proprio dispositivo, pur mantenendoli sul server. 
+Consente a più dispositivi di accedere alla stessa casella di posta, mantenendo la sincronizzazione tra i dispositivi.
+
+-- Dynamic Host Configuration Protocol (DHCP) --
+
+Il protocollo DHCP (Dynamic Host Configuration Protocol) è un protocollo di gestione della rete utilizzato per assegnare automaticamente indirizzi IP e altri parametri di configurazione di rete ai dispositivi presenti su una rete. 
+Riduce la necessità di configurare manualmente gli indirizzi IP e garantisce l'assegnazione di indirizzi IP univoci.
+
+1. Rilevamento DHCP: il client invia un messaggio broadcast DHCPDISCOVER per trovare i server DHCP disponibili.
+
+2. Offerta DHCP: un server DHCP risponde con un messaggio DHCPOFFER, offrendo un indirizzo IP e altre impostazioni di configurazione di rete.
+
+3. Richiesta DHCP: il client risponde con un messaggio DHCPREQUEST, indicando l'accettazione dell'offerta.
+
+4. DHCP Acknowledgment: il server DHCP conferma il lease con un messaggio DHCPACK, finalizzando l'assegnazione e la configurazione dell'indirizzo IP.
+
+-- Livello Transport --
+
+Funzioni:
+Fornisce una trasmissione dati affidabile o inaffidabile tra host. Include meccanismi per garantire una trasmissione dati affidabile.
+
+Protocolli:
+• TCP: comunicazione affidabile e orientata alla connessione.
+• UDP: comunicazione inaffidabile e senza connessione.
+
+-- Transmission Control Protocol (TCP) --
+
+Il Transmission Control Protocol (TCP) è un protocollo orientato alla connessione che garantisce una trasmissione dati affidabile.
+Fornisce il controllo degli errori, il controllo di flusso e il riconoscimento dei pacchetti di dati, assicurando che i dati vengano consegnati nell'ordine corretto senza perdite o duplicazioni.
+
+-- Struttura dell'intestazione del TCP --
+
+CAMPO CHIAVE
+Porta di origine e destinazione: Identifica le applicazioni di invio e ricezione.
+
+Numero di sequenza: Traccia la posizione dei dati nel segmento.
+
+Numero di conferma: Conferma la ricezione dei dati.
+
+Checksum: Per il controllo degli errori dell'intestazione e dei dati
+
+Flag:
+    • SYN: Sincronizza i numeri di sequenza (configurazione della connessione).
+    • ACK: Campo di conferma significativo.
+    • FIN: Nessun altro dato dal mittente (interruzione della connessione).
+
+-- User Datagram Protocol (UDP) --
+
+Il protocollo UDP (User Datagram Protocol) è un protocollo senza connessione che fornisce una trasmissione dati non affidabile.
+Non garantisce la consegna, l'ordine o la correzione degli errori dei pacchetti. Viene utilizzato in scenari in cui la velocità è più importante dell'affidabilità, come lo streaming audio o video.
+
+-- Struttura dell'intestazione del UDP --
+
+CAMPO CHIAVE
+Porta di origine e destinazione: Identifica le applicazioni di invio e ricezione.
+
+Lunghezza: Specifica la lunghezza totale dell'intestazione UDP e dei dati.
+
+Checksum: Per il controllo degli errori dell'intestazione e dei dati.
+
+-- Livello Internet --
+
+Funzioni:
+Gestisce l'indirizzamento logico e l'instradamento dei pacchetti di dati. Assicura che i dati raggiungano la destinazione corretta attraverso più reti.
+
+Protocolli:
+• IP: protocollo primario per l'instradamento (IPv4 e IPv6).
+• ICMP: messaggi di errore e informazioni operative.
+• ARP: mappa gli indirizzi IP agli indirizzi MAC.
+
+-- Internet Control Message Protocol (ICMP) --
+
+Il protocollo ICMP (Internet Control Message Protocol) è un protocollo a livello Internet utilizzato per l'invio di messaggi di errore e informazioni operative. 
+Aiuta a diagnosticare i problemi di comunicazione di rete e a segnalare gli errori all'indirizzo IP di origine.
+
+    - Strumenti diagnostici: utilizzati in utilità di rete come ping e traceroute per testare la connettività e tracciare i percorsi.
+    - Segnalazione degli errori: comunica problemi di rete quali host irraggiungibili, congestione di rete e problemi di routing.
+
+Tipi di messaggi ICMP comuni:
+
+    - Richiesta di eco (tipo 8): inviata dal comando ping per richiedere una risposta da un host.
+
+    - Risposta di eco (tipo 0): inviata in risposta a una richiesta di eco, indicando che l'host è raggiungibile.
+
+    - Destination Unreachable (Tipo 3): indica che una destinazione è irraggiungibile per vari motivi (ad esempio, rete irraggiungibile, host irraggiungibile).
+
+    - Time Exceeded (Tipo 11): indica che un pacchetto è scaduto durante il transito (utilizzato da traceroute).
+
+    - Redirect (Tipo 5): istruisce un host a utilizzare un percorso diverso per i pacchetti.
+
+-- Address Resolution Protocol (ARP) --
+
+Il protocollo ARP (Address Resolution Protocol) è un protocollo del livello Internet utilizzato per mappare un indirizzo IP a un indirizzo MAC. 
+Facilita la comunicazione all'interno di una rete locale collegando gli indirizzi IP del livello 2 agli indirizzi MAC del livello 1.
+
+Come funziona:
+Richiesta ARP: Un dispositivo invia una richiesta ARP broadcast a tutti i dispositivi della rete locale, chiedendo l'indirizzo MAC corrispondente a un indirizzo IP specifico.
+Risposta ARP: Il dispositivo con l'indirizzo IP richiesto risponde con una risposta ARP, fornendo il proprio indirizzo MAC.
+
+• Cache ARP: Una tabella memorizzata nella memoria di un dispositivo che conserva una registrazione delle mappature degli indirizzi IP-MAC. Ha una durata limitata e viene aggiornata periodicamente.
+
+-- Network Access Layer --
+
+Funzioni:
+Gestisce il framing dei dati, l'indirizzamento fisico e il rilevamento degli errori a livello di collegamento dati. Controlla la comunicazione hardware e software sulla rete fisica.
+
+Protocolli:
+• Ethernet: tecnologia LAN.
+• Wi-Fi: tecnologia di rete wireless.
