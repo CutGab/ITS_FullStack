@@ -54,7 +54,7 @@ def add_nazione():
     dati = load_data_from_db()
     nazioni = dati['Nazione']
     if new_nazione["nome"] in nazioni:
-        return jsonify({"errore": f"Esiste già una nazione con nome {new_nazione['nome']}!"}), 400
+        return jsonify({"errore": f"Esiste gia' una nazione con nome {new_nazione['nome']}!"}), 400
 
     dati['Nazione'][new_nazione["nome"]] = new_nazione
     store_data_on_db(dati)
