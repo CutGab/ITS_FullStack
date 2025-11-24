@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "post">
+        <!-- mandare a video i dati del post del post dell'end point -->
+
+    </div>
+    <script>
+
+        const url = "https://jsonplaceholder.typicode.com/posts/1";
+        
+        async function getPost() {
+            const response = await fetch(url)
+            const ris = await response.json()
+            console.log(ris)
+            document.getElementById('post').innerHTML = ris.title  
+        }
+
+        getPost();
+
+    </script>
+</body>
+</html>
