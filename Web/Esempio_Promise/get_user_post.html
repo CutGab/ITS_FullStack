@@ -3,12 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel = "stylesheet" href="styles.css"
     <title>Document</title>
-   
+    <style>
+        .card{
+            background-color: #efefef;
+            border: 1px solid #c9c9c9;
+            padding: 55px;
+            border-radius: 15px;
+            max-width: 300px;
+            margin:auto;
+        }
+        body{
+            text-align:center;
+        }
+        li{
+            list-style-type: none;
+        }
+    </style>
   </head>
   <body>
-    <div class="box">
+    <div class="card">
       <!-- mandare a video i dati del post dell'endpoint-->
     </div>
     <script>
@@ -31,11 +45,12 @@
                 const user=result[0];
                 div.innerHTML += "<small>" + user.name + "</small>";
                 const commenti=result[1];
-                div.innerHTML +="<ul>";
+              
+                  let itemUl=""
                 commenti.forEach(element => {
-                      div.innerHTML +="<li>"+element.name+"</li>"
+                     itemUl+="<li>"+element.name+"</li>"
                 });
-                 div.innerHTML +="</ul>";
+                 div.innerHTML +="<ul>"+itemUl+"</ul>";
           })
 
         //   fetch(urlUsers + post.userId)
