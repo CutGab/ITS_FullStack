@@ -29,8 +29,6 @@ public class Es_6 {
 
             int last_num = array[array.length - 1 - i];
 
-            int temp = array[i];
-
             array[i] = last_num;
             
         }
