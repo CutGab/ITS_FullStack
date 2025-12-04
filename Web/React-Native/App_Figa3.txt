@@ -1,0 +1,58 @@
+import { useState } from "react";
+import {Button, FlatList, Modal, StyleSheet, Text, TextInput, View, Image} from "react-native";
+
+export default function App() {
+
+  const [task, setTask] = useState("")
+
+  function taskInputHandler(enteredTask) {
+    console.log(enteredTask);
+    setTask(enteredTask)
+  }
+
+  return (
+
+    <View style={styles.appContainer}>
+      <View style = {styles.inputContainer}>
+        <TextInput style = {styles.textInput} placeholder = "Inserisci task..." onChangeText={taskInputHandler} onChange={(e)=>console.log(e.target)}/>
+        <Button title = "Cliccami"> </Button>
+      </View>
+      <View style = {styles.goalsContainers}>
+        <Text> Lista task... </Text>
+      </View>
+      <View>
+         <Image
+        style={{ height: 200, width: 330, marginVertical: 20 }}
+        source={{
+          uri: 'https://media1.tenor.com/m/VWk_uZZ7sdAAAAAd/don-quixote-qoh.gif'
+        }}
+      />
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  appContainer: {
+    flex: 1,
+    backgroundColor: "#789184ff",
+    paddingTop: 50,
+    paddingHorizontal: 16
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  goalsContainer: {
+    flex: 5,
+    borderWidth: 1,
+    borderColor: '#cccccc'
+
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: '#000000ff',
+    width: '70%',
+    padding: 8
+  }
+});
