@@ -29,7 +29,8 @@ INSERT INTO ArrPart(codice, comp, arrivo, partenza) VALUES
 INSERT INTO Compagnia(nome, annofondaz) VALUES
 ('Caimanair', '1954'),
 ('Apitalia', '1900'),
-('MagicFly', '1990');
+('MagicFly', '1990'),
+('WizardAir');
 
 
 INSERT INTO LuogoAeroporto(aeroporto, citta, nazione) VALUES
@@ -52,9 +53,6 @@ INSERT INTO Volo(codice, comp, durataMinuti) VALUES
 ('134',	'MagicFly',		'600'),
 ('265',	'Caimanair',	'601'),
 ('536',	'Apitalia',		'599');
-
-INSERT INTO Volo(codice, comp, durataMinuti) VALUES
-('536',	'MagicFly',		'599');
 
 
 commit;
