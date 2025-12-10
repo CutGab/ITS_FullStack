@@ -22,7 +22,7 @@ public class morraCinese {
         Scanner src = new Scanner(System.in);
         String answer = "y";
 
-        while (answer != "n") {
+        while (!answer.equals("n")) {
 
             int opponent_move = rand.nextInt(0, 3);
 
@@ -74,9 +74,9 @@ public class morraCinese {
             System.out.println("Vuoi continuare a giocare? (Y/N): ");
             answer = src.next().toLowerCase();
             
-            if (!answer.equals("y")) {
-                break;
-            }
+            // if (!answer.equals("y")) {
+            //     break;
+            // }
 
         }
 

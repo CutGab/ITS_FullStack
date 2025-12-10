@@ -1,72 +1,88 @@
-import { useState, useEffect } from "react";
-import { Button, StyleSheet, Text, TextInput, View, Image, FlatList } from "react-native";
+import { useState, useEffect, useRef } from "react";
+import { StyleSheet, Text, View, Image, FlatList, Animated, Modal, Button } from "react-native";
 import { Divider } from '@rneui/themed';
+import { fadeInFromBelow } from './utils';
+import TaskInput from './components/TaskInput';
+import TaskItem from './components/TaskItem';
 
 export default function App() {
-  const [task, setTask] = useState("");
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const translateY = useRef(new Animated.Value(50)).current;
+
   const [taskList, setTaskList] = useState([]);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [modalVisible, setModalVisible] = useState(false); // ✅ modal state
 
   useEffect(() => {
+    fadeInFromBelow(fadeAnim, translateY, 1000);
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  const taskInputHandler = (enteredTask) => setTask(enteredTask);
-
-  const addTaskHandler = () => {
-    if (task.trim() === "") return;
-    setTaskList((current) => [...current, task]);
-    setTask("");
+  const addTaskHandler = (taskText) => {
+    const newTask = { id: Date.now().toString(), task: taskText };
+    setTaskList((current) => [...current, newTask]);
+    setModalVisible(false); // close modal after adding
   };
 
-  const renderTaskItem = ({ item }) => (
-    <View style={styles.taskItem}>
-      <Text style={styles.taskText}>{item}</Text>
-    </View>
-  );
+  const deleteTask = (id) => {
+    setTaskList(current => current.filter(t => t.id !== id));
+  };
 
   return (
-    <View style={styles.appContainer}>
+    <Animated.View
+      style={[
+        styles.appContainer,
+        { opacity: fadeAnim, transform: [{ translateY }] },
+      ]}
+    >
       <View style={styles.header}>
         <Text style={styles.dayText}>Task di Oggi</Text>
         <Divider color="black" width={1} style={styles.divider} />
         <Text style={styles.dayText}>{currentTime.toLocaleTimeString()}</Text>
       </View>
 
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Inserisci task..."
-          value={task}
-          onChangeText={taskInputHandler}
-        />
-        <Button title="Aggiungi" onPress={addTaskHandler} disabled={task.trim() === ""} />
-      </View>
+      {/* Button to open modal */}
+      <Button title="Aggiungi Task" onPress={() => setModalVisible(true)} />
+
+      {/* Modal */}
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <TaskInput onAddTask={addTaskHandler} />
+            <Button title="Chiudi" onPress={() => setModalVisible(false)} />
+          </View>
+        </View>
+      </Modal>
 
       <Image
         style={styles.image}
-        source={{ uri: 'https://media1.tenor.com/m/VWk_uZZ7sdAAAAAd/don-quixote-qoh.gif' }}
+        source={{ uri: 'https://media.tenor.com/W85ad914NFcAAAAj/limbus-limbus-company.gif' }}
       />
 
       <View style={styles.goalsContainer}>
         <Text style={styles.sectionTitle}>Lista task</Text>
         <Divider color="black" width={1} style={styles.divider} />
+
         <FlatList
-        alwaysBounceVertical={true}
-        data={taskList}
-        renderItem={renderTaskItem}
-        keyExtractor={(_, index) => index.toString()}
+          data={taskList}
+          renderItem={({ item }) => <TaskItem taskItem={item} onDelete={deleteTask} />}
+          keyExtractor={(item) => item.id.toString()}
         />
       </View>
-    </View>
+    </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    backgroundColor: "#9052bfff",
+    backgroundColor: "#ff9500ff",
     paddingTop: 50,
     paddingHorizontal: 16,
   },
@@ -82,21 +98,8 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     alignSelf: 'stretch',
   },
-  inputContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: '#000',
-    width: '70%',
-    padding: 8,
-    borderRadius: 6,
-    backgroundColor: '#fff',
-  },
   image: {
-    height: 200,
+    height: 300,
     width: '100%',
     marginVertical: 20,
     borderRadius: 10,
@@ -108,14 +111,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 8,
   },
-  taskItem: {
-    marginVertical: 4,
-    padding: 10,
-    borderRadius: 6,
-    backgroundColor: "#5e0acc",
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    padding: 16,
   },
-  taskText: {
-    color: "#fff",
-    fontSize: 16,
+  modalContent: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 16,
   },
 });
