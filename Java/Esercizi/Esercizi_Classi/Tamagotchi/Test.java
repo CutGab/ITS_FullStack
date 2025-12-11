@@ -1,3 +1,4 @@
+package Esercizi.Esercizi_Classi.Tamagotchi;
 public class Test {
 
     public static void main(String[] args) {

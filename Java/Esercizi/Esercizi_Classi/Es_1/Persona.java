@@ -1,4 +1,4 @@
-package Esercizi_Classi.Es_1;
+package Esercizi.Esercizi_Classi.Es_1;
 
 public class Persona {
 

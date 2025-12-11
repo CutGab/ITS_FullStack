@@ -1,3 +1,4 @@
+package Esercizi.Esercizi_Classi.Tamagotchi;
 public class Tamagotchi {
 
     String name;
