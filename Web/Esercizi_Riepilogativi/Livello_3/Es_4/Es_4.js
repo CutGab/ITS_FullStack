@@ -24,4 +24,4 @@ const display_medie_studenti = voti_studenti.map(function(studente, index){
 })
 
 document.getElementById("media_array").innerHTML = display_medie_studenti.join("<br>");
-document.getElementById("media_finale_array").innerHTML = `La media di tutti gli studenti equivale a ${final_media}`;
+document.getElementById("media_finale_array").innerHTML = `La media di tutti gli studenti equivale a ${final_media.toFixed()}`;
