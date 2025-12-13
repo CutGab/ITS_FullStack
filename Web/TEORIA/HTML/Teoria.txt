@@ -1,0 +1,240 @@
+##################
+#                #
+#  INTRODUZIONE  #
+#                #
+##################
+
+- Acronimo di Hyper Text Markup Language
+
+- Non è un linguaggio di programmazione, non ha costrutti logici della programmazione
+
+- Linguaggio di Markup per Ipertesti
+
+- Standard utilizzato per la creazione di pagine Web
+
+####################
+#                  #
+#  STRUTTURA TAG   #
+#                  #
+####################
+
+<nometag> CONTENUTO </nometag>
+
+I tag permettono di assegnare un ruolo e una disposizione ai contenuti delle nostre pagine.
+
+############################
+#                          #
+#  STRUTTURA PAGINA HTML   #
+#                          #
+############################
+
+<!DOCTYPE html>             # Il DOCTYPE (Document Type Declaration) serve per indicare al browser il tipo di documento di cui si tratta
+<html>
+     <head>
+          <title> </title>
+     </head>
+
+     <body>
+
+
+     </body>
+</html>
+
+##########
+#        #
+#  TAG   #
+#        #
+##########
+
+In HTML esistono 2 tipi di tag:
+    - inline
+    - block
+
+La differenza è che i tag di tipo block vanno a capo, mentre quelli di tipo inline no.
+
+Il tag <h1> serve ad inserire dei titoli, i valori possibili vanno da h1 ad h6, facendo variare la dimensione dei titoli.
+
+Il tag <p> è il tag usato per creare paragrafi, è di tipo block quindi va automaticamente a capo in corrispondenza della chiusura del tag.
+
+Il tag <div> sta per "divide". Non ha alcun significato proprio, è un contenitore generico di tipo block usato pre raggruppare elementi e strutturare la pagina web.
+
+Il tag <br> (o <br />) non ha apertura e chiusura, non è un tag di tipo block e sta per "break", viene usato per andare a capo in un preciso punto.
+
+I tag di tipo inline sono tag che non mandano a capo l'elemento seguente, facendo rimanere elementi l'uno accanto a l'altro.
+
+Il tag <a> definisce un'ancora: possiamo usarlo per creare link a documenti o pagine esterne (con l'attributo href) o inserire uno o più collegamenti all'interno della stessa pagina.
+
+Il tag <img> viene utilizzato per includere immagini all'interno di una pagina web (<img src = "prova.png">)
+
+Il tag <span> è un tag generico per il contenuto di frasi. Può venir usato per raggrupare gli elementi per CSS o manipolazioni di Javascript su porzioni specifiche di contenuto.
+
+########################
+#                      #
+#  ATTRIBUTI DEI TAG   #
+#                      #
+########################
+
+Gli attributi HTML sono i parametri dei tag html. Sono utilizzati per indicare dei valori e modificare la formattazione del markup. In genere gli attributi sono codici inseriti all'interno del tag html, sono seguiti dal simbolo "=" e da un valore tra virgolette che definisce il parametro.
+
+(<tag attributo="valore")
+
+Gli attributi permettono effetti diversi, ad esempio l'attributo bgcolor consente di cambiare il colore del testo, l'attributo href assegna un indirizzo URL in un collegamento ipertestuale, ecc.
+
+(<p aling="right"> testo da allieanre a destra </p>)
+
+#################################
+#                               #
+#  ELENCHI PUNTATI E NUMERATI   #
+#                               #
+#################################
+
+3 tipi:
+    - Elenchi ordinati
+    - Elenchi non ordinati
+    - Elenchi di definizioni
+
+Elenchi non ordinati (I più usati):
+
+    <ul>
+        <li> Primo elemento </li
+        <li> Secondo elemento </li
+        <li> Terzo elemento </li
+    </ul>
+
+Elenchi ordinati (enumerati):
+
+    <ol>
+        <li> Primo elemento </li
+        <li> Secondo elemento </li
+        <li> Terzo elemento </li
+    </ol>
+
+##############
+#            #
+#  TABELLE   #
+#            #
+##############
+
+Per definire una tabella si usano i tag <table> per il contenitore della tabella, e <tr> per "table row" (riga), <td> per "table data" (cella della riga) e <th> per "table header" che indica una cella che contiene un intestazione (titolo di una colonna o di una riga).
+
++-----------+-----------+-----------+
+| Intest 1  | Intest 2  | Intest 3  |  <- Riga 1
++-----------+-----------+-----------+
+| Dato 1,1  | Dato 1,2  | Dato 1,3  |  <- Riga 2
++-----------+-----------+-----------+
+| Dato 2,1  | Dato 2,2  | Dato 2,3  |  <- Riga 3
++-----------+-----------+-----------+
+
+<table>
+
+  <tr>
+    <th>Intest 1</th>
+    <th>Intest 2</th>
+    <th>Intest 3</th>
+  </tr>
+
+  <tr>
+    <td>Dato 1,1</td>
+    <td>Dato 1,2</td>
+    <td>Dato 1,3</td>
+  </tr>
+
+  <tr>
+    <td>Dato 2,1</td>
+    <td>Dato 2,2</td>
+    <td>Dato 2,3</td>
+  </tr>
+
+</table>
+
+###########
+#         #
+#  FORM   #
+#         #
+###########
+
+L'HTML mette a disposizione una serie di tag il cui scopo è quello di creare modulo con caselle di testo, opzioni, bottoni di invio e altro ancora. Vengono raggruppati nel termine "Form" e il loro scopo è quello di crare interazione e scambio di dati tra gli utenti e il sito.
+Si possono raccogliere quindi input dagli utenti per poi inviarli ad un qualche sistema di elaborazione (normalmente uno script lato server).
+
+Per la creazione di un form utilizziamo il tag <form>:
+
+<form method ="" action"" name="">
+
+    ...
+
+</form>
+
+Lo scopo del tag è fare da contenitore ad una serie di tag che costruiranno gli specifici controlli del modulo.
+
+Method: Specifica il metodo di invio dei dati e accetta valori GET o POST.
+Action: Specifica lo script che riceverà, controllerà ed elaborerà i dati.
+Name: Specifica il nome attribuito al Form, in quanto è possibile inserire in una pagina più Form e quindi necessita di essere identificato.
+
+Una volta definito un Form è necessario popolarlo con dei tag al suo interno:
+
+    - Input: Genera la maggior parte degli elementi dei form HTML, a seconda del type specificato. Gli input più utilizzati sono:
+
+        - Text: Utilizzato per creare caselle di testo in cui l'utente può scrivere del contenuto.
+
+        - File: Utilizzato per creare caselle di selezione di file in locale al fine di poterli trasmettere al server remoto.
+
+        - Radio: Permette di creare un gruppo di opzioni al cui interno deve essere fatta una scelta (non ammette scelte multiple)(menù con i pallini).
+
+        - Checkbox: Permette di creare un gruppo di opzioni al cui interno devono essere fatte delle scelte (ammette scelte multiple) (menù con le spunte).
+
+        - Button: Permette di creare bottoni "neutri" ai quali possono essere associati azioni tramite Javascript.
+
+        - Submit: Permette di creare bottoni di invio attraverso i quali vengono processati i form.
+
+        - Reset: Permette di creare bottoni per il reset del form (vengono cancellate le scelte effettuate dall'utente e il modulo torna al suo stato iniziale).
+
+    
+    - Select: Crea una casella di ripeilogo a scorrimento, chiamata "SelectBox" (menù a tendina).
+
+    - TextArea: Genera un area di testo in cui è possibile andare a capo e viene utilizzata per permettere di inserire descrizioni, commenti o testi abbastanza lunghi.
+
+############
+#          #
+#  EXTRA   #
+#          #
+############
+
+Ogni elemento dei form HTML ha una caratteristica in comune, ovvero la specifica del name che dev'essere diverso da elemento a elemento e uguale solo per gruppi di elementi (come cradiobuttons o checkbox).
+
+I tag input prevedono (oltre a "name") due attributi principali:
+
+    - Type: Definisce il tipo di input.
+    - Value: Definisce il valore dell'input, nei campi "Text" è facoltativo e, se previsto, rappresenta una sorta di valore predefinito che gli utenti potranno modificale (a meno che il campo non sia stato impostato come "READ ONLY").
+    
+Gli input "Radio" e "Checkbox" ammettono l'attributo checked qualora il campo debba comparire come selezionato al momento del caricamento della pagina.
+
+All'interno dei tag "Select" vengono annidati delle sequenze di tag option contenenti le varie opzioni disponibili all'interno della Selectbox; questi tag hanno, normalmente, un attributo value con il valore da inviare nel caso l'opzione venga selezionata.
+
+I tag "Option" ammettono l'attributo facoltativo "Selected" attraverso il quale effettuare una selezione di default al momento del caricamento del modulo.
+
+Il tag "Textarea" prevede, oltre all'attributo "name", gli attributi "rows" e "cols" che ne definiscono le linee e colonne.
+
+############
+#          #
+#  LABEL   #
+#          #
+############
+
+Il tag "Label" definisce un testo da associare ad un campo di un form HTML, si usa in particolare con i campi di tipo "Radio" e "Checkbox". Consente di selezionare un'opzione anche cliccando sul suo testo descrittivo, non solo sul pusale di opzione vero e proprio.
+
+<input type="radio" name="sesso" id="U" value="U" />
+<label for="U">Uomo</label>
+<input type="radio" name="sesso" id="D" value="D" />
+<label for="D">Donna</label>
+
+Supporta l'attributo "For" che riporta lo stesso valore dell'id del campo, che, allo scopo, si rende obbligatorio.
+
+#####################################
+#                                   #
+#  L'ATTRIBUTO DI INPUT: REQUIRED   #
+#                                   #
+#####################################
+
+L’attributo "Required" consente di impedire l’invio del modulo se i campi obbligatori non sono stati compilati.
+
+<input type="text" name="user" required/>

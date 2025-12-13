@@ -12,6 +12,11 @@ function fetch_multiple(API_CALL, API_CALL_2) {
         .then(function(array_response) {
             return Promise.all([array_response[0].json(), array_response[1].json()]);
         })
+        
+        .then(([post, commenti]) => {
+            document.getElementById("post").innerHTML = JSON.stringify(post.title);
+            document.getElementById("comment").innerHTML = commenti.map(c => c.body).join("<br><br>");
+        });
 
 }
 
