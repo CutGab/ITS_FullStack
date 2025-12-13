@@ -1,0 +1,13 @@
+.overlay7 {
+
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(198, 182, 213, 0.8);
+    text-align: center;
+    align-content: center;
+
+}
