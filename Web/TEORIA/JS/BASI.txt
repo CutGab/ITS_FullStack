@@ -1,0 +1,228 @@
+###############
+#             #
+#  VARIABILI  #
+#             #
+###############
+
+Possiamo immaginare le variabili come delle “scatole” all’interno delle quali immagazzinare dati. 
+In JavaScript per creare delle variabili è sufficiente assegnare un contenuto ed anche se non è obbligatorio, aggiungere sempre la keyword var (quando scegliamo un nome alla variabile ricordiamoci di non inserire spazi, usare la convenzione camelCase. Può iniziare con _ $ a-z).
+
+JavaScript non prevede la dichiarazione obbligatoria delle variabili. Il semplice utilizzo di un identificatore indica all’engine di creare implicitamente la variabile, se non esiste già. Tuttavia questa pratica può favorire errori ed ambiguità.
+
+    variabile = 3;
+
+Una variabile non dichiarata viene automaticamente creata al primo utilizzo ed è accessibile da qualsiasi punto di uno script. 
+Questo significa che in script complessi si può correre il rischio di utilizzare involontariamente variabili con lo stesso nome generando comportamenti non previsti. È opportuno pertanto dichiarare sempre una variabile tramite la parola chiave var:
+
+    var miaVariabile = 3;
+
+###########################################
+#                                         #
+#  COMMENTI, PUNTO E VIRGOLA E MAIUSCOLE  #
+#                                         #
+###########################################
+
+Il codice JavaScript è composto da una sequenza di istruzioni che viene eseguita dal browser. 
+In questa sequenza, ciascuna istruzione è delimitata da un punto e virgola, come nel seguente esempio:
+
+var x = 5;
+x = x + 1;
+
+Terminare un’istruzione con il punto e virgola non è obbligatorio in JavaScript, possiamo scrivere la sequenza precedente anche così:
+
+var x = 5
+x = x + 1
+
+In base alle specifiche del linguaggio, il parser effettua un inserimento automatico del punto e virgola.
+
+Come ogni linguaggio, JavaScript prevede delle sequenze di caratteri per inserire commenti nel codice. Tutto ciò che viene marcato come commento non viene preso in considerazione dall’interprete JavaScript. Possiamo inserire due tipi di commenti nel codice: 
+
+    - commento per singola riga;
+    - commento multiriga.
+
+Il commento a singola riga (inline) inizia con i caratteri // 
+
+Il commento multiriga (multiline) prevede la sequenza iniziale /* e si conclude con */
+
+Un altro aspetto sintattico da tenere in considerazione è il fatto che Javascript è case sensitive, cioè fa distinzione tra maiuscole e minuscole nei nomi di istruzioni, variabili e costanti.
+
+##############
+#            #
+#  STRINGHE  #
+#            #
+##############
+
+Una stringa in JavaScript è una sequenza di caratteri delimitata da doppi o singoli apici. Le seguenti sono esempi di stringhe:
+
+    - "stringa numero uno"
+    - 'stringa numero due'
+
+Non c’è una regola per stabilire quale delimitatore utilizzare. L’unica regola è che il delimitatore finale deve essere uguale al delimitatore iniziale. Questo ci consente di scrivere stringhe come le seguenti senza incorrere in errori:
+
+• "l'altro ieri"
+• "questa è una 'stringa'"
+
+Un tipo speciale di stringa è la stringa vuota, cioè una stringa senza caratteri. Essa può essere rappresentata indifferentemente come "" oppure ''.
+
+############################
+#                          #
+#  ESCAPE DI UN CARATTERE  #
+#                          #
+############################
+
+Per poter utilizzare un carattere speciale come se fosse uno normale, è sufficiente farlo precedere da un backslash: \".
+
+    console.log(" questo è un \"corso speciale\" ");
+
+########################
+#                      #
+#  CARATTERI SPECIALI  #
+#                      #
+########################
+
+All’interno delle stringhe è possibile indicare alcuni caratteri speciali di JavaScript ovvero delle sequenze che costituiscono un mezzo per formattare il testo:
+
+    - \& visualizza la & commerciale
+    - \n nuova riga
+    - \r ritorno a capo
+    - \t tab orizzontale
+    - \\ visualizza il backslash
+
+################################
+#                              #
+#  CONCATENAZIONE DI STRINGHE  #
+#                              #
+################################
+
+L’unico operatore su stringhe specifico è l’operatore di concatenazione. Esso consente di creare una nuova stringa come risultato della concatenazione di due stringhe ed è rappresentato dal simbolo (+):
+    
+    "piano" + "forte" // "pianoforte"
+
+Il suo utilizzo è abbastanza immediato, ma con le variabili si possono ottenere risultati non previsti dal momento che il simbolo utilizzato è lo stesso dell’addizione.
+
+Le stringhe in javascript sono oggetti, in quanto tali ha proprietà e metodi. L’unica proprietà è length che restituisce il numero di caratteri presenti all’interno di una stringa. 
+
+Mentre i metodi più importanti sono:
+
+    - toUpperCase() : trasforma la stringa tutta in maiuscolo.
+    - toLowerCase() : trasforma la stringa tutta in minuscolo.
+    - split() : divide la stringa in array prendendo come delimitatore il carattere passato all’ingresso del metodo.
+    - replace() : sostituisce una parte della stringa prendendo la stringa passata per prima e la sostituisce con la stringa passata per secondo parametro.
+
+############
+#          #
+#  NUMERI  #
+#          #
+############
+
+JavaScript ha un unico tipo di dato numerico, cioè non c’è distinzione formale, ad esempio, tra intero e decimale. 
+Internamente tutti i valori numerici sono rappresentati come numeri in virgola mobile, ma se non è specificata la parte decimale il numero viene trattato come intero (sono a 64 bit i numeri da −9.223.372.036.854.775.808 a +9.223.372.036.854.775.807).
+
+    - var interoNegativo = -10;
+    - var zero = 0;
+    - var interoPositivo = 123;
+    - var numeroDecimale = 0.52;
+    - var altroNumeroDecimale = 12.34;
+    - var decimaleNegativo = -1.2;
+
+Javascript per venire in aiuto al programmatore mette a disposizione delle funzioni globali che lo aiutano nella gestione dei numeri, le funzioni più conosciute e più usate sono:
+
+    - toFixed() (visualizza solo N cifre decimali)
+    - parseInt() (cast da stringa a intero)
+    - parseFloat() (cast da stringa a decimale)
+    
+"toFixed" è una funzione dei numeri che prende in ingresso un numero che sta ad indicare quante cifre decimali visualizzare, arrotondando per eccesso o per difetto, e che ritorna una stringa.
+
+    var importo = 12.6789;
+    console.log(importo.toFixed(2)); // 12.68
+
+"parseInt" viene usata per convertire il suo primo argomento in un numero intero:
+
+    var nuovoImporto = importo.toFixed(2); // 12.68 -> stringa
+    console.log(parseInt(nuovoImporto) + 4); // 16 -> somma
+
+"parseFloat" fa la stessa cosa ma torna un numero decimale invece che intero:
+
+    var nuovoImporto = importo.toFixed(2); // 12.68 -> stringa
+    console.log(parseFloat(nuovoImporto) + 4); // 16.68 -> somma
+
+#########
+#       #
+#  NaN  #
+#       #
+#########
+
+NaN (Not a Number) è una costante globale che viene invocata quando si esegue una funzione matematica con i numeri e questa operazione torna qualcosa che non è un numero.
+
+NaN non è uguale a se stesso: 
+
+    - console.log( 1 === 1 );  // true
+    - console.log( NaN === NaN ) // false
+
+Questo vuol dire che se noi vogliamo verificare se un risultato è uguale a NaN non posso confrontarlo con NaN:
+
+    var risultato = 10 * ‘prova’;
+    console.log(risultato);
+
+Restituirà in console NaN. Ma se noi facciamo un confronto come ad esempio (risultato === NaN) non sarà mai true anche se risultato in questo caso vale NaN.
+
+Quindi come possiamo verificare se un risultato di un’operazione «Non è un numero»? Esiste un modo per saperlo : isNaN() (è una funzione globale):
+
+    isNaN(risultato);  // true
+
+La funzione globale isNaN() ritornerà true se gli viene passato qualsiasi valore diverso da un numero. In ogni modo cerca di fare un cast ad un numero (ad esempio stringa vuota e false la converte a 0):
+
+console.log(isNaN("ciao")); // true
+console.log(isNaN("")); // convertito in 0 quindi false
+console.log(isNaN(false)) // convertito in 0 quindi false
+
+################################
+#                              #
+#  NULL, UNDEFINED E BOOLEANO  #
+#                              #
+################################
+
+JavaScript prevede due tipi di dato speciali per rappresentare valori nulli e non definiti. 
+Il tipo di dato null prevede il solo valore null, che rappresenta un valore che non rientra tra i tipi di dato del linguaggio, cioè non è un valore numerico valido, né una stringa, né un oggetto.
+
+È possibile assegnare il valore null ad una variabile:
+
+    var x = null;
+
+Il tipo di dato undefined rappresenta un valore che non esiste. Anche questo tipo di dato contiene un solo valore: undefined. Questo è il valore di una variabile non inizializzata, a cui non è stato assegnato nessun valore, nemmeno null.
+
+Il tipo di dato booleano prevede due soli valori: 
+    
+    - true (vero) e false (falso).
+
+##################
+#                #
+#  TIPIZZAZIONE  #
+#                #
+##################
+
+JavaScript è un linguaggio a tipizzazione debole. Questo vuol dire che una variabile può assumere valori di tipi diverso, tipizzazione modificata in base al valore assegnato.
+
+Se ad esempio dichiaro una variabile:
+
+    var test = ‘buongiorno a tutti’; 
+    
+Questa variabile javascript la vede come una stringa perché dopo l’uguale ho messo l’apice. Se invece alla riga successiva scrivo:
+
+    test = 1; 
+    
+La stessa variabile test per javascript adesso è in numero.
+
+############
+#          #
+#  TYPEOF  #
+#          #
+############
+
+L'operatore typeof è un modo semplice per controllare il tipo di una variabile nel codice. Questo è importante perché JavaScript è un linguaggio tipizzato dinamicamente ed è utile per la convalida dei dati e il controllo del tipo. La sintassi è la seguente:
+
+    var test = "buongiorno a tutti";
+    console.log(typeof test); -> string
+
+    var test;
+    console.log(typeof test); -> undefined

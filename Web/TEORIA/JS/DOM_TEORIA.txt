@@ -1,0 +1,129 @@
+#########
+#       #
+#  DOM  #
+#       #
+#########
+
+Il DOM (Document Object Model) fornisce una rappresentazione del documento come una struttura gerarchica ad albero di oggetti.
+
+Questo albero è progettato per essere facilmente accessibile tramite JavaScript non solo in lettura, ma anche per modificarne dinamicamente la struttura, il contenuto e lo stile.
+
+In altre parole, il DOM è un insieme di interfacce (API), funzioni, metodi e proprietà che i programmi possono utilizzare per delegare al sistema sottostante la manipolazione del documento.
+
+Il DOM non è una parte di JavaScript: JavaScript è solo uno dei molti linguaggi che possono essere utilizzati per accedervi.
+
+#####################
+#                   #
+#  CARATTERISTICHE  #
+#                   #
+#####################
+
+1. Document (recupera l’elemento o gli elementi. Ad esempio uno specifico div)
+2. Elements (decido cosa applicare all’elemento recuperato. Ad esempio cambio uno stile)
+3. Attributes (decido quale attributo applicare)
+4. Events (decido quale evento utilizzare)
+5. Style (decido quale stile applicare)
+
+"Document" rappresenta l’intero documento HTML ed è l’oggetto radice del DOM, identificando la pagina per il web.
+
+    - getElementById
+    - getElementsByTagName
+    - getElementsByClassName
+    - getElementsByName
+
+Per individuare una parte della pagina, JavaScript ci viene in aiuto tramite i comandi dell'oggetto document:
+
+    - document.URL
+    - document.head
+    - document.body
+    - document.links
+
+Per accedere agli elementi della pagina utilizziamo il criterio di selezione "getElementById"
+
+    <p id="mioParagrafo"> Testo </p>
+
+Questo metodo è uno dei più utilizzati per la gestione del DOM, restituendo un oggetto che rappresenta il nodo di tipo elemento che ha l'attributo id con il valore specifico. Se non esiste ritorna null.
+
+"getElementsByTagName" permette di recuperare l'insieme degli elementi caratterizzati dallo stesso tag. Ritorna una collezione di tutti gli elementi del tag considerato, nell'ordine in cui compaiono nella pagina.
+
+    document.getElementsByTagName(nome_TAG)
+
+"getElementsByClassName" è simile al precedente ma torna una collezione di tutti gli elementi che appartengono alla classe specificata:
+
+    document.getElementsByClassName(nome_CLASSE)
+
+"getElementsByName" fornisce una collezione di tutti gli elementi che hanno il nome specificato:
+
+    document.getElementsByName(nome_ELEMENTO)
+
+############
+#          #
+#  EVENTI  #
+#          #
+############
+
+Gli eventi DOM consentono a JavaScript di registrare diversi gestori di eventi su elementi in un documento HTML. Sono utilizzati in combinazione con le funzioni, che verranno eseguiti solo e soltanto quando si verifica l'evento.
+
+    <button onclick="alert('ciao');"> Salutami </button>
+
+Possiamo anche eseguire funzioni al verificarsi dell'evento, per farlo bisogna inserire il nome della funzione come valore dell'evento:
+
+    <script>
+
+        function saluta() {
+            alert('ciao');
+            }
+
+    </script>
+
+    <button onclick="saluta();"> Salutami </button>
+
+Invece che gestire l'evento all'interno del tag, posso gestire tutto all'interno dello script, facendo riferimento al tag tramite ID:
+
+<button id="miobottone"> Salutami </button>
+
+    <script>
+        document.getElementById("miobottone").onclick=function() {
+            alert('ciao');
+            }
+    </script>
+
+Se voglio gestire il codice in modo più pulito:
+
+<button id="miobottone"> Salutami </button>
+
+<script>
+
+    var mio = document.getElementById("miobottone");
+
+    mio.onclick = function() {
+        alert('ciao');
+        }
+
+</script>
+
+Un metodo alternativo per gestire gli eventi è l'"addEventListener":
+
+<h2 id="paperino">dom</h2>
+<button id="miobottone"> Salutami </button>
+
+<script>
+    var mio = document.getElementById("miobottone");
+
+    mio.addEventListener("mouseover", primafunzione);
+    mio.addEventListener("click", secondafunzione);
+    mio.addEventListener("mouseout", terzafunzione);
+    
+    function primafunzione() {
+        document.getElementById("paperino").innerHTML ='ho generato un mouseover';
+        }
+
+    function secondafunzione() {
+        document.getElementById("paperino").innerHTML ='ho generato un click';
+        }
+
+    function terzafunzione() {
+        document.getElementById("paperino").innerHTML ='ho generato un mouseout';
+        }
+
+</script>
