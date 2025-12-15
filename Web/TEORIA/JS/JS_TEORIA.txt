@@ -4,8 +4,8 @@
 #              #
 ################
 
-JavaScript è un linguaggio di programmazione orientato agli oggetti e eventi, comunemente utilizzato nella programmazione web lato client (esteso poi anche al lato server) per la creazione, nei siti e applicazioni web, di effetti dinamici interattivi tramite funzioni di script. 
-Vengono invocate da eventi innescati a loro volta in vari modi dall'utente sulla pagina web in uso (mouse, tastiera etc.).
+JavaScript è un linguaggio di programmazione **orientato agli oggetti, agli eventi e funzionale**, comunemente utilizzato nella programmazione web lato client (esteso poi anche al lato server) per creare effetti dinamici e interattivi tramite funzioni di script. 
+Gli script vengono invocati da eventi generati dall'utente sulla pagina web (mouse, tastiera, ecc.).
 
 Originariamente sviluppato da Netscape con il nome di LiveScript, viene standardizzato e usato con il nome di "JavaScript" nel 1997 dalla ECMA.
 
@@ -15,12 +15,15 @@ Originariamente sviluppato da Netscape con il nome di LiveScript, viene standard
 #              #
 ################
 
-O anche detto ES è la tecnica di un linguaggio di scripting, standardizzata e mantenuta da ECMA International. Le implementazioni più conosciute sono JavaScript, JScript e Actionscript che sono entrati largamente in uso inizialmente come linguaggio lato client nello sviluppo web.
+ECMAScript (ES) è lo standard dei linguaggi di scripting mantenuto da ECMA International. Implementazioni conosciute includono JavaScript, JScript e ActionScript.
 
-La sesta edizione, conosciuta inizialmente come ECMAScript (ES6) ma rinominata successivamente ECMAScript 2015 fu pronta nel 2015. 
-Questa edizione portò importanti ampliamenti alla sintassi, pensati per rendere più agevole la scrittura di applicazioni complesse, tra cui le nuove dichiarazioni delle classi e i moduli attraverso le istruzioni import e export.
-
-Alcune altre novità sintattiche furono il nuovo iteratore for ... of, le funzioni a freccia (() => {...}), le parole chiave let e const per dichiarare le variabili, array tipizzati, nuove collections, promises ecc.
+La sesta edizione (ES6 o ECMAScript 2015) ha introdotto importanti novità sintattiche:
+    - `let` e `const` per dichiarare variabili
+    - arrow functions `() => {...}`
+    - template literals (stringhe con backtick)
+    - `for...of` per iterare sugli array
+    - Promises, collections e array tipizzati
+    - dichiarazione di classi e moduli (`import` / `export`)
 
 ######################
 #                    #
@@ -28,10 +31,13 @@ Alcune altre novità sintattiche furono il nuovo iteratore for ... of, le funzio
 #                    #
 ######################
 
-Javascript è un linguaggio che può essere eseguito sia lato client che lato server. La differenza nell’eseguire Javascript lato client o lato server sta nell’ambiente in cui viene eseguito. 
-Il linguaggio è uno solo, ma a differenza di altri linguaggi, invece di avere librerie interne, sfrutta le librerie dell’ambiente in cui si trova.
+JavaScript può essere eseguito sia lato **client** sia lato **server**. La differenza dipende dall'ambiente di esecuzione:
+    - Lato client: il browser fornisce oggetti come `window` e `document`.
+    - Lato server: Node.js fornisce oggetti globali come `process` e `require`.
 
-Ogni browser ha il suo «motore» Javascript specifico. Ad esempio FireFox ha «SpiderMonkey», mentre Chrome ha «V8». Inizialmente Javascript è nato come linguaggio lato client e quindi eseguito dal «motore» residente all’interno del browser.
+Ogni browser ha il suo motore JS:
+    - Firefox → SpiderMonkey
+    - Chrome → V8
 
 #################
 #               #
@@ -39,43 +45,30 @@ Ogni browser ha il suo «motore» Javascript specifico. Ad esempio FireFox ha «
 #               #
 #################
 
-Javascript lato Client viene utilizzato in «collaborazione» con l’HTML, il lato client, dovendosi interfacciare con l’HTML, dà la possibilità scrivere il codice in 3 modi diversi:
+JavaScript lato client collabora con l'HTML. Esistono tre modi principali per includere il codice:
 
-    - Inline
-    - Blocchi di codice
-    - File esterno
-
-Il codice Inline consiste nell'inserire direttamente le istruzioni Javascript nel codice di un elemento HTML, assegnandolo ad un attributo che rappresenta un evento:
-
+1. **Inline**: direttamente in un attributo di un tag HTML
     <button type="button" onclick="window.alert('x')">Vai</button>
 
-Risulta scomodo quando il codice da eseguire è più complesso o abbiamo necessità di definire variabili e funzioni, in questo caso usiamo il secondo metodo, ovvero usando il tag <script> per inserire "blocchi di codice" in una pagina HTML:
-
+2. **Blocchi di codice**: usando il tag `<script>` in `<head>` o `<body>`
     <script>alert('Ciao!')</script>
 
-Possiamo inserire blocchi di codice (e i relativi tag <script>) nella sezione <head> o nella sezione <body> della pagina HTML.
-
-Il terzo approccio consiste nel collegare alla pagina HTML, un file JavaScript esterno. Questa tecnica permette di agganciare script e librerie in modo non intrusivo, separando nettamente la struttura del documento e il codice.
-
+3. **File esterno**: separando HTML e JS
     <script src="codice.js"></script>
 
-Nel caso di blocchi di codice o file esterni, per eseguire istruzioni dobbiamo fare riferimento a funzioni.
-Una funzione è un blocco di codice racchiuso tra parentesi graffe { ... } a cui viene dato un nome.
-Per definirla si usa:
-
+Per definire funzioni:
+- Funzione tradizionale:
     function nomeFunzione() {
         // codice da eseguire
-        };
+    };
 
-Oppure con le arrow functions:
-
+- Arrow function:
     const nomeFunzione = () => {
         // codice da eseguire
-        };
+    };
 
-Per eseguire (chiamare) la funzione si usano le parentesi tonde:
-
-nomeFunzione();
+Per eseguire la funzione:
+    nomeFunzione();
 
 #################
 #               #
@@ -83,11 +76,17 @@ nomeFunzione();
 #               #
 #################
 
-Javascript lato server viene eseguito senza nessuna «collaborazione». Ed è per questo che lato server lavoreremo con dei semplici file.js scrivendo il codice tramite file esterni.
+JavaScript lato server viene eseguito senza l'intervento del browser. Per farlo si utilizza **Node.js**, una runtime open-source e multipiattaforma basata sul motore V8 di Chrome.
 
-Come abbiamo detto in precedenza se lato client Javascript «sfrutta» e viene eseguito sul browser, lato server abbiamo bisogno di Node.js.
+Node.js permette di:
 
-Node.js è una runtime di JavaScript Open source multipiattaforma orientato agli eventi per l'esecuzione di codice JavaScript, costruita sul motore JavaScript V8 di Google Chrome.
-In origine JavaScript veniva utilizzato principalmente lato client. In questo scenario gli script JavaScript, generalmente incorporati all'interno dell'HTML di una pagina web, vengono interpretati da un motore di esecuzione incorporato direttamente all'interno di un Browser. 
-Node.js consente invece di utilizzare JavaScript anche per scrivere codice da eseguire lato server, ad esempio per la produzione del contenuto delle pagine web dinamiche prima che la pagina venga inviata al Browser dell'utente.
-Nel 2009 l’idea «rivoluzionaria» del progettista di Node.js Ryan Dahl è stata quella di prendere il motore V8 ed inserirlo all’interno di un nuovo ambiente in cui eseguire codice JavaScript. Questo ambiente prende il nome di Node.js che non opera lato client ma opera lato server.
+    - eseguire codice JavaScript lato server
+    - leggere e scrivere file sul filesystem
+    - gestire server HTTP
+    - interagire con database
+    - creare applicazioni complete senza browser
+
+Node.js utilizza un **modello asincrono basato su eventi**, che permette di gestire molteplici richieste contemporaneamente senza bloccare l'esecuzione.
+
+Node.js è nato per estendere l’uso di JavaScript, originariamente lato client, anche al server. Nel 2009 Ryan Dahl ha integrato il motore V8 in un ambiente runtime, dando vita a Node.js.
+

@@ -1,228 +1,201 @@
-###########
-#         #
-#  REACT  #
-#         #
-###########
+###############
+#             #
+#  REACT JS   #
+#             #
+###############
 
-React è una libreria JavaScript open‑source utilizzata per la creazione di interfacce utente moderne, dinamiche e altamente interattive. 
-È stata sviluppata inizialmente da Facebook nel 2013 con l’obiettivo di semplificare la gestione delle view nelle applicazioni web complesse.
+React è una **libreria JavaScript open-source** per la creazione di **interfacce utente (UI)**.
+È stata sviluppata nel 2013 all’interno di Facebook ed è oggi supportata da una vasta community.
 
-React permette di costruire applicazioni a componenti, ovvero suddivise in piccole parti indipendenti e riutilizzabili, 
-ciascuna responsabile di una porzione dell’interfaccia grafica. Questo approccio rende il codice più organizzato, manutenibile e scalabile.
+React permette di creare **applicazioni dinamiche e interattive** che aggiornano i dati senza ricaricare l’intera pagina, migliorando le prestazioni e l’esperienza utente.
+Durante lo sviluppo, le modifiche al codice vengono visualizzate in tempo reale, rendendo il processo rapido, efficiente e flessibile.
 
-Uno dei punti di forza di React è il **Virtual DOM**, una rappresentazione leggera del DOM reale mantenuta in memoria. 
-Quando lo stato dell’applicazione cambia, React aggiorna prima il Virtual DOM, 
-confronta le differenze con la versione precedente (processo di *diffing*) e aggiorna solo le parti del DOM reale che sono effettivamente cambiate. 
-Questo garantisce prestazioni elevate.
+React può essere inquadrato come la **“V” (View)** del pattern MVC.
+Si occupa esclusivamente della **presentazione dell’interfaccia** e della gestione degli eventi di input dell’utente.
 
-React è dichiarativo: lo sviluppatore descrive *come* deve apparire l’interfaccia in base allo stato, 
-e si occupa di aggiornare automaticamente la UI quando i dati cambiano.
-
-Esempio minimale di componente React:
-
-function App() {
-  return <h1>Hello React</h1>;
-}
-
-##############
-#            #
-#  REACTDOM  #
-#            #
-##############
-
-ReactDOM è la libreria che funge da ponte tra React e il DOM del browser. 
-Il suo compito principale è montare l’albero dei componenti React all’interno di un nodo HTML reale.
-
-In pratica, ReactDOM rappresenta il punto di ingresso di un’applicazione React all’interno di una pagina web.
-Con le versioni moderne di React si utilizza `createRoot`, che abilita funzionalità avanzate come il rendering concorrente.
-
-Esempio:
-
-import ReactDOM from 'react-dom/client';
-import App from './App';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
-
-###########################
-#                         #
-#  COMPONENTI FUNZIONALI  #
-#                         #
-###########################
-
-I componenti funzionali sono funzioni JavaScript che restituiscono JSX. Rappresentano oggi lo standard nello sviluppo React moderno.
-
-Inizialmente erano limitati alla sola renderizzazione, ma con l’introduzione degli **Hooks** (React 16.8) possono gestire:
-
-* stato interno
-* effetti collaterali
-* ciclo di vita del componente
-
-Sono preferiti rispetto ai componenti a classe perché più leggibili, concisi e facili da testare.
-
-Esempio:
-
-function Saluto() {
-  return <p>Ciao mondo</p>;
-}
-
-export default Saluto;
-
-#########
-#       #
-#  JSX  #
-#       #
-#########
-
-JSX (JavaScript XML) è una sintassi che permette di scrivere strutture simili a HTML direttamente all’interno del codice JavaScript. 
-Non è HTML vero e proprio, ma viene trasformato in JavaScript tramite Babel.
-
-All’interno del JSX è possibile inserire **espressioni JavaScript** utilizzando le parentesi graffe `{}`.
-
-Regole fondamentali del JSX:
-
-* È obbligatorio restituire un solo elemento wrapper
-* Si usano attributi camelCase (className, onClick, ecc.)
-* Non sono ammessi statement come if o for direttamente nel JSX
-
-Esempio:
-
-const nome = 'Marco';
-
-<h2>Ciao {nome}</h2>
-
-################
-#              #
-#  COMPONENTE  #
-#              #
-################
-
-Un componente React è un’unità indipendente dell’interfaccia utente. Ogni componente può avere:
-
-* una propria logica
-* un proprio stato
-* delle proprietà in ingresso (props)
-
-I componenti permettono di suddividere l’interfaccia in parti più piccole e gestibili.
-
-Esempio:
-
-function Card() {
-  return (
-    <div>
-      <h3>Titolo</h3>
-      <p>Descrizione</p>
-    </div>
-  );
-}
-
-###########
-#         #
-#  PROPS  #
-#         #
-###########
-
-Le props (properties) sono parametri passati da un componente padre a un componente figlio. 
-Sono **di sola lettura** e non devono essere modificate dal componente che le riceve.
-Servono per rendere i componenti dinamici e riutilizzabili.
-
-Esempio:
-
-function Messaggio(props) {
-  return <p>{props.testo}</p>;
-}
-
-<Messaggio testo="Ciao React" />
+Non impone regole rigide sull’architettura dell’applicazione né sulla comunicazione con il backend, lasciando allo sviluppatore la libertà di scegliere librerie e strumenti da integrare.
 
 ####################
 #                  #
-#  PROPS CHILDREN  #
+#  PERCHÉ USARLO   #
 #                  #
 ####################
 
-`props.children` rappresenta tutto il contenuto inserito tra il tag di apertura e quello di chiusura di un componente.
-È utile per creare componenti contenitore riutilizzabili.
+React è una libreria JavaScript nata per semplificare lo sviluppo di interfacce utente dinamiche e complesse, mantenendo un approccio semplice e intuitivo.
 
-Esempio:
+Lo sviluppo di applicazioni web coinvolge HTML per la struttura, CSS per lo stile e JavaScript per la logica. Con React le applicazioni sono spesso organizzate come Single Page Applications (SPA), in cui una singola pagina HTML funge da contenitore per l’intera interfaccia utente.
 
-function Box({ children }) {
-  return <div className="box">{children}</div>;
-}
+Il punto di forza di React è l’approccio dichiarativo, simile all’HTML, che consente di definire l’interfaccia tramite componenti riutilizzabili e logicamente separati, come commenti, liste o sezioni dell’applicazione.
 
-<Box>
-  <p>Testo interno</p>
-</Box>
++----------------------+------------------------------------------------------------------+
+| CARATTERISTICA       | DESCRIZIONE                                                      |
++----------------------+------------------------------------------------------------------+
+| Open source          | È possibile contribuire al progetto segnalando problemi o        |
+|                      | inviando pull request.                                           |
++----------------------+------------------------------------------------------------------+
+| Dichiarativo         | Lo sviluppatore descrive il risultato desiderato e React         |
+|                      | gestisce automaticamente le operazioni JavaScript e DOM.         |
++----------------------+------------------------------------------------------------------+
+| Componenti           | L’applicazione è composta da moduli indipendenti e riutilizzabili|
+|                      | che gestiscono il proprio stato separatamente dal DOM.           |
++----------------------+------------------------------------------------------------------+
+| Learn once,          | Favorisce il riutilizzo del codice senza imporre vincoli         |
+| write anywhere       | sull’integrazione con altre tecnologie.                          |
++----------------------+------------------------------------------------------------------+
+| JSX                  | Sintassi simile a HTML che viene compilata in JavaScript         |
+|                      | standard.                                                        |
++----------------------+------------------------------------------------------------------+
+| Virtual DOM          | Copia leggera del DOM reale che migliora le prestazioni          |
+|                      | aggiornando solo le parti necessarie.                            |
++----------------------+------------------------------------------------------------------+
+| Rendering            | Definisce quali elementi devono essere visualizzati nel browser. |
++----------------------+------------------------------------------------------------------+
+| Stato (state)        | Dati dinamici dell’applicazione che cambiano nel tempo           |
+|                      | mantenendo stabile la struttura della UI.                        |
++----------------------+------------------------------------------------------------------+
+| Efficienza           | Aggiornamenti rapidi ed efficienti del DOM reale                 |
+|                      | tramite le API di React.                                         |
++----------------------+------------------------------------------------------------------+
 
-##################
-#                #
-#  ARRAY IN JSX  #
-#                #
-##################
+########################
+#                      #
+#  DIFFERENZA JQUERY   #
+#                      #
+########################
 
-In React è molto comune lavorare con array di dati, specialmente quando si devono visualizzare liste.
-Non è possibile renderizzare direttamente un oggetto: è necessario accedere alle sue proprietà o trasformare l’array in elementi JSX.
+A differenza di jQuery, React non richiede l’uso diretto di ID, classi o la manipolazione manuale del DOM. 
+Lo sviluppatore si limita a definire componenti e dati, mentre React si occupa automaticamente di aggiornare il DOM in base allo stato e alle proprietà dei componenti, garantendo prestazioni ottimali.
 
-Esempio:
+#########################
+#                       #
+#  DIFFERENZA ANGULAR   #
+#                       #
+#########################
 
-const nomi = ['Anna', 'Luca', 'Sara'];
-
-{nomi.map(nome => (
-  <p key={nome}>{nome}</p>
-))}
-
-#########
-#       #
-#  MAP  #
-#       #
-#########
-
-Il metodo `map()` consente di ciclare un array e restituire un nuovo array di elementi JSX.
-Ogni elemento renderizzato dinamicamente deve avere una **key univoca**, necessaria a React per ottimizzare gli aggiornamenti del DOM.
-
-Esempio:
-
-persone.map(persona => (
-  <div key={persona.id}>{persona.nome}</div>
-))
-
-############
-#          #
-#  EVENTI  #
-#          #
-############
-
-Gli eventi in React permettono di gestire le interazioni dell’utente, come click, input e submit.
-Gli handler di evento ricevono funzioni, non stringhe, e seguono la convenzione camelCase.
-
-Esempio:
-
-function Bottone() {
-  const handleClick = () => {
-    console.log('Click effettuato');
-  };
-
-  return <button onClick={handleClick}>Clicca</button>;
-}
+AngularJS è una soluzione più completa, ma più complessa da apprendere. React è più focalizzato e accessibile, permettendo di integrare librerie esterne (es. jQuery) per funzionalità non legate direttamente all’interfaccia.
+Una critica a React riguarda la combinazione di logica e presentazione, riducendo la separazione delle responsabilità. 
+React giustifica questo con il principio di “Separation of Concerns”, isolando codice e stato dei componenti per renderli autonomi e riutilizzabili, invece di separare rigidamente logica e presentazione.
 
 #######################
 #                     #
-#  CALLBACK FUNCTION  #
+#  REACT E REACTDOM   #
 #                     #
 #######################
 
-Le callback function permettono la comunicazione dal componente figlio al componente padre.
-Il padre passa una funzione al figlio tramite props, e il figlio la richiama passando eventuali dati.
+- **React** è una libreria JavaScript sviluppata da Facebook per costruire interfacce utente.
+- Basata sulla creazione di **componenti riutilizzabili**, che gestiscono il proprio stato e si combinano per formare applicazioni complesse.
+- Focalizzata principalmente sulla **vista dell’applicazione**, permettendo di definire come l’app deve apparire in base ai cambiamenti dei dati.
+- Può essere importata in qualsiasi pagina HTML per generare **layout reattivi**.
 
-Esempio:
 
-function Figlio({ invia }) {
-  return <button onClick={() => invia('Messaggio dal figlio')}>Invia</button>;
-}
+- **ReactDOM** è un pacchetto che fornisce metodi per interagire con il **DOM**.
+- La funzione principale è **ReactDOM.render()**, che monta un componente React sul DOM.
+- Serve come **punto di ingresso** per collegare la logica React all’interfaccia utente definita nel markup HTML.
 
-function Padre() {
-  const ricevi = (msg) => {
-    console.log(msg);
-  };
+Possiamo importare React ed usarlo in qualsiasi pagina html per aiutarci a generare layout reattivi. Creiamo una semplice pagina HTML ed importiamo i file react.js e reactdom.js
 
-  return <Figlio invia={ricevi} />;
-}
+<!-- React -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+
+<!-- ReactDOM -->
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+Nel div andremo a renderizzare i nostri componenti. L’app deve avere un componente principale che sarà root:
+
+Esempio elemento di React:
+
+  <div id="root"></div>
+
+  <script>
+    const rootElement = document.getElementById("root");
+    const root = ReactDOM.createRoot(rootElement);
+    console.log(rootElement);
+  </script>
+
+In React, la prop key serve a identificare in modo univoco gli elementi di un array tra diversi render.
+  
+  - Aiuta React a capire quali elementi sono modificati, aggiunti o rimossi.
+  - Garantisce prestazioni ottimali evitando il rerender completo di liste dinamiche.
+  - Va assegnata a ciascun elemento dell’elenco, ad esempio <li key="php">, <li key="javascript">.
+
+Senza key, React potrebbe non gestire correttamente lo stato e l’ordine degli elementi.
+
+Le keys in React permettono aggiornamenti efficienti delle liste:
+
+  - Se un elemento viene rimosso, React elimina solo quell’elemento dal DOM.
+  - Se un elemento viene aggiunto o spostato, React inserisce o sposta solo l’elemento interessato senza rerenderizzare l’intera lista.
+  - Senza keys, React dovrebbe rerenderizzare tutti gli elementi per garantire la correttezza della UI.
+
+##################
+#                #
+#  BABEL E JSX   #
+#                #
+##################
+
+React rende poco pratico creare elementi direttamente con React.createElement, quindi si usa JSX, un linguaggio che permette di scrivere JavaScript come se fosse HTML. 
+Per interpretare JSX è necessaria la libreria Babel, che interpreta e converte il codice JSX in JavaScript compatibile. 
+In una pagina HTML si importano React, ReactDOM, Babel e il file .jsx contenente il codice JSX.
+
+##########
+#        #
+#  NPM   #
+#        #
+##########
+
+NPM (Node Package Manager) è il gestore di pacchetti ufficiale di Node.js, essenziale per lo sviluppo JavaScript moderno.
+
+Funzioni principali:
+
+  - Installa librerie: scarica e gestisce le dipendenze.
+  - Gestisce versioni: controlla la compatibilità tra pacchetti.
+  - Esegue script: permette di eseguire comandi personalizzati per il progetto.
+  - Pubblica pacchetti: consente di condividere codice con la community.
+
+Componenti principali:
+
+  - Registry NPM: database online con milioni di pacchetti, accessibile su npmjs.com.
+  - CLI (Command Line Interace): Strumento da terminale incluso con Node.js, permette comandi come npm install e npm start.
+  - Package.json: file di configurazione del progetto che elenca dipendenze, script e metadati; la “carta d’identità” del progetto.
+
+##########################
+#                        #
+#  APPROCCIO ASINCRONO   #
+#                        #
+##########################
+
+Node.js permette di accedere alle risorse del sistema operativo in modalità event-driven, evitando il classico modello basato su processi o thread concorrenti dei web server tradizionali.
+
+  - Event-driven: le azioni vengono eseguite quando si verifica un evento, in modo asincrono.
+  - Asincrono: un’azione non blocca l’esecuzione di altre azioni, migliorando efficienza e prestazioni.
+
+Grazie al comportamento asincrono durante le attese di una certa azione il runtime può gestire qualcos’altro che ha a che fare con la logica applicativa.
+
+###################
+#                 #
+#  REGISTRO NPM   #
+#                 #
+###################
+
+NPM è un repository di librerie progettate per Node.js.
+
+Per installare un pacchetto si usa il comando:
+
+  npm install <nome-pacchetto>
+
+Esempi:
+
+npm install socket.io → gestisce connessioni via socket
+
+npm install bootstrap → installa Bootstrap per lo stile e layout
+
+In pratica, npm semplifica l’aggiunta di librerie esterne a un progetto Node.js.
+
+###################
+#                 #
+#  CREARE L'APP   #
+#                 #
+###################
+
+Per creare la prima app è sufficiente digitare il comando npx che non è altro che un esecutore di pacchetti seguito dal pacchetto create-react-app e poi il nome dell’applicazione. Si usa il comando:
+
+  - npx create-react-app prima-app
