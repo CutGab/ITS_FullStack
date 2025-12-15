@@ -1,0 +1,228 @@
+###########
+#         #
+#  REACT  #
+#         #
+###########
+
+React è una libreria JavaScript open‑source utilizzata per la creazione di interfacce utente moderne, dinamiche e altamente interattive. 
+È stata sviluppata inizialmente da Facebook nel 2013 con l’obiettivo di semplificare la gestione delle view nelle applicazioni web complesse.
+
+React permette di costruire applicazioni a componenti, ovvero suddivise in piccole parti indipendenti e riutilizzabili, 
+ciascuna responsabile di una porzione dell’interfaccia grafica. Questo approccio rende il codice più organizzato, manutenibile e scalabile.
+
+Uno dei punti di forza di React è il **Virtual DOM**, una rappresentazione leggera del DOM reale mantenuta in memoria. 
+Quando lo stato dell’applicazione cambia, React aggiorna prima il Virtual DOM, 
+confronta le differenze con la versione precedente (processo di *diffing*) e aggiorna solo le parti del DOM reale che sono effettivamente cambiate. 
+Questo garantisce prestazioni elevate.
+
+React è dichiarativo: lo sviluppatore descrive *come* deve apparire l’interfaccia in base allo stato, 
+e si occupa di aggiornare automaticamente la UI quando i dati cambiano.
+
+Esempio minimale di componente React:
+
+function App() {
+  return <h1>Hello React</h1>;
+}
+
+##############
+#            #
+#  REACTDOM  #
+#            #
+##############
+
+ReactDOM è la libreria che funge da ponte tra React e il DOM del browser. 
+Il suo compito principale è montare l’albero dei componenti React all’interno di un nodo HTML reale.
+
+In pratica, ReactDOM rappresenta il punto di ingresso di un’applicazione React all’interno di una pagina web.
+Con le versioni moderne di React si utilizza `createRoot`, che abilita funzionalità avanzate come il rendering concorrente.
+
+Esempio:
+
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+###########################
+#                         #
+#  COMPONENTI FUNZIONALI  #
+#                         #
+###########################
+
+I componenti funzionali sono funzioni JavaScript che restituiscono JSX. Rappresentano oggi lo standard nello sviluppo React moderno.
+
+Inizialmente erano limitati alla sola renderizzazione, ma con l’introduzione degli **Hooks** (React 16.8) possono gestire:
+
+* stato interno
+* effetti collaterali
+* ciclo di vita del componente
+
+Sono preferiti rispetto ai componenti a classe perché più leggibili, concisi e facili da testare.
+
+Esempio:
+
+function Saluto() {
+  return <p>Ciao mondo</p>;
+}
+
+export default Saluto;
+
+#########
+#       #
+#  JSX  #
+#       #
+#########
+
+JSX (JavaScript XML) è una sintassi che permette di scrivere strutture simili a HTML direttamente all’interno del codice JavaScript. 
+Non è HTML vero e proprio, ma viene trasformato in JavaScript tramite Babel.
+
+All’interno del JSX è possibile inserire **espressioni JavaScript** utilizzando le parentesi graffe `{}`.
+
+Regole fondamentali del JSX:
+
+* È obbligatorio restituire un solo elemento wrapper
+* Si usano attributi camelCase (className, onClick, ecc.)
+* Non sono ammessi statement come if o for direttamente nel JSX
+
+Esempio:
+
+const nome = 'Marco';
+
+<h2>Ciao {nome}</h2>
+
+################
+#              #
+#  COMPONENTE  #
+#              #
+################
+
+Un componente React è un’unità indipendente dell’interfaccia utente. Ogni componente può avere:
+
+* una propria logica
+* un proprio stato
+* delle proprietà in ingresso (props)
+
+I componenti permettono di suddividere l’interfaccia in parti più piccole e gestibili.
+
+Esempio:
+
+function Card() {
+  return (
+    <div>
+      <h3>Titolo</h3>
+      <p>Descrizione</p>
+    </div>
+  );
+}
+
+###########
+#         #
+#  PROPS  #
+#         #
+###########
+
+Le props (properties) sono parametri passati da un componente padre a un componente figlio. 
+Sono **di sola lettura** e non devono essere modificate dal componente che le riceve.
+Servono per rendere i componenti dinamici e riutilizzabili.
+
+Esempio:
+
+function Messaggio(props) {
+  return <p>{props.testo}</p>;
+}
+
+<Messaggio testo="Ciao React" />
+
+####################
+#                  #
+#  PROPS CHILDREN  #
+#                  #
+####################
+
+`props.children` rappresenta tutto il contenuto inserito tra il tag di apertura e quello di chiusura di un componente.
+È utile per creare componenti contenitore riutilizzabili.
+
+Esempio:
+
+function Box({ children }) {
+  return <div className="box">{children}</div>;
+}
+
+<Box>
+  <p>Testo interno</p>
+</Box>
+
+##################
+#                #
+#  ARRAY IN JSX  #
+#                #
+##################
+
+In React è molto comune lavorare con array di dati, specialmente quando si devono visualizzare liste.
+Non è possibile renderizzare direttamente un oggetto: è necessario accedere alle sue proprietà o trasformare l’array in elementi JSX.
+
+Esempio:
+
+const nomi = ['Anna', 'Luca', 'Sara'];
+
+{nomi.map(nome => (
+  <p key={nome}>{nome}</p>
+))}
+
+#########
+#       #
+#  MAP  #
+#       #
+#########
+
+Il metodo `map()` consente di ciclare un array e restituire un nuovo array di elementi JSX.
+Ogni elemento renderizzato dinamicamente deve avere una **key univoca**, necessaria a React per ottimizzare gli aggiornamenti del DOM.
+
+Esempio:
+
+persone.map(persona => (
+  <div key={persona.id}>{persona.nome}</div>
+))
+
+############
+#          #
+#  EVENTI  #
+#          #
+############
+
+Gli eventi in React permettono di gestire le interazioni dell’utente, come click, input e submit.
+Gli handler di evento ricevono funzioni, non stringhe, e seguono la convenzione camelCase.
+
+Esempio:
+
+function Bottone() {
+  const handleClick = () => {
+    console.log('Click effettuato');
+  };
+
+  return <button onClick={handleClick}>Clicca</button>;
+}
+
+#######################
+#                     #
+#  CALLBACK FUNCTION  #
+#                     #
+#######################
+
+Le callback function permettono la comunicazione dal componente figlio al componente padre.
+Il padre passa una funzione al figlio tramite props, e il figlio la richiama passando eventuali dati.
+
+Esempio:
+
+function Figlio({ invia }) {
+  return <button onClick={() => invia('Messaggio dal figlio')}>Invia</button>;
+}
+
+function Padre() {
+  const ricevi = (msg) => {
+    console.log(msg);
+  };
+
+  return <Figlio invia={ricevi} />;
+}

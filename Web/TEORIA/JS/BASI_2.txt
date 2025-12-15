@@ -1,12 +1,14 @@
-############
-#          #
-#  ARRAY   #
-#          #
-############
+###########
+#         #
+#  ARRAY  #
+#         #
+###########
 
-Gli array consentono di associare più valori ad un unico nome di variabile (o identificatore). In genere i valori contenuti in un array hanno una qualche affinità (ad esempio l’elenco dei giorni della settimana). 
-L’uso degli array evita di definire più variabili e semplifica lo svolgimento di operazioni cicliche su tutti i valori. Ad es:
+Gli array consentono di associare **più valori a un unico nome di variabile**, permettendo di gestire insiemi di dati correlati come un’unica entità. 
+In genere, i valori contenuti in un array condividono una stessa natura o uno stesso significato, ad esempio un elenco di giorni, mesi, nomi o numeri.
+L’utilizzo degli array evita la dichiarazione di molte variabili separate e rende molto più semplice eseguire operazioni ripetitive o cicliche sugli elementi.
 
+```
 var giorniDellaSettimana = [
     "lunedì",
     "martedì",
@@ -15,152 +17,148 @@ var giorniDellaSettimana = [
     "venerdì",
     "sabato",
     "domenica"
-    ];
+];
+```
 
-I valori dell’array sono delimitati da parentesi quadre e separati da virgole. Gli array in Javascript sono dinamici: crescono o si riducono in base alla necessità e non è necessario dichiarare una dimensione fissa per l’array al momento della creazione.
+I valori di un array sono racchiusi tra **parentesi quadre** e separati da virgole. Gli array in JavaScript sono **dinamici**, 
+cioè possono crescere o ridursi automaticamente senza dover specificare una dimensione iniziale.
 
-Ogni valore all’interno dell’array è detto elemento ed ogni elemento ha una posizione numerica chiamata indice. Questo vuol dire che se voglio stampare o utilizzare il valore marzo dovrò fare:
+Ogni valore all’interno di un array è chiamato **elemento** e possiede una posizione numerica detta **indice**. Gli indici partono sempre da `0`.
 
-    console.log( mesi[2] );
-    var meseScelto = mesi[2];
+```
+console.log(mesi[2]);
+var meseScelto = mesi[2];
+```
 
-Una volta definito un array possiamo accedere ai singoli elementi facendo riferimento al nome della variabile e all’indice corrispondente all’elemento, ricordandoci che la numerazione degli indici parte da zero. 
-Così, ad esempio, se vogliamo accedere al primo elemento dell’array dei giorni della settimana scriveremo:
+Per accedere a un elemento è sufficiente indicare il nome dell’array seguito dall’indice tra parentesi quadre.
 
-    var primoGiorno = giorniDellaSettimana[0];
+```
+var primoGiorno = giorniDellaSettimana[0];
+```
 
-Gli elementi di un array possono essere di qualsiasi tipo di dato previsto da JavaScript, quindi possiamo avere array con elementi di diverso tipo:
+Gli array possono contenere elementi di **qualsiasi tipo**, anche misti:
 
-    var mioArray = [123, "stringa", true, null];
+```
+var mioArray = [123, "stringa", true, null];
+```
 
-Per sapere quanti elementi sono presenti all’interno di un array è possibile utilizzare l’attributo length dell’oggetto array. Per fare una prova possiamo stampare a video la lunghezza dell’array dell’esempio precedente in questo modo:
+Per conoscere il numero di elementi presenti in un array si utilizza la proprietà `length`:
 
-    console.log(giorniDellaSettimana.length);
+```
+console.log(giorniDellaSettimana.length);
+```
 
-###########################
-#                         #
-#  OPERATORI ARITMETICI   #
-#                         #
-###########################
+##########################
+#                        #
+#  OPERATORI ARITMETICI  #
+#                        #
+##########################
 
-Per quel che riguarda il tipo di dato numerico, abbiamo gli operatori aritmetici, che consentono la combinazione di valori numerici. Si tratta di operatori binari corrispondenti ai classici operatori matematici:
+Gli operatori aritmetici permettono di eseguire operazioni matematiche sui numeri. Sono operatori binari che lavorano su due operandi.
 
-    + addizione
-    -sottrazione
-    / divisione
-    * moltiplicazione
-    % modulo o resto
+```
++  addizione
+-  sottrazione
+*  moltiplicazione
+/  divisione
+%  modulo (resto)
+```
 
-Oltre all’operatore uguale =, esistono altri operatori di assegnamento derivanti dalla combinazione degli operatori aritmetici e dell’ operatore =.
-Essi rappresentano un'abbreviazione di espressioni di assegnamento:
+Esistono anche operatori di assegnamento combinati, che rappresentano una forma abbreviata:
 
-    x += y              x = x + y
-    x -= y              x = x - y
-    x *= y              x = x * y
-    x /= y              x = x / y
-    x %= y              x = x % y
+```
+x += y   // x = x + y
+x -= y   // x = x - y
+x *= y   // x = x * y
+x /= y   // x = x / y
+x %= y   // x = x % y
+```
 
-Gli operatori aritmetici prevedono anche quattro operatori unari:
+JavaScript supporta inoltre operatori **unari**:
 
-    +        Numero Positivo o cast a numero
-    -        Negazione
-    ++       Incremento
-    --       Decremento
+```
++   cast a numero
+-   negazione
+++  incremento
+--  decremento
+```
 
-La negazione consente di ottenere un valore negativo di un numero:
+La posizione degli operatori di incremento e decremento è fondamentale:
 
-    -x è il valore negativo del valore numerico rappresentato dalla variabile x. 
-    
-Gli operatori di incremento e decremento sono applicabili soltanto a variabili e consentono di ottenere un valore rispettivamente aumentato o diminuito di uno. È molto importante la posizione dell’operatore.
-Infatti, se l’operatore si trova a sinistra dell’operando, l’operazione di incremento o decremento viene eseguita prima della valutazione dell’espressione, mentre se si trova a destra l’operazione viene eseguita dopo:
+```
+var x = 3;
+var y = ++x; // x = 4, y = 4
 
-    var x = 3;
-    var y = ++x;
+var x = 3;
+var y = x++; // x = 4, y = 3
+```
 
-La variabile x verrà prima incrementata di uno ed il risultato verrà assegnato alla variabile y. Quindi la situazione finale vedrà x e y con il valore di 4. Nel seguente caso, invece:
+Gli operatori **relazionali** consentono il confronto tra valori:
 
-    var x = 3;
-    var y = x++;
+```
+<   minore
+<=  minore o uguale
+>   maggiore
+>=  maggiore o uguale
+==  uguale (valore)
+!=  diverso (valore)
+=== strettamente uguale (tipo e valore)
+!== strettamente diverso (tipo e valore)
+```
 
-Il valore della variabile x verrà assegnato alla variabile y e soltanto successivamente x verrà incrementata di uno. Come risultato avremo x con il valore di 4 e y con il valore di 3.
+Il risultato di un confronto è sempre un valore booleano.
 
-Gli operatori relazionali sono quegli operatori utilizzati per il confronto tra valori (e stabilire una “relazione d’ordine”):
+```
+4 > 2        // true
+5 != 4 + 1  // false
+```
 
-+---------------------+-------------------------------------------+
-| OPERATORE           | NOME                                      |
-+---------------------+-------------------------------------------+
-| <                   | Minore                                    |
-+---------------------+-------------------------------------------+
-| <=                  | Minore o uguale                           |
-+---------------------+-------------------------------------------+
-| >                   | Maggiore                                  |
-+---------------------+-------------------------------------------+
-| >=                  | Maggiore o uguale                         |
-+---------------------+-------------------------------------------+
-| ==                  | Uguale (valore)                           |
-+---------------------+-------------------------------------------+
-| !=                  | Diverso (valore)                          |
-+---------------------+-------------------------------------------+
-| ===                 | Strettamente uguale (tipo e valore)       |
-+---------------------+-------------------------------------------+
-| !==                 | Strettamente diverso (tipo e valore)      |
-+---------------------+-------------------------------------------+
+Gli operatori **logici** permettono di combinare espressioni booleane:
 
-Le espressioni che utilizzano gli operatori relazionali restituiscono un valore booleano in base all’esito del confronto. Ad esempio:
+```
+&&  AND
+||  OR
+!   NOT
 
-    4 > 2 // true
-    5 != 4 + 1 //false
+5 > 2 && 3 != 4   // true
+true || false    // true
+!true            // false
+```
 
-Gli operatori logici consentono la combinazione di espressioni booleane. JavaScript prevede due operatori binari e un operatore unario:
+#######################################
+#                                     #
+#  CONVERSIONE FRA TIPI DI VARIABILI  #
+#                                     #
+#######################################
 
-+-----------+-----------+
-| OPERATORE | NOME      |
-+-----------+-----------+
-| &&        | AND       |
-+-----------+-----------+
-| ||        | OR        |
-+-----------+-----------+
-| !         | NOT       |
-+-----------+-----------+
+JavaScript consente alle variabili di cambiare tipo dinamicamente. In molte situazioni il motore JavaScript effettua **conversioni implicite** per rendere valide le operazioni.
 
-5 > 2 && 3 != 4 // true
-true || 4 >= 6 // true
-!5 == 5 // false
+```
+var x = "12";
+var y = "13";
+var z = x * y; // 156
+```
 
-########################################
-#                                      #
-#  CONVERSIONE TRA TIPI DI VARIABILI   #
-#                                      #
-########################################
+In questo caso le stringhe vengono convertite automaticamente in numeri. Tuttavia, in altre situazioni il comportamento può essere ambiguo:
 
-Le variabili JavaScript possono contenere valori di qualsiasi tipo e cambiare senza problemi il tipo di dato contenuto. 
-Questa flessibilità libera lo sviluppatore dal dover dichiarare esplicitamente il tipo di dato che può contenere una variabile, scaricando però sull’engine JavaScript il compito di dover prendere delle decisioni in determinate situazioni ed effettuare delle conversioniimplicite:
+```
+var x = "12";
+var y = x + 13; // "1213"
+```
 
-    var x = "12";
-    var y = "13";
-    var z = x * y;
+Conoscere le regole di conversione implicita è fondamentale per evitare bug difficili da individuare.
 
-Il valore che ci aspettiamo nella variabile z è il risultato della moltiplicazione dei valori numerici risultanti dalla conversione delle stringhe contenute in x e y. Ed in effetti questo è il comportamentodi JavaScript. Ma vediamo un altro esempio:
+############
+#          #
+#  PROMPT  #
+#          #
+############
 
-    var x = "12";
-    var y = x + 13;
+La funzione globale `prompt()` permette di mostrare una finestra di dialogo all’utente, chiedendo l’inserimento di un valore.
 
-Che valore avrà la variabile y? Sarà la stringa "1213" o l’intero 25?
+Se l’utente conferma, il valore restituito è una **stringa**; se annulla, il valore restituito è `null`.
 
-    var x;
-    var y = x + 13;
-
-In assenza di indicazioni da parte dello sviluppatore, JavaScript dovrà prendere delle decisioni e convertire l’espressione in un tipo piuttosto che in un altro. Conoscere i criteri in base ai quali JavaScript converte implicitamente le espressioni è fondamentale per evitare bug spesso molto insidiosi. 
-Partiamo dal principio in base al quale in JavaScript ogni tipo di dato primitivo può essere convertito in un altro tipo di dato primitivo: numeri, stringhe, booleani, undefined e null.
-
-#############
-#           #
-#  PROMPT   #
-#           #
-#############
-
-Il metodo prompt() è una funzione «globale» di javascript che consente di far apparire una finestra di dialogo con un campo di testo all'interno del quale l'utente può inserire del contenuto. Opzionalmente in ingresso alla funzione si può passare una stringa che verrà visualizzata prima del campo di testo. 
-Se l'utente clicca su OK il metodo prompt restituisce il valore inserito come una stringa, in caso contrario restituisce null.
-
-    var nome = prompt(‘’inserisci il tuo nome’’);
-    console.log(nome);
+```
+var nome = prompt("inserisci il tuo nome");
+console.log(nome);
+```

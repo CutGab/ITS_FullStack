@@ -1,74 +1,79 @@
-##########
-#        #
-#  DOM   #
-#        #
-##########
+#########
+#       #
+#  DOM  #
+#       #
+#########
 
-Il DOM è una rappresentazione di oggetti degli elementi HTML. Funge da ponte tra il codice e l'interfaccia utente e ha una struttura ad albero con relazioni padre e figlio.
-Puoi utilizzare metodi DOM e un linguaggio di programmazione, come J avaScript, per ascoltare gli eventi utente e manipolare il DOM selezionando, aggiungendo, aggiornando ed eliminando elementi specifici nell'interfaccia utente. 
-La manipolazione del DOM ti consente non solo di indirizzare elementi specifici, ma anche di cambiarne lo stile e il contenuto.
+Il DOM (Document Object Model) è una rappresentazione strutturata del documento HTML sotto forma di oggetti JavaScript. 
+Ogni elemento HTML diventa un nodo del DOM, organizzato in una struttura ad albero con relazioni padre‑figlio.
 
-#################
-#               #
-#  JAVASCRIPT   #
-#               #
-#################
+Il DOM funge da collegamento diretto tra il codice JavaScript e l’interfaccia utente visualizzata nel browser. 
+Attraverso il DOM è possibile intercettare le interazioni dell’utente (click, input, submit, ecc.) e modificare dinamicamente la pagina.
 
-Originariamente, JavaScript è stato creato per essere eseguito nei browser, ma oggi, grazie a tecnologie come Node.js e Deno, è possibile utilizzarlo anche al di fuori di essi. 
-È utile sapere che JavaScript non è limitato ai browser. Con tecnologie aggiuntive come Capacitor o React Native, è possibile sviluppare anche applicazioni mobili. 
+Utilizzando JavaScript è possibile:
 
-Per aggiungere JavaScript a un sito web, ci sono due opzioni principali: inserire il codice direttamente nel file HTML utilizzando il tag <script> o importare file JavaScript esterni. 
-L'approccio inline è sconsigliato per progetti più grandi, poiché può rendere il codice difficile da mantenere. In genere, è meglio mantenere il codice JavaScript in file separati.
+* selezionare elementi HTML
+* modificarne il contenuto
+* cambiarne lo stile
+* aggiungere o rimuovere elementi
 
-######################
-#                    #
-#  IMPORT E EXPORT   #
-#                    #
-######################
+La manipolazione diretta del DOM è potente ma può diventare complessa e poco performante in applicazioni grandi, 
+motivo per cui librerie come React gestiscono il DOM in modo astratto.
 
-1. Esportazione Predefinita: Se un file esporta un solo elemento, è possibile utilizzare `export default`:
+################
+#              #
+#  JAVASCRIPT  #
+#              #
+################
 
-    export default "chiave_secreta";  // util.js
+JavaScript è un linguaggio di programmazione interpretato, dinamico e orientato agli oggetti, nato inizialmente per rendere le pagine web interattive.
 
-E l'importazione diventa:
+Oggi JavaScript non è più limitato ai browser: grazie a tecnologie come "Node.js" e "Deno" può essere eseguito anche lato server. 
+Inoltre, con strumenti come "React Native" o "Capacitor", è possibile sviluppare applicazioni mobile e desktop.
 
-    import miaChiave from './util.js’; // App.js
+Per utilizzare JavaScript in una pagina web esistono due approcci principali:
 
-2. Importazione Multipla: Se un file esporta più elementi, è possibile importarli tutti insieme:
+* inserire il codice direttamente in HTML tramite il tag `<script>`
+* importare file JavaScript esterni
 
-    import * as util from './util.js'; // App.js
+#####################
+#                   #
+#  IMPORT E EXPORT  #
+#                   #
+#####################
 
-3. Alias: È possibile rinominare variabili durante l'importazione usando la parola chiave `as`:
+I moduli JavaScript permettono di suddividere il codice in file riutilizzabili.
 
-    import { API_KEY as chiave } from './util.js’; // App.js
+**Export default** consente di esportare un singolo valore:
 
-Se un file esporta più di un elemento, è possibile esportarli tutti insieme. Ad esempio, nel file `util.js` potremmo avere:
+```
+export default "chiave_secreta";
+```
 
-    // util.js
-    export let API_KEY = "chiave_secreta";
-    export let ANOTHER_VARIABLE = "un_altro_valore";
+Importazione:
 
+```
+import miaChiave from './util.js';
+```
 
-Per importare più elementi esportati da un singolo file, si utilizza la seguente sintassi:
+**Export multipli** permettono di esportare più elementi:
 
-    // App.js
-    import { API_KEY, ANOTHER_VARIABLE } from './util.js';
-    In questo modo, sia `API_KEY` che `ANOTHER_VARIABLE` saranno disponibili in `App.js`
+```
+export let API_KEY = "chiave_secreta";
+export let ANOTHER_VARIABLE = "altro_valore";
+```
 
-È possibile importare più esportazioni in un singolo oggetto. Questo è particolarmente utile quando si ha un gran numero di esportazioni da un modulo e si desidera raggrupparle in un unico oggetto.
+Importazione:
 
-    // util.js
-    export let API_KEY = "chiave_secreta";
-    export let ANOTHER_VARIABLE = "un_altro_valore";
+```
+import { API_KEY, ANOTHER_VARIABLE } from './util.js';
+```
 
-Ora, nel file `App.js`, puoi importare tutte le esportazioni in un oggetto, ad esempio `util`:
+È possibile importare tutto in un unico oggetto:
 
-    // App.js
-    import * as util from './util.js';
-    console.log(util.API_KEY);  // Output: "chiave_secreta"
-    console.log(util.ANOTHER_VARIABLE);  // Output: "un_altro_valore"
-
-In questo esempio, tutte le variabili esportate dal file `util.js` sono raggruppate nell'oggetto `util`. Puoi quindi accedere a ciascuna di esse utilizzando la notazione a punti.
+```
+import * as util from './util.js';
+```
 
 ###############
 #             #
@@ -76,77 +81,22 @@ In questo esempio, tutte le variabili esportate dal file `util.js` sono raggrupp
 #             #
 ###############
 
-In JavaScript, è possibile gestire un'ampia varietà di valori, come stringhe, numeri, booleani e i valori speciali null e undefined. 
-Questi ultimi indicano semplicemente che una determinata variabile non contiene ancora alcun valore.
+Le variabili in JavaScript permettono di memorizzare dati come stringhe, numeri, booleani e valori speciali come `null` e `undefined`.
 
-Un valore in JavaScript può essere creato nel momento in cui è necessario. Ad esempio, se si vuole visualizzare "Hello world" nella console, basta creare la stringa con virgolette doppie o singole. 
-Ma spesso è utile memorizzare i valori in variabili per poterli riutilizzare. Le variabili agiscono come contenitori di dati e possono essere create con la parola chiave let.
+* `let` → variabile riassegnabile con scope di blocco
+* `const` → valore costante non riassegnabile
+* `var` → scope di funzione (sconsigliato)
 
-Per esempio, potrei creare una variabile chiamata userMessage e memorizzare la stringa "Hello world" al suo interno. 
-Poi, ogni volta che voglio utilizzare quel valore, posso semplicemente fare riferimento al nome della variabile.
+Esempio:
 
-Oltre alle variabili, abbiamo anche le costanti, che si creano con la parola chiave const. La differenza fondamentale è che il valore di una costante non può essere modificato una volta assegnato.
+```
+let nome = "Mario";
+nome = "Luigi";
 
-    //Esempio let
+const eta = 30;
+```
 
-    let nome = "Mario";
-    let eta = 30;
-    let isSviluppatore = true;
-    // Riassegnazione di valore
-    nome = "Luigi";
-
-    //Esempio const
-    
-    const piGreco = 3.14159;
-    const giorniNellaSettimana = 7;
-    
-    // Questo genererà un errore perché non è possibile riassegnare una costante
-    piGreco = 3.15;
-
-In JavaScript, `let`, `const` e `var` sono tutti utilizzati per dichiarare variabili, ma presentano alcune differenze significative:
-
-    - let:
-            - Block Scope: Le variabili dichiarate con `let` sono limitate allo scope del blocco in cui sono dichiarate, così come a qualsiasi blocco annidato.
-            - Riassegnazione: È possibile riassegnare nuovi valori a una variabile dichiarata con `let`.
-            - Non Inizializzata: Una variabile dichiarata con `let` può essere dichiarata senza inizializzazione.
-            - Non può essere dichiarata di nuovo: Nel medesimo scope, non è possibile dichiarare di nuovo una variabile con lo stesso nome.
-            
-            let x = 10;
-            if (true) {
-                let x = 20;  // Diverso dall'x esterno
-            }
-
-
-    - const
-            - Block Scope: Come `let`, anche `const` ha uno scope di blocco.
-            - Non Riassegnabile: Una volta assegnato un valore a una variabile `const`, non può essere riassegnato.
-            - Deve essere inizializzata: Una variabile `const` deve essere inizializzata al momento della dichiarazione.
-            - Non può essere dichiarata di nuovo: Come `let`, anche una variabile `const` non può essere dichiarata di nuovo nello stesso scope.
-            
-            const y = 30;
-            // y = 40;  // Errore, non può essere riassegnata
-
-    - var
-            - Function Scope: A differenza di `let` e `const`, `var` è limitato allo scope della funzione in cui è dichiarato, o allo scope globale se dichiarato al di fuori di una funzione.
-            - Riassegnazione: Come `let`, è possibile riassegnare nuovi valori a una variabile dichiarata con `var`.
-            - Inizializzazione: Come `let`, una variabile dichiarata con `var` può essere dichiarata senza inizializzazione.
-            - Può essere dichiarata di nuovo: È possibile dichiarare di nuovo una variabile con lo stesso nome nello stesso scope.
-            
-            var z = 50;
-            if (true) {
-                var z = 100;  // Stesso z, il suo valore viene riassegnato
-            }
-
-L'"hoisting" è un comportamento particolare delle variabili dichiarate con `var` in JavaScript. 
-Quando una variabile viene dichiarata con `var`, la sua dichiarazione viene "sollevata" (o "hoisted") all'inizio del suo scope attuale (che può essere l'intera funzione o, se dichiarata al di fuori di una funzione, l'intero script). 
-Tuttavia, solo la dichiarazione viene sollevata, non l'inizializzazione. Questo significa che è possibile utilizzare una variabile prima della sua dichiarazione nel codice, ma la variabile esisterà con il valore `undefined` fino al punto in cui viene effettivamente inizializzata.
-
-Ecco un esempio per illustrare l'hoisting con `var`:
-    console.log(a);  // Output: undefined
-    var a = 5;
-    console.log(a);  // Output: 5
-
-Questo comportamento può portare a risultati inaspettati e potenzialmente a bug, ed è una delle ragioni per cui l'uso di `let` e `const` è generalmente preferito, poiché non presentano questo comportamento di hoisting.
+Il comportamento di **hoisting** riguarda principalmente `var`, rendendolo fonte di bug. Per questo motivo si preferisce l’uso di `let` e `const`.
 
 ####################
 #                  #
@@ -154,65 +104,15 @@ Questo comportamento può portare a risultati inaspettati e potenzialmente a bug
 #                  #
 ####################
 
-Le Arrow Function sono un'altra sintassi per definire funzioni in JavaScript, introdotte con ES6. Sono particolarmente utili quando si tratta di funzioni anonime, ovvero funzioni che non hanno un nome esplicito. 
+Le Arrow Function sono una sintassi moderna e compatta per definire funzioni. Non possiedono un proprio `this`, ma lo ereditano dal contesto in cui sono definite.
 
-La sintassi della funzione freccia è più concisa rispetto alla sintassi tradizionale. Si inizia con gli argomenti racchiusi tra parentesi, seguiti da una freccia `=>` e infine il corpo della funzione racchiuso tra parentesi graffe.
+```
+const saluta = (nome) => {
+    console.log("Ciao " + nome);
+};
+```
 
-    const saluta = (nomeUtente, messaggio) => {
-        console.log(nomeUtente + ": " + messaggio);
-        };
-
-Le Arrow Function sono spesso utilizzate come funzioni anonime, specialmente quando si passa una funzione come argomento ad un'altra funzione o come callback.
-
-// Utilizzo in un evento onClick in React
-<button onClick={() => saluta("Max", "Ciao")}>Clicca qui</button>
-
-Le Arrow Function sono utili quando:
-    - Si ha bisogno di una funzione anonima.
-    - Si vuole una sintassi più concisa.
-    - Non si ha bisogno di un proprio oggetto `this` all'interno della funzione.
-
-La parola chiave `function` è più adatta quando:
-    - Si ha bisogno di una funzione con un proprio oggetto `this`.
-    - Si ha bisogno di una funzione con un nome per facilitare il debugging.
-    - Si sta definendo un costruttore (le funzioni freccia non possono essere usate come costruttori).
-    
-La differenza principale tra le funzioni definite con la parola chiave `function` e le funzioni freccia riguarda il comportamento della parola chiave `this`.
-
-Nelle funzioni definite con la parola chiave `function`, la parola chiave `this` è dinamica: il suo valore viene determinato dal modo in cui la funzione viene chiamata. 
-Se una funzione viene chiamata come un metodo di un oggetto, `this` si riferisce all'oggetto stesso. 
-Se la funzione viene chiamata in modo indipendente, `this` si riferisce all'oggetto globale (o è `undefined` in modalità strict).
-
-
-    function mostraNome() {
-    console.log(this.nome);
-    }
-
-    const persona = {
-    nome: "Max",
-    mostraNome: mostraNome
-    };
-    
-    persona.mostraNome();  // Output: "Max"
-    const funzioneIsolata = persona.mostraNome;
-    funzioneIsolata();  // Output: `undefined` o errore in modalità strict
-
-Nelle Arrow Function, il valore di `this` è determinato dal contesto in cui la funzione è stata definita, non da come viene chiamata. In altre parole, le funzioni freccia ereditano il valore di `this` dal loro scope circostante al momento della definizione.
-
-    const persona = {
-        nome: "Max",
-        mostraNome: function() {
-            setTimeout(() => {
-                console.log(this.nome);
-            }, 1000);
-            
-        }
-    };
-
-    persona.mostraNome();  // Output: "Max" dopo 1 secondo
-
-In questo esempio, l'Arrow Function all'interno di `setTimeout` eredita il valore di `this` dal metodo `mostraNome`, permettendo di accedere alla proprietà `nome` dell'oggetto `persona`.
-Le funzioni normali hanno un `this` dinamico che dipende da come vengono chiamate.- Le Arrow Function hanno un `this` lessicale che dipende da dove vengono definite. Scegliere tra i due tipi di funzioni dipende dal comportamento desiderato per `this` nel tuo codice.
+Sono ideali come callback e negli eventi React.
 
 #############
 #           #
@@ -220,44 +120,19 @@ Le funzioni normali hanno un `this` dinamico che dipende da come vengono chiamat
 #           #
 #############
 
-Gli oggetti in JavaScript servono per raggruppare più valori sotto un'unica entità. Ad esempio, se ho un nome utente, che potrebbe essere "Rob", e un'età, che potrebbe essere 34, posso raggruppare questi dati in un oggetto "utente".
+Gli oggetti permettono di raggruppare dati correlati sotto un’unica struttura.
 
-    const utente = {
-    nome: Rob',
-    eta: 46
-    };
-
-Questo oggetto può essere stampato nella console per l'ispezione, e posso anche accedere ai suoi singoli campi usando la dot notation, come `utente.nome`.
-
-Oltre a contenere semplici coppie chiave-valore, gli oggetti possono anche avere funzioni, chiamate metodi. Ad esempio:
-
-    const utente = {
-    nome: ‘Rob',
+```
+const utente = {
+    nome: 'Rob',
     eta: 46,
-    saluta: function() {
-        console.log('Ciao!’);
+    saluta() {
         console.log(this.nome);
-        }
-    };
-
-Posso chiamare questo metodo con `utente.saluta()`. All'interno di un metodo, posso usare la parola chiave `this` per accedere ad altre proprietà dell'oggetto.
-
-Un altro modo per creare oggetti è utilizzare le classi. Una classe funge da "progetto" per creare oggetti.
-
-    class Utente {
-        constructor(nome, eta) {
-            this.nome = nome;
-            this.eta = eta;
-        }
-        
-        saluta() {
-            console.log('Ciao! ‘ + this.nome);
-            }
     }
+};
+```
 
-const utenteUno = new Utente('Manuel', 35);
-
-Qui, `utenteUno` è un'istanza della classe `Utente` e ha accesso al metodo `saluta`.
+Gli oggetti possono essere creati anche tramite classi, che fungono da modello.
 
 ###########
 #         #
@@ -265,67 +140,19 @@ Qui, `utenteUno` è un'istanza della classe `Utente` e ha accesso al metodo `sal
 #         #
 ###########
 
-Oltre agli oggetti, un altro elemento fondamentale in JavaScript sono gli array. Anche se tecnicamente sono oggetti, rappresentano una categoria speciale.
-Si creano utilizzando parentesi quadre aperte e chiuse. A differenza degli oggetti, che utilizzano coppie chiave-valore, gli array memorizzano solo valori in un ordine specifico, accessibili tramite il loro indice.
+Gli array rappresentano collezioni ordinate di valori.
 
-Ad esempio, se ho una lista di hobby come sport, cucina e lettura, posso accedere a questi valori utilizzando l'indice, che parte da zero. Gli array sono molto comuni in JavaScript perché spesso è necessario memorizzare liste di valori. 
-Possono contenere qualsiasi tipo di valore, inclusi altri array e oggetti.
+```
+const hobbies = ['sport', 'cucina', 'lettura'];
+```
 
-Gli array offrono vari metodi utili. Ad esempio, il metodo `push` aggiunge un nuovo elemento all'array. Un altro metodo utile è `findIndex`, che trova l'indice di un determinato valore. 
-Questo metodo accetta una funzione come input, che viene eseguita per ogni elemento dell'array.
+Metodi comuni:
 
-Un altro metodo frequentemente utilizzato è `map`, che trasforma ogni elemento dell'array in un altro elemento. Come `findIndex`, anche `map` accetta una funzione come input. 
-Questa funzione viene eseguita per ogni elemento dell'array, e il valore restituito diventa il nuovo elemento dell'array.
+* `push()` → aggiunge elementi
+* `findIndex()` → trova un indice
+* `map()` → trasforma gli elementi
 
-In sintesi, gli array sono strumenti potenti per memorizzare e manipolare liste di valori in JavaScript. Offrono una varietà di metodi utili per la manipolazione e l'accesso ai dati, rendendoli strumenti indispensabili per qualsiasi sviluppatore JavaScript.
-
-//Creazione di un array
-
-    const hobbies = ['sport', 'cucina', 'lettura'];
-
-//Accesso a un elemento dell'array tramite indice
-
-    console.log(hobbies[0]);  // Output: "sport"
-
-//Utilizzo del metodo `push` per aggiungere un elemento
-
-    hobbies.push('lavoro');
-    console.log(hobbies);  // Output: ["sport", "cucina", "lettura", "lavoro"]
-
-//Utilizzo del metodo `findIndex` per trovare l'indice di un elemento
-
-    const index = hobbies.findIndex(item => item === 'sport');
-    console.log(index);  // Output: 0
-
-//Utilizzo del metodo `map` per trasformare gli elementi
-
-    const modifiedHobbies = hobbies.map(item => item + '!');
-    console.log(modifiedHobbies);  // Output: ["sport!", "cucina!", "lettura!", "lavoro!"]
-
-//Utilizzo del metodo `map` per trasformare gli elementi in oggetti
-
-    const objectHobbies = hobbies.map(item => ({ text: item }));
-    console.log(objectHobbies); // Output: [{ text: "sport" }, { text: "cucina" }, { text: "lettura" }, { text: "lavoro" }]
-
-In JavaScript, gli oggetti e gli array sono assegnati per riferimento. Questo significa che quando assegni un oggetto o un array a una nuova variabile, entrambe le variabili puntano allo stesso oggetto o array in memoria. 
-Qualsiasi modifica apportata all'oggetto o all'array attraverso una delle variabili si rifletterà anche sull'altra.
-
-    const persona1 = { nome: 'Mario', eta: 30 };
-    const persona2 = persona1;
-    persona2.nome = 'Luigi';
-
-    console.log(persona1.nome);  // Output: "Luigi"
-    console.log(persona2.nome);  // Output: "Luigi"
-
-In questo esempio, `persona1` e `persona2` puntano allo stesso oggetto. Quando cambiamo il nome attraverso `persona2`, il nome cambia anche per `persona1`.
-
-Se vuoi evitare questo comportamento e creare una copia indipendente dell'oggetto o dell'array, puoi utilizzare tecniche come la "shallow copy" con il metodo `Object.assign()` per gli oggetti o lo spread operator (`...`) per gli array.
-
-Esempio di copia di un oggetto
-    const persona3 = Object.assign({}, persona1);
-
-Esempio di copia di un array
-    const array3 = [...array1];
+Gli array e gli oggetti sono assegnati **per riferimento**.
 
 ######################
 #                    #
@@ -333,78 +160,15 @@ Esempio di copia di un array
 #                    #
 ######################
 
-Immaginiamo di avere un array che contiene dati relativi al nome utente, come il nome e il cognome. Potremmo voler lavorare con entrambi nel nostro codice. 
-Una soluzione semplice sarebbe creare nuove costanti o variabili, come `firstname` e `lastname`, e assegnarvi i valori dall'array utilizzando gli indici appropriati. 
-Tuttavia, questo approccio può essere semplificato utilizzando la destrutturazione.
+La destrutturazione permette di estrarre valori da array e oggetti in modo conciso.
 
-Con la destrutturazione, possiamo creare queste due costanti in un unico passaggio. Basta utilizzare le parentesi quadre a sinistra del segno di uguale. 
-Questa sintassi ci permette di estrarre i valori dall'array e assegnarli a nuove variabili in modo più conciso.
+```
+const [nome, cognome] = ['Rob', 'Del'];
 
-La destrutturazione non è limitata agli array; può essere utilizzata anche con gli oggetti. Supponiamo di avere un oggetto `user` con campi come `name` e `age`.
-Anche in questo caso, potremmo voler estrarre questi valori in costanti o variabili separate. Invece di farlo manualmente, possiamo utilizzare la destrutturazione con parentesi graffe.
+const { name, age } = user;
+```
 
-È importante notare che, mentre con la destrutturazione di array possiamo scegliere i nomi delle variabili, con gli oggetti dobbiamo utilizzare i nomi delle proprietà esistenti. 
-Tuttavia, è possibile assegnare un alias a queste proprietà utilizzando i due punti.
-
-Esempio 1: Destrutturazione di un array
-
-// Array con nome e cognome
-
-    const userData = [‘Rob’, ‘Del'];
-
-// Metodo tradizionale per estrarre i dati
-
-    const firstnameOld = userData[0];
-    const lastnameOld = userData[1];
-
-// Utilizzo della destrutturazione per estrarre i dati
-
-    const [firstname, lastname] = userData;
-    console.log(firstname);  // Output: Rob
-    console.log(lastname);   // Output: Del
-
-Destrutturazione di un oggetto
-
-// Oggetto con nome e età
-
-    const user = {
-        name: ‘Rob',
-        age: 46
-    };
-
-// Metodo tradizionale per estrarre i dati
-
-    const nameOld = user.name;
-    const ageOld = user.age;
-
-// Utilizzo della destrutturazione per estrarre i dati
-
-    const { children } = props;
-    console.log(name);  // Output: Rob
-    console.log(age);   // Output: 46
-
-Destrutturazione con alias
-
-// Utilizzo della destrutturazione con alias
-
-    const { name: userName, age: userAge } = user;
-    console.log(userName);  // Output: Max
-    console.log(userAge);   // Output: 30
-
-La sintassi di destrutturazione spiegata nella lezione precedente può essere utilizzata anche nelle liste di parametri delle funzioni. 
-Ad esempio, se una funzione accetta un parametro che conterrà un oggetto, questo può essere destrutturato per "estrarre" le proprietà dell'oggetto e renderle disponibili come variabili con ambito locale (cioè, variabili disponibili solo all'interno del corpo della funzione).
-
-    function storeOrder(order) {
-        localStorage.setItem('id', order.id);
-        localStorage.setItem('currency', order.currency);
-    }
-
-Invece di accedere alle proprietà dell'ordine tramite la "notazione a punto" all'interno del corpo della funzione `storeOrder`, potresti utilizzare la destrutturazione in questo modo:
-
-    function storeOrder({id, currency}) {
-    localStorage.setItem('id', id);
-    localStorage.setItem('currency', currency);
-    }
+È molto usata nei parametri delle funzioni e in React.
 
 #####################
 #                   #
@@ -412,45 +176,12 @@ Invece di accedere alle proprietà dell'ordine tramite la "notazione a punto" al
 #                   #
 #####################
 
-Supponiamo, ad esempio, di avere un elenco di hobby e di volerlo unire con un altro elenco di hobby. In questo caso, potremmo avere un altro elenco che contiene un solo elemento.
-Per creare un elenco unito, potrei utilizzare l'operatore di spread, rappresentato da tre punti, seguito dal nome dell'array che voglio unire al nuovo array. 
-Ad esempio, se ho un array chiamato "hobby", posso utilizzare i tre punti per estrarre tutti gli elementi di questo array e aggiungerli al nuovo array.
+Lo spread operator (`...`) consente di copiare o unire array e oggetti.
 
-Se utilizzassi la sintassi senza l'operatore di spread, finirei con un array annidato, che potrebbe non essere ciò che voglio. 
-Ma usando l'operatore di spread, i valori vengono estratti dagli array originali e aggiunti come elementi separati nel nuovo array.
-
-È importante notare che l'operatore di spread può essere utilizzato non solo con gli array, ma anche con gli oggetti. Per esempio, se ho un oggetto "utenteEsteso" che contiene una proprietà "isAdmin", e voglio unire le proprietà di un altro oggetto "utente", posso utilizzare l'operatore di spread. 
-Questo estrarrebbe tutte le coppie chiave-valore dall'oggetto "utente" e le aggiungerebbe all'oggetto "utenteEsteso".
-In sintesi, l'operatore di spread è un potente strumento per estrarre elementi da array e proprietà da oggetti, permettendoci di unirli in nuovi array o oggetti.
-
-Utilizzo dell'operatore di spread con array
-
-// Array iniziali
-
-    const hobby1 = ['Nuoto', 'Ciclismo'];
-    const hobby2 = ['Lettura'];
-
-// Unione degli array senza l'operatore di spread
-
-    const unioneSenzaSpread = [hobby1, hobby2];
-    console.log(unioneSenzaSpread); // Output: [['Nuoto', 'Ciclismo'], ['Lettura']]
-
-// Unione degli array con l'operatore di spread
-
-    const unioneConSpread = [...hobby1, ...hobby2];
-    console.log(unioneConSpread); // Output: ['Nuoto', 'Ciclismo', 'Lettura']
-
-Utilizzo dell'operatore di spread con oggetti
-
-// Oggetti iniziali
-
-    const utente = { nome: 'Mario', eta: 30 };
-    const utenteEsteso = { isAdmin: true };
-
-// Unione degli oggetti con l'operatore di spread
-
-    const utenteFinale = { ...utente, ...utenteEsteso };
-    console.log(utenteFinale); // Output: { nome: 'Mario', eta: 30, isAdmin: true }
+```
+const nuovoArray = [...array1, ...array2];
+const nuovoOggetto = { ...obj1, ...obj2 };
+```
 
 #############################
 #                           #
@@ -458,59 +189,15 @@ Utilizzo dell'operatore di spread con oggetti
 #                           #
 #############################
 
-Una delle prime caratteristiche di JavaScript è la capacità di passare funzioni come argomenti ad altre funzioni. Ad esempio, possiamo utilizzare la funzione `setTimeout`, fornita dal browser, per impostare un timer. 
-Questa funzione accetta due parametri: il primo è una funzione, che può essere definita sia con la parola chiave `function` sia come funzione freccia.
+In JavaScript le funzioni possono essere passate come argomenti ad altre funzioni.
 
-È importante capire che stiamo creando una nuova funzione anonima, poiché non ha un nome specifico. Potremmo anche definirla separatamente con un nome, come `handleTimeout`, e poi passarla a `setTimeout`.
-Quando passiamo una funzione come argomento, dobbiamo farlo utilizzando solo il suo nome, senza parentesi.
+```
+setTimeout(() => {
+    console.log('Eseguito dopo 3 secondi');
+}, 3000);
+```
 
-Questo perché vogliamo passare la funzione stessa, non il suo valore di ritorno. `setTimeout` accetta anche un secondo parametro, che è un numero rappresentante il tempo di attesa in millisecondi prima dell'esecuzione della funzione.
-
-Voglio sottolineare che la capacità di passare funzioni come argomenti non è limitata alle funzioni integrate come `setTimeout`. Potete creare le vostre funzioni personalizzate che accettano altre funzioni come argomenti. 
-Ad esempio, una funzione `greeter` potrebbe accettare una funzione `greet` come parametro e poi eseguirla.
-
-Utilizzo di `setTimeout` con una funzione anonima
-
-    setTimeout(function() {
-        console.log("Sono passati 3 secondi!");
-    }, 3000);
-
-
-Utilizzo di `setTimeout` con una funzione predefinita
-
-    function handleTimeout() {
-        console.log("Sono passati 3 secondi!");
-    }
-
-    setTimeout(handleTimeout, 3000);
-
-Utilizzo di `setTimeout` con un Arrow Function
-
-    setTimeout(() => {
-        console.log("Sono passati 3 secondi!");
-        }, 3000);
-
-Un altro aspetto delle funzioni che verrà spesso affrontato è la possibilità di definire funzioni all'interno di altre funzioni.
-Ad esempio, potremmo avere una funzione chiamata `init` che contiene al suo interno un'altra funzione, magari chiamata `greet`, che esegue un `console.log`. All'interno della funzione `init`, è possibile chiamare `greet`. 
-
-Tuttavia, non è possibile chiamare `greet` al di fuori di `init`, in quanto `greet` è definita all'interno di `init` e quindi ha uno scope limitato a quella funzione.
-In altre parole, `greet` è disponibile solo come variabile all'interno dello scope di `init` e non può essere accessibile al di fuori di esso. 
-
-D'altro canto, `init` può essere chiamata liberamente, poiché ha uno scope che copre l'intero file, non essendo annidata in un'altra funzione.
-Quindi, se eseguite questo codice, vedrete un output nel console. Questo perché alla fine viene eseguita la funzione `init`, che a sua volta chiama internamente `greet`.
-
-function init() {
-    console.log("Funzione init eseguita");
-    
-    function greet() {
-        console.log("Ciao dal greet interno!");
-    }
-    
-    greet();
-}
-
-In questo esempio, abbiamo una funzione `init` che contiene una funzione interna `greet`. All'interno di `init`, chiamiamo `greet`, e tutto funziona come previsto. 
-Tuttavia, se proviamo a chiamare `greet` al di fuori di `init`, otterremo un errore, perché `greet` è definita solo all'interno dello scope di `init`.
+Questo concetto è alla base delle callback e della programmazione asincrona.
 
 #############
 #           #
@@ -518,70 +205,17 @@ Tuttavia, se proviamo a chiamare `greet` al di fuori di `init`, otterremo un err
 #           #
 #############
 
-Le Promise sono state introdotte per risolvere i problemi delle callback, rendendo il codice più leggibile e gestibile.
+Le Promise rappresentano operazioni asincrone che possono completarsi in futuro.
 
-Una Promise rappresenta un'operazione che si completerà in futuro e può avere tre stati:
+Stati:
 
-    - Pending (in attesa): L'operazione non è ancora completata
-    - Fulfilled (risolta): L'operazione è completata con successo
-    - Rejected (rifiutata): L'operazione è fallita
+* Pending
+* Fulfilled
+* Rejected
 
-const miaPromise = new Promise(function(resolve, reject) {
-    
-    setTimeout(() => {
-        const successo = true;
-        
-        if (successo) {
-            resolve('Operazione completata!'); // Successo
-        } else {
-            reject('Qualcosa è andato storto!'); // Errore
-        }
-    }, 2000);
-
-//Consumare una Promise con .then() e .catch()
-
-    miaPromise
-        .then(function(risultato) {
-            console.log('Successo:', risultato);
-        })
-        
-        .catch(function(errore) {
-            console.log('Errore:', errore);
-        });
-    });
-
-function caricaDatiUtente(id) {
-    return new Promise((resolve, reject) => {
-        
-        // Simuliamo una richiesta al server
-        
-        setTimeout(() => {
-            if (id > 0) {
-                resolve({
-                    id: id,
-                    nome: 'Mario Rossi',
-                    email: 'mario@email.com'
-                });
-                
-                } else {
-                    reject('ID utente non valido');
-                }
-        }, 1500);
-    });
-}
-
-
-// Utilizzo
-
-    caricaDatiUtente(123)
-        .then(utente => {
-            console.log('Dati utente:', utente);
-            console.log('Nome:', utente.nome);
-        })
-        
-        .catch(errore => {
-            console.log('Si è verificato un errore:', errore);
-        });
+  miaPromise
+  .then(risultato => console.log(risultato))
+  .catch(errore => console.log(errore));
 
 #################
 #               #
@@ -589,14 +223,15 @@ function caricaDatiUtente(id) {
 #               #
 #################
 
-Le parole chiave async e await rendono il codice asincrono più facile da leggere e scrivere, facendolo sembrare codice sincrono.
+`async` e `await` permettono di scrivere codice asincrono in modo più leggibile.
 
-    async function miaFunzioneAsincrona() {
-        try {
-            const risultato = await miaPromise;
-            console.log(risultato);
-            
-        } catch (errore) {
-            console.log('Errore:', errore);
-        }
+```
+async function caricaDati() {
+    try {
+        const risultato = await miaPromise;
+        console.log(risultato);
+    } catch (errore) {
+        console.log(errore);
     }
+}
+```
