@@ -1,0 +1,125 @@
+##############################
+#                            #
+#  ISTRUZIONI CONDIZIONALI   #
+#                            #
+##############################
+
+Le istruzioni condizionali sono una categoria di istruzioni che consentono di eseguire blocchi di codice alternativi in base ad una condizione, consentendo ad uno script di prendere, in un certo senso, delle decisioni. 
+Javascript prevede due istruzioni condizionali: 
+
+    - if 
+    - switch.
+
+Possiamo trovare l’istruzione if in tre forme:
+    
+    - if semplice;
+    - if con alternativa (if..else);
+    - if a cascata (if..else if…else).
+
+La forma if pura esegue un blocco di codice solo se una condizione è vera:
+
+    if (condizione) {
+        // istruzioni
+        }
+
+dove condizione è un’espressione booleana e istruzioni rappresenta la sequenza di istruzioni da eseguire nel caso in cui la condizione sia vera.
+
+La seconda forma è if...else. In questa forma viene eseguito un blocco di codice oppure un altro in base al valore della condizione:
+
+    if (condizione) {
+        // istruzioni1
+    } else {
+        //istruzioni2
+        }
+
+Se condizione è vera vengono eseguite le istruzioni del blocco istruzioni1 altrimenti viene eseguito il blocco istruzioni2.
+
+La terza forma di if è if..else if...else o if a cascata, che mette a disposizione più alternative di esecuzione:
+
+    if (condizione1) {
+        istruzioni1
+    } else if (condizione2) {
+        istruzioni2
+        } else {
+            istruzioni3
+            }
+In questo caso, se condizione1 è vera viene eseguito il blocco istruzioni1. Se condizione1 non è soddisfatta viene verificata condizione2 e in base al suo valore verrà eseguito il blocco istruzioni2 o istruzioni3.
+
+##################
+#                #
+#  SWITCH CASE   #
+#                #
+##################
+
+L'istruzione switch può essere una valida forma sostitutiva dell'istruzione if in tutti i casi in cui si deve testare il valore assegnato a una variabile, ed è da preferire quando le condizioni da esaminare sono piuttosto numerose.
+Si fa preferire per la sua particolare sinteticità e la facilità di lettura rispetto a if.
+È piú rapida da eseguire perché a differenza di quanto accade con if, l'interprete non deve esaminare ogni opzione in attesa di trovare, qualora esista, quella corrispondente al caso verificatosi, ma va subito a cercare il valore restituito da un'espressione all'interno dei vari casi di switch.
+
+switch (espressione) {
+    
+    case espressione1:
+    istruzioni1;
+    break;
+    
+    case espressione2:
+    istruzioni2;
+    break;
+    
+    default:
+    istruzioni4;
+    break;
+
+}
+
+Talvolta possiamo decidere di non mettere l’istruzione break in corrispondenza di uno o più case perché vogliamo eseguire uno stesso blocco di codice per un gruppo di valori.
+
+############################
+#                          #
+#  WHILE, DO-WHILE E FOR   #
+#                          #
+############################
+
+Javascript prevede le classiche istruzioni di iterazione come while , do while e for:
+
+    while (condizione) {
+        // istruzioni
+        }
+
+Finché la condizione sarà vera (true) verranno eseguite le istruzioni contenute nel blocco di codice. Requisito fondamentale nell’uso del while è che le istruzioni contenute nel blocco di codice modifichino la condizione, altrimenti si rischia di incorrere in un ciclo infinito.
+
+Una variante del while è il do-while:
+
+    do {
+        // istruzioni
+        } 
+        while (condizione)
+
+La differenza sostanziale rispetto al while classico consiste nel fatto che la condizione viene valutata dopo aver eseguito le istruzioni. Questo garantisce che il blocco di codice verrà eseguito almeno una volta.
+
+Una alternativa è l’istruzione for. Questa istruzione è generalmente intesa come l’esecuzione di un blocco di codice per un numero determinato di volte:
+
+    for (inizializzazione; condizione; modifica) {
+        // istruzioni
+        }
+
+inizializzazione: Javascript esegue l’istruzione specificata in inizializzazione prima di avviare le iterazioni (il ciclo).
+
+condizione: è l’espressione booleana che viene valutata prima di eseguire ciascuna iterazione. Se è falsa non viene eseguito il blocco di istruzioni associato al for. Se invece la condizione è vera viene eseguito il blocco di codice.
+
+modifica: al termine di ciascuna iterazione viene eseguita l’istruzione modifica (la più classica è l’incremento di un contatore). Il ciclo poi ricomincia con la valutazione della condizione.
+
+Per lavorare più comodamente con gli array Javascript prevede due varianti del for: il for-in e il for-of:
+
+    var quantita = [12, 24, 42, 11, 29];
+    var totale = 0;
+    
+    for (var indice in quantita) {
+        totale = totale + quantita[indice];
+    }
+
+    var quantita = [12, 24, 42, 11, 29];
+    var totale = 0;
+    
+    for (var valore of quantita) {
+        totale = totale +  valore;
+    }

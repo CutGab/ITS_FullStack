@@ -1,0 +1,97 @@
+###############
+#             #
+#  FUNZIONI   #
+#             #
+###############
+
+E’ un blocco di codice nel quale sono contenute delle istruzioni. La sintassi è molto semplice :
+
+    <script>
+
+    function nomeFunzione(){
+        …istruzioni …
+        }
+
+    </script>
+
+    nomeFunzione(parametri);
+    nomeFunzione() //se non ha parametri;
+
+Una funzione può ricevere dei parametri e ritornare un valore (se non torna nulla torna undefined) e aiutano a non ripetere blocchi di codice ma organizzarli in modo funzionale.
+
+################
+#              #
+#  ARGUMENTS   #
+#              #
+################
+
+L’oggetto arguments è una variabile locale disponibile in tutte le funzioni. È possibile fare riferimento agli argomenti di una funzione all’interno della funzione utilizzando l’oggetto arguments.
+Questo oggetto contiene una voce per ogni argomento passato a una funzione. Arguments è un oggetto (array), ed ha una proprietà length. Possiamo accedere ai valori individuali usando la notazione di indicizzazione dell’array arguments[i].
+
+    function myFunction(a,b,c) {
+        console.log(arguments[0]);
+        console.log(arguments[1]);
+        console.log(arguments[2]);
+    }
+
+myFunction(1,2,3);
+
+#################################
+#                               #
+#  VARIABILI LOCALI E GLOBALI   #
+#                               #
+#################################
+
+Possiamo dichiarare le variabili all’interno del corpo di una funzione. Queste variabili sono accessibili soltanto all’interno della funzione e non vengono viste fuori di essa o, in termini tecnici, hanno uno scope locale.
+Lo scope o ambito di visibilità di una variabile è la parte di uno script all’interno del quale si può fare riferimento ad essa. Le variabili dichiarate all’interno di una funzione sono dette locali alla funzione dal momento che sono accessibili soltanto all’interno del suo corpo.
+Le variabili dichiarate fuori da qualsiasi funzione sono dette globali e sono accessibili da qualsiasi punto dello script, anche all’interno di funzioni.
+
+#####################
+#                   #
+#  ARROW FUNCTION   #
+#                   #
+#####################
+
+Le arrow function (o funzioni freccia) sono una sintassi introdotta in ES6 per definire funzioni in modo più compatto rispetto alle funzioni tradizionali:
+
+Funzione tradizionale:
+
+    function somma(a, b) {
+        return a + b;
+    }
+
+Arrow function:
+
+    const somma = (a, b) => {
+        return a + b;
+    };
+
+###########################
+#                         #
+#  PARAMETRI DI DEFAULT   #
+#                         #
+###########################
+
+Prima di ES6 non era possibile dare dei valori di default ai parametri di una funzione, ora invece si usa:
+
+    function prova(a = 0, b = 0) {
+        console.log(a);
+        console.log(b);
+    }
+
+    prima:
+
+    function prova(a,b) {
+        a = a || 0;
+        b = b || 0;
+    }
+
+    
+
+
+
+
+    
+
+
+
