@@ -47,7 +47,7 @@ public class Impiegato {
 
     @Override
     public String toString() {
-        return "Impiegato [nome=" + nome + ", salario=" + salario + ", dataAssunzione=" + dataAssunzione + "]";
+        return "Nome dipendente: nome =" + nome + ", salario=" + salario + ", dataAssunzione=" + dataAssunzione;
     }
     
 }

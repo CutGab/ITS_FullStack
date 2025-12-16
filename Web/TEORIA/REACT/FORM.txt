@@ -1,0 +1,111 @@
+###############
+#             #
+#  ONSUBMIT   #
+#             #
+###############
+
+L’evento onSubmit intercetta il momento in cui un modulo (form) viene inviato e permette di gestire l’invio 
+prima che avvenga l’azione predefinita del browser (es. ricaricare la pagina).
+
+In pratica, ti consente di eseguire codice quando viene “sottomesso” un insieme di 
+dati, come validazioni, chiamate a API o aggiornamento dello stato, senza dover necessariamente usare un <form> HTML classico.
+
+Esempio minimo con React:
+
+function App() {
+  const handleSubmit = (event) => {
+    event.preventDefault(); // evita il reload della pagina
+    console.log("Dati inviati!");
+  };
+
+  return (
+    <div>
+      <button onClick={handleSubmit}>Invia</button>
+    </div>
+  );
+}
+
+###########################
+#                         #
+#  EVENT.PREVENTDEFAULT   #
+#                         #
+###########################
+
+Quando si usa un form in React:
+
+1. onSubmit intercetta l’invio del form.
+ 
+    - Se non facciamo nulla, il browser esegue il submit di default → la pagina si ricarica.
+
+2. Per prevenire il comportamento di default, passiamo l’evento alla funzione e chiamiamo preventDefault():
+
+    function handleSubmit(e) {
+    e.preventDefault(); // blocca il submit automatico
+    console.log("Form gestito manualmente!");
+    }
+
+    <form onSubmit={handleSubmit}>
+    <button type="submit">Invia</button>
+    </form>
+    
+    - Ora React esegue la funzione ma non ricarica la pagina. 
+    - Questo permette di gestire manualmente il submit.
+
+3. Possiamo ottenere lo stesso risultato usando onClick sul bottone invece di onSubmit sul form.
+
+Gestione input controllati con useState:
+
+Colleghiamo il valore dell’input a uno stato:
+
+        const [nome, setNome] = useState("");
+
+        <input 
+        value={nome} 
+        onChange={e => setNome(e.target.value)} 
+        />
+
+- Senza onChange, l’input diventa bloccato perché React controlla il valore tramite lo stato.
+- Con onChange, aggiorniamo lo stato ad ogni digitazione → input funzionante e controllabile.
+
+Possiamo anche creare una funzione handler separata:
+
+function handleChange(e) {
+  setNome(e.target.value);
+}
+
+<input value={nome} onChange={handleChange} />
+
+#############
+#           #
+#  USEREF   #
+#           #
+#############
+
+useRef permette di creare un riferimento diretto a un elemento DOM, così da poterlo leggere o manipolare senza passare dallo stato. 
+È utile, ad esempio, per fare scroll automatici, gestire focus o misurare elementi.
+
+Esempio:
+
+    import { useRef } from "react";
+
+    function App() {
+    const ultimoParagrafo = useRef();
+
+    const scrollAllaFine = () => {
+        ultimoParagrafo.current.scrollIntoView({ behavior: "smooth" });
+    };
+
+    return (
+        <div>
+        <p>Paragrafo 1</p>
+        <p>Paragrafo 2</p>
+        <p ref={ultimoParagrafo}>Ultimo paragrafo</p>
+        <button onClick={scrollAllaFine}>Vai all'ultimo paragrafo</button>
+        </div>
+    );
+    }
+
+- useRef() crea il riferimento ultimoParagrafo.
+- ref={ultimoParagrafo} collega il riferimento al paragrafo.
+- ultimoParagrafo.current permette di accedere direttamente all’elemento DOM.
+- scrollIntoView() esegue lo scroll fino all’elemento.

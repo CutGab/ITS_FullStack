@@ -1,0 +1,88 @@
+##########################
+#                        #
+#  RENDER CONDIZIONALE   #
+#                        #
+##########################
+
+Il rendering condizionale in React consente di mostrare contenuti diversi in base a una condizione, solitamente legata allo stato del componente.
+In pratica, React decide cosa renderizzare in base al valore di una variabile (ad esempio creata con useState).
+
+Questo approccio è molto utile quando l’interfaccia deve reagire a situazioni diverse, come:
+
+    - dati in caricamento
+    - presenza di errori
+    - dati caricati correttamente
+
+Nel caso del data fetching, il rendering condizionale permette di:
+
+    - mostrare un componente di loading mentre i dati vengono recuperati
+    - mostrare un messaggio di errore se la richiesta fallisce
+    - mostrare i dati finali solo quando tutto è andato a buon fine
+
+Per gestire questi casi si usano più stati (ad esempio loading, error) e, in base ai loro valori, si decide quale componente restituire nel return.
+Gli stati di loading ed error possono anche essere separati in componenti dedicati, rendendo il codice più chiaro e manutenibile.
+In sintesi, il rendering condizionale permette a React di adattare dinamicamente l’interfaccia allo stato dell’applicazione.
+
+Es:
+
+function App() {
+  const [loading, setLoading] = useState(true);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  return <p>Dati caricati</p>;
+}
+
+#########################
+#                       #
+#  OPERATORE TERNARIO   #
+#                       #
+#########################
+
+In React non possiamo usare direttamente if, for, while dentro il JSX, perché il rendering accetta solo espressioni, non istruzioni.
+Per questo motivo, per cambiare la visualizzazione in base a una variabile si usa l’operatore ternario, che restituisce sempre un valore.
+
+Sintassi base:
+
+    condizione ? valoreSeVero : valoreSeFalso
+
+Con confronto:
+
+    {nome === "Mario" ? <p>Ciao Mario</p> : <p>Utente anonimo</p>}
+
+Con booleano:
+
+{isLogged ? <Dashboard /> : <Login />}
+
+In questo modo React decide cosa renderizzare in base al valore della variabile.
+
+###############################
+#                             #
+#  SHORT CIRCUIT EVALUATION   #
+#                             #
+###############################
+
+Una short-circuit evaluation è un’espressione logica che restituisce un valore senza valutare tutto, fermandosi appena il risultato è determinabile.
+In JavaScript (e quindi in React) si usano principalmente || (OR) e && (AND).
+
+OR (||)
+
+Restituisce il primo valore “vero”, altrimenti il secondo:
+    
+    const esempio = parola || "paperino";
+
+Se parola ha un valore → esempio = parola
+Se parola è vuota/false → esempio = "paperino"
+
+AND (&&)
+
+Restituisce il secondo valore solo se il primo è vero:
+
+const esempio = parola && "paperino";
+
+Se parola ha un valore → esempio = "paperino"
+Se parola è false → esempio = parola
+
+In React queste espressioni sono molto usate per il rendering condizionale in modo semplice e compatto.

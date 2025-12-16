@@ -33,6 +33,20 @@ public class Main {
         azienda.incrementaSalarioxTutti(50);
 
         System.out.println(azienda);
+
+        Manager m1 = new Manager("man1", 30000, new Date(),"Anna");
+        Manager m2 = new Manager("man2", 30000, new Date(115,1,1),"Anna");
+
+        System.out.println(m1);
+        System.out.println(m2);
+
+        m1.incrementaSalario(100);
+        m2.incrementaSalario(100);
+
+        System.out.println("dopo l'aumento...");
+        System.out.println(m1);
+        System.out.println(m2);
+
     }
     
 }

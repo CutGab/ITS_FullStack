@@ -1,0 +1,117 @@
+1. Cosa significa l’acronimo HTML?
+------------------------------------------------
+
+    HTML è l'acronimo di HyperText Markup Language.
+
+----------------------------------------------------
+
+2. Perché HTML non è considerato un linguaggio di programmazione?
+----------------------------------------------------------------------
+
+    HTML non è considerato linguaggio di programmazione perché serve a comporre lo scheletro di una pagina web, e quindi privo di logica o costrutti di programmazione.
+
+----------------------------------------------------------------------
+
+
+3. Qual è la struttura base di un tag HTML?
+----------------------------------------------------------------------
+
+<Tag> Contenuto </Tag> oppure <Tag Contenuto />
+
+----------------------------------------------------------------------
+
+4. Quale estensione deve avere un file per essere riconosciuto come pagina HTML?
+----------------------------------------------------------------------
+
+nomefile.html
+
+----------------------------------------------------------------------
+
+5. Qual è il ruolo del tag <!DOCTYPE html>?
+----------------------------------------------------------------------
+
+Serve a specificare al browser che tipo di documento sta ricevendo
+
+----------------------------------------------------------------------
+
+6. Quali sono i tag principali che compongono la struttura di una pagina HTML?
+---------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title> </title>
+    </head>
+    <body>
+
+    </body>
+</html>
+
+---------------------------------------------------------------------------------------
+
+7. Qual è la differenza tra tag di tipo block e tag di tipo inline?
+---------------------------------------------------------------------------------------
+
+La differenza tra i due tag sta nel fatto che i tag di tipo block vanno a capo in corrispondenza della chiusura del tag, come per esempio <p>, mentre  i tag inline, come per esempio <span>,
+fanno rimanere gli elementi l'uno accanto all'altro, mandando a capo l'elemento seguente.
+
+---------------------------------------------------------------------------------------
+
+8. A cosa serve il tag <h1>?
+---------------------------------------------------------------------------------------
+
+Il tag <h1> serve per inserire intestazioni, con 1 essendo il più grande.
+
+---------------------------------------------------------------------------------------
+
+9. Quali sono i possibili valori per i tag di intestazione (heading)?
+---------------------------------------------------------------------------------------
+
+I valori del tag di intestazione heading vanno da 1 a 6.
+
+---------------------------------------------------------------------------------------
+
+10. Perché è consigliato utilizzare i tag di intestazione per i motori di ricerca?
+---------------------------------------------------------------------------------------
+
+Viene consigliato perché è più semplice per il browser da interpretare
+
+Cosa fa il tag <br />?
+
+Qual è la differenza tra il tag <p> e il tag <div>?
+
+Quale tag si utilizza per creare un collegamento ipertestuale?
+
+Come si inserisce un’immagine in una pagina HTML?
+
+A cosa serve il tag <span>?
+
+Cosa sono gli attributi dei tag HTML e come si scrivono?
+
+Quale attributo si usa per allineare il testo a destra in un paragrafo?
+
+Quali sono i tre tipi di elenchi disponibili in HTML?
+
+Quale tag si usa per creare una lista non ordinata?
+
+Come si crea una lista ordinata?
+
+Quali tag si usano per creare una tabella HTML?
+
+Qual è la differenza tra <td> e <th>?
+
+A cosa serve il tag <form>?
+
+Quali sono i principali attributi del tag <form>?
+
+Quali tipi di input si possono creare con il tag <input>?
+
+A cosa serve il tag <select>?
+
+Qual è lo scopo del tag <textarea>?
+
+Perché è importante l’attributo name nei campi di un form?
+
+A cosa serve l’attributo required in un input?
+
+Qual è la funzione del tag <label> in un form?
