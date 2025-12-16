@@ -1,0 +1,141 @@
+############
+#          #
+#  HOOKS   #
+#          #
+############
+
+Un Hook è una funzione fornita da React che permette ai componenti funzionali di accedere a funzionalità avanzate come lo stato interno e la gestione degli aggiornamenti del componente.
+Prima degli Hooks queste funzionalità erano disponibili solo nei componenti a classi. Gli Hooks rendono i componenti funzionali più potenti, semplici e riutilizzabili.
+
+###############
+#             #
+#  USESTATE   #
+#             #
+###############
+
+Quando si crea un componente funzionale, non abbiamo a disposizione costruttori o metodi per gestire lo stato interno. Per risolvere questo problema si usano gli Hooks, in particolare useState.
+
+useState accetta un valore iniziale per una variabile di stato. Restituisce un array con due elementi:
+
+    - La variabile di stato.
+    
+    - Una funzione per aggiornarla.
+
+Ogni volta che lo stato cambia tramite questa funzione, il componente si ri-renderizza automaticamente mostrando i nuovi valori. Per usarlo, è necessario importarlo da React:
+
+    import { useState } from "react";
+
+Esempio:
+
+    import { useState } from "react";
+    
+    const Esempio = () => {
+        const [valore, setValore] = useState("Ciao");
+        
+        return (
+            <div>
+            <p>{valore}</p>
+            <button onClick={() => setValore("Arrivederci")}>Cambia</button>
+            </div>
+        );
+    };
+
+Valore è la variabile di stato inizializzata con "Ciao". setValore è la funzione che aggiorna lo stato e forza il re-render del componente.
+
+#############
+#           #
+#  REGOLE   #
+#           #
+#############
+
+La prima regola da ricordare è che tutti gli Hook DEVONO iniziare con use, anche quelli che creeremo noi.
+
+    - Il componente in cui usiamo gli Hook DEVE avere il nome con la prima lettera maiuscola.
+    - Gli Hook DEVONO essere chiamati all’interno del nostro componente.
+
+########################
+#                      #
+#  USESTATE CON ARRAY  #
+#                      #
+########################
+
+Esempio:
+
+Inseriamo un array di oggetti con due proprietà: id e nome.
+
+// data.js
+export const anagrafiche = [
+  { id: 1, nome: "Alice" },
+  { id: 2, nome: "Bob" },
+  { id: 3, nome: "Carlo" }
+];
+
+Poi, nel componente React importiamo sia i dati sia useState:
+
+import { useState } from "react";
+import { anagrafiche } from "./data";
+
+Possiamo passare l’array alla funzione useState per creare lo stato iniziale:
+
+const [persone, setPersone] = useState(anagrafiche);
+
+Persone conterrà l’array iniziale. setPersone permette di aggiornare lo stato e ri-renderizzare il componente. Anche con un array, il comportamento di useState resta lo stesso: restituisce lo stato iniziale e una funzione per aggiornarlo.
+
+######################
+#                    #
+#  DESTRUTTURAZIONE  #
+#                    #
+######################
+
+Quando una funzione restituisce più valori o oggetti, possiamo destrutturarli per comodità invece di accedere manualmente a ciascun elemento dell’array. 
+Nel caso di un array di oggetti, possiamo stamparlo a video usando il metodo .map(), aggiungendo anche un bottone accanto a ciascun elemento per permettere operazioni su di esso, come l’eliminazione.
+Per eliminare un elemento dall’array al click del bottone, possiamo creare una funzione che utilizza .filter() per selezionare solo gli elementi che non soddisfano una certa condizione (ad esempio un id specifico).
+
+import { useState } from "react";
+
+const App = () => {
+  const [persone, setPersone] = useState([
+    { id: 1, nome: "Alice" },
+    { id: 2, nome: "Bob" },
+  ]);
+
+  const eliminaPersona = (id) => {
+    setPersone(persone.filter(p => p.id !== id));
+  };
+
+  return (
+    <div>
+      {persone.map(({ id, nome }) => (
+        <div key={id}>
+          {nome} <button onClick={() => eliminaPersona(id)}>Elimina</button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default App;
+
+All’interno di .map() destrutturiamo subito l’oggetto { id, nome }, così non dobbiamo scrivere p.id e p.nome.
+
+##########################
+#                        #
+#  USESTATE CON OGGETTI  #
+#                        #
+##########################
+
+Quando utilizziamo useState con un oggetto, bisogna fare attenzione a come aggiorniamo i singoli campi.
+Supponiamo di avere un oggetto persona con proprietà nome, cognome ed età. Se vogliamo aggiornare solo una proprietà, il resto dell’oggetto andrà perso se non lo gestiamo correttamente:
+
+const [persona, setPersona] = useState({ nome: "Mario", cognome: "Rossi", eta: 30 });
+
+// Aggiornamento solo del nome
+setPersona({ nome: "Luigi" }); 
+// Risultato: persona = { nome: "Luigi" } → cognome ed età spariti
+
+Per mantenere le altre proprietà intatte, si usa lo Spread Operator:
+
+setPersona({ ...persona, nome: "Luigi" });
+// Risultato: persona = { nome: "Luigi", cognome: "Rossi", eta: 30 }
+
+Lo Spread Operator (...) copia tutte le proprietà dell’oggetto originale nell’oggetto nuovo, e poi sovrascrive solo quelle che specifichiamo.
