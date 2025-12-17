@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="tasks">
+
+        <form id="form_task">
+            <input type="text" id="task" placeholder="Inserisci Task">
+            <button id="submit_form"> Invia </button>
+        </form>
+
+            <ul id="lista_task">
+
+            </ul>
+
+        </div>
+
+<script>
+    const URL_BASE = "https://todoapp-76f34-default-rtdb.europe-west1.firebasedatabase.app/tasks";
+
+    document.getElementById("form_task").addEventListener("submit", InserisciTask);
+
+    function InserisciTask(event) {
+        event.preventDefault();
+
+        const taskInput = document.getElementById("task");
+        const task = taskInput.value.trim();
+
+        if (task === "") {
+            alert("Non puoi inserire una task vuota!");
+            return;
+        }
+
+        document.getElementById("lista_task").innerHTML += `<li>${task}</li>`;
+
+        const newtask = {
+            text: task,
+            done: false
+        };
+
+        fetch(URL_BASE + ".json", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newtask)
+        })
+        .then(resp => resp.json())
+        .then(data => console.log("Salvato:", data))
+        .catch(err => console.error(err));
+
+        taskInput.value = "";
+    }
+
+    async function leggiTasks() {
+        const response = await fetch(URL_BASE + ".json");
+        const dati = await response.json();
+
+        if (!dati) return;
+
+        const tasks = Object.keys(dati).map(id => ({
+            id: id,
+            ...dati[id]
+        }));
+
+        console.log(tasks);
+        const ul = document.getElementById("lista_task");
+        ul.innerHTML = "";
+        tasks.forEach(t => {
+            ul.innerHTML += `<li>${t.text}</li>`;
+        });
+    }
+
+    leggiTasks();
+</script>
+
+        </body>
+</html>

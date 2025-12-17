@@ -4,6 +4,7 @@ import { Divider } from '@rneui/themed';
 import { fadeInFromBelow } from './utils';
 import TaskInput from './components/TaskInput';
 import TaskItem from './components/TaskItem';
+import { fetchTasks } from "./Services/service";
 
 export default function App() {
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -22,8 +23,17 @@ export default function App() {
   const addTaskHandler = (taskText) => {
     const newTask = { id: Date.now().toString(), task: taskText };
     setTaskList((current) => [...current, newTask]);
-    setModalVisible(false); // close modal after adding
+    setModalVisible(false);
   };
+
+  async function loadTasks() {
+    const tasks = await fetchTasks();
+    setTaskList(tasks)
+  }
+
+  useEffect(() => {
+    loadTasks()
+  }, [])
 
   const deleteTask = (id) => {
     setTaskList(current => current.filter(t => t.id !== id));
