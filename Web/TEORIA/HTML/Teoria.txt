@@ -80,7 +80,7 @@ Gli attributi HTML sono i parametri dei tag html. Sono utilizzati per indicare d
 
 Gli attributi permettono effetti diversi, ad esempio l'attributo bgcolor consente di cambiare il colore del testo, l'attributo href assegna un indirizzo URL in un collegamento ipertestuale, ecc.
 
-(<p aling="right"> testo da allieanre a destra </p>)
+(<p align="right"> testo da allieanre a destra </p>)
 
 #################################
 #                               #
@@ -199,7 +199,7 @@ Una volta definito un Form è necessario popolarlo con dei tag al suo interno:
 #          #
 ############
 
-Ogni elemento dei form HTML ha una caratteristica in comune, ovvero la specifica del name che dev'essere diverso da elemento a elemento e uguale solo per gruppi di elementi (come cradiobuttons o checkbox).
+Ogni elemento dei form HTML ha una caratteristica in comune, ovvero la specifica del name che dev'essere diverso da elemento a elemento e uguale solo per gruppi di elementi (come radiobuttons o checkbox).
 
 I tag input prevedono (oltre a "name") due attributi principali:
 
@@ -220,7 +220,7 @@ Il tag "Textarea" prevede, oltre all'attributo "name", gli attributi "rows" e "c
 #          #
 ############
 
-Il tag "Label" definisce un testo da associare ad un campo di un form HTML, si usa in particolare con i campi di tipo "Radio" e "Checkbox". Consente di selezionare un'opzione anche cliccando sul suo testo descrittivo, non solo sul pusale di opzione vero e proprio.
+Il tag "Label" definisce un testo da associare ad un campo di un form HTML, si usa in particolare con i campi di tipo "Radio" e "Checkbox". Consente di selezionare un'opzione anche cliccando sul suo testo descrittivo, non solo sul pulsante di opzione vero e proprio.
 
 <input type="radio" name="sesso" id="U" value="U" />
 <label for="U">Uomo</label>

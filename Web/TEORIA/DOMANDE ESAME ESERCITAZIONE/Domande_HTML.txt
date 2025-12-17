@@ -1,0 +1,236 @@
+============================================================
+1. Cosa significa l’acronimo HTML?
+------------------------------------------------------------
+HTML è l'acronimo di HyperText Markup Language.
+============================================================
+
+
+============================================================
+2. Perché HTML non è considerato un linguaggio di programmazione?
+------------------------------------------------------------
+HTML non è considerato linguaggio di programmazione perché serve a comporre lo scheletro di una pagina web, e quindi privo di logica o costrutti di programmazione.
+============================================================
+
+
+============================================================
+3. Qual è la struttura base di un tag HTML?
+------------------------------------------------------------
+<Tag> Contenuto </Tag>
+============================================================
+
+
+============================================================
+4. Quale estensione deve avere un file per essere riconosciuto come pagina HTML?
+------------------------------------------------------------
+nomefile.html
+============================================================
+
+
+============================================================
+5. Qual è il ruolo del tag <!DOCTYPE html>?
+------------------------------------------------------------
+Serve a specificare al browser che tipo di documento sta ricevendo
+============================================================
+
+
+============================================================
+6. Quali sono i tag principali che compongono la struttura di una pagina HTML?
+------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title> </title>
+    </head>
+    <body>
+
+    </body>
+</html>
+============================================================
+
+============================================================
+7. Qual è la differenza tra tag di tipo block e tag di tipo inline?
+------------------------------------------------------------
+La differenza tra i due tag sta nel fatto che i tag di tipo block vanno a capo in corrispondenza della chiusura del tag, occupando tutta la larghezza disponibile e iniziando su nuova riga, come per esempio <p>.
+I tag inline, come per esempio <span>, non vanno a capo e restano sulla riga degli altri elementi.
+============================================================
+
+
+============================================================
+8. A cosa serve il tag <h1>?
+------------------------------------------------------------
+Il tag <h1> serve per inserire intestazioni, con 1 essendo il più grande.
+============================================================
+
+
+============================================================
+9. Quali sono i possibili valori per i tag di intestazione (heading)?
+------------------------------------------------------------
+I valori del tag di intestazione heading vanno da 1 a 6.
+============================================================
+
+
+============================================================
+10. Perché è consigliato utilizzare i tag di intestazione per i motori di ricerca?
+------------------------------------------------------------
+Viene consigliato perché aiutano il motore di ricerca a capire meglio la struttura e i contenuti principali di una pagina web.
+============================================================
+
+
+============================================================
+11. Cosa fa il tag <br />?
+------------------------------------------------------------
+Sta per "break" e serve per mandare a capo l'elemento
+============================================================
+
+
+============================================================
+12. Qual è la differenza tra il tag <p> e il tag <div>?
+------------------------------------------------------------
+Il tag <p> sta ad indicare un paragrafo, il tag <div> sta ad indicare un box che può racchiudere più tag al suo interno.
+============================================================
+
+
+============================================================
+13. Quale tag si utilizza per creare un collegamento ipertestuale?
+------------------------------------------------------------
+<a href = "link.html"> Testo </a>
+============================================================
+
+
+============================================================
+14. Come si inserisce un’immagine in una pagina HTML?
+------------------------------------------------------------
+<img src= "link" alt="testoalternativo">
+============================================================
+
+
+============================================================
+15. A cosa serve il tag <span>?
+------------------------------------------------------------
+Il tag <span> è un tag generico per contenuto di frasi, può essere usato per raggruppare elementi CSS o la manipolazione del DOM con Javascript su una porzione particolare del contenuto
+============================================================
+
+
+============================================================
+16. Cosa sono gli attributi dei tag HTML e come si scrivono?
+------------------------------------------------------------
+Gli attributi nei tag HTML si scrivono con <tag attributo="valore"> e in genere sono utilizzati per indicare dei valori e modificare la formattazione del markup, per esempio l'attributo <p align="right"> Testo </p> allineerà il testo del tag p a destra.
+============================================================
+
+
+============================================================
+17. Quale attributo si usa per allineare il testo a destra in un paragrafo?
+------------------------------------------------------------
+<p align="right"> Testo </p>
+============================================================
+
+
+============================================================
+18. Quali sono i tre tipi di elenchi disponibili in HTML?
+------------------------------------------------------------
+    - Ordinati
+    - Non ordinati
+    - Elenchi di definizioni
+============================================================
+
+
+============================================================
+19. Quale tag si usa per creare una lista non ordinata?
+------------------------------------------------------------
+Per una lista non ordinata si usa <ul> (unordered list)
+============================================================
+
+
+============================================================
+20. Come si crea una lista ordinata?
+------------------------------------------------------------
+Per una lista ordinata si usa <ol> (ordered list)
+============================================================
+
+
+============================================================
+21. Quali tag si usano per creare una tabella HTML?
+------------------------------------------------------------
+Per una tabella si usa <th>, ovvero table header, per le intestazioni delle tabelle, <tr>, ovvero table row, che sta ad indicare le varie righe della tabella, e al loro interno abbiamo <td>, ovvero table data, che stanno ad indicare le singole celle di dati che compongono le righe.
+Tutto questo all'interno del tag principale, ovvero <table>.
+============================================================
+
+============================================================
+22. Qual è la differenza tra <td> e <th>?
+------------------------------------------------------------
+<td> indica le singole celle di dati che compongono le <tr>, mentre le <th> sono le celle di intestazione della tabella, ovvero quelle più in alto.
+============================================================
+
+
+============================================================
+23. A cosa serve il tag <form>?
+------------------------------------------------------------
+Il tag form viene messo a disposizione da HTML e serve principalmente per racchiudere altri tag al suo interno che andranno a formare i campi presenti all'interno della form che andrà poi compilata dall'utente con dei dati che verranno poi inviati ad un ipotetico server.
+============================================================
+
+
+============================================================
+24. Quali sono i principali attributi del tag <form>?
+------------------------------------------------------------
+    - Method, che va ad indicare il tipo di azione che dovrà fare la form, che accetta valori POST o GET
+    - Action, che va a specificare lo script che riceverà, controllerà ed elaborerà i dati.
+    - Name, in quanto è possibile inserire più form all'interno di una pagina e quindi è bene dare nomi univoci ad ognuna
+============================================================
+
+
+============================================================
+25. Quali tipi di input si possono creare con il tag <input>?
+------------------------------------------------------------
+Input può assume diversi tipi, tra i quali:
+
+    - Text
+    - File
+    - Button
+    - Checkbox
+    - Radio
+    - Submit
+    - Reset
+============================================================
+
+
+============================================================
+26. A cosa serve il tag <select>?
+------------------------------------------------------------
+Select, che crea il cosidetto "menù a tendina" o una SelectBox, che l'utente dovrà selezionare o meno
+============================================================
+
+
+============================================================
+27. Qual è lo scopo del tag <textarea>?
+------------------------------------------------------------
+TextArea crea una casella di testo più o meno larga e serve principalmente per note aggiuntive, descrizioni, o commenti
+============================================================
+
+
+============================================================
+28. Perché è importante l’attributo name nei campi di un form?
+------------------------------------------------------------
+L'attributo name è importantissimo nei campi di una form in quanto altrimenti il dato non verrebbe inviato al server, se per esempio abbiamo:
+
+    <Input type="Text" name="username">
+
+Al server arriverà che se l'utente scrive "Mario", "username = Mario"
+============================================================
+
+
+============================================================
+29. A cosa serve l’attributo required in un input?
+------------------------------------------------------------
+Fa si che l'utente non possa procedere con l'invio di una form a meno che il tag con quell'attributo non venga valorizzato
+============================================================
+
+
+============================================================
+30. Qual è la funzione del tag <label> in un form?
+------------------------------------------------------------
+Il tag label viene principalmente usato nelle checkbox o radiobuttons, e serve a collegare del testo descrittivo alle singole opzioni, che se cliccato andrà a spuntare la casella stessa.
+
+Es:
+    <input type="radio" name="sesso" id="U" value="U" />
+    <label for="U">Uomo</label>
+============================================================
