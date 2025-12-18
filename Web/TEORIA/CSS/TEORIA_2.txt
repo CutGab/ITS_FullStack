@@ -6,7 +6,8 @@
 
 Tra le più importanti specifiche CSS, in quanto il suo campo d'azione si basa sullo sfruttamento del layout, la base del web design.
 
-Il modulo dei flexbox consente di usare una serie di proprietà con cui può essere reso semplice l'immediata gestione di box all'interno di un elemento contenitore e per risolvere problematiche come la centratura degli elementi, la loro disposizione sull'asse orizontare, verticale e la gestione dello spazio disponibile.
+Il modulo dei flexbox consente di usare una serie di proprietà con cui può essere reso semplice l'immediata gestione di box all'interno di un elemento contenitore e per risolvere problematiche come la centratura degli elementi, la loro disposizione sull'asse orizzontaLe, 
+verticale e la gestione dello spazio disponibile.
 
 Le 13 priorità che compongono il modulo possono essere suddivise in due gruppi: quelle che si applicano al contenitore e quelle che si applicano ai box flessibili.
 
@@ -90,7 +91,7 @@ Una media query è un’espressione logica che può essere vera o falsa. È vera
 
     <link rel="stylesheet" media="screen and (color) href="colore.css" />
 
-Dopo aver dichiarato il tipo di media da usare come target (screen), abbiamo inserito la parola chiave and. Il suo  significato non è diverso da quello comune e presente in tutti i linguaggi di programmazione: esegue un’unione logica tra due  espressioni.
+Dopo aver dichiarato il tipo di media da usare come target (screen), abbiamo inserito la parola chiave and. Il suo significato non è diverso da quello comune e presente in tutti i linguaggi di programmazione: esegue un’unione logica tra due  espressioni.
 
 La seconda espressione è (color). Color rappresenta una delle tante caratteristiche possibili di uno  schermo di computer. Nello specifico designa uno  schermo a colori. 
 A livello sintattico si noti che la  seconda parte di una media query, quella con le caratteristiche del tipo di media, va posta tra parentesi tonde.

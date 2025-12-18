@@ -1,104 +1,3 @@
-Cosa significa l’acronimo CSS e qual è il suo obiettivo principale?
-
-Quali sono i tre metodi per includere CSS in un documento HTML?
-
-In caso di conflitto, quale stile prevale tra CSS inline e incorporato?
-
-Cos’è un valore esadecimale per i colori e perché viene preferito alle parole chiave?
-
-Qual è la differenza tra padding e margin nel box model?
-
-Quali proprietà CSS controllano l’aspetto dello sfondo di un elemento?
-
-Cosa fa la proprietà background-attachment: fixed?
-
-Quali valori può assumere la proprietà border-style?
-
-Cos’è border-radius e a cosa serve?
-
-Qual è la sintassi per definire un padding diverso per ogni lato in una sola regola?
-
-Cosa sono i selettori CSS e qual è la loro funzione?
-
-Come si seleziona un elemento tramite il suo id in CSS?
-
-Come si selezionano tutti gli elementi con una certa classe?
-
-Quale selettore ha maggiore specificità: ID, classe o elemento?
-
-Cos’è un “font stack” e perché è utile?
-
-Qual è la differenza tra px e em come unità per font-size?
-
-Cosa fa la proprietà text-transform e quali valori accetta?
-
-Qual è la funzione della proprietà line-height?
-
-Come si allinea il testo al centro con CSS?
-
-Cosa fa la proprietà font-weight e quali valori può assumere?
-
-Qual è la differenza tra font-style: italic e font-style: oblique?
-
-Cos’è Flexbox e quale problema di layout risolve?
-
-Quali sono i due componenti principali del modello Flexbox?
-
-Quale proprietà CSS trasforma un elemento in un contenitore flex?
-
-Quali proprietà si applicano esclusivamente al contenitore flex?
-
-Quali proprietà si applicano esclusivamente agli elementi figli flex?
-
-Cosa controlla la proprietà flex-direction?
-
-Qual è la differenza tra flex-wrap: wrap e flex-wrap: nowrap?
-
-Cosa fa la proprietà justify-content e quali valori comuni accetta?
-
-Qual è la differenza tra justify-content: space-between e space-around?
-
-Cosa fa la proprietà align-items?
-
-Qual è lo scopo della proprietà align-self?
-
-Cosa fa la proprietà flex-flow?
-
-Come si controlla l’ordine di visualizzazione degli elementi flex?
-
-Cosa fa la proprietà flex-grow?
-
-Cosa fa la proprietà flex-shrink?
-
-Cos’è flex-basis?
-
-Qual è la differenza tra align-items e align-content?
-
-Cosa sono le Media Queries e a cosa servono?
-
-Quali tipi di media possono essere specificati in una Media Query?
-
-Qual è la sintassi di base di una Media Query per schermi con larghezza massima di 768px?
-
-Cosa fa l’operatore and in una Media Query?
-
-Cosa fa l’operatore not in una Media Query?
-
-Qual è lo scopo del meta tag viewport in una pagina HTML?
-
-Qual è l’istruzione base del meta tag viewport per il responsive design?
-
-Quali sono i tre modi per dichiarare una Media Query in un documento?
-
-Cosa succede se non si utilizza il meta tag viewport su un sito non responsive?
-
-Cos’è il “mobile-first” approach nel responsive design?
-
-Qual è lo scopo della direttiva @import in CSS riguardo ai fogli di stile esterni?
-
-Perché è importante la specificità (specificity) nei CSS e come si calcola?
-
-
 ============================================================
 1. Cosa significa l'acronimo CSS e qual è il suo obbiettivo principale?
 ------------------------------------------------------------
@@ -290,4 +189,182 @@ La proprietà "font-weight" può assumere diversi valori, serve ad aumentare o r
 ------------------------------------------------------------
 La differenza sta nel fatto che "italic" imposta un apposito font italico, modificando la presentazione delle lettere,
 "oblique" inclina semplicemente i caratteri.
+============================================================
+
+
+============================================================
+22. Cos’è Flexbox e quale problema di layout risolve?
+------------------------------------------------------------
+Flexbox è un modulo CSS che permette di distribuire lo spazio e allineare gli elementi all'interno di un contenitore, risolvendo problemi come
+la centratura verticale e orizontale di elementi, o la fornitura di layout flessibili.
+============================================================
+
+
+============================================================
+23. Quali sono i due componenti principali del modello Flexbox?
+------------------------------------------------------------
+I due componenti principali sono il contenitore flessibile e i box flessibili.
+============================================================
+
+
+============================================================
+24. Quale proprietà CSS trasforma un elemento in un contenitore flex?
+------------------------------------------------------------
+Per trasformare un elemento in un contenitore flex bisogna impostare nel CSS "display: flex".
+============================================================
+
+
+============================================================
+25. Quali proprietà si applicano esclusivamente al contenitore flex?
+------------------------------------------------------------
+Tra le varie proprietà applicabili al contenitore flex abbiamo:
+
+    - display (per rendere il contenitore flessibile)
+    - flex-direction (per specificare la direzione dell'asse principale)
+    - flex-wrap (per specificare se i box si dispongono su una o più righe in base allo spazio disponibile)
+    - flex-flow (combina flex-wrap e flex-direction in una sola regola)
+    - justify-content (allinea i box sull'asse principale)
+    - align-items (allinea i box sull'asse perpendicolare)
+    - align-content (allinea righe del box sull'asse perpendicolare)
+============================================================
+
+
+============================================================
+26. Quali proprietà si applicano esclusivamente agli elementi figli flex?
+------------------------------------------------------------
+Tra le proprietà applicabili agli elementi figli abbiamo:
+
+    - order (specifica l'ordine in cui viene mostrato un box rispetto agli altri all'interno di un contenitore)
+    - align-self (specifica l'allineamento di un box sull'asse perpendicolare, (sovrascrive align-items))
+    - flex-grow (imposta la grandezza di un elemento rispetto agli altri in un contenitore quando c'è spazio)
+    - flex-shrink (fa l'opposto di flex-grow)
+    - flex-basis (specifica la dimensione iniziale di un elemento)
+    - flex (combina flex-grow, flex-shrink e flex-basis in un unica regola)
+============================================================
+
+
+============================================================
+27. Cosa sono le Media Queries e a cosa servono?
+------------------------------------------------------------
+Una media query consiste nella dichiarazione di un tipo di media e di zero o più espressioni che 
+verificano le condizioni di validità o meno di un certo media.
+
+Es:
+
+    <link rel="stylesheet" media="screen and(color) href="colore.css" />
+
+Il primo valore è il tipo di media da usare come target (screen)
+
+La seconda espressione è (color). Color rappresenta una delle tante caratteristiche possibili di uno schermo di computer. 
+Nello specifico uno  schermo a colori. 
+
+La seconda parte di una media query, con le caratteristiche del tipo del media, va posta tra parentesi tonde.
+============================================================
+
+
+============================================================
+28. Quali tipi di media possono essere specificati in una Media Query?
+------------------------------------------------------------
+Tra i molteplici, ci sono:
+
+    - All (tutti i dispositivi)
+    - Screen (schermo di un computer)
+    - Projection (presentazioni)
+    - Handled (dispositivi mobile)
+    - TV (schermi televisivi)
+    - Print (stampanti o anteprime di stampa)
+============================================================
+
+
+============================================================
+29. Cosa fa l'operatore "and" in una media query?
+------------------------------------------------------------
+L'operatore "and" esegue un operazione logica non differente dai linguaggi di programmazione:
+
+    <link rel="stylesheet" media="screen and(color) href="colore.css" />
+
+Viene quindi applicato il foglio di stile colore.css solo se la pagina viene visualizzata su uno schermo di computer a colori.
+============================================================
+
+
+============================================================
+30. Cosa fa l'operatore "not" in una media query?
+------------------------------------------------------------
+L'operatore "not", in maniera uguale, nega il risultato della query:
+
+    <link rel="stylesheet" media="screen and(not color) href="colore.css" />
+
+Viene quindi applicato il foglio di stile colore.css solo se la pagina viene visualizzata su uno schermo di computer NON a colori.
+============================================================
+
+
+============================================================
+31. Qual è lo scopo del meta tag viewport in una pagina HTML?
+------------------------------------------------------------
+Con questo tag sono gli sviluppatori che suggeriscono al browser come gestire la viewport, ovvero come
+il nostro sito si adatta al browser dei vari dispositivi
+============================================================
+
+
+============================================================
+32. Qual è l’istruzione base del meta tag viewport per il responsive design?
+------------------------------------------------------------
+ <meta name="viewport" content="width=device-width">
+============================================================
+
+
+============================================================
+33. Quali sono i tre modi per dichiarare una Media Query in un documento?
+------------------------------------------------------------
+Importandola all'interno di un secondo foglio CSS:
+    - @Import url(file.css) screen and (color)
+
+All'interno di un file CSS:
+
+    - @media screen and (color) {
+        //regole CSS
+    }
+
+All'interno del tag <link>: 
+
+- <link rel="stylesheet" media="screen and(not color)" href="colore.css" />
+============================================================
+
+
+============================================================
+34. Cosa succede se non si utilizza il meta tag viewport su un sito non responsive?
+------------------------------------------------------------
+Su ogni browser o dispositivo verrebbe visualizzata il sito a grandezza fissa, risultando in
+un'esperienza scadente specialmente su dispositivi mobile.
+============================================================
+
+
+============================================================
+35. Cos’è il “mobile-first” approach nel responsive design?
+------------------------------------------------------------
+Si parla di approccio "mobile-first" quando si vanno a sviluppare pagine web
+sviluppate appositamente per essere visualizzate su dispositivi mobile
+e successivamente migliorare l'esperienza per dispositivi con schermi più grandi.
+============================================================
+
+
+============================================================
+36. Qual è lo scopo della direttiva @import in CSS riguardo ai fogli di stile esterni?
+------------------------------------------------------------
+Importare un'ulteriore foglio di stile CSS esterno su quello in cui eseguiamo l'import,
+permettendo di organizzare il codice in moduli separati.
+============================================================
+
+
+============================================================
+37. Perché è importante la specificità (specificity) nei CSS e come si calcola?
+------------------------------------------------------------
+La specificità è importante quando abbiamo regole di stile in conflitto tra loro,
+In questo caso viene assegnato un peso ad ogni tipo di selettore:
+
+ID = 100
+Classe = 10
+Tag = 1
+
+Vincono quindi le regole CSS che hanno punteggio più alto.
 ============================================================
