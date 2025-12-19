@@ -1,0 +1,27 @@
+.card {
+  justify-content: space-between;
+  margin: auto;
+  border: 1px solid;
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}
+
+.light {
+    background-color: white;
+    color: black;
+}
+
+.dark {
+    background-color: black;
+    color: white;
+}
+
+.button {
+    border-radius: 10px;
+}
