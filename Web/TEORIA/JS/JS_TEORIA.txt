@@ -4,10 +4,9 @@
 #              #
 ################
 
-JavaScript è un linguaggio di programmazione **orientato agli oggetti, agli eventi e funzionale**, comunemente utilizzato nella programmazione web lato client (esteso poi anche al lato server) per creare effetti dinamici e interattivi tramite funzioni di script. 
+JavaScript è un linguaggio di programmazione orientato agli oggetti, agli eventi e funzionale, comunemente utilizzato nella programmazione web lato client (esteso poi anche al lato server) per creare effetti dinamici e interattivi tramite funzioni di script.
 Gli script vengono invocati da eventi generati dall'utente sulla pagina web (mouse, tastiera, ecc.).
 
-Originariamente sviluppato da Netscape con il nome di LiveScript, viene standardizzato e usato con il nome di "JavaScript" nel 1997 dalla ECMA.
 
 ################
 #              #
@@ -17,13 +16,25 @@ Originariamente sviluppato da Netscape con il nome di LiveScript, viene standard
 
 ECMAScript (ES) è lo standard dei linguaggi di scripting mantenuto da ECMA International. Implementazioni conosciute includono JavaScript, JScript e ActionScript.
 
-La sesta edizione (ES6 o ECMAScript 2015) ha introdotto importanti novità sintattiche:
-    - `let` e `const` per dichiarare variabili
-    - arrow functions `() => {...}`
-    - template literals (stringhe con backtick)
-    - `for...of` per iterare sugli array
-    - Promises, collections e array tipizzati
-    - dichiarazione di classi e moduli (`import` / `export`)
++----------------------------------------+---------------------------------------------------------+
+| Funzionalità                           | Descrizione                                             |
++----------------------------------------+---------------------------------------------------------+
+| let e const                            | Dichiarazione di variabili con scope a blocco           |
++----------------------------------------+---------------------------------------------------------+
+| Arrow functions                        | () => { ... } - sintassi compatta per funzioni          |
++----------------------------------------+---------------------------------------------------------+
+| Template literals                      | Stringhe con backtick: `Ciao ${nome}`                   |
++----------------------------------------+---------------------------------------------------------+
+| for...of                               | Iterazione su array e oggetti iterabili                 |
++----------------------------------------+---------------------------------------------------------+
+| Promises                               | Gestione asincrona migliorata                           |
++----------------------------------------+---------------------------------------------------------+
+| Collections                            | Set, Map, WeakSet, WeakMap                              |
++----------------------------------------+---------------------------------------------------------+
+| Array tipizzati                        | Int8Array, Uint32Array, etc.                            |
++----------------------------------------+---------------------------------------------------------+
+| Classi e moduli                        | Sintassi class e import/export                          |
++----------------------------------------+---------------------------------------------------------+
 
 ######################
 #                    #
@@ -32,40 +43,45 @@ La sesta edizione (ES6 o ECMAScript 2015) ha introdotto importanti novità sinta
 ######################
 
 JavaScript può essere eseguito sia lato **client** sia lato **server**. La differenza dipende dall'ambiente di esecuzione:
-    - Lato client: il browser fornisce oggetti come `window` e `document`.
-    - Lato server: Node.js fornisce oggetti globali come `process` e `require`.
 
-Ogni browser ha il suo motore JS:
-    - Firefox → SpiderMonkey
-    - Chrome → V8
-
-#################
-#               #
-#  LATO CLIENT  #
-#               #
-#################
+LATO CLIENT 
 
 JavaScript lato client collabora con l'HTML. Esistono tre modi principali per includere il codice:
 
 1. **Inline**: direttamente in un attributo di un tag HTML
-    <button type="button" onclick="window.alert('x')">Vai</button>
+  
+                                <button type="button" onclick="window.alert('Click!')">Vai</button>
+
 
 2. **Blocchi di codice**: usando il tag `<script>` in `<head>` o `<body>`
-    <script>alert('Ciao!')</script>
+
+                                <script>
+                                    alert('Ciao!');
+                                    // Altro codice JavaScript
+                                </script>
 
 3. **File esterno**: separando HTML e JS
-    <script src="codice.js"></script>
+    
+                                <script src="codice.js"></script>
 
 Per definire funzioni:
+
 - Funzione tradizionale:
-    function nomeFunzione() {
-        // codice da eseguire
-    };
+
+                                                            function nomeFunzione(parametro1, parametro2) {
+                                                            // codice da eseguire
+                                                            return risultato;
+                                                        }
+
+
+
 
 - Arrow function:
-    const nomeFunzione = () => {
-        // codice da eseguire
-    };
+                                                        const nomeFunzione = () => {
+                                                            // codice da eseguire
+                                                        };
+
+
 
 Per eseguire la funzione:
     nomeFunzione();
@@ -76,7 +92,7 @@ Per eseguire la funzione:
 #               #
 #################
 
-JavaScript lato server viene eseguito senza l'intervento del browser. Per farlo si utilizza **Node.js**, una runtime open-source e multipiattaforma basata sul motore V8 di Chrome.
+JavaScript lato server viene eseguito senza l'intervento del browser usando Node.js, una runtime open-source e multipiattaforma basata sul motore V8 di Chrome.
 
 Node.js permette di:
 
@@ -86,7 +102,453 @@ Node.js permette di:
     - interagire con database
     - creare applicazioni complete senza browser
 
-Node.js utilizza un **modello asincrono basato su eventi**, che permette di gestire molteplici richieste contemporaneamente senza bloccare l'esecuzione.
+Node.js utilizza un **modello asincrono basato su eventi**, che permette di gestire molteplici richieste contemporaneamente senza bloccare l'esecuzione. Node.js è nato per estendere l’uso di JavaScript, originariamente lato client, anche al server.
 
-Node.js è nato per estendere l’uso di JavaScript, originariamente lato client, anche al server. Nel 2009 Ryan Dahl ha integrato il motore V8 in un ambiente runtime, dando vita a Node.js.
 
+###############
+#             #
+#  VARIABILI  #
+#             #
+###############
+
+Le variabili sono contenitori per memorizzare dati riutilizzabili. Ogni variabile ha un identificatore (nome) e un valore.
+
+Dichiarazione: 
+                var nome = valore;     // tradizionale (scope funzione)
+                let nome = valore;     // moderna (scope blocco)
+                const nome = valore;   // costante (scope blocco non riassegnabile)
+                
+                // MAI fare così - crea variabile globale
+                variabile = 3;  // Pericoloso!
+
++--------------------------+---------------------------------------+
+| Regola                   | Esempio                               |
++--------------------------+---------------------------------------+
+| No spazi                 | userName (✓), user name (✗)          |
+| CamelCase                | nomeVariabile, totaleImporto          |
+| Può iniziare con         | _nome, $valore, lettera               |
+| Non può iniziare con     | numero (1valore ✗), simboli (#test ✗)|
+| Case sensitive           | Nome ≠ nome ≠ NOME                    |
++--------------------------+---------------------------------------+
+
+
+############################
+#                          #
+#  ESCAPE DI UN CARATTERE  #
+#                          #
+############################
+
+Per utilizzare caratteri speciali all’interno delle stringhe si utilizza il backslash `\`.
+
+```
+console.log("questo è un \"test speciale\"");
+
+```
+
+
+########################
+#                      #
+#  CARATTERI SPECIALI  #
+#                      #
+########################
+
+JavaScript supporta diversi caratteri speciali utili per la formattazione del testo:
+
+```
+
+- \n  nuova riga
+- \t  tabulazione
+- \r  ritorno a capo
+- \\  backslash
+
+```
+
+#########
+#       #
+#  NaN  #
+#       #
+#########
+
+`NaN` significa *Not a Number* e indica un risultato numerico non valido.
+
+```
+NaN !== NaN
+
+```
+
+Per verificare un valore NaN si utilizza:
+
+```
+isNaN(valore);
+
+```
+
+
+################################
+#                              #
+#  NULL, UNDEFINED E BOOLEANO  #
+#                              #
+################################
+
+* `null` rappresenta un valore intenzionalmente vuoto
+* `undefined` indica un valore non assegnato
+* `boolean` può assumere solo `true` o `false`
+
+
+#################
+#               #
+# TIPIZZAZIONE  #
+#               #
+#################
+
+JavaScript è un linguaggio a **tipizzazione debole e dinamica**: il tipo di una variabile dipende dal valore assegnato.
+
+```
+var test = "ciao";
+test = 1;
+```
+
+
+############
+#          #
+#  TYPEOF  #
+#          #
+############
+
+L’operatore `typeof` permette di conoscere il tipo di una variabile:
+
+```
+var test = "hello";
+typeof test; // string
+
+var x;
+typeof x; // undefined
+```
+
+
+#######################################
+#                                     #
+#  CONVERSIONE FRA TIPI DI VARIABILI  #
+#                                     #
+#######################################
+
+JavaScript consente alle variabili di cambiare tipo dinamicamente. In molte situazioni il motore JavaScript effettua **conversioni implicite** per rendere valide le operazioni.
+
+```
+var x = "12";
+var y = "13";
+var z = x * y; // 156
+```
+
+In questo caso le stringhe vengono convertite automaticamente in numeri. Tuttavia, in altre situazioni il comportamento può essere ambiguo:
+
+```
+var x = "12";
+var y = x + 13; // "1213"
+```
+
+Conoscere le regole di conversione implicita è fondamentale per evitare bug difficili da individuare.
+
+
+############
+#          #
+#  PROMPT  #
+#          #
+############
+
+La funzione globale `prompt()` permette di mostrare una finestra di dialogo all’utente, chiedendo l’inserimento di un valore.
+
+Se l’utente conferma, il valore restituito è una **stringa**; se annulla, il valore restituito è `null`.
+
+```
+var nome = prompt("inserisci il tuo nome");
+console.log(nome);
+```
+
+
+#########
+#       #
+#  DOM  #
+#       #
+#########
+
+Il DOM (Document Object Model) è una rappresentazione del documento HTML come un albero di oggetti.
+
+    - Ogni elemento HTML diventa un nodo
+    - JavaScript può leggere, modificare e creare nodi
+    - Il DOM non è JavaScript, ma JavaScript lo usa per interagire con la pagina
+
+Grazie al DOM possiamo cambiare:
+
+    - contenuto
+    - struttura
+    - stile
+    - comportamento (eventi)
+
+#####################
+#                   #
+#  CARATTERISTICHE  #
+#                   #
+#####################
+
+1. Document: rappresenta l’intero documento HTML ed è l’oggetto radice del DOM.
+2. Elements: permette di selezionare e modificare elementi specifici.
+3. Attributes: consente di leggere o modificare attributi degli elementi.
+4. Events: gestione degli eventi legati agli elementi.
+5. Style: modifica degli stili CSS applicati agli elementi.
+
+Metodi principali dell’oggetto `document`:
+
+    - getElementById(id)
+    - getElementsByTagName(tag)
+    - getElementsByClassName(classe)
+    - getElementsByName(nome)
+
+Alcune proprietà utili dell’oggetto `document`:
+
+    - document.URL
+    - document.head
+    - document.body
+    - document.links
+
+############
+#          #
+#  EVENTI  #
+#          #
+############
+
+Gli eventi permettono di eseguire codice quando l’utente interagisce con la pagina.
+
+Esempi comuni:
+
+    - click
+    - mouseover
+    - mouseout
+    - keydown
+    - submit
+
+Es: 
+                <h3 id="msg">Evento</h3>
+                <button id="btn">Passa il mouse</button>
+
+                <script>
+                    var btn = document.getElementById("btn");
+                    var msg = document.getElementById("msg");
+
+                    btn.addEventListener("mouseover", function() {
+                        msg.innerHTML = "Mouse sopra";
+                    });
+
+                    btn.addEventListener("mouseout", function() {
+                        msg.innerHTML = "Mouse fuori";
+                    });
+
+                    btn.addEventListener("click", function() {
+                        msg.innerHTML = "Click!";
+                    });
+                </script>
+
+
+###############
+#             #
+#  FUNZIONI   #
+#             #
+###############
+
+Una funzione è un blocco di codice che esegue istruzioni definite. La sintassi base è:
+
+    <script>
+        function nomeFunzione() {
+            // istruzioni
+        }
+    </script>
+
+    nomeFunzione();            // chiamata senza parametri
+    nomeFunzione(parametri);   // chiamata con parametri
+
+Le funzioni possono ricevere parametri e ritornare un valore. Se non ritornano nulla, il valore di ritorno è `undefined`.
+
+################
+#              #
+#  ARGUMENTS   #
+#              #
+################
+
+All’interno di una funzione è disponibile l’oggetto `arguments`, un array-like che contiene tutti i parametri passati.
+
+    function myFunction(a, b, c) {
+        console.log(arguments[0]); // 1
+        console.log(arguments[1]); // 2
+        console.log(arguments[2]); // 3
+    }
+
+    myFunction(1, 2, 3);
+
+`arguments.length` restituisce il numero di argomenti passati.
+
+#################################
+#                               #
+#  VARIABILI LOCALI E GLOBALI   #
+#                               #
+#################################
+
+- Variabili **locali**: dichiarate all’interno di una funzione, visibili solo al suo interno.
+- Variabili **globali**: dichiarate fuori da qualsiasi funzione, accessibili ovunque nello script.
+
+            var globale = "sono globale";
+
+            function esempio() {
+                var locale = "sono locale";
+                console.log(globale); // visibile
+                console.log(locale);  // visibile
+            }
+
+            console.log(globale); // visibile
+            console.log(locale);  // ERRORE: non visibile
+
+#####################
+#                   #
+#  ARROW FUNCTION   #
+#                   #
+#####################
+
+Le arrow function sono una sintassi compatta per definire funzioni (introdotta in ES6).
+
+Funzione tradizionale:
+
+    function somma(a, b) {
+        return a + b;
+    }
+
+Arrow function equivalente:
+
+    const somma = (a, b) => {
+        return a + b;
+    };
+
+###########################
+#                         #
+#  PARAMETRI DI DEFAULT   #
+#                         #
+###########################
+
+È possibile assegnare valori di default ai parametri di una funzione:
+
+    function prova(a = 0, b = 0) {
+        console.log(a);
+        console.log(b);
+    }
+
+Prima di ES6 si utilizzava una sintassi alternativa:
+
+    function prova(a, b) {
+        a = a || 0;
+        b = b || 0;
+    }
+
+#####################
+#                   #
+#  IMPORT E EXPORT  #
+#                   #
+#####################
+
+I moduli JavaScript permettono di suddividere il codice in file riutilizzabili.
+
+**Export default** consente di esportare un singolo valore:
+
+```
+export default "chiave_secreta";
+```
+
+Importazione:
+
+```
+import miaChiave from './util.js';
+```
+
+**Export multipli** permettono di esportare più elementi:
+
+```
+export let API_KEY = "chiave_secreta";
+export let ANOTHER_VARIABLE = "altro_valore";
+```
+
+Importazione:
+
+```
+import { API_KEY, ANOTHER_VARIABLE } from './util.js';
+```
+
+È possibile importare tutto in un unico oggetto:
+
+```
+import * as util from './util.js';
+```
+
+######################
+#                    #
+#  DESTRUTTURAZIONE  #
+#                    #
+######################
+
+La destrutturazione permette di estrarre valori da array e oggetti in modo conciso.
+
+```
+const [nome, cognome] = ['Rob', 'Del'];
+
+const { name, age } = user;
+```
+
+È molto usata nei parametri delle funzioni e in React.
+
+#####################
+#                   #
+#  SPREAD OPERATOR  #
+#                   #
+#####################
+
+Lo spread operator (`...`) consente di copiare o unire array e oggetti.
+
+```
+const nuovoArray = [...array1, ...array2];
+const nuovoOggetto = { ...obj1, ...obj2 };
+```
+
+#############
+#           #
+#  PROMISE  #
+#           #
+#############
+
+Le Promise rappresentano operazioni asincrone che possono completarsi in futuro.
+
+Stati:
+
+* Pending
+* Fulfilled
+* Rejected
+
+Es:
+
+  miaPromise
+  .then(risultato => console.log(risultato))
+  .catch(errore => console.log(errore));
+
+#################
+#               #
+#  ASYNC/AWAIT  #
+#               #
+#################
+
+`async` e `await` permettono di scrivere codice asincrono in modo più leggibile.
+
+```
+async function caricaDati() {
+    try {
+        const risultato = await miaPromise;
+        console.log(risultato);
+    } catch (errore) {
+        console.log(errore);
+    }
+}
+```

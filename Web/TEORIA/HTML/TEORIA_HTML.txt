@@ -1,0 +1,253 @@
+##################
+#                #
+#  INTRODUZIONE  #
+#                #
+##################
+
+- Acronimo di Hyper Text Markup Language
+- Non è un linguaggio di programmazione, non ha costrutti logici della programmazione
+- Linguaggio di Markup per Ipertesti
+- Standard utilizzato per la creazione di pagine Web
+
+
+####################
+#                  #
+#  STRUTTURA TAG   #
+#                  #
+####################
+
+<nometag> CONTENUTO </nometag>
+
+I tag assegnano ruolo e disposizione ai contenuti.
+
+############################
+#                          #
+#  STRUTTURA PAGINA HTML   #
+#                          #
+############################
+
+<!DOCTYPE html>             
+<html>
+     <head>
+          <title> </title>
+     </head>
+     <body>
+     </body>
+</html>
+
+Il DOCTYPE (Document Type Declaration) indica al browser il tipo di documento.
+
+##########
+#        #
+#  TAG   #
+#        #
+##########
+
+In HTML esistono 2 tipi di tag: inline e block
+
+    Block → va a capo automaticamente
+    Inline → rimane in linea con altri elementi
+
+Esempi:
+
++--------+--------------------------------------+
+| TAG       | DESCRIZIONE                       |
++--------+--------------------------------------+
+| <h1>-<h6> | Titoli, dimensioni decrescenti    |
+| <p>       | Paragrafo, block, va a capo       |
+| <div>     | Contenitore generico, block       |
+| <br>      | Break, va a capo, no chiusura     |
+| <a>       | Ancora / link                     |
+| <img>     | Immagine                          |
+| <span>    | Contenuto inline generico         |
++--------+--------------------------------------+
+
+########################
+#                      #
+#  ATTRIBUTI DEI TAG   #
+#                      #
+########################
+
+Gli attributi sono parametri dei tag HTML:
+
+Sintassi:
+
+    <tag attributo = "valore">
+
+Esempi:
+    - bgcolor: cambia colore sfondo
+    - href: indirizzo URL per link
+    - align: allineamento testo o elementi
+
+< p align="right" > Testo allineato a destra < /p >
+
+
+#################################
+#                               #
+#  ELENCHI PUNTATI E NUMERATI   #
+#                               #
+#################################
+
+Tipi:
+    - Ordinati (<ol>)
+    - Non ordinati (<ul>)
+    - Definizioni (<dl>)
+
+Esempio elenco non ordinato:
+
+<ul>
+    <li> Primo elemento </li>
+    <li> Secondo elemento </li>
+    <li> Terzo elemento </li>
+</ul>
+
+Esempio elenco ordinato:
+
+<ol>
+    <li> Primo elemento </li>
+    <li> Secondo elemento </li>
+    <li> Terzo elemento </li>
+</ol>
+
+
+##############
+#            #
+#  TABELLE   #
+#            #
+##############
+
+Tag:
+    - <table> Contenitore tabella
+    - <tr> Riga (table row)
+    - <td> Cella dati
+    - <th> Intestazione colonna
+
++-----------+-----------+-----------+
+| Intest 1  | Intest 2  | Intest 3  |  <- Riga 1
++-----------+-----------+-----------+
+| Dato 1,1  | Dato 1,2  | Dato 1,3  |  <- Riga 2
++-----------+-----------+-----------+
+| Dato 2,1  | Dato 2,2  | Dato 2,3  |  <- Riga 3
++-----------+-----------+-----------+
+
+Esempio HTML:
+
+<table>
+        <tr>
+            <th>Intest 1</th>
+            <th>Intest 2</th>
+            <th>Intest 3</th>
+        </tr>
+
+        <tr>
+            <td>Dato 1,1</td>
+            <td>Dato 1,2</td>
+            <td>Dato 1,3</td>
+        </tr>
+
+        <tr>
+            <td>Dato 2,1</td>
+            <td>Dato 2,2</td>
+            <td>Dato 2,3</td>
+        </tr>
+
+</table>
+
+
+############
+#          #
+#  FORM    #
+#          #
+############
+
+L'HTML mette a disposizione una serie di tag per creare moduli (form), con caselle di testo, opzioni, bottoni di invio e altro.  
+Lo scopo è creare interazione e scambio di dati tra gli utenti e il sito.
+
+Un form raccoglie input dagli utenti e li invia ad uno script lato server per l'elaborazione.
+
+Tag principale: <form method="" action="" name="">
+
++----------------+----------------------------------------------------+
+| ATTRIBUTO      | DESCRIZIONE                                        |
++----------------+----------------------------------------------------+
+| method         | Specifica il metodo di invio dei dati (GET o POST) |
+| action         | Script che riceverà ed elaborerà i dati            |
+| name           | Nome del form (unico per identificazione)          |
++----------------+----------------------------------------------------+
+
+All'interno del form possiamo inserire:
+
++----------------+---------------------------------------------------------+
+| ELEMENTO       | DESCRIZIONE                                             |
++----------------+---------------------------------------------------------+
+| Input          | Genera la maggior parte degli elementi di input         |
+| - Text         | Casella di testo per inserire contenuto                 |
+| - File         | Casella per selezionare file locali                     |
+| - Radio        | Gruppo di opzioni con scelta singola (pallini)          |
+| - Checkbox     | Gruppo di opzioni con scelte multiple (spunte)          |
+| - Button       | Bottone neutro, azioni tramite JS                       |
+| - Submit       | Bottone di invio del form                               |
+| - Reset        | Bottone per resettare il form                           |
+| Select         | Menù a tendina (select box)                             |
+| Textarea       | Area di testo multilinea (descrizioni/commenti)         |
++----------------+---------------------------------------------------------+
+
+Extra importanti:
+
+- Ogni elemento deve avere un attributo "name" unico o condiviso solo per gruppi come radio/checkbox  
+- Input Text può avere "value" come valore predefinito  
+- Radio/Checkbox possono avere "checked" per selezione di default  
+- Select annida <option> con attributo "value"  
+- Option può avere attributo "selected" per default  
+- Textarea ha "rows" e "cols" per dimensione
+
+############
+#          #
+#  EXTRA   #
+#          #
+############
+
+Ogni elemento dei form HTML ha una caratteristica in comune, ovvero la specifica del name che dev'essere diverso da elemento a elemento e uguale solo per gruppi di elementi (come radiobuttons o checkbox).
+
+I tag input prevedono (oltre a "name") due attributi principali:
+
+    - Type: Definisce il tipo di input.
+    - Value: Definisce il valore dell'input, nei campi "Text" è facoltativo e, se previsto, rappresenta una sorta di valore predefinito che gli utenti potranno modificale (a meno che il campo non sia stato impostato come "READ ONLY").
+    
+Gli input "Radio" e "Checkbox" ammettono l'attributo checked qualora il campo debba comparire come selezionato al momento del caricamento della pagina.
+
+All'interno dei tag "Select" vengono annidati delle sequenze di tag option contenenti le varie opzioni disponibili all'interno della Selectbox; questi tag hanno, normalmente, un attributo value con il valore da inviare nel caso l'opzione venga selezionata.
+
+I tag "Option" ammettono l'attributo facoltativo "Selected" attraverso il quale effettuare una selezione di default al momento del caricamento del modulo.
+
+Il tag "Textarea" prevede, oltre all'attributo "name", gli attributi "rows" e "cols" che ne definiscono le linee e colonne.
+
+############
+#          #
+#  LABEL   #
+#          #
+############
+
+Il tag <label> definisce un testo associato ad un campo di input (tipicamente radio o checkbox).  
+Permette di selezionare l'opzione anche cliccando sul testo.
+
+Esempio:
+
+    <input type="radio" name="sesso" id="U" value="U" />
+    <label for="U">Uomo</label>
+
+    <input type="radio" name="sesso" id="D" value="D" />
+    <label for="D">Donna</label>
+
+- L'attributo "for" deve corrispondere all'id dell'input
+
+#####################################
+#                                   #
+#  L'ATTRIBUTO DI INPUT: REQUIRED   #
+#                                   #
+#####################################
+
+L’attributo "required" impedisce l’invio del form se i campi obbligatori non sono compilati:
+
+Es:
+    <input type="text" name="user" required/>

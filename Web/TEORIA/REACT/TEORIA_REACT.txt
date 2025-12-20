@@ -1,0 +1,1185 @@
+###############
+#             #
+#  REACT JS   #
+#             #
+###############
+
+React è una libreria JavaScript open-source per costruire interfacce utente dinamiche (UI).
+Permette di creare applicazioni interattive e performanti, aggiornando solo le parti necessarie della pagina senza ricaricarla completamente.
+React rappresenta la “V” (View) del pattern MVC, concentrandosi sulla presentazione dell’interfaccia e sulla gestione degli eventi dell’utente.
+
+
+####################
+#                  #
+#  PERCHÉ USARLO   #
+#                  #
+####################
+
+React semplifica la creazione di interfacce complesse e dinamiche. Si integra con HTML per la struttura, CSS per lo stile e JavaScript per la logica, facilitando lo sviluppo di Single Page Applications (SPA).
+
++----------------------+---------------------------------------------------------------------------+
+| CARATTERISTICA             | DESCRIZIONE                                                         |
++----------------------------+---------------------------------------------------------------------+
+| Open source                | Contribuire al progetto e usare librerie sviluppate dalla community |
++----------------------------+---------------------------------------------------------------------+
+| Dichiarativo               | Definisce cosa visualizzare; React gestisce il DOM automaticamente  |
++----------------------------+---------------------------------------------------------------------+
+| Componenti                 | UI modulare, riutilizzabile, con stato indipendente                 |
++----------------------------+---------------------------------------------------------------------+
+| Learn once, write anywhere | Scrivere componenti riutilizzabili in diversi contesti              |
++----------------------------+---------------------------------------------------------------------+
+| JSX                        | Sintassi simile a HTML compilata in JavaScript                      |
++----------------------------+---------------------------------------------------------------------+
+| Virtual DOM                | Copia leggera del DOM reale, aggiorna solo le parti necessarie      |
++----------------------------+---------------------------------------------------------------------+
+| Rendering                  | Controlla quali elementi mostrare in base allo stato                |
++----------------------------+---------------------------------------------------------------------+
+| Stato (state)              | Gestione dati dinamici della UI                                     |
++----------------------------+---------------------------------------------------------------------+
+| Efficienza                 | Aggiornamenti rapidi e mirati senza ricaricare tutta la pagina      |
++----------------------+---------------------------------------------------------------------------+
+
+
+################
+#              #
+#  DIFFERENZE  #
+#              #
+################
+
+jQuery vs React: React non richiede ID, classi o manipolazione manuale del DOM; si concentra su componenti e stato.
+------------------
+Angular vs React: Angular è più completo ma complesso. React è modulare, più facile da integrare e permette riuso di librerie esterne.
+------------------
+Critica: logica e presentazione vengono combinati insieme, ma React isola stato e logica dei componenti per una corretta Separation of Concerns.
+
+
+#######################
+#                     #
+#  REACT E REACTDOM   #
+#                     #
+#######################
+
+React: libreria JavaScript per creare componenti UI riutilizzabili e reattivi.
+ReactDOM: pacchetto che permette di collegare i componenti React al DOM del browser. Fornisce metodi come createRoot() e render() per visualizzare l’interfaccia.
+
+<!-- Import React -->
+
+                                              <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+
+<!-- Import ReactDOM -->
+
+                                              <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+<!-- Elemento root dove verranno renderizzati i componenti -->
+
+                                              <div id="root"></div>
+
+                                              <script>
+                                                // Recupera il div root
+                                                const rootElement = document.getElementById("root");
+                                                
+                                                // Crea il root di ReactDOM
+                                                const root = ReactDOM.createRoot(rootElement);
+
+                                                // Ora possiamo renderizzare componenti React
+                                              </script>
+
+
+In React, la prop key serve a identificare in modo univoco gli elementi di un array tra diversi render.
+  
+  - Aiuta React a capire quali elementi sono modificati, aggiunti o rimossi.
+  - Garantisce prestazioni ottimali evitando il rerender completo di liste dinamiche.
+  - Va assegnata a ciascun elemento dell’elenco, ad esempio <li key="php">, <li key="javascript">.
+
+Senza key, React potrebbe non gestire correttamente lo stato e l’ordine degli elementi.
+
+Le keys in React permettono aggiornamenti efficienti delle liste:
+
+  - Se un elemento viene rimosso, React elimina solo quell’elemento dal DOM.
+  - Se un elemento viene aggiunto o spostato, React inserisce o sposta solo l’elemento interessato senza rerenderizzare l’intera lista.
+  - Senza keys, React dovrebbe rerenderizzare tutti gli elementi per garantire la correttezza della UI.
+
+
+##################
+#                #
+#  BABEL E JSX   #
+#                #
+##################
+
+JSX: linguaggio simile a HTML per creare componenti React.
+
+Babel: trasforma JSX in JavaScript standard interpretabile dai browser.
+
+
+##########
+#        #
+#  NPM   #
+#        #
+##########
+
+NPM (Node Package Manager) gestisce librerie e dipendenze per progetti JavaScript.
+
+Funzioni principali:
+
+  - Installa librerie (npm install).
+  - Controlla compatibilità versioni.
+  - Esegue script personalizzati (npm start).
+  - Pubblica pacchetti.
+
+Componenti principali:
+
+  - Registry NPM: database online di .
+  - CLI: strumenti a riga di comando per gestione pacchetti.
+  - package.json: file che descrive dipendenze, script e metadati.
+
+
+##########################
+#                        #
+#  APPROCCIO ASINCRONO   #
+#                        #
+##########################
+
+Node.js permette di accedere alle risorse del sistema operativo in modalità event-driven, evitando il classico modello basato su processi o thread concorrenti dei web server tradizionali.
+
+  - Event-driven: le azioni vengono eseguite quando si verifica un evento, in modo asincrono.
+  - Asincrono: un’azione non blocca l’esecuzione di altre azioni, migliorando efficienza e prestazioni.
+
+Grazie al comportamento asincrono durante le attese di una certa azione il runtime può gestire qualcos’altro che ha a che fare con la logica applicativa.
+
+
+###################
+#                 #
+#  CREARE L'APP   #
+#                 #
+###################
+
+Creazione progetto:
+
+  - npx create-react-app nome-app
+
+
+############################
+#                          #
+#  COMPONENTI FUNZIONALI   #
+#                          #
+############################
+
+I componenti funzionali sono blocchi di codice JavaScript che rappresentano parti dell’interfaccia utente (UI).
+Introdotti in React 0.14, inizialmente stateless (senza stato interno).
+Con gli Hooks (React 16.8+) possono gestire stato e effetti collaterali (useState, useEffect).
+Sono più concisi e consigliati rispetto ai componenti a classi.
+
+Es:
+
+  const Saluto = () => {
+    return <h1>Ciao utente!</h1>;
+  };
+
+
+################
+#              #
+#     JSX      #
+#              #
+################
+
+JSX è JavaScript scritto come HTML e interpretato da Babel. Per inserire codice JS in JSX si usano le parentesi graffe {}.
+
+Non tutte le istruzioni JS sono consentite direttamente:
+
++-------------------------+---------------------------------------------------------------+
+| SI                      | Cosa è consentito                                             |
++-------------------------+---------------------------------------------------------------+
+| Espressioni JS          | Variabili, funzioni, operazioni matematiche                   |
+| Operatore ternario      | Logica condizionale compatta                                  |
+| Componenti              | Funzionali o a classi, possono essere annidati come tag HTML. |
+| Metodi iterativi Array  | .map() per trasformare array in elementi React                |
++-------------------------+---------------------------------------------------------------+
+| NO                      | Cosa non è consentito                                         |
++-------------------------+---------------------------------------------------------------+
+| Istruzioni JS           | if, for, while non possono stare direttamente nel JSX         |
+| Attributi non standard  | Usare solo attributi riconosciuti da React                    |
+| Commenti tradizionali   | Devono essere in {} con /* commento */                        |
++-------------------------+---------------------------------------------------------------+
+
+
+#################
+#               #
+#  COMPONENTE   #
+#               #
+#################
+
+Un componente React è riutilizzabile, autonomo e può gestire stato interno e props.
+
++----------------------+---------------------------------------------------------+
+| CARATTERISTICA       | DESCRIZIONE                                             |
++----------------------+---------------------------------------------------------+
+| Riutilizzabile       | Puoi definire un componente una volta e usarlo          |
+|                      | in più punti dell'applicazione.                         |
++----------------------+---------------------------------------------------------+
+| Encapsulation        | Ogni componente ha logica e struttura proprie,          |
+|                      | trattabile come entità singola.                         |
++----------------------+---------------------------------------------------------+
+| Stato e Props        | Riceve dati esterni tramite props e può avere uno       |
+|                      | stato interno. Cambiamenti aggiornano il componente.    |
++----------------------+---------------------------------------------------------+
+| Ciclo di Vita        | Metodi del ciclo di vita consentono azioni in momenti   |
+|                      | specifici: montaggio, aggiornamento, smontaggio.        |
++----------------------+---------------------------------------------------------+
+| JSX                  | Sintassi simile a HTML integrata in JavaScript per      |
+|                      | definire l'interfaccia utente.                          |
++----------------------+---------------------------------------------------------+
+| Componibili          | Possono essere annidati dentro altri componenti per     |
+|                      | creare interfacce complesse.                            |
++----------------------+---------------------------------------------------------+
+| Funzionali vs Classi | Componenti funzionali con Hooks sono più concisi e      |
+|                      | potenti; i classici basati su classi sono meno usati.   |
++----------------------+---------------------------------------------------------+
+| Virtual DOM          | React aggiorna solo le parti modificate del DOM,        |
+|                      | migliorando le prestazioni grazie al diffing.           |
++----------------------+---------------------------------------------------------+
+
+Creare un componente:
+
+  1. File .js in src/ (es. Componente1.js)
+  2. Importare React
+  3. Usare plugin ES7 per scaffolding (rafce)
+
+// Componente generato da rafce
+
+                    const Componente1 = () => {
+                      return <div>Testo del componente</div>;
+                    };
+                    export default Componente1;
+
+//Richiamare in App.js:
+
+import Componente1 from './Componente1';
+
+function App() {
+  return <Componente1 />; // tag auto-chiudente
+}
+
+Ogni componente DEVE restituire qualcosa (return).
+
+
+###################
+#                 #
+#  SINTASSI JSX   #
+#                 #
+###################
+
+Regole principali di JSX:
+
+Tutti gli elementi devono essere racchiusi in un unico tag wrapper oppure usare React.Fragment (<>…</>) per elementi multipli.
+
+const App = () => {
+  return (
+    <>
+      <h1>Titolo</h1>
+      <p>Paragrafo</p>
+    </>
+  );
+};
+
+Per le classi CSS usare className al posto di class.
+
+  <div className="container">Contenuto</div>
+
+
+Tutti i tag devono essere chiusi, anche quelli singoli:
+
+<br></br>
+<img src="immagine.png" alt="Foto"></img>
+
+
+#######################################################
+#                                                     #
+#  COMPONENTI INNESTATI E VARIABILI IN UN COMPONENTE  #
+#                                                     #
+#######################################################
+
+Esempio di annidamento e variabili:
+
+        const Saluto = () => <p>Ciao, utente!</p>;
+
+        const App = () => {
+          const anni = 30;
+          return (
+            <div>
+              <h1>Benvenuto!</h1>
+              <Saluto />
+              <p>Ho creato questo componente a {anni} anni.</p>
+            </div>
+          );
+        };
+
+
+###################
+#                 #
+#  STYLE INLINE   #
+#                 #
+###################
+
+In JSX lo style inline è un oggetto JS, con doppie graffe:
+
+      <div style={{ color: 'red', backgroundColor: 'yellow' }}>Testo colorato</div>
+
+La prima {} indica codice JS, la seconda { color: 'red' } è l’oggetto CSS
+
+
+###################
+#                 #
+#  PROPS OBJECT   #
+#                 #
+###################
+
+Le props permettono di passare dati ai componenti figli.
+
+  const Saluto = (props) => <h1>Ciao, {props.nome}!</h1>;
+  const App = () => <Saluto nome="Mario" />;
+
+props.nome contiene il valore passato al componente
+
+
+#####################
+#                   #
+#  PROPS CHILDREN   #
+#                   #
+#####################
+
+props.children permette di passare contenuti dinamici tra i tag di un componente
+
+const Card = (props) => <div>{props.children}</div>;
+
+function App() {
+  return (
+    <Card>
+      <h2>Titolo</h2>
+      <p>Contenuto</p>
+    </Card>
+  );
+}
+
+
+######################
+#                    #
+#  SPREAD OPERATOR   #
+#                    #
+######################
+
+Permette di passare tutte le props di un oggetto a un componente
+
+const dati = { title: "Titolo", subtitle: "Sottotitolo" };
+<MyComponente {...dati} />
+
+Equivale a scrivere:
+
+<MyComponente title="Titolo" subtitle="Sottotitolo" />
+
+
+#########################
+#                       #
+#  ARRAY IN JSX E MAP   #
+#                       #
+#########################
+
+Usare .map() per trasformare un array in elementi JSX
+
+const persone = [
+  { id: 1, nome: "Alice", eta: 25 },
+  { id: 2, nome: "Bob", eta: 30 }
+];
+
+const Lista = () => (
+  <ul>
+    {persone.map(persona => (
+      <li key={persona.id}>{persona.nome} - {persona.eta}</li>
+    ))}
+  </ul>
+);
+
+- Ogni elemento deve avere una prop key unica
+
+Soluzione corretta: usare un campo id dell’oggetto o l’indice dell’array
+
+
+#############
+#           #
+#  EVENTI   #
+#           #
+#############
+
+Gli eventi React sono in camelCase (onClick, onChange, onSubmit)
+
+Valore dell’evento: una funzione
+
+                          <button onClick={() => console.log("Premuto!")}>Premi</button>
+                          <button onClick={handleClick}>Premi</button>
+
+                          function handleClick() {
+                            console.log("Funzione richiamata!");
+                          }
+
+Passare parametri:
+
+                          <button onClick={() => saluta("Luca")}>Saluta</button>
+                          function saluta(nome) { alert(`Ciao ${nome}`); }
+
+Altri eventi comuni:
+
+  - "onMouseOver"
+  - "onChange" per input
+  - "onSubmit" per form
+
+
+########################
+#                      #
+#  CALLBACK FUNCTION   #
+#                      #
+########################
+
+Le callback functions permettono al figlio di inviare dati al padre:
+
+// Padre
+function Padre() {
+  const handle = msg => console.log(msg);
+  return <Figlio onSend={handle} />;
+}
+
+// Figlio
+function Figlio({ onSend }) {
+  return <button onClick={() => onSend("Ciao!")}>Click</button>;
+}
+
+Il padre passa la funzione handle come prop e il figlio la richiama con i dati da inviare.
+
+
+############
+#          #
+#  HOOKS   #
+#          #
+############
+
+Un Hook è una funzione fornita da React che permette ai componenti funzionali di avere stato interno e gestire effetti collaterali. Prima degli Hooks, queste funzionalità erano disponibili solo nei componenti a classi.
+
+
+###############
+#             #
+#  USESTATE   #
+#             #
+###############
+
+useState permette di creare variabili di stato in un componente funzionale:
+
+  - Accetta un valore iniziale.
+  - Restituisce un array [stato, funzionePerAggiornare].
+  - Aggiornare lo stato forza il re-render del componente.
+
+import { useState } from "react";
+
+Es:
+
+    const Contatore = () => {
+      const [numero, setNumero] = useState(0);
+
+      return (
+        <div>
+          <p>Valore: {numero}</p>
+          <button onClick={() => setNumero(numero + 1)}>Aumenta</button>
+        </div>
+      );
+    };
+
+
+#############
+#           #
+#  REGOLE   #
+#           #
+#############
+
+  - Gli Hook devono iniziare con use.
+  - Devono essere chiamati solo all’interno di componenti funzionali.
+  - Il nome del componente deve iniziare con lettera maiuscola.
+
+
+###########################################
+#                                         #
+#  USESTATE CON ARRAY E DESTRUTTURAZIONE  #
+#                                         #
+###########################################
+
+Possiamo usare useState anche con array di oggetti.
+
+import { useState } from "react";
+
+const App = () => {
+  const [persone, setPersone] = useState([
+    { id: 1, nome: "Alice" },
+    { id: 2, nome: "Bob" }
+  ]);
+
+  const eliminaPersona = (id) => {
+    setPersone(persone.filter(p => p.id !== id));
+  };
+
+  return (
+    <div>
+      {persone.map(({ id, nome }) => (
+        <div key={id}>
+          {nome} <button onClick={() => eliminaPersona(id)}>Elimina</button>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default App;
+
+- .map() permette di creare un elemento per ogni oggetto dell’array.
+- key unica obbligatoria per React.
+- Destrutturazione {id, nome} semplifica l’accesso ai dati, altrimenti dovremmo accedere a quei valori scrivendo ogni volta facendo riferimento all'oggeto (p.id e p.nome). Utile quando si lavora con array di oggetti.
+
+
+##########################
+#                        #
+#  USESTATE CON OGGETTI  #
+#                        #
+##########################
+
+Quando si usa useState con un oggetto, bisogna usare lo Spread Operator per mantenere le proprietà non aggiornate.
+
+                    import { useState } from "react";
+
+                    const App = () => {
+                      const [persona, setPersona] = useState({ nome: "Mario", cognome: "Rossi", eta: 30 });
+
+                      const cambiaNome = () => {
+                        setPersona({ ...persona, nome: "Luigi" });
+                      };
+
+                      return (
+                        <div>
+                          <p>{persona.nome} {persona.cognome}, {persona.eta} anni</p>
+                          <button onClick={cambiaNome}>Cambia nome</button>
+                        </div>
+                      );
+                    };
+
+                    export default App;
+
+
+Senza lo spread (...persona), gli altri campi verrebbero cancellati. Con lo spread, aggiornate solo le proprietà desiderate.
+
+
+##########################################
+#                                        #
+#  USESTATE: RETURN VALUE VS FUNCTIONAL  #
+#                                        #
+##########################################
+
+useState permette ai componenti funzionali di avere stato interno.
+
+Sintassi base:
+
+                                                            import { useState } from "react";
+
+                                                            const App = () => {
+                                                            const [count, setCount] = useState(0); // count = valore, setCount = funzione per aggiornarlo
+
+                                                            return (
+                                                                <div>
+                                                                <p>Count: {count}</p>
+                                                                <button onClick={() => setCount(count + 1)}>Aumenta</button>
+                                                                <button onClick={() => setCount(prev => prev - 1)}>Diminuisci</button>
+                                                                </div>
+                                                            );
+                                                            };
+
+
+Valore diretto vs functional update
+
+    - Diretto: setCount(count + 1) → usa il valore attuale di count
+    
+    - Functional update: setCount(prev => prev + 1) → usa sempre il valore più aggiornato (utile in asincrono o click veloci)
+
+
+################
+#              #
+#  USEEFFECT   #
+#              #
+################
+
+useEffect è un Hook di React che permette ai componenti funzionali di gestire effetti collaterali (side effects), cioè operazioni che avvengono al di fuori del rendering del componente.
+
+Di default, useEffect viene eseguito dopo ogni render del componente. React però ci permette di controllare quando eseguire l’effetto tramite il secondo parametro opzionale, che è un array di dipendenze.
+
+                                    useEffect(() => {
+                                    console.log("Eseguito ad ogni render");
+                                    });
+
+Passando un array di dipendenze vuoto [], l’effetto viene eseguito una sola volta, subito dopo il primo render:
+
+                                    useEffect(() => {
+                                    console.log("Eseguito solo al primo render (montaggio)");
+                                    }, []);
+
+Possiamo specificare variabili o props nell’array delle dipendenze. L’effetto viene eseguito solo quando uno di quei valori cambia:
+
+                                    const [count, setCount] = useState(0);
+
+                                    useEffect(() => {
+                                    console.log(`Il count è cambiato: ${count}`);
+                                    }, [count]);
+
+
+È possibile avere più hook useEffect nello stesso componente, ognuno con logica indipendente:
+
+                                    useEffect(() => {
+                                    console.log("Effetto 1");
+                                    }, []);
+
+                                    useEffect(() => {
+                                    console.log("Effetto 2, dipende da count");
+                                    }, [count]);
+
+Se l’effetto crea risorse esterne (listener, timer), è importante pulirle con una funzione di cleanup. La cleanup viene eseguita prima della prossima esecuzione dello stesso effetto o quando il componente viene smontato:
+
+                                    useEffect(() => {
+                                    const timer = setInterval(() => console.log("Tick"), 1000);
+
+                                    // cleanup
+                                    return () => clearInterval(timer);
+                                    }, []);
+
+
+Perché è importante:
+
+        - evita duplicazione di listener o timer
+        - previene memory leak
+        - mantiene prestazioni ottimali
+
+
+####################
+#                  #
+#  DATA FETCHING   #
+#                  #
+####################
+
+Per recuperare dati da una fonte esterna in React si utilizza tipicamente useEffect, spesso insieme a strumenti come fetch o axios.
+L’idea è eseguire la richiesta dopo il render del componente e salvare i dati ricevuti in uno stato (ad esempio photos), così che l’interfaccia si aggiorni automaticamente quando arrivano i dati.
+
+Poiché useEffect non può essere dichiarato async, la richiesta asincrona viene gestita creando una funzione async interna, che viene poi richiamata all’interno dell’hook.
+Questo permette di mantenere la struttura corretta di useEffect ed evitare errori derivanti dall’uso diretto di async/await sull’hook stesso.
+
+I vantaggi di questo approccio sono:
+
+    - Caricare i dati solo al montaggio del componente
+    - Evitare richieste ripetute non necessarie
+    - Mantenere il codice chiaro e leggibile
+    - Gestire correttamente il ciclo di vita del componente e aggiornamenti dello stato
+
+Es: 
+        import { useState, useEffect } from "react";
+
+        const App = () => {
+          const [dati, setDati] = useState([]);
+
+          useEffect(() => {
+            // funzione async interna
+            const caricaDati = async () => {
+              const risposta = await fetch("https://jsonplaceholder.typicode.com/users");
+              const json = await risposta.json();
+              setDati(json);
+            };
+            caricaDati();
+          }, []); // [] significa che l'effetto viene eseguito solo al montaggio
+
+          return (
+            <div>
+              <h1>Utenti:</h1>
+              <ul>
+                {dati.map(user => (
+                  <li key={user.id}>{user.name}</li>
+                ))}
+              </ul>
+            </div>
+          );
+        };
+
+        export default App;
+
+
+##########################
+#                        #
+#  RENDER CONDIZIONALE   #
+#                        #
+##########################
+
+Il rendering condizionale in React consente di mostrare contenuti diversi in base a una condizione, solitamente legata allo stato del componente.
+In pratica, React decide cosa renderizzare in base al valore di una variabile (ad esempio creata con useState).
+
+È utile per gestire situazioni come:
+
+    - dati in caricamento
+    - errori
+    - dati caricati correttamente
+
+Es:
+
+                                                function App() {
+                                                const [loading, setLoading] = useState(true);
+
+                                                if (loading) {
+                                                    return <p>Loading...</p>;
+                                                }
+
+                                                return <p>Dati caricati</p>;
+                                                }
+
+- Se loading è true → mostra Loading
+- Se loading è false → mostra Dati caricati
+
+
+#########################
+#                       #
+#  OPERATORE TERNARIO   #
+#                       #
+#########################
+
+Nel JSX non si possono usare istruzioni (if, for, while), ma solo espressioni.
+Per questo si usa spesso l’operatore ternario.
+
+Sintassi base:
+
+    condizione ? valoreSeVero : valoreSeFalso
+
+Con confronto:
+
+    {nome === "Mario" ? <p>Ciao Mario</p> : <p>Utente anonimo</p>}
+
+Con booleano:
+
+{isLogged ? <Dashboard /> : <Login />}
+
+    - Se la condizione è vera, React renderizza il primo valore.
+    - Se è falsa, renderizza il secondo.
+
+
+###############################
+#                             #
+#  SHORT CIRCUIT EVALUATION   #
+#                             #
+###############################
+
+Una short-circuit evaluation è un’espressione logica che restituisce un valore senza valutare tutto, fermandosi appena il risultato è determinabile. In JavaScript (e quindi in React) si usano principalmente || (OR) e && (AND).
+
+OR (||)
+
+Restituisce il primo valore “vero”, altrimenti il secondo:
+    
+                        <p>{nome || "Ospite"}</p>
+
+- Se nome esiste → viene mostrato
+- Se è vuoto/false → viene mostrato "Ospite"
+
+AND (&&)
+
+Restituisce il secondo valore solo se il primo è vero:
+
+                        {isAdmin && <p>Area riservata</p>}
+
+- Se isAdmin è true → il <p> viene mostrato
+- Se è false → non viene mostrato nulla
+
+
+###############
+#             #
+#  ONSUBMIT   #
+#             #
+###############
+
+onSubmit intercetta l’invio di un form. Serve per gestire i dati prima che il browser esegua il comportamento di default (reload della pagina).
+
+In pratica consente di eseguire codice quando viene “sottomesso” un insieme di dati, come validazioni, chiamate a API o aggiornamento dello stato, senza dover necessariamente usare un <form> HTML classico.
+
+Esempio minimo con React:
+
+function App() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form inviato");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Invia</button>
+    </form>
+  );
+}
+
+
+###########################
+#                         #
+#  EVENT.PREVENTDEFAULT   #
+#                         #
+###########################
+
+event.preventDefault() serve a bloccare il comportamento automatico del browser.
+
+Nel caso dei form:
+
+  - senza preventDefault() → refresh della pagina
+  - con preventDefault() → gestione manuale con React
+
+                function handleSubmit(e) {
+                  e.preventDefault();
+                  console.log("Submit gestito da React");
+                }
+
+                <form onSubmit={handleSubmit}>
+                  <button type="submit">Invia</button>
+                </form>
+
+
+3. Possiamo ottenere lo stesso risultato usando onClick sul bottone invece di onSubmit sul form.
+
+Gestione input controllati con useState (input il cui valore dipende dallo stato.):
+
+                const [nome, setNome] = useState("");
+
+                <input
+                  value={nome}
+                  onChange={e => setNome(e.target.value)}
+                />
+
+
+- Senza onChange, l’input diventa bloccato perché React controlla il valore tramite lo stato.
+- Con onChange, aggiorniamo lo stato ad ogni digitazione.
+
+
+#############
+#           #
+#  USEREF   #
+#           #
+#############
+
+useRef serve per:
+
+  - accedere direttamente a un elemento DOM senza causare re-render
+
+Esempio:
+
+                    import { useRef } from "react";
+
+                    function App() {
+                      const inputRef = useRef();
+
+                      return (
+                        <>
+                          <input ref={inputRef} />
+                          <button onClick={() => inputRef.current.focus()}>
+                            Focus input
+                          </button>
+                        </>
+                      );
+                    }
+
+
+- useRef() crea il riferimento
+- ref={inputRef} collega l’input
+- inputRef.current è l’elemento DOM
+
+
+#################
+#               #
+#  USEREDUCER   #
+#               #
+#################
+
+useReducer è un Hook di React usato per gestire lo stato quando la logica diventa più complessa rispetto a useState. È simile a Redux: lo stato non viene modificato direttamente, ma tramite azioni inviate a una funzione chiamata reducer.
+
+È utile quando:
+
+   - lo stato ha più valori
+   - lo stato cambia in base a molte azioni diverse
+   - il nuovo stato dipende sempre dal precedente
+
+useReducer accetta:
+
+   - una funzione reducer
+   - uno stato iniziale
+
+e restituisce:
+
+   - lo stato corrente
+   - una funzione dispatch
+
+function reducer(state, action) {
+  if (action.type === "INCREMENTA") {
+    return state + 1;
+  }
+  return state;
+}
+
+function App() {
+  const [count, dispatch] = useReducer(reducer, 0);
+
+  return (
+    <>
+      <p>{count}</p>
+      <button onClick={() => dispatch({ type: "INCREMENTA" })}>
+        +
+      </button>
+    </>
+  );
+}
+
+
+#################
+#               #
+#  USECONTEXT   #
+#               #
+#################
+
+useContext serve per condividere dati tra più componenti senza dover passare props manualmente a ogni livello (prop drilling).
+
+È utile quando:
+
+   - più componenti lontani condividono dati
+   - lo stesso stato viene usato in molte parti dell’app
+   - Il Context funziona come un contenitore globale per una parte dell’app.
+
+Passaggi fondamentali
+
+   - Creare il context
+   - Avvolgere i componenti con il Provider
+   - Leggere il valore con useContext
+
+Es:
+
+                           import { createContext, useContext } from "react";
+
+                           const AppContext = createContext();
+
+                           function App() {
+                           return (
+                              <AppContext.Provider value="Ciao dal context">
+                                 <Figlio />
+                              </AppContext.Provider>
+                           );
+                           }
+
+                           function Figlio() {
+                           const messaggio = useContext(AppContext);
+                           return <p>{messaggio}</p>;
+                           }
+
+Il componente Figlio:
+
+   - non riceve props
+   - legge direttamente il valore dal context
+
+useContext elimina il passaggio di props a cascata.
+
+
+################
+#              #
+#  PROPTYPES   #
+#              #
+################
+
+PropTypes è una libreria che permette di controllare il tipo delle props ricevute da un componente. Non blocca l’app, ma mostra warning in console durante lo sviluppo.
+
+Serve per:
+   - evitare errori
+   - documentare i componenti
+   - intercettare dati mancanti o sbagliati
+
+Es:
+
+            import PropTypes from "prop-types";
+
+            function Saluto({ nome }) {
+            return <h1>Ciao {nome}</h1>;
+            }
+
+            Saluto.propTypes = {
+            nome: PropTypes.string.isRequired
+            };
+
+
+#############
+#           #
+#  ROUTER   #
+#           #
+#############
+
+Fino a questo momento abbiamo lavorato con una sola pagina.
+React però è una Single Page Application (SPA): non carica nuove pagine dal server, ma cambia vista in base all’URL.
+
+Per gestire più pagine (URL diversi) in React si usa React Router, una libreria esterna che va installata nel progetto (react-router-dom) e aggiunta al package.json.
+
+Le route rappresentano i percorsi dell’applicazione (es. /, /about, /profile) e permettono di associare un URL a un componente React.
+
+React Router intercetta il cambio di URL e decide quale componente mostrare, senza ricaricare la pagina.
+
+Routes al posto di Switch
+
+    - Routes contiene tutte le Route e decide quale mostrare in base all’URL.
+
+Element al posto di component
+    - Si passa direttamente JSX:
+
+                                                <Route path="/about" element={<About />} />
+
+
+BrowserRouter
+    - È il contenitore principale che abilita il routing nell’app.
+
+Route
+    - Definisce il percorso e il componente associato.
+
+Link
+    - Serve per navigare tra le pagine senza ricaricare l’app.
+
+Es:
+
+                                                                import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+                                                                function App() {
+                                                                return (
+                                                                    <BrowserRouter>
+
+                                                                    <nav>
+                                                                        <Link to="/">Home</Link>
+                                                                        <Link to="/about">About</Link>
+                                                                    </nav>
+
+                                                                    <Routes>
+                                                                        <Route path="/" element={<Home />} />
+                                                                        <Route path="/about" element={<About />} />
+                                                                    </Routes>
+
+                                                                    </BrowserRouter>
+                                                                );
+                                                                }
+
+- Cambia URL
+- React cambia componente, non pagina
+
+Per intercettare URL inesistenti si usa:
+
+<Route path="*" element={<ErrorPage />} />
+
+###########################
+#                         #
+#  TEMPLATE E USEPARAMS   #
+#                         #
+###########################
+
+Quando una pagina segue sempre la stessa struttura ma cambia solo un valore (es. ID), si usano route dinamiche.
+
+Esempio:
+
+        /profile/1
+        /profile/2
+
+Invece di creare una route per ogni profilo, usiamo un template di route con parametro:
+
+<Route path="/profile/:id" element={<SingleProfile />} />
+
+
+:id è un parametro dinamico.
+
+Per leggerlo nel componente si usa l’hook useParams, che restituisce un oggetto con i parametri dell’URL.
+
+Es:
+            import { useParams } from "react-router-dom";
+
+            function SingleProfile() {
+            const { id } = useParams();
+            return <p>Profilo numero {id}</p>;
+            }
+
+
+URL: /profile/5
+Output: Profilo numero 5
+
+
+##################
+#                #
+#  USENAVIGATE   #
+#                #
+##################
+
+useNavigate permette di reindirizzare l’utente via codice, senza clic su Link.
+
+È utile per:
+
+    - redirect dopo login
+    - tornare indietro
+    - gestire errori
+
+import { useNavigate } from "react-router-dom";
+
+function ErrorPage() {
+  const navigate = useNavigate();
+
+  return (
+    <button onClick={() => navigate("/")}>
+      Torna alla Home
+    </button>
+  );
+}
+
+
+#####################
+#                   #
+#  ROTTE ANNIDATE   #
+#                   #
+#####################
+
+Le rotte annidate permettono di rappresentare una struttura gerarchica di pagine.
+
+Esempio:
+
+        /profile
+        /profile/1
+
+La route padre deve essere configurata per contenere le figlie.
+
+Es:
+
+            <Route path="/profile" element={<Profile />}>
+            <Route path=":id" element={<SingleProfile />} />
+            </Route>
+
+
+Nel componente Profile è necessario usare <Outlet /> per indicare dove renderizzare le route figlie. Senza Outlet, React renderizza solo il componente padre
+
+
+################
+#              #
+#  USEROUTES   #
+#              #
+################
+
+useRoutes permette di definire le route tramite un array di oggetti, invece che con JSX.
+
+È utile per:
+
+    - organizzare meglio il codice
+    - separare routing e layout
+    - progetti più grandi
+
+Es:
+
+        const routes = [
+        { path: "/", element: <Home /> },
+        { path: "/about", element: <About /> }
+        ];
+
+Nel componente principale:
+
+            const routing = useRoutes(routes);
+            return routing;

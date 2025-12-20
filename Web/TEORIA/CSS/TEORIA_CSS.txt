@@ -1,0 +1,515 @@
+###################
+#                 #
+#  INTRODUZIONE   #
+#                 #
+###################
+
+CSS (Cascading Style Sheets) è il linguaggio di stile per i documenti web. Permette di separare contenuto e presentazione, definendo:
+
+    - font e dimensioni del testo
+    - colori
+    - immagini di sfondo
+    - layout complessivo
+
+Tutti i browser moderni supportano pienamente CSS3.
+
+
+######################
+#                    #
+#  ATTRIBUTO STYLE   #
+#                    #
+######################
+
+L'attributo style permette di modificare lo stile direttamente su un singolo elemento HTML.
+
+Sintassi:
+
+<div style="color: red; background-color: yellow;">
+
+
+Tutte le proprietà devono essere separate da punto e virgola. Codice inline ha precedenza sul CSS incorporato o esterno.
+
+
+#########################################
+#                                       #
+#  CSS INLINE - INCORPORATI - ESTERNI   #
+#                                       #
+#########################################
+
+Inline: definito direttamente nel tag con style
+
+Incorporato: all'interno del tag <style> nella <head>
+
+Esterno: in un file .css separato collegato con <link>
+
+
+#####################
+#                   #
+#  ES INCORPORATI   #
+#                   #
+#####################
+
+<head>
+    <style type="text/css">
+        body {background: white;}
+        p {color: red;}
+    </style>
+</head>
+
+E’ possibile accorpare lo stile di più tag in un unico blocco. Basta separare con la virgola i due tag in riferimento allo stesso blocco di stile:
+
+p, div { color: #ff0000; }
+
+
+############################
+#                          #
+#   PROPRIETÀ BACKGROUND   #
+#                          #
+############################
+
++---------------------+-------------------------------------------+
+| Proprietà           | Descrizione                               |
++---------------------+-------------------------------------------+
+| background-color    | Colore di sfondo                          |
+| background-image    | Immagine di sfondo                        |
+| background-repeat   | Ripetizione immagine (repeat-x/y/no)      |
+| background-attachment | Scorrimento immagine (scroll/fixed)     |
+| background-position | Posizione immagine (top/left/px)          |
++---------------------+-------------------------------------------+
+
+Es:
+
+    body {
+        background-image: url(sfondo.jpg);
+        background-repeat: repeat-y;
+        background-attachment: fixed;
+        background-position: 10px 10px;
+    }
+
+
+#######################
+#                     #
+#  PROPRIETÀ BORDER   #
+#                     #
+#######################
+
+La proprietà border è un'abbreviazione per impostare in una sola volta i valori individuali di border. Può essere usata per imposttare uno o più seguenti valori: border-width, border-style, border-color. Possiamo agire su tutti e quattro i lati del box oppure solo su uno specifico lato.
+
++-------------------+-----------------------------------------------+
+| PROPRIETÀ          | DESCRIZIONE                                  |
++-------------------+-----------------------------------------------+
+| border            | Abbreviazione per width, style, color         |
+| border-width      | Spessore bordo (px, em o thin/medium/thick)   |
+| border-style      | Tipo bordo (solid, dashed, dotted, etc.)      |
+| border-color      | Colore bordo                                  |
+| border-top-*      | Proprietà specifiche lato superiore           |
+| border-bottom-*   | Proprietà specifiche lato inferiore           |
+| border-left-*     | Proprietà specifiche lato sinistro            |
+| border-right-*    | Proprietà specifiche lato destro              |
+| border-radius     | Arrotonda gli angoli del box                  |
++-------------------+-----------------------------------------------+
+
+- width: spessore (thin, medium, thick o px)
+
+- style(tipo di bordo):
+
+    none      -> nessun bordo
+    hidden    -> equivale a none
+    dotted    -> puntini
+    dashed    -> trattini
+    solid     -> linea intera
+    double    -> doppia linea
+    groove    -> rilievo 3D (incavo)
+    ridge     -> rilievo 3D (emersione)
+    inset     -> rientrante (3D)
+    outset    -> in rilievo (3D, opposto a inset)
+
+- color: colore del bordo.
+
+#box {
+    border: 2px solid red;      /* width + style + color */
+    border-top-width: 5px;      /* solo lato superiore */
+    border-radius: 20px;        /* arrotonda tutti gli angoli */
+}
+
+########################
+#                      #
+#  PROPRIETÀ PADDING   #
+#                      #
+########################
+
+Spazio interno tra contenuto e bordo:
+
+p { padding: 10px; }           /* tutti i lati */
+p { padding: 10px 5px 15px 30px; } /* top, right, bottom, left */
+
+#######################
+#                     #
+#  PROPRIETÀ MARGIN   #
+#                     #
+#######################
+
+Spazio esterno al box:
+
+p { margin: 10px; }
+p { margin: 10px 5px 15px 30px; } /* top, right, bottom, left */
+
+################
+#              #
+#  SELETTORI   #
+#              #
+################
+
+I selettori CSS servono a individuare gli elementi HTML a cui applicare uno stile. Ogni regola CSS ha un selettore che indica a quali elementi si applica e un blocco di dichiarazioni che definisce lo stile.
+
++---------------------+-----------------------------------------------+
+| TIPO SELETTORE      | DESCRIZIONE                                   |
++---------------------+-----------------------------------------------+
+| Elemento            | Seleziona tutti gli elementi di un tipo       |
+|                     | h1 { color: green; }                          |
++---------------------+-----------------------------------------------+
+| Gruppo di elementi  | Seleziona più elementi contemporaneamente     |
+|                     | h1, h2, h3 { background: white; }             |
++---------------------+-----------------------------------------------+
+| ID                  | Seleziona un elemento unico tramite ID        |
+|                     | #titolo { color: red; }                       |
++---------------------+-----------------------------------------------+
+| Classe              | Seleziona tutti gli elementi con una classe   |
+|                     | .titolo { color: red; }                       |
++---------------------+-----------------------------------------------+
+
+Note importanti:
+
+    - Gli ID devono essere unici nella pagina.
+    - Le classi possono essere assegnate a più elementi.
+    - Si possono combinare selettori (es. h1.titolo seleziona solo <h1> con classe titolo).
+
+Es Combinato:
+
+    <h1 id="titolo" class="rosso importante">Testo</h1>
+
+    #titolo { font-size: 20px; }
+    .rosso { color: red; }
+    .importante { font-weight: bold; }
+
+
+################
+#              #
+#  INSPECTOR   #
+#              #
+################
+
+Strumenti per sviluppatori disponibili in tutti i browser per analizzare HTML e CSS oltre l’aspetto visivo.
+
+############
+#          #
+#  EXTRA   #
+#          #
+############
+
+Testo:
+
+    - color: red;
+    - color: #ff0000;
+
+
+Dimensione testo:
+
+    - font-size: 16px;  /* fissa */
+    - font-size: 1.5em; /* scalabile */
+
+
+Allineamento testo:
+
+    - text-align: left|right|center|justify;
+
+
+Indentazione e interlinea:
+
+    - text-indent: 20px;
+    - line-height: 1.5;
+
+
+Trasformazioni lettere:
+
+    - text-transform: lowercase|uppercase|capitalize;
+
+
+############
+#          #
+#  FONTS   #
+#          #
+############
+
+Web-safe fonts: Verdana, Georgia, Times New Roman… (Sono disponibili su ogni dispositivo)
+
+Font-stack: fallback in ordine (Se un font non è disponibile per un determinato dispositivo verrà impostato un'altro)
+
+    body { font-family: "Times New Roman", Georgia, serif; }
+
+Font-weight: normal, bold, bolder, lighter, 100–900
+
+Font-style: normal, italic, oblique
+
+
+################
+#              #
+#  DISPLAY     #
+#              #
+################
+
+Proprietà CSS che determina come un elemento viene visualizzato e come interagisce con gli altri elementi nella pagina. Decide il tipo di box dell’elemento e il suo comportamento nel flusso del documento.
+
++------------------+-------------------------------------------------+
+| VALORE           | DESCRIZIONE                                     |
++------------------+-------------------------------------------------+
+| block            | elemento a blocco, occupa tutta la larghezza    |
+| inline           | elemento in linea con altri                     |
+| inline-block     | in linea ma accetta dimensioni                  |
+| none             | elemento nascosto                               |
+| flex             | attiva layout flexbox                           |
+| inline-flex      | come flex ma contenitore inline                 |
+| grid             | attiva layout grid                              |
+| inline-grid      | come grid ma contenitore inline                 |
++------------------+-------------------------------------------------+
+
+Es:
+        <div style="display: block; background: red;">Block</div>
+        <div style="display: block; background: blue;">Block</div>
+
+        <span style="display: inline-block; background: red; width: 100px;">Inline-block</span>
+        <span style="display: inline-block; background: blue; width: 100px;">Inline-block</span>
+
+block: elementi uno sotto l’altro.
+inline-block: elementi affiancati, ma con larghezza e altezza personalizzabili.
+
+################
+#              #
+#  BOOTSTRAP   #
+#              #
+################
+
+Bootstrap: framework HTML, CSS e JS più popolare.
+
+Vantaggi:
+
+    - Componenti grafici e funzionali pronti all’uso
+    - Risparmio di tempo nello sviluppo
+    - Responsive by default
+    
+
+##############
+#            #
+#  FLEXBOX   #
+#            #
+##############
+
+Modulo CSS per la gestione del layout flessibile degli elementi figli di un contenitore, basato su asse principale (main axis) e asse perpendicolare (cross axis).
+
+Permette di:
+    
+    - allineare elementi
+    - distribuirli nello spazio
+    - adattare il layout a diverse dimensioni
+
+##################
+#                #
+#  CONTENITORE   #
+#                #
+##################
+
++----------------+--------------------------------------------+----------------------------------------------+
+| PROPRIETA'     | VALORI                                     | DEFINIZIONE BREVE                            |
++----------------+--------------------------------------------+----------------------------------------------+
+| display        | flex                                       | Attiva il layout flex                        |
++----------------+--------------------------------------------+----------------------------------------------+
+| flex-direction | row, column, row-reverse, column-reverse   | Direzione dell'asse principale               |
++----------------+--------------------------------------------+----------------------------------------------+
+| flex-wrap      | nowrap, wrap, wrap-reverse                 | Gestione del ritorno a capo                  |
++----------------+--------------------------------------------+----------------------------------------------+
+| flex-flow      | <direction> <wrap>                         | Abbreviazione di direction + wrap            |
++----------------+--------------------------------------------+----------------------------------------------+
+| justify-content| flex-start, center, space-between, etc.    | Allineamento sull'asse principale            |
++----------------+--------------------------------------------+----------------------------------------------+
+| align-items    | stretch, center, flex-start, flex-end      | Allineamento sull'asse perpendicolare        |
++----------------+--------------------------------------------+----------------------------------------------+
+| align-content  | center, space-between, stretch             | Allineamento delle righe (solo multi-riga)   |
++----------------+--------------------------------------------+----------------------------------------------+
+
+Es: 
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#####################
+#                   #
+#  BOX FLESSIBILI   #
+#                   #
+#####################
+
++----------------+--------------------------------------------+----------------------------------------------+
+| PROPRIETA'     | VALORI                                     | DEFINIZIONE BREVE                            |
++----------------+--------------------------------------------+----------------------------------------------+
+| order          | numero                                     | Cambia l'ordine visivo del box               |
++----------------+--------------------------------------------+----------------------------------------------+
+| align-self     | auto, center, flex-start, flex-end         | Allinea un singolo box                       |
++----------------+--------------------------------------------+----------------------------------------------+
+| flex-grow      | numero                                     | Quanto il box cresce                         |
++----------------+--------------------------------------------+----------------------------------------------+
+| flex-shrink    | numero                                     | Quanto il box si restringe                   |
++----------------+--------------------------------------------+----------------------------------------------+
+| flex-basis     | px, %, em                                  | Dimensione iniziale del box                  |
++----------------+--------------------------------------------+----------------------------------------------+
+| flex           | grow shrink basis                          | Abbreviazione delle tre proprietà            |
++----------------+--------------------------------------------+----------------------------------------------+
+
+Es:
+
+.item {
+  flex: 1;
+  order: 2;
+}
+
+
+####################
+#                  #
+#  MEDIA QUERIES   #
+#                  #
+####################
+
+Le media queries permettono di applicare regole CSS in base al tipo di dispositivo o alle dimensioni dello schermo.
+
++-------------+----------------------------------------------+
+| TIPO MEDIA  | DESCRIZIONE                                  |
++-------------+----------------------------------------------+
+| all         | Tutti i dispositivi                          |
+| screen      | Schermi                                      |
+| print       | Stampa                                       |
+| speech      | Sintesi vocale                               |
+| handheld    | Dispositivi mobili                           |
+| tv          | Televisori                                   |
++-------------+----------------------------------------------+
+
+Es:
+
+@media screen and (max-width: 768px) {
+  body { font-size: 14px; }
+}
+
+Operatori logici
+----------------------------------
+and   -> tutte le condizioni vere
+not   -> nega la condizione
+only  -> esclude browser vecchi
+
+Dichiarazione media query
+----------------------------------
+
+1. Nel tag link
+
+        <link rel="stylesheet" media="screen and (max-width:600px)" href="mobile.css">
+
+
+2. Nel CSS
+
+        @media screen and (min-width:600px) { }
+
+
+3. Con import
+
+    @import url(mobile.css) screen and (max-width:600px);
+
+
+########################
+#                      #
+#  META TAG VIEWPORT   #
+#                      #
+########################
+
+Il meta tag viewport permette di controllare il modo in cui il browser interpreta e gestisce l’area di visualizzazione (viewport) sui dispositivi mobili, evitando i comportamenti di adattamento automatico predefiniti.
+Inserendolo nella sezione <head>, lo sviluppatore assume il controllo del layout, decidendo come la pagina deve essere visualizzata su schermi di dimensioni diverse.
+
+Es:
+
+    <meta name="viewport" content="width=device-width">
+
+Questa istruzione imposta la larghezza della viewport uguale alla larghezza reale del dispositivo:
+
+    ~320px su smartphone
+    ~768–1024px su tablet
+    variabile in base al device
+
+Senza il meta tag viewport, molti browser mobili (es. Safari iOS) usano una viewport virtuale di circa 980px, ridimensionando l’intera pagina per farla rientrare nello schermo. Con width=device-width:
+
+    - la viewport non viene scalata
+    - il layout non subisce ridimensionamenti automatici
+    - la pagina viene visualizzata alla sua dimensione reale
+
+Se il sito non si adatta automaticamente, è meglio non usare il meta viewport e lasciare che il browser effettui lo scaling.
+Se il sito è responsive, il meta viewport è indispensabile per evitare zoom e ridimensionamenti indesiderati.
+
+
+#########################
+#                       #
+#  POSITION E Z-INDEX   #
+#                       #
+#########################
+
+La proprietà position definisce il metodo di posizionamento di un elemento nel documento e stabilisce rispetto a cosa vengono calcolate le coordinate (top, right, bottom, left).
+
+La proprietà z-index definisce l’ordine di sovrapposizione degli elementi posizionati lungo l’asse Z (profondità).
+
+Position:
+
++-----------+--------------------------------------------------------------+
+| VALORE    | DEFINIZIONE BREVE                                            |
++-----------+--------------------------------------------------------------+
+| static    | Posizione di default; ignora top, right, bottom, left        |
++-----------+--------------------------------------------------------------+
+| relative  | Spostato rispetto alla sua posizione originale               |
++-----------+--------------------------------------------------------------+
+| absolute  | Posizionato rispetto al primo antenato non static            |
++-----------+--------------------------------------------------------------+
+| fixed     | Posizionato rispetto alla viewport; resta fisso allo scroll  |
++-----------+--------------------------------------------------------------+
+| sticky   | Relative finché scrolla, poi diventa fixed                    |
++-----------+--------------------------------------------------------------+
+
+Es:
+
+    .box {
+        position: absolute;
+        top: 20px;
+        left: 30px;
+    }
+
+Z-index:
+
++-----------+--------------------------------------------------------------+
+| PROPRIETA'| DEFINIZIONE BREVE                                            |
++-----------+--------------------------------------------------------------+
+| z-index   | Ordine di sovrapposizione sull'asse Z                        |
++-----------+--------------------------------------------------------------+
+
+Regole fondamentali:
+
+    - Funziona solo su elementi posizionati
+    - Valori più alti → elemento in primo piano
+    - Accetta numeri interi (positivi o negativi)
+
+Es:
+
+.box1 {
+  position: relative;
+  z-index: 1;
+}
+
+.box2 {
+  position: relative;
+  z-index: 10;
+}
