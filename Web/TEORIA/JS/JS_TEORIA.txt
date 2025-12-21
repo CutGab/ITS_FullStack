@@ -64,28 +64,6 @@ JavaScript lato client collabora con l'HTML. Esistono tre modi principali per in
     
                                 <script src="codice.js"></script>
 
-Per definire funzioni:
-
-- Funzione tradizionale:
-
-                                                            function nomeFunzione(parametro1, parametro2) {
-                                                            // codice da eseguire
-                                                            return risultato;
-                                                        }
-
-
-
-
-- Arrow function:
-                                                        const nomeFunzione = () => {
-                                                            // codice da eseguire
-                                                        };
-
-
-
-Per eseguire la funzione:
-    nomeFunzione();
-
 #################
 #               #
 #  LATO SERVER  #

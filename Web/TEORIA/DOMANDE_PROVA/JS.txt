@@ -1,0 +1,350 @@
+========================================================================================================================
+1. Quali sono le tre modalità principali per includere codice JavaScript in una pagina HTML lato client?
+------------------------------------------------------------------------------------------------------------------------
+Ci sono 3 modi per includere JS in una pagina HTML:
+
+- Tramite link esterno con il tag <script>.
+- Incorporati tramite il tag <script> all'interno del documento HTML con blocchi di codice.
+- Inline, scritti direttamente all'interno del tag stesso specificando l'evento che lo scatena e l'azione che verrà eseguita.
+========================================================================================================================
+
+
+========================================================================================================================
+2. Cosa significa ECMAScript e quali sono le sue implementazioni più note?
+------------------------------------------------------------------------------------------------------------------------
+ECMAScript (ES) è lo standard dei linguaggi di scripting mantenuto da ECMA International. Implementazioni conosciute includono JavaScript, JScript e ActionScript.
+========================================================================================================================
+
+
+========================================================================================================================
+3. Qual è la differenza fondamentale tra let e var?
+------------------------------------------------------------------------------------------------------------------------
+La loro differenza sostanziale sta nel loro scope di esistenza:
+
+mentre var ha uno scope di funzione (visibile solo all'interno della funzione in cui è dichiarata), let ha uno scope di blocco (visibile solo nel blocco di codice in cui è dichiarata)
+========================================================================================================================
+
+
+========================================================================================================================
+4. Come si dichiara una costante in JavaScript?
+------------------------------------------------------------------------------------------------------------------------
+const nome_costante = valore;
+========================================================================================================================
+
+
+========================================================================================================================
+6. Cosa rappresenta il valore NaN e come si verifica se una variabile contiene NaN?
+------------------------------------------------------------------------------------------------------------------------
+NaN sta a significare "Not a Number" e si ottiene quando un'operazione matematica fallisce o quando una funzione si aspetta un numero ma riceve un valore non convertibile in numero.
+Per controllare se una variabile è NaN si usa isNaN() che ritorna un booleano.
+========================================================================================================================
+
+
+========================================================================================================================
+7. Spiega la differenza tra null e undefined.
+------------------------------------------------------------------------------------------------------------------------
+"null" è il valore di una variabile intenzionalmente vuota. "undefined" è il valore di una variabile non inizializzata o una funzione senza return.
+========================================================================================================================
+
+
+========================================================================================================================
+8. Cosa significa che JavaScript è un linguaggio a tipizzazione debole e dinamica?
+------------------------------------------------------------------------------------------------------------------------
+Significa che un developer può inizializzare una variabile e assegnarle un numero, e successivamente assegnarle una stringa, senza conseguenze.
+========================================================================================================================
+
+
+========================================================================================================================
+9. Come si utilizza l’operatore typeof e cosa restituisce per una variabile non definita?
+------------------------------------------------------------------------------------------------------------------------
+L'operatore typeof restituisce il tipo della variabile su cui lo stiamo invocando, per esempio:
+
+var testo = "ciao";
+
+typeof testo -> "string"
+
+var x;
+
+typeof x -> "undefined"
+========================================================================================================================
+
+
+========================================================================================================================
+10. In JavaScript, cosa succede quando si moltiplicano due stringhe numeriche? E quando le si somma?
+------------------------------------------------------------------------------------------------------------------------
+Quando si moltiplicano due stringhe numeriche, JS farà una conversione implicita delle stringhe in numeri ed eseguira l'operazione matematica,
+quando le si somma tuttavia JS farà semplicemente una concatenazione delle due stringhe.
+========================================================================================================================
+
+
+========================================================================================================================
+11. Qual è il tipo di dato restituito dalla funzione prompt() se l'utente clicca "Annulla"?
+------------------------------------------------------------------------------------------------------------------------
+null.
+========================================================================================================================
+
+
+========================================================================================================================
+12. Cosa rappresenta il DOM in JavaScript?
+------------------------------------------------------------------------------------------------------------------------
+Il DOM (Document Object Model) è una rappresentazione della pagina HTML come gerarchia ad albero, dove ogni tag diventa un nodo. 
+Con esso siamo in grado di interagire dinamicamente con la pagina HTML
+========================================================================================================================
+
+
+========================================================================================================================
+13. Quali sono i principali metodi dell'oggetto document per selezionare elementi HTML?
+------------------------------------------------------------------------------------------------------------------------
+document.getElementById
+document.getElementsByName
+document.getElementsByClassName
+document.getElementsByTagName
+document.querySelector
+document.querySelectorAll
+========================================================================================================================
+
+
+========================================================================================================================
+14. Come si aggiunge un listener per l'evento "click" a un pulsante con id "btn"?
+------------------------------------------------------------------------------------------------------------------------
+document.getElementById("btn").addEventListener("click", funzione)
+========================================================================================================================
+
+
+========================================================================================================================
+15. Qual è la sintassi base per definire una funzione tradizionale in JavaScript?
+------------------------------------------------------------------------------------------------------------------------
+function nomeF (parametri){
+    //codice
+}
+========================================================================================================================
+
+
+========================================================================================================================
+16. Cosa è l'oggetto arguments all'interno di una funzione?
+------------------------------------------------------------------------------------------------------------------------
+L'oggeto arguments è un oggetto array-like che ritroviamo all'interno di funzioni che prendono parametri al loro interno.
+Arguments conterrà al suo interno i vari parametri e ci si può accedere tranquillamente con (per esempio): arguments[0]
+========================================================================================================================
+
+
+========================================================================================================================
+17. Qual è la differenza tra variabili locali e globali?
+------------------------------------------------------------------------------------------------------------------------
+Le variabili globali vengono dichiarate fuori da blocchi di codice e possono essere richiamate in qualsiasi parte del codice,
+quelle locali possono essere usate solamente all'interno dei blocchi di codice in cui vengono dichiarate.
+========================================================================================================================
+
+
+========================================================================================================================
+18. Scrivi una arrow function che accetta due parametri e ne restituisce la somma.
+------------------------------------------------------------------------------------------------------------------------
+const somma = (a,b) => a + b; 
+========================================================================================================================
+
+
+========================================================================================================================
+19. Come si imposta un valore di default per un parametro di funzione in ES6?
+------------------------------------------------------------------------------------------------------------------------
+function nomeF (a = 0){
+    //codice
+}
+========================================================================================================================
+
+
+========================================================================================================================
+20. Qual è la differenza tra export default e export multipli nei moduli ES6?
+------------------------------------------------------------------------------------------------------------------------
+La differenza sta nel fatto che export default permette di esportare il singolo valore, mentre export multipli come dice il nome ti permette di esportare diversi elementi.
+========================================================================================================================
+
+
+========================================================================================================================
+21. Come si importano tutti gli esport di un modulo in un unico oggetto chiamato util?
+------------------------------------------------------------------------------------------------------------------------
+import * as util from "./util.js"
+========================================================================================================================
+
+
+========================================================================================================================
+22. Spiega cos'è la destrutturazione e mostra un esempio con un array.
+------------------------------------------------------------------------------------------------------------------------
+La destrutturazione è un concetto utile quando si lavora con oggeti o array in JS, esso permette di poter accedere ad elementi direttamente senza dover passare per l'oggetto ogni volta.
+
+const persona = ["Gabriele", "Singapore"]
+
+const [nome, cognome] = persona;
+========================================================================================================================
+
+
+========================================================================================================================
+23. A cosa serve lo spread operator (...) e mostra un esempio di utilizzo con due array.
+------------------------------------------------------------------------------------------------------------------------
+Lo spread operator è un operatore di JS che restituisce un nuovo array e permette di unire, copiare, aggiungere o sovrascrivere array o oggeti.
+
+const primo_array = [1,2,3,4]
+
+const secondo_array = [5,6,7,8]
+
+const union_array = [...primo_array,...secondo_array]
+========================================================================================================================
+
+
+========================================================================================================================
+24. Quali sono i tre possibili stati di una Promise?
+------------------------------------------------------------------------------------------------------------------------
+Pending (In attesa)
+Fulfilled (Andata a buon fine)
+Rejected (Fallita)
+========================================================================================================================
+
+
+========================================================================================================================
+25. Qual è lo scopo dei metodi .then() e .catch() su una Promise?
+------------------------------------------------------------------------------------------------------------------------
+Il metodio then serve per proseguire nelle operazioni da eseguire nella Promise. Catch viene usato quando si verifica un'errore durante il processo della Promise.
+========================================================================================================================
+
+
+========================================================================================================================
+26. Cosa fa la parola chiave await e in quale tipo di funzione può essere utilizzata?
+------------------------------------------------------------------------------------------------------------------------
+La parola chiave await viene usata SOLO nelle funzioni asincrone (async function) e mette in pausa il processo della funzione fin quando una Promise non viene risolta.
+========================================================================================================================
+
+
+========================================================================================================================
+27. Qual è l'ambiente di esecuzione di JavaScript lato server?
+------------------------------------------------------------------------------------------------------------------------
+Node.js, un'ambiente open-source cross-platform di runtime.
+========================================================================================================================
+
+
+========================================================================================================================
+28. Quali sono i principali vantaggi di Node.js?
+------------------------------------------------------------------------------------------------------------------------
+    - eseguire codice JavaScript lato server
+    - gestire server HTTP
+    - interagire con database
+    - creare applicazioni complete senza browser
+========================================================================================================================
+
+
+
+========================================================================================================================
+28. Quali sono i principali vantaggi di Node.js?
+------------------------------------------------------------------------------------------------------------------------
+    - eseguire codice JavaScript lato server
+    - gestire server HTTP
+    - interagire con database
+    - creare applicazioni complete senza browser
+========================================================================================================================
+
+
+========================================================================================================================
+29. Qual è la regola di naming per le variabili in JavaScript riguardo agli spazi?
+------------------------------------------------------------------------------------------------------------------------
+Le variabili non possono contenere spazi nei loro nomi.
+========================================================================================================================
+
+
+========================================================================================================================
+30. La dichiarazione variabile = 3; senza var, let o const cosa crea? Perché è pericolosa?
+------------------------------------------------------------------------------------------------------------------------
+Questo tipo di dichiarazione crea una variabile globale, pericolosa in quanto può causare comportamenti non attesi all'interno del programma (collisioni di nomi etc.)
+========================================================================================================================
+
+
+========================================================================================================================
+31. Cosa restituisce typeof null in JavaScript?
+------------------------------------------------------------------------------------------------------------------------
+Typeof null restituisce "object".
+========================================================================================================================
+
+
+========================================================================================================================
+32. Quali sono i quattro caratteri speciali per la formattazione del testo?
+------------------------------------------------------------------------------------------------------------------------
+\n (nuova riga)
+\t (tabulazione)
+\r (ritorno a capo)
+\\ (backslash)
+========================================================================================================================
+
+
+========================================================================================================================
+33. Come si cambia il contenuto HTML di un elemento con id "msg" usando JavaScript?
+------------------------------------------------------------------------------------------------------------------------
+document.getElementById("msg").innerHTML = nuovocontenuto;
+========================================================================================================================
+
+
+========================================================================================================================
+34. Scrivi un esempio di gestione degli eventi mouseover e mouseout su un elemento.
+------------------------------------------------------------------------------------------------------------------------
+document.getElementById("testo").addEventListener("mouseover", funzioneOver)
+document.getElementById("testo").addEventListener("mouseout", funzioneOut)
+
+
+function funzioneOver () {
+    //codice
+}
+
+function funzioneOut () {
+    //codice
+}
+========================================================================================================================
+
+
+========================================================================================================================
+35. Cosa succede se una funzione non ha un'istruzione return?
+------------------------------------------------------------------------------------------------------------------------
+Automaticamente viene restituito "undefined".
+========================================================================================================================
+
+
+========================================================================================================================
+36. Spiega la differenza tra getElementById e getElementsByClassName in termini di valore restituito.
+------------------------------------------------------------------------------------------------------------------------
+getElementById di per se restituirà solo l'oggetto Elemento singolo che ha l'id specificato in quanto deve essere univoco.
+getElementsByClassName ritorna un'HTMLCollection (array-like) in quanto ad una classe possono appartenere più elementi.
+========================================================================================================================
+
+
+========================================================================================================================
+37. Qual è la differenza principale tra una funzione dichiarata con function e una arrow function?
+------------------------------------------------------------------------------------------------------------------------
+Le arrow function non hanno il proprio this al contrario delle funzioni standard.
+========================================================================================================================
+
+
+========================================================================================================================
+38. Come si possono combinare due oggetti obj1 e obj2 in un nuovo oggetto usando lo spread operator?
+------------------------------------------------------------------------------------------------------------------------
+let obj1 = {
+    nome: "Gab",
+    age: 21,
+}
+
+let obj2 = {
+    cognome: "Singap",
+}
+
+const fusion = {...obj1,...obj2}
+========================================================================================================================
+
+
+========================================================================================================================
+39. Cosa fa il metodo addEventListener e quali parametri accetta?
+------------------------------------------------------------------------------------------------------------------------
+Aggiunge un'evento ad uno o più tag HTML, prende 2 parametri:
+il primo che descrive il tipo di evento che scatenerà la funzione, 
+e il secondo che invece è la funzione che verrà scatenata al verificarsi dell'evento.
+========================================================================================================================
+
+
+========================================================================================================================
+40. In una funzione asincrona, come si gestiscono gli errori utilizzando async/await?
+------------------------------------------------------------------------------------------------------------------------
+Gli errori vengono gestiti attraverso i try/catch.
+========================================================================================================================

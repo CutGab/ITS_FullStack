@@ -93,7 +93,7 @@ Es:
 #                     #
 #######################
 
-La proprietà border è un'abbreviazione per impostare in una sola volta i valori individuali di border. Può essere usata per imposttare uno o più seguenti valori: border-width, border-style, border-color. Possiamo agire su tutti e quattro i lati del box oppure solo su uno specifico lato.
+La proprietà border è un'abbreviazione per impostare in una sola volta i valori individuali di border. Può essere usata per impostare uno o più seguenti valori: border-width, border-style, border-color. Possiamo agire su tutti e quattro i lati del box oppure solo su uno specifico lato.
 
 +-------------------+-----------------------------------------------+
 | PROPRIETÀ          | DESCRIZIONE                                  |
@@ -252,11 +252,11 @@ Font-weight: normal, bold, bolder, lighter, 100–900
 Font-style: normal, italic, oblique
 
 
-################
-#              #
-#  DISPLAY     #
-#              #
-################
+##############
+#            #
+#  DISPLAY   #
+#            #
+##############
 
 Proprietà CSS che determina come un elemento viene visualizzato e come interagisce con gli altri elementi nella pagina. Decide il tipo di box dell’elemento e il suo comportamento nel flusso del documento.
 

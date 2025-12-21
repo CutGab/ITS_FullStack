@@ -5,7 +5,7 @@
 ###############
 
 React è una libreria JavaScript open-source per costruire interfacce utente dinamiche (UI).
-Permette di creare applicazioni interattive e performanti, aggiornando solo le parti necessarie della pagina senza ricaricarla completamente.
+Permette di creare applicazioni interattive, aggiornando solo le parti necessarie della pagina senza ricaricarla completamente.
 React rappresenta la “V” (View) del pattern MVC, concentrandosi sulla presentazione dell’interfaccia e sulla gestione degli eventi dell’utente.
 
 
@@ -61,29 +61,6 @@ Critica: logica e presentazione vengono combinati insieme, ma React isola stato 
 
 React: libreria JavaScript per creare componenti UI riutilizzabili e reattivi.
 ReactDOM: pacchetto che permette di collegare i componenti React al DOM del browser. Fornisce metodi come createRoot() e render() per visualizzare l’interfaccia.
-
-<!-- Import React -->
-
-                                              <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-
-<!-- Import ReactDOM -->
-
-                                              <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-
-<!-- Elemento root dove verranno renderizzati i componenti -->
-
-                                              <div id="root"></div>
-
-                                              <script>
-                                                // Recupera il div root
-                                                const rootElement = document.getElementById("root");
-                                                
-                                                // Crea il root di ReactDOM
-                                                const root = ReactDOM.createRoot(rootElement);
-
-                                                // Ora possiamo renderizzare componenti React
-                                              </script>
-
 
 In React, la prop key serve a identificare in modo univoco gli elementi di un array tra diversi render.
   

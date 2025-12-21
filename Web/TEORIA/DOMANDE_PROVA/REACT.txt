@@ -1,0 +1,445 @@
+========================================================================================================================
+1. Cos’è React e qual è il suo scopo principale?
+------------------------------------------------------------------------------------------------------------------------
+React è una libreria di JS usata per la creazione di interfacce dinamiche. Permette la creazione di app o pagine web interattive in ambito visivo,
+evitando la renderizzazione totale della pagina ad ogni interazione ma solamente il componente interessato.
+========================================================================================================================
+
+
+========================================================================================================================
+2. Qual è la differenza tra React e ReactDOM?
+------------------------------------------------------------------------------------------------------------------------
+React è la libreria JS che permette la creazione di interfacce dinamiche, 
+ReactDOM permette di collegare i componenti creati in REACT al DOM del browser con metodi come createRoot() e render().
+========================================================================================================================
+
+
+========================================================================================================================
+3. Cos’è JSX e perché lo usiamo?
+------------------------------------------------------------------------------------------------------------------------
+JSX è un linguaggio che permette di scrivere componenti REACT in un linguaggio simile ad HTML leggibile.
+========================================================================================================================
+
+
+========================================================================================================================
+4. A cosa serve Babel in un progetto React?
+------------------------------------------------------------------------------------------------------------------------
+Babel serve a trasformare il codice scritto in JSX in codice JS interpretabile dal browser.
+========================================================================================================================
+
+
+========================================================================================================================
+5. Cosa rappresenta React nel pattern MVC?
+------------------------------------------------------------------------------------------------------------------------
+React rappresenta la V nel pattern MVC, che sta ad indicare la gestione della parte del layout visivo, la "View".
+========================================================================================================================
+
+
+========================================================================================================================
+6. Quali sono i vantaggi principali di usare React?
+------------------------------------------------------------------------------------------------------------------------
+Il vantaggio principale di React è il Virtual DOM, una copia leggera del DOM reale, grazie ad esso verranno aggiornate solo parti interessate della pagina.
+Non solo, è React stesso a gestire il DOM mentre lo sviluppatore scrive solamente i componenti con cui poi andrà ad interagire.
+Inoltre i componenti scritti in React sono riutilizzabili, favorendo la modularità.
+========================================================================================================================
+
+
+========================================================================================================================
+7. Cos’è un componente in React?
+------------------------------------------------------------------------------------------------------------------------
+I componenti sono blocchi di codice JavaScript riutilizzabili che rappresentano parti dell’interfaccia utente (UI).
+Con gli Hooks possono gestire stato e effetti collaterali (useState, useEffect).
+
+const Saluto = () => {
+
+    return <h1> Ciao! </h1>
+
+}
+========================================================================================================================
+
+
+========================================================================================================================
+8. Qual è la differenza tra componenti funzionali e a classi?
+------------------------------------------------------------------------------------------------------------------------
+La differenza sta nel fatto che i componenti funzionali sono funzioni JS che restituiscono JSX e che grazie agli Hook posso gestire stati ed effetti collaterali.
+Quelli a classi sono più verbosi e meno utilizzati al giorno d'oggi, si basano su ES6, ed usano il costrutto "extends React.Component".
+========================================================================================================================
+
+
+========================================================================================================================
+9. Cosa sono le props e come si usano?
+------------------------------------------------------------------------------------------------------------------------
+Le props sono costrutti che permettono di inviare dati ai componenti figli
+
+const Saluto = (props) => {
+    return <h1> Ciao {props.nome}! </h1>
+}
+
+//In app.js
+
+<Saluto nome="Mario" />
+========================================================================================================================
+
+
+========================================================================================================================
+10. Cosa sono le props.children e a cosa servono?
+------------------------------------------------------------------------------------------------------------------------
+A differenza del props normale, props.children permette di passare contenuti dinamici tra componenti.
+
+const Saluto = (props) => {
+    return <div> {props.children} </div>;
+}
+
+//In app.js
+
+<Saluto>
+    <h1> Ciao! </h1>
+    <h3> Testo </h3>
+</Saluto>
+========================================================================================================================
+
+
+========================================================================================================================
+11. Cos’è lo state in React?
+------------------------------------------------------------------------------------------------------------------------
+Lo state indica lo stato interno di un componente, viene gestito dall'Hook useState all'interno di React.
+All'aggiornarsi di esso React renderizzerà solamente il componente senza ricaricare la pagina intera.
+========================================================================================================================
+
+
+========================================================================================================================
+12. Come si aggiorna lo state di un componente?
+------------------------------------------------------------------------------------------------------------------------
+L'aggiornamento dello state di un componente viene gestito dall'Hook useState all'interno di React.
+
+const Contatore = () => {
+    const [count, setCount] = useState(0)
+
+return (
+        <div>
+        <h1> Valore: {count} </h1>
+        <button onClick = {() => setCount(count + 1)}> Clicca </button>
+        </div>
+    )
+}
+========================================================================================================================
+
+
+========================================================================================================================
+13. Cosa significa che un componente è riutilizzabile e incapsulato?
+------------------------------------------------------------------------------------------------------------------------
+Riutilizzabile indica che una volta scritto il componente può essere riutilizzato più volte all'interno del codice.
+Incapsulamento sta ad indicare che ogni componente ha la propria logica e stato al suo interno separata dal resto del codice.
+========================================================================================================================
+
+
+========================================================================================================================
+14. Cos’è un Hook in React?
+------------------------------------------------------------------------------------------------------------------------
+Un Hook è una funzione fornita da React che permette ai componenti di avere un loro stato interno e la gestione di effetti collaterali.
+========================================================================================================================
+
+
+========================================================================================================================
+15. Come si usa useState con array di oggetti?
+------------------------------------------------------------------------------------------------------------------------
+
+  const [persone, setPersone] = useState([
+    { id: 1, nome: "Alice" },
+    { id: 2, nome: "Bob" }
+  ]);
+
+  const eliminaPersona = (id) => {
+    setPersone(persone.filter(p => p.id !== id));
+  };
+
+========================================================================================================================
+
+
+========================================================================================================================
+16. Come si usa useState con oggetti e perché serve lo spread operator?
+------------------------------------------------------------------------------------------------------------------------
+  const [persone, setPersone] = useState([
+    { id: 1, nome: "Alice" },
+    { id: 2, nome: "Bob" }
+  ]);
+
+  const aggiungi = (persona) => {
+    setPersone([...persone, persona]);
+  };
+
+Si usa lo spread operator perché esso permette di copiare, unire o aggiungere ad un array o oggetto, se non lo usassimo qualsiasi azione andrebbe a sovrascrivere l'array o oggetto.
+========================================================================================================================
+
+
+========================================================================================================================
+17. Qual è la differenza tra aggiornamento diretto e functional update in useState?
+------------------------------------------------------------------------------------------------------------------------
+<button onClick={() => setCount(count + 1)}>Aumenta</button>
+<button onClick={() => setCount(prev => prev - 1)}>Diminuisci</button>
+
+Il primo metodo (diretto) usa il valore dello stato al momento del render.
+Il secondo metodo (funzionale) usa sempre il valore dello stato più recente (utile quando si verificano click veloci o azioni asincrone).
+========================================================================================================================
+
+
+========================================================================================================================
+18. A cosa serve useEffect?
+------------------------------------------------------------------------------------------------------------------------
+useEffect è un'altro Hook presente in React che permette di gestire effetti collaterali (Chiamate API, Timer etc.)
+
+useEffect (() => {
+
+    setTimeout (() => {
+        console.log("Timer attivo");
+    }, 100);
+
+}, []);
+========================================================================================================================
+
+
+========================================================================================================================
+19. Quando si esegue un useEffect con array vuoto []?
+------------------------------------------------------------------------------------------------------------------------
+Un useEffect con array di dipendenze vuoto [] si esegue una sola volta, subito dopo il primo render del componente.
+========================================================================================================================
+
+
+========================================================================================================================
+20. Quando si esegue un useEffect con dipendenze?
+------------------------------------------------------------------------------------------------------------------------
+Un useEffect con array di dipendenze si esegue dopo il primo render, e successivamente ogni volta che verrà modificato uno o più valori nell'array.
+========================================================================================================================
+
+
+========================================================================================================================
+21. Perché è importante fare il cleanup in useEffect?
+------------------------------------------------------------------------------------------------------------------------
+La funzione di cleanup è importante soprattutto quando lo useEffect crea risorse esterne (come i timer) in quanto evita la loro duplicazione e previene memory leak.
+========================================================================================================================
+
+
+========================================================================================================================
+22. A cosa serve useRef?
+------------------------------------------------------------------------------------------------------------------------
+Lo hook useRef serve per creare un riferimento ad un elemento DOM senza causare un re-render.
+========================================================================================================================
+
+
+========================================================================================================================
+23. A cosa serve useReducer?
+------------------------------------------------------------------------------------------------------------------------
+useReducer è un Hook di React usato per gestire lo stato quando la logica diventa più complessa rispetto a useState. 
+Lo stato non viene modificato direttamente, ma tramite azioni inviate a una funzione chiamata reducer.
+========================================================================================================================
+
+
+========================================================================================================================
+24. A cosa serve useContext e come funziona il Context?
+------------------------------------------------------------------------------------------------------------------------
+useContext serve per condividere dati tra più componenti senza dover passare props manualmente a ogni livello (prop drilling).
+========================================================================================================================
+
+
+========================================================================================================================
+25. Come si gestiscono gli eventi in React?
+------------------------------------------------------------------------------------------------------------------------
+Gli eventi React sono funzioni, scritte in camelCase (onClick, onChange, onSubmit) a differenza di HTML che usa stringhe.
+
+<button onClick={() => saluta("Luca")}>Saluta</button>
+========================================================================================================================
+
+
+========================================================================================================================
+26. Qual è la differenza tra onClick e onSubmit?
+------------------------------------------------------------------------------------------------------------------------
+Il primo viene scatenato all'interazione con un bottone, il secondo viene scatenato solamente all'invio dei dati di una Form.
+========================================================================================================================
+
+
+========================================================================================================================
+27. A cosa serve event.preventDefault()?
+------------------------------------------------------------------------------------------------------------------------
+event.preventDefault() è un metodo fornito da React che impedisce il ricaricamento della pagina. 
+Usato spesso per bloccare il comportamento automatico del browser:
+
+                function handleSubmit(e) {
+                  e.preventDefault();
+                  console.log("Submit gestito da React");
+                }
+
+                <form onSubmit={handleSubmit}>
+                  <button type="submit">Invia</button>
+                </form>
+========================================================================================================================
+
+
+========================================================================================================================
+28. Come si gestiscono input controllati con useState?
+------------------------------------------------------------------------------------------------------------------------
+const FormSaluto = () => {
+  const [nome, setNome] = useState("");
+
+  const handleChange = (e) => {
+    setNome(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" value={nome} onChange={handleChange}/>
+      <button type="submit">Saluta</button>
+    </form>
+  );
+};
+========================================================================================================================
+
+
+========================================================================================================================
+29. A cosa serve useState?
+------------------------------------------------------------------------------------------------------------------------
+useState è un Hook fornito da react che permette ad un componente di avere un suo stato interno. 
+Nel momento in cui cambia lo stato, verrà renderizzato nuovamente il componente. 
+Prende come parametri lo state iniziale e restituisce un array con lo stato corrente e una funzione per l'aggiornamento.
+========================================================================================================================
+
+
+========================================================================================================================
+30. Come si passano dati dal componente figlio al componente padre?
+------------------------------------------------------------------------------------------------------------------------
+Tramite le callback function, che permettono di inviare dati dal figlio al padre.
+
+// Padre
+function Padre() {
+  const handle = msg => console.log(msg);
+  return <Figlio onSend={handle} />;
+}
+
+// Figlio
+function Figlio({ onSend }) {
+  return <button onClick={() => onSend("Ciao!")}>Click</button>;
+}
+========================================================================================================================
+
+
+========================================================================================================================
+31. Cos’è il rendering condizionale?
+------------------------------------------------------------------------------------------------------------------------
+Si parla di rendering condizionale quando React decide cosa renderizzare a seconda di una condizione, spesso legata allo stato di un componente.
+
+function App() {
+    const [loading, setLoading] = useState(true);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    return <p>Dati caricati</p>;
+    }
+
+========================================================================================================================
+
+
+========================================================================================================================
+32. Come si usa l’operatore ternario in JSX?
+------------------------------------------------------------------------------------------------------------------------
+Nel JSX non si possono usare istruzioni (if, for, while), ma solo espressioni. Per questo si usa spesso l’operatore ternario.
+
+Es:
+
+condizione ? valoreSeVero : valoreSeFalso
+
+
+{isLogged ? <Dashboard /> : <Login />}
+
+Se la condizione è vera, React renderizza il primo componente.
+Se è falsa, renderizza il secondo.
+========================================================================================================================
+
+
+========================================================================================================================
+33. Come funziona la short-circuit evaluation con && e ||?
+------------------------------------------------------------------------------------------------------------------------
+Una short-circuit evaluation è un’espressione logica che restituisce un valore senza valutare tutto, fermandosi appena il risultato è determinabile.
+
+OR (||)
+
+Restituisce il primo valore “vero”, altrimenti il secondo:
+    
+                        <p>{nome || "Ospite"}</p>
+
+- Se nome esiste → viene mostrato
+- Se è vuoto/false → viene mostrato "Ospite"
+
+AND (&&)
+
+Restituisce il secondo valore solo se il primo è vero:
+
+                        {isAdmin && <p>Area riservata</p>}
+
+- Se isAdmin è true → il <p> viene mostrato
+- Se è false → non viene mostrato nulla
+========================================================================================================================
+
+
+========================================================================================================================
+34. Come si crea una lista di elementi a partire da un array di oggetti?
+------------------------------------------------------------------------------------------------------------------------
+const persone = [
+  { id: 1, nome: "Alice", eta: 25 },
+  { id: 2, nome: "Bob", eta: 30 }
+];
+
+const ListaPersone = () => {
+  return (
+    <ul>
+      {persone.map(p => (
+        <li key={p.id}> {p.nome} - {p.eta} anni </li>
+      ))}
+    </ul>
+  );
+};
+
+========================================================================================================================
+
+
+========================================================================================================================
+35. Cos’è React Router e perché serve?
+------------------------------------------------------------------------------------------------------------------------
+React Router è una libreria esterna che permette di gestire più pagine e URL diversi in una Single Page Application (SPA), senza ricaricare l’intera pagina.
+========================================================================================================================
+
+
+========================================================================================================================
+36. Qual è la differenza tra BrowserRouter, Routes e Route?
+------------------------------------------------------------------------------------------------------------------------
+BrowserRouter
+    - Contiene l’intera app e abilita il routing.
+
+Routes
+    - Racchiude tutte le Route; obbligatorio quando si usano più Route.
+
+Route
+    - Definisce un percorso e il componente da renderizzare per quel percorso.
+========================================================================================================================
+
+
+========================================================================================================================
+37. Come si crea un link tra pagine senza ricaricare la pagina?
+------------------------------------------------------------------------------------------------------------------------
+Sempre tramite React Router che mette a disposizione "Link", per navigare tra le pagine senza ricaricare l’app, sostituendo <a>.
+
+<Link to="/">Home</Link>
+<Link to="/about">About</Link>
+========================================================================================================================
+
+
+========================================================================================================================
+38. Come si gestiscono le rotte dinamiche con useParams e useNavigate?
+------------------------------------------------------------------------------------------------------------------------
+useNavigate permette di reindirizzare l’utente via codice, senza clic su Link.
+useParams permette invece di usare un template di route con parametro.
+========================================================================================================================
