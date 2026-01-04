@@ -168,7 +168,8 @@ Un Hook è una funzione fornita da React che permette ai componenti di avere un 
     setPersone([...persone, persona]);
   };
 
-Si usa lo spread operator perché esso permette di copiare, unire o aggiungere ad un array o oggetto, se non lo usassimo qualsiasi azione andrebbe a sovrascrivere l'array o oggetto.
+Si usa lo spread operator perché esso permette di copiare, unire o aggiungere ad un array o oggetto, 
+se non lo usassimo qualsiasi azione andrebbe a sovrascrivere l'array o oggetto.
 ========================================================================================================================
 
 
@@ -336,6 +337,9 @@ function App() {
     if (loading) {
         return <p>Loading...</p>;
     }
+
+
+  {loading && }
 
     return <p>Dati caricati</p>;
     }

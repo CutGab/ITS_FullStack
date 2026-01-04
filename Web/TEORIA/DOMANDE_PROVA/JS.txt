@@ -169,7 +169,8 @@ import * as util from "./util.js"
 ========================================================================================================================
 22. Spiega cos'è la destrutturazione e mostra un esempio con un array.
 ------------------------------------------------------------------------------------------------------------------------
-La destrutturazione è un concetto utile quando si lavora con oggeti o array in JS, esso permette di poter accedere ad elementi direttamente senza dover passare per l'oggetto ogni volta.
+La destrutturazione è un concetto utile quando si lavora con oggeti o array in JS,
+esso permette di poter accedere ad elementi direttamente senza dover passare per l'oggetto ogni volta.
 
 const persona = ["Gabriele", "Singapore"]
 
@@ -202,14 +203,16 @@ Rejected (Fallita)
 ========================================================================================================================
 25. Qual è lo scopo dei metodi .then() e .catch() su una Promise?
 ------------------------------------------------------------------------------------------------------------------------
-Il metodio then serve per proseguire nelle operazioni da eseguire nella Promise. Catch viene usato quando si verifica un'errore durante il processo della Promise.
+Il metodio then serve per proseguire nelle operazioni da eseguire nella Promise. 
+Catch viene usato quando si verifica un'errore durante il processo della Promise.
 ========================================================================================================================
 
 
 ========================================================================================================================
 26. Cosa fa la parola chiave await e in quale tipo di funzione può essere utilizzata?
 ------------------------------------------------------------------------------------------------------------------------
-La parola chiave await viene usata SOLO nelle funzioni asincrone (async function) e mette in pausa il processo della funzione fin quando una Promise non viene risolta.
+La parola chiave await viene usata SOLO nelle funzioni asincrone (async function) e
+mette in pausa il processo della funzione fin quando una Promise non viene risolta.
 ========================================================================================================================
 
 
