@@ -1,13 +1,13 @@
 package Esercizi.Esercizi_Classi.Cartoleria;
 
-public class Merce {
+public abstract class Articolo {
 
     private String marca;
     private String modello;
     private double costo;
     private double prezzo_vendita;
 
-    public Merce(String marca, String modello, double costo, double prezzo_vendita) {
+    public Articolo(String marca, String modello, double costo, double prezzo_vendita) {
         this.marca = marca;
         this.modello = modello;
         this.costo = costo;
@@ -38,7 +38,7 @@ public class Merce {
         this.costo = costo;
     }
 
-    public double getPrezzo_vendita() {
+    public double getPrezzoVendita() {
         return prezzo_vendita;
     }
 

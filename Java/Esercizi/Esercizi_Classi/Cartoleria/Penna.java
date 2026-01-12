@@ -1,6 +1,6 @@
 package Esercizi.Esercizi_Classi.Cartoleria;
 
-public class Penna extends Merce {
+public class Penna extends Articolo {
 
     private String colore;
 

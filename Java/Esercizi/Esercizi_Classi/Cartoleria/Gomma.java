@@ -1,6 +1,6 @@
 package Esercizi.Esercizi_Classi.Cartoleria;
 
-public class Gomma extends Merce {
+public class Gomma extends Articolo {
 
     private double dimensione;
     private String forma;

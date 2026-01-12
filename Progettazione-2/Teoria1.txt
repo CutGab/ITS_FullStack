@@ -1,0 +1,455 @@
+######################
+#                    #
+#  CLOUD COMPUTING   #
+#                    #
+######################
+
+---------- COSA è IL CLOUD ----------
+
+Il Cloud è un'astrazione di elaborazione, archiviazione, e networking.
+
+
+
+
+---------- COSA è IL CLOUD COMPUTING? ----------
+
+Il Cloud Computing è un modello di erogazione di risorse informatiche (come server, spazio di archiviazione, database, rete, software etc.)
+Tramite Internet, cioè "dal cloud", invece che in locale su un computer o un server fisico di tua proprietà.
+
+Es:
+    Immagina di poter usare un computer potentissimo, ma che non è fisicamente sulla tua scrivania. È ospitato da qualcun altro (come Amazon, Microsoft, Google) e tu lo usi tramite Internet.
+
+
+
+---------- DATA CENTER ----------
+
+Il Data Center è astratto, infatti non interessa più su quale server fisico gira il nostro lavoro, lo inviamo al Cloud e lasciamo che il provider si occupi del resto.
+
+
+
+#########################################
+#                                       #
+#  I TRE PILASTRI DEL CLOUD COMPUTING   #
+#                                       #
+#########################################
+
+
+Il Cloud Computing si basa su tre componenti fondamentali che replicano virtualmente tutto ciò che serve per far funzionare le applicazioni moderne e rappresentano l'astrazione di un data center tradizionale.
+
+
+
+---------- COMPUTE (POTENZA DI CALCOLO VIRTUALE) ----------
+
+Il compute rappresenta la capacità di elaborazione, ovvero CPU e memoria RAM virtualizzate. Nel cloud ottieni server virtuali on-demand, senza acquistare o configurare hardware fisico. 
+Puoi scalare la potenza di calcolo in base alle necessità: da un semplice sito web a complessi algoritmi di machine learning che necessitano di centinaia di core. 
+In AWS il servizio principale è EC2 (Elastic Compute Cloud), e può far girare il codice del tuo sito web o della tua applicazione.
+
+
+
+---------- STORAGE (SPAZIO DI ARCHIVIAZIONE) ----------
+
+Lo storage è lo spazio dove conservi tutti i tuoi dati (file, database, immagini, video etc..). Nel Cloud hai accesso a spazio di archiviazione praticamente illimitato, pagando solo per quello che usi. Esistono diversi tipi:
+
+    - Storage veloce per database attivi
+    - Storage economico per archivi a lungo termine
+    - Storage distribuito per alta disponibilità
+
+In AWS il servizio principale è S3 (Simple Storage Service), e un suo esempio di uso è il poter salvare le foto caricate dagli utenti o i file dei tuoi prodotti.
+
+
+
+---------- NETWORK (CONNETIVITà E RETE) ----------
+
+Il Network gestice tutta la comunicazione: come i tuoi server si collegano tra loro, come gli utenti accedono alle tue applicazioni etc. Include:
+
+    - Load balancer: per la distribuzione del carico
+    - Firewall: per la sicurezza
+    - CDN: per velocizzare i contenuti globalmente
+
+Nel Cloud puoi creare reti virtuali private, configurare routing personalizzato e gestire traffico in maniera intelligente. In AWS il servizio principale è VPC (Virtual Private Cloud) e il suo scopo è proteggere il tuo sito da attacchi e gestire chi può visitarlo.
+
+
+######################################################
+#                                                    #
+#  LA VIRTUALIZZAZIONE: IL DNA DEL CLOUD COMPUTING   #
+#                                                    #
+######################################################
+
+
+La virtualizzazione è ciò che ha reso possibile l'esistenza del cloud, è la tecnologia che permettere di dividere un singolo computer fisico in molteplici computer virtuali indipendenti.
+
+---------- PERCHé è IL FONDAMENTO DEL CLOUD? ----------
+
+1. --- Astrazione dell'Hardware ---
+
+    Hardware Fisico -> Hypervisor -> Macchine Virtuali -> Le Tue applicazioni
+
+    Non interessa più su quale server fisico gira l'applicazione. L'Hypervisor (il "cervello" della virtualizzazione) gestisce tutto automaticamente. 
+    Il suo ruolo è quello di creare e gestire macchine virtuali consentendo a più sistemi operativi di funzionare su un unico server fisico. Si occupa quindi di:
+
+        - Astrazione dell'Hardware: Nasconde le reali risorse fisiche e le presenta alle macchine virtuali come se fossero risorse dedicate.
+        - Allocazione delle risorse: Distribuisce le risorse fisiche tra le varie macchine virtuali in base alle loro necessità, garantendo efficienza e flessibilità.
+        - Isolamento: Mantiene le macchine virtuali separate e indipendenti l'una dall'altra. In questo modo un problema su una VM non influisce sulle altre.
+
+
+
+2. --- Elasticità e Scalabilità ---
+
+    - Scaling Up: Aggiungi CPU/RAM a una VM in tempo reale.
+    - Scaling Out: Crei nuove VM in secondi, non settimane.
+    - Auto-Scaling: Le VM si creano/distruggono automaticamente in base al carico.
+
+
+
+---------- SCALING UP ----------
+
+Lo Scaling Up consiste nell’aumentare la potenza di una singola macchina virtuale (VM) aggiungendo risorse come CPU, RAM o storage.
+
+    - L’hypervisor gestisce le risorse fisiche del server.
+    - La VM può ricevere più potenza semplicemente riallocando tali risorse semplicemente dal pannello di controllo del cloud provider.
+
+Vantaggi:
+
+    - Avviene in minuti.
+    - Richiede al massimo un riavvio (a volte nemmeno quello).
+    - Niente hardware da comprare o installare fisicamente, si occupa di tutto l'Hypervisor.
+
+
+
+---------- SCALING OUT ----------
+
+Lo Scaling Out aumenta la capacità del sistema aggiungendo nuove VM che lavorano insieme:
+
+    - Si clonano nuove VM da un’immagine preconfigurata.
+    - Un load balancer distribuisce il traffico tra tutte le macchine, evitando che una VM venga sovraccaricata.
+
+Vantaggi:
+
+    - Avviene in minuti.
+    - Molto più rapido rispetto alla vecchia istallazione hardware fisica.
+    - Garantisce alta disponibilità, se una VM fallisce, le altre continuano.
+
+
+
+---------- AUTO-SCALING ----------
+
+L’Auto-scaling decide automaticamente quando aggiungere o rimuovere VM, usando regole basate su metriche (CPU, traffico, memoria).  È il cuore del cloud moderno: performance sempre garantite + costi ottimizzati.
+
+Esempi regole:
+
+    - Scaling Out: "Se l'utilizzo medio della CPU di tutte le mie VM supera l'80% per più di 5 minuti, crea una nuova VM".
+    - Scaling In:  "Se l'utilizzo medio della CPU scende sotto il 20% per più di 10 minuti, distruggi una VM".
+
+Vantaggi:
+
+    - Prestazioni: il servizio regge anche grandi picchi di traffico.
+    - Risparmio: nessuno spreco → paghi solo ciò che usi.
+
+
+
+
+3. --- Isolamento e Sicurezza ---
+
+Ogni VM è completamente isolata dalle altre, se una VM si blocca o viene compromessa, le altre continuano a funzionare normalmente.
+
+    - Risorse Virtuali Dedicate: L'hypervisor crea per ogni VM un set completo di risorse virtuali: una CPU virtuale, una RAM virtuale, una scheda di rete virtuale e un disco virtuale. 
+    La VM crede di avere a disposizione hardware tutto suo e non ha alcuna consapevolezza delle altre VM che girano sullo stesso server.
+
+    - Il Guardiano del Traffico: L'hypervisor agisce come un controllore del traffico estremamente rigido. Ogni singola richiesta che una VM fa all'hardware fisico deve passare attraverso l'hypervisor.
+     Questo controllore si assicura che la VM acceda solo ed esclusivamente allo spazio di memoria e alle risorse che le sono state assegnate, impedendole di interferire con le altre.
+
+L’isolamento rigoroso tra le VM porta a due vantaggi fondamentali in ambito cloud: 
+
+    - Resistenza ai guasti: Se una VM va in crash, il problema rimane confinato e le altre VM continuano a funzionare.
+    - Contenimento delle minacce: Se una VM viene attaccata e compromessa, le altre rimangono al sicuro e operative.
+
+
+
+4. --- Migrazione Live ---
+
+Le VM possono spostarsi da un server fisico all'altro senza interruzioni. Se un server ha problemi hardware, le VM migrano automaticamente su server sani. L'hypervisor permette di trasferire una VM accesa e funzionanete attraverso un processo orchestrato in millisecondi:
+
+    1. L'Hypervisor sul server di partenza (Server A) copia l'intera RAM della VM su un server B tramite la rete (Nel frattempo la VM continua a funzionare sul server A).
+    2. Mentre la copia è in corso, la VM può ancora scrivere e modificare dati in RAM, modifiche che l'Hypervisor invia al server B in un secondo momento.
+    3. Quando la RAM sul server B è "quasi" identica a quella sul server A, L'Hypervisor pausa la VM per pochi millisecondi, copia le ultime modifiche e riattiva istantaneamente la VM sul Server B.
+    4. L'Hypervisor comunica immediatamente alla rete che l'indirizzo della VM ora punta al nuovo server.
+
+Vantaggi:
+
+    - Manutenzione a Zero Downtime: Immagina che il Server A abbia bisogno di aggiornamenti hardware (RAM, firmware) o software (patch per l’hypervisor). 
+    Senza Migrazione Live bisognerebbe spegnere tutte le VM, fare la manutenzione e riavviare tutto -> Ore di downtime per le applicazioni.
+    Con Migrazione Live le VM vengono spostate “a caldo” su un Server B, la manutenzione su Server A avviene senza interruzioni e se necessario, le VM possono essere riportate sul Server A -> Zero interruzioni del servizio.
+
+
+    - Tolleranza ai Guasti Automatica (High Availability): I sistemi cloud moderni monitorano continuamente la salute dei server fisici. Se per esempio un componente del Server A sta per guastarsi (ad esempio ventola rotta o CPU in surriscaldamento).
+    Il sistema di gestione del Cloud avvia la migrazione live delle VM critiche verso server sani nel cluster. 
+    Il problema hardware viene risolto prima che causi downtime. Le applicazioni continuano a funzionare normalmente, mentre il team tecnico ripara il server guasto.
+
+#####################################################
+#                                                   #
+#  I BENEFICI DELL'ASTRAZIONE NEL CLOUD COMPUTING   #
+#                                                   #
+#####################################################
+
+L'astrazione è ciò che permette al cloud di poter nascondere la complessità della sua infrastruttura fisica dietro a interfacce semplici e intuitive. Le tre caratteristiche fondamentali sono:
+
+    - Il Pannello di Controllo Unificato
+    - Scalabilità
+    - Flessibilità
+
+--- Il Pannello di Controllo Unificato ---
+
+Le decine di interfacce, strumenti e competenze diverse vengono sostituite da un unico punto di controllo:
+
+Interfaccia Web (o API) → Click (o comando) → Risorsa Attiva
+
+Ogni click che fai nella console di AWS, Azure o Google Cloud è in realtà una chiamata API che comanda un'orchestra di robot e software nel data center del provider. 
+Questi robot eseguono in pochi secondi tutto il lavoro che prima richiedeva settimane e un team di specialisti.
+
+
+
+--- Scalabilità ---
+
+Prima del cloud, la crescita era tanto desiderata quanto temuta, perché ogni aumento di carico si scontrava con i limiti rigidi del mondo fisico. Scalare era un processo costoso, lento e pieno di rischi.
+
+L'astrazione del cloud sgancia le tue applicazioni da questi vincoli. Le risorse diventano un "pool" virtualmente infinito che può espandersi e contrarsi su richiesta, in modo automatico.
+
+Carico Alto → Auto Scaling → Nuove Istanze (2 minuti) 
+
+Quando il sistema (tramite regole che imposti tu, es. "utilizzo CPU > 70%") rileva un aumento del carico, comanda all'hypervisor di creare nuove macchine virtuali da un template pre-configurato. 
+In pochi minuti, queste nuove istanze sono attive e il bilanciatore di carico inizia a inviare loro traffico, distribuendo lo sforzo.
+
+Carico Basso → Auto Scaling → Istanze Terminate (1 minuto) 
+
+Quando il carico diminuisce (es. "utilizzo CPU < 30%"), il sistema fa l'opposto. Identifica le istanze superflue, le rimuove dal bilanciatore di carico e le "distrugge", smettendo istantaneamente di pagarle.
+
+
+
+--- Flessibilità ---
+
+Nel mondo dell'IT tradizionale, ogni decisione hardware era un impegno a lungo termine, una sorta di "matrimonio tecnologico" difficile da sciogliere. Questa rigidità soffocava l'agilità e rendeva ogni cambiamento un progetto complesso e costoso.
+
+L'astrazione del cloud demolisce queste barriere. Non compri più "server", ma accedi a un immenso catalogo di servizi specializzati, avendo la libertà di combinarle, scambiarle e riconfigurarle in qualsiasi momento.
+
+Compute Options (Potenza di Calcolo): Puoi scegliere la potenza di calcolo come un abito sartoriale, perfettamente adatto al tuo carico di lavoro.
+Storage Options (Archiviazione): Non tutti i dati sono uguali. Il cloud ti permette di pagare solo per le performance di cui hai bisogno.
+Database Options (Basi di Dati): Il cloud offre una vasta scelta di database adatti a un qualsiasi tipo di progetto.
+
+#####################
+#                   #
+#  CLOUD PUBBLICO   #
+#                   #
+#####################
+
+Affitti computer potentissimi (server) da grandi aziende come Amazon (AWS), Microsoft (Azure) o Google (Google Cloud). 
+Questi computer non sono fisicamente da te, ma nei loro enormi magazzini pieni di server chiamati data center.
+
+Data center = Un gigantesco capannone pieno di migliaia di computer che lavorano 24 ore su 24.
+
+        1. Accedi a un sito web (la console di AWS)
+        2. Clicchi su "crea un server"
+        3. In 2 minuti hai un computer virtuale pronto
+        4. Paghi solo per il tempo che lo usi
+        5. Quando non ti serve più, lo spegni e smetti di pagare
+
+Vantaggi:
+
+    - Non devi comprare nulla all'inizio: Non serve spendere 50.000 euro per server fisici, ma inizi con 10 euro al mese.
+    - Velocità: Prima ordinavi un server, aspettavi 3 mesi, ora clicchi un bottone, server pronto in 2 minuti.
+    - Cresce con te: Hai 10 utenti oggi? Usi un server piccolo, domani ne hai 10.000? Il sistema crea automaticamente 100 server, dopodomani tornano a essere 10? Si torna a 1 server. Paghi sempre solo quello che usi.
+    - Zero manutenzione: Si rompe un disco? Amazon lo cambia, serve un aggiornamento? Lo fa Amazon, manca corrente? Amazon ha generatori di emergenza.
+
+Svantaggi:
+
+    - Non controlli l'hardware fisico: Non puoi entrare nella stanza dei server, non sai su quale computer fisico gira il tuo sito.
+    - Alcune leggi non lo permettono: Alcune banche devono tenere i dati in Italia per legge e certi ospedali non possono mettere dati sanitari fuori dall'edificio.
+    - La spesa non è sempre prevedibile: Se dimentichi un server acceso, continui a pagare, se il tuo sito diventa virale, la bolletta può esplodere.
+
+####################
+#                  #
+#  CLOUD PRIVATO   #
+#                  #
+####################
+
+Compri i tuoi server fisici e li metti in una stanza nel tuo ufficio (o in un capannone di tua proprietà). Sono tuoi, li tocchi, li controlli completamente.
+
+        1. Compri server Dell o HP (computer molto potenti)
+        2. Li installi in una stanza con aria condizionata (si scaldano molto)
+        3. Assumi persone che li gestiscono
+        4. Se si rompe qualcosa, lo ripari tu
+        5. Se serve più potenza, compri nuovi server (e aspetti settimane)
+
+Vantaggi:
+
+    - Controllo totale: Puoi entrare nella stanza e vedere i server e decidi tu tutto (marca, modello, configurazione)
+    - Nessuno può spiare i tuoi dati: I server sono nel tuo ufficio, sotto chiave, nessun estraneo può accedervi fisicamente
+    - Nessuna bolletta a sorpresa: Hai già pagato tutto all'inizio, la corrente elettrica è l'unico costo variabile
+    - Funziona senza Internet: Se salta la connessione Internet, i tuoi sistemi interni continuano a funzionare
+
+Svantaggi:
+
+    - Devi comprare tutto subito Investimento iniziale: da 50.000 a 500.000 euro, se l'idea di business fallisce, hai buttato tutti i soldi
+    - Serve molto tempo: Vuoi un nuovo server? Ordina, aspetta 3 settimane, installalo, configuralo
+    - Devi assumere persone: Servono tecnici informatici a tempo pieno con stipendi da 30.000 a 50.000 euro all'anno ciascuno
+    - Se si rompe, problemi tuoi: Disco rotto alle 3 di notte? Svegli il tecnico, finita la corrente? Se non hai un generatore, tutto si ferma
+    - Spreco di risorse: Compri 10 server per gestire i picchi, per l'80% del tempo solo 2 sono usati, gli altri 8 sprecano corrente
+
+###################
+#                 #
+#  CLOUD IBRIDO   #
+#                 #
+###################
+
+Usi entrambi i sistemi insieme: alcuni server sono tuoi (nel tuo ufficio), altri li affitti da Amazon (sul cloud pubblico). 
+
+
+        1. Tieni i dati importanti/segreti sui tuoi server
+        2. Metti le cose meno critiche su AWS
+        3. I due sistemi comunicano tramite Internet in modo sicuro
+        4. Quando serve potenza extra, "salti" su AWS temporaneamente
+
+Vantaggi:
+
+    - Prendi il meglio di entrambi: I dati sensibili sono sui tuoi server (controllo totale) mentre il sito web su AWS (scalabilità automatica)
+    - Rispetti le leggi e rimani agile: Conti bancari sui tuoi server (per legge), App mobile: su AWS (per innovare velocemente)
+    - Gestisci i picchi senza sprechi: Normale: usi i tuoi server, Black Friday: affitti 50 server extra su AWS per 2 giorni, Dopo: torni ai tuoi server
+
+Svantaggi:
+
+    - Complessità doppia: Devi gestire sia i tuoi server che quelli su AWS, avendo quindi bisogno del doppio delle competenze
+    - Costi extra per connettere: Serve una connessione Internet velocissima e sicura, che può costare migliaia di euro al mese
+    - Due posti da proteggere: Devi mettere sicurezza sui tuoi server, sui server AWS e sulla connessione tra i due
+
+##################
+#                #
+#  MULTI-CLOUD   #
+#                #
+##################
+
+Invece di usare solo Amazon (AWS), usi contemporaneamente Amazon, Microsoft (Azure) e Google (Google Cloud).
+
+        1. Metti il sito web su Amazon perché costa meno
+        2. Usi l'intelligenza artificiale di Google perché è la migliore
+        3. Usi Azure di Microsoft perché si integra bene con Office 365
+        4. Tutto deve comunicare tra loro (complicato!)
+
+Vantaggi:
+    
+    - Non dipendi da uno solo: Se Amazon ha problemi, Google ti salva, se domani Amazon raddoppia i prezzi, hai alternative pronte
+    - Prendi il meglio di ognuno: Intelligenza artificiale? Google è il migliore, Database? Amazon è il migliore, Autenticazione? Microsoft è il migliore
+    - Rispetti leggi diverse per paese: In Europa usi AWS (deve rispettare GDPR, legge europea sulla privacy), in Cina usi Alibaba Cloud (obbligatorio per legge cinese)
+
+Svantaggi:
+
+    Complessità massima: Ogni cloud funziona in modo diverso
+    Serve un team enorme: Devi avere esperti di Amazon, Microsoft e Google, stipendi per almeno 10-15 persone
+    Trasferire dati costa: Spostare file da Amazon a Google può costare migliaia di euro
+    Bollette separate: 3 fatture diverse da controllare ogni mese, difficile capire dove spendi di più
+
+#########################################
+#                                       #
+#  IAAS - INFRASTRUCTURE AS A SERVICE   #
+#                                       #
+#########################################
+
+Il provider fornisce i mattoni base: computer virtuali vuoti, spazio disco, rete. Tu devi installare tutto il resto: sistema operativo, database, programmi, configurazioni.
+
+Cosa fornisce il provider (AWS)?
+
+        ● Server virtuali (chiamati "istanze" o "macchine virtuali")
+        ● Spazio disco virtuale (storage)
+        ● Rete virtuale (connessione tra i server)
+        ● Firewall virtuali (per la sicurezza)
+
+Cosa devi fare TU?
+
+        ● Installare il sistema operativo (Windows, Linux)
+        ● Installare i programmi (database, web server)
+        ● Configurare tutto
+        ● Aggiornare regolarmente
+        ● Gestire la sicurezza del software
+        ● Fare backup
+
+Vantaggi:
+
+    - Controllo totale: Installi quello che vuoi, configuri come preferisci, usi qualsiasi tecnologia
+    - Flessibilità massima: Vuoi un database particolare? Lo installi, serve un software specifico? Nessun problema
+    - Economico per esperti: Se sai fare tutto da solo, paghi solo l'infrastruttura base
+
+Svantaggi:
+
+    - Serve competenza tecnica: Devi sapere installare e configurare server, devi capire di sicurezza informatica, devi gestire aggiornamenti
+    - Tanto lavoro: Ogni software va installato manualmente, devi monitorare che tutto funzioni, gli aggiornamenti sono responsabilità tua
+    - Tempo: Configurare tutto può richiedere giorni o settimane
+
+###################################
+#                                 #
+#  PAAS - PLATFORM AS A SERVICE   #
+#                                 #
+###################################
+
+Con PaaS il provider ti dà un ambiente già pronto: sistema operativo, database e aggiornamenti sono gestiti da qualcun altro. Tu devi solo caricare il tuo codice e configurare poche impostazioni.
+
+Cosa fornisce il provider (AWS)?
+
+    ● Server virtuali già configurati
+    ● Sistema operativo già installato
+    ● Database già funzionante
+    ● Aggiornamenti automatici
+    ● Backup automatici
+    ● Scalabilità automatica
+
+Cosa devi fare TU?
+
+    ● Caricare il tuo codice / applicazione
+    ● Configurare poche impostazioni base
+    ● Nient’altro, il resto è gestito dal provider
+
+Vantaggi:
+
+    - Velocità: Da idea a prodotto funzionante in ore, non giorni; non devi configurare nulla
+    - Meno competenze richieste: Non serve essere esperti di server, ti concentri solo sul tuo codice
+    - Manutenzione automatica: Aggiornamenti, backup e sicurezza del sistema gestiti dal provider
+    - Costi inferiori in termini di tempo: Nessun tecnico informatico da assumere per gestire i server
+
+Svantaggi:
+
+    - Meno controllo: Non puoi cambiare tutto ma solo alcune configurazioni, sei vincolato a quello che offre il servizio
+    - Può costare di più: Paghi per la comodità, a volte il 20-30% in più rispetto a IaaS
+    - Dipendenza dal provider: Migrare altrove può essere difficile se usi servizi specifici del provider
+
+###################################
+#                                 #
+#  SAAS - SOFTWARE AS A SERVICE   #
+#                                 #
+###################################
+
+Con SaaS il provider ti dà un programma già pronto da usare tramite browser. Non devi installare o configurare nulla, apri il sito e inizi a usarlo.
+
+Cosa fornisce il provider?
+
+     ● Tutto: software, server, database, sicurezza, backup
+     ● Tu hai solo un account con username e password
+     ● Accedi e usi il programma
+
+Cosa devi fare TU?
+
+    ● Creare un account
+    ● Usare il programma
+    ● Nient'altro
+
+Vantaggi:
+
+    - Zero competenze tecniche: Usi il programma come Facebook; nessuna configurazione necessaria
+    - Costi prevedibili: Di solito abbonamento mensile fisso (es. 10 euro al mese per utente)
+    - Sempre aggiornato: Nuove funzioni arrivano automaticamente; niente aggiornamenti da scaricare
+    - Accessibile ovunque: Funziona su qualsiasi dispositivo con browser (computer, tablet, smartphone)
+    - Nessuna installazione: Non occupa spazio sul PC e non rallenta il computer
+
+Svantaggi:
+
+    - Zero controllo: Il programma è quello che è; non puoi modificarlo o personalizzarlo molto
+    - Dipendenza totale: Se il servizio chiude perdi tutto; se cambia prezzo devi accettare
+    - I dati sono altrove: I tuoi file sono sui server della compagnia; devi fidarti della loro sicurezza
+    - Serve Internet sempre: Senza connessione non funziona (alcuni servizi hanno modalità offline limitata)
+

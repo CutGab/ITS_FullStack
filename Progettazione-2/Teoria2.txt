@@ -1,0 +1,672 @@
+##############################################
+#                                            #
+#  API  (APPLICATION PROGRAMMING INTERFACE)  #
+#                                            #
+##############################################
+
+Un'API è un intermediario che stabilisce un insieme di regole precise affinché due componenti software possano comunicare e interagire tra loro.
+Il suo scopo principale è permettere la collaborazione tra software diversi, nascondendo la complessità interna di ciascuno.
+
+L'analogia più efficace per capire cos'è un'API è quella del ristorante:
+
+• Tu (il Cliente): Sei l'applicazione che ha bisogno di un servizio (ad esempio, l'app sul tuo telefono).
+• La Cucina (il Server): È il sistema che possiede i dati e le funzionalità (ad esempio, i server di Facebook o di un sito meteo).
+• Il Cameriere (l'API): È l'intermediario. Tu non vai direttamente in cucina a prendere il cibo. Chiami il cameriere, gli fai un ordine preciso seguendo il menu (le regole dell'API), e lui porta la tua richiesta in cucina. Poi, torna con il piatto pronto (la risposta del server).
+
+L'API (il cameriere) si assicura che la comunicazione avvenga in modo standardizzato e controllato, senza che tu debba conoscere i dettagli complessi di come funziona la cucina.
+
+Esempi di questo tipo di API:
+
+• Login con Google: Un sito web usa l'API di Google per verificare la tua identità senza mai vedere la tua password.
+• App Meteo: Usa l'API di un servizio meteorologico per recuperare e mostrarti le previsioni
+
+Il concetto di API è più ampio e non si limita alla comunicazione di rete. Un'API definisce anche come uno sviluppatore può usare le funzionalità di una libreria, di un framework o del sistema operativo all'interno del proprio programma.
+
+Che si tratti di un "cameriere" per un servizio web o di un "manuale" per una libreria, il ruolo chiave di un'API è fornire un livello di astrazione.
+
+L'API nasconde la complessità, non hai bisogno di conoscere la complicata architettura dei server di Google per usare le sue mappe, né devi studiare il codice sorgente di Vue per creare 
+un'interfaccia reattiva. Devi solo conoscere e rispettare le regole del "contratto" che l'API ti offre.
+
+In sintesi, un'API è una promessa fondamentale nel mondo del software: "Se interagisci con me seguendo queste regole, io ti garantirò un risultato specifico, senza che tu debba preoccuparti di come lo ottengo."
+
+##############
+#            #
+#  VANTAGGI  #
+#            #
+##############
+
+Riutilizzo (Reusability): Una volta che una funzionalità è stata sviluppata e resa accessibile tramite un'API (ad esempio, un sistema di pagamento o un servizio di geolocalizzazione), può essere riutilizzata da innumerevoli altre applicazioni. 
+Questo elimina la necessità di "reinventare la ruota", riducendo drasticamente i tempi e i costi di sviluppo.
+
+Modularità (Modularity): Le API incoraggiano a costruire sistemi software come un insieme di moduli indipendenti e intercambiabili (microservizi). Ogni modulo ha un compito specifico e comunica con gli altri tramite API ben definite. 
+Questo rende i sistemi più facili da mantenere, aggiornare e scalare, poiché si può intervenire su un singolo modulo senza "rompere" l'intera applicazione.
+
+Sviluppo Parallelo (Parallel Development): Poiché l'API funge da "contratto" tra diverse parti di un sistema, i team possono lavorare in parallelo. 
+Ad esempio, il team che sviluppa l'interfaccia utente (frontend) e il team che si occupa della logica del server (backend) possono iniziare a lavorare contemporaneamente. 
+Al team frontend basta sapere come sarà fatta l'API (il contratto) per poter procedere, senza dover attendere che il backend sia completamente finito.
+
+#################
+#               #
+#  TIPI DI API  #
+#               #
+#################
+
+Le API possono essere classificate in base a diversi criteri, come la tecnologia che usano, il loro modello di comunicazione o chi può accedervi.
+
+API Web (HTTP-based)
+
+Questa è la categoria più comune e si riferisce a tutte le API che usano il protocollo HTTP per la comunicazione, proprio come fanno i browser per navigare sui siti web. 
+Sfruttano gli standard di Internet per permettere l'interazione tra sistemi diversi. All'interno di questa famiglia troviamo diversi "stili" architettonici.
+
+REST vs SOAP vs GraphQL:
+
+    • SOAP (Simple Object Access Protocol): È uno standard più vecchio e rigido. Utilizza principalmente il formato XML per i messaggi e ha regole severe su come devono essere strutturati. 
+    È noto per la sua robustezza e per le funzionalità di sicurezza integrate, ma è anche più complesso e "verboso" (produce messaggi più pesanti).
+
+    • REST (REpresentational State Transfer): È uno stile architettonico, non uno standard rigido. È più flessibile di SOAP e usa i metodi standard di HTTP (GET, POST, DELETE, etc.) in modo intuitivo. 
+    Solitamente utilizza JSON per i dati, che è più leggero e facile da leggere dell'XML. È lo stile dominante per la maggior parte delle API web moderne.
+
+    • GraphQL: È un linguaggio di query per API sviluppato da Facebook. La sua caratteristica principale è che permette al client di richiedere esattamente i dati di cui ha bisogno, e nient'altro. 
+    A differenza di REST, che ha molti endpoint, GraphQL espone tipicamente un unico endpoint. 
+    Il client invia una "query" che descrive la struttura dei dati desiderati, evitando di ricevere dati inutili (under-fetching) o di dover fare più chiamate per ottenere tutto ciò che serve (over-fetching)
+
+###############################
+#                             #
+#  API SINCRONE VS ASINCRONE  #
+#                             #
+###############################
+
+Si fa inoltre una distinzione riguardante il modo in cui il client attende una risposta.
+
+    - API Sincrone: Funzionano secondo un modello di richiesta-risposta bloccante. Il client invia una richiesta e attende attivamente che il server completi l'operazione e restituisca una risposta. 
+    La maggior parte delle API REST sono sincrone. L'applicazione si "ferma" finché non ha ricevuto l'esito.
+
+    - API Asincrone: Il client invia una richiesta e non rimane in attesa bloccante. Il server accetta subito la richiesta (rispondendo, ad esempio, "OK, ho preso in carico il tuo lavoro") e la elabora in background. 
+    Quando l'operazione è completata, il server notifica al client il risultato, spesso usando un meccanismo chiamato "webhook" o "callback". 
+    Questo modello è ideale per operazioni lunghe, come l'elaborazione di un video o la generazione di un report complesso.
+
+##############################
+#                            #
+#  API PUBBLICHE VS PRIVATE  #
+#                            #
+##############################
+
+Si fa inoltre una distinzione riguardante la loro accessibilità.
+
+API Pubbliche (o Esterne): Sono aperte a chiunque voglia utilizzarle. Sono pensate per permettere a sviluppatori esterni di integrare i dati o le funzionalità di un'azienda nelle proprie applicazioni (es. l'API di Google Maps o di Twitter).
+
+API Private (o Interne): Sono utilizzate solo all'interno di una specifica organizzazione. 
+Servono a far comunicare tra loro i diversi sistemi o microservizi interni di un'azienda in modo efficiente e standardizzato. 
+Anche se non sono esposte all'esterno, seguono gli stessi principi di progettazione delle API pubbliche.
+
+################################
+#                              #
+#  CARATTERISTICHE COMUNI API  #
+#                              #
+################################
+
+Indipendentemente dal tipo, tutte le API web condividono alcuni concetti di base.
+
+--- Endpoint ---
+
+L'endpoint è il punto di accesso specifico di un'API. È un URL che identifica in modo univoco una risorsa o una collezione di risorse. Funziona esattamente come l'indirizzo di una casa: indica al client dove deve inviare la sua richiesta per ottenere una specifica informazione.
+
+Esempi:
+        https://api.example.com/users -> L'indirizzo per accedere alla lista di tutti gli utenti.
+
+        https://api.example.com/products/123 -> L'indirizzo per accedere al prodotto specifico con ID 123.
+
+--- Payload ---
+
+Il payload (o "carico utile") rappresenta i dati effettivi che vengono trasportati in una richiesta o in una risposta API. È il contenuto della "lettera" che viene spedita all'indirizzo indicato dall'endpoint.
+
+"Request Payload": Sono i dati che il client invia al server, tipicamente nel "corpo" (body) di una richiesta POST o PUT. Ad esempio, quando si crea un nuovo utente, il payload della richiesta conterrà i dati del nuovo utente (nome, email, etc.).
+
+"Response Payload": Sono i dati che il server restituisce al client. Ad esempio, dopo una richiesta GET a /users, il payload della risposta sarà la lista degli utenti.
+
+Formati comuni del payload:
+
+    • JSON (JavaScript Object Notation): Il formato più comune per le API REST grazie alla sua leggerezza e leggibilità.
+    • XML (eXtensible Markup Language): Usato principalmente dalle API SOAP.
+    • Form-data: Il formato usato dai browser per inviare i dati dei moduli HTML.
+
+##################
+#                #
+#  SISTEMI REST  #
+#                #
+##################
+
+REST è uno stile architetturale formato da vincoli, linee guida e best practice che si utilizza per la realizzazione di sistemi distribuiti.
+
+Punto cruciale: REST non è un'architettura
+• Non è una tecnologia specifica
+• Non è un protocollo come HTTP o SOAP
+• Non è un framework o una libreria
+• È un insieme di principi di design che guidano la progettazione
+
+L'obiettivo è quello di regolamentare lo sviluppo di sistemi complessi che altrimenti evolverebbero in maniera "caotica". 
+Senza questi principi, ogni sviluppatore implementerebbe API in modo diverso, creando inconsistenze e difficoltà di integrazione. Un sistema che si attiene a tali vincoli prende il nome di sistema RESTful.
+
+##################
+#                #
+#  ROY FIELDING  #
+#                #
+##################
+
+L'acronimo REST - REpresentational State Transfer ("trasferimento dello stato di rappresentazione") - deriva dalla tesi di dottorato di Roy Fielding intitolata "Architectural Styles and the Design of Network-based Software Architectures".
+
+La tesi risale all'anno 2000 - un momento cruciale nella storia del web:
+
+        • Internet stava esplodendo commercialmente
+        • I sistemi distribuiti diventavano sempre più complessi
+        • Le tecnologie esistenti (come CORBA e RPC) erano pesanti e difficili da usare
+        • Il web stesso stava dimostrando il potere della semplicità
+
+Roy Fielding non era un teorico isolato, ma uno degli architetti fondamentali del web moderno:
+
+        • Co-fondatore del progetto Apache HTTP Server (il web server più usato al mondo)
+        • Principale autore delle specifiche HTTP/1.0 e HTTP/1.1
+        • Co-fondatore della Apache Software Foundation
+        • Membro del W3C (World Wide Web Consortium)
+
+La sua posizione unica gli permetteva di vedere sia i problemi pratici dello sviluppo web sia le necessità teoriche per sistemi scalabili.
+
+I Problemi che REST Doveva Risolvere:
+
+        • Complessità eccessiva: I sistemi esistenti richiedevano conoscenze specialistiche
+        • Accoppiamento stretto: Client e server erano troppo dipendenti l'uno dall'altro
+        • Scarsa scalabilità: I protocolli non erano progettati per il volume del web
+        • Mancanza di interoperabilità: Sistemi diversi non riuscivano a comunicare facilmente
+
+######################
+#                    #
+#  MOTIVAZIONI REST  #
+#                    #
+######################
+
+1. Semplicità
+
+Il principio guida di REST è eliminare la complessità superflua. Invece di inventare un nuovo protocollo di comunicazione, REST sfrutta l'HTTP, il protocollo che già fa funzionare il web. Questo ha reso tutto più semplice per diversi motivi:
+
+
+    • Curva di apprendimento ridotta: Gli sviluppatori web non dovevano studiare nuovi standard complessi, perché conoscevano già i verbi HTTP (GET, POST, etc.) e i codici di stato (200, 404, etc.).
+    
+    • Niente "buste" complicate: A differenza di protocolli come SOAP, che avvolgono ogni messaggio in una struttura XML complessa (l'envelope), una richiesta REST è diretta e leggibile.
+
+    • Debugging facile: Le richieste REST sono semplici messaggi di testo che possono essere facilmente ispezionati con gli strumenti di sviluppo di qualsiasi browser, rendendo più rapida l'individuazione di errori.
+
+
+Per esempio REST usa una semplice richiesta GET a un URL intuitivo, mentre SOAP richiede la costruzione di un intero documento XML.
+
+
+2. Scalabilità
+
+All'epoca della sua concezione, il web stava crescendo in modo esponenziale. Serviva un'architettura in grado di gestire un numero enorme di utenti senza collassare. REST è progettato per questo grazie a principi chiave:
+
+    • Stateless (senza stato): Ogni richiesta contiene tutte le informazioni necessarie per essere elaborata. Il server non ha bisogno di "ricordarsi" nulla del client tra una richiesta e l'altra. 
+                            Questo permette di distribuire il carico su molti server diversi (scalabilità orizzontale), perché qualsiasi server può gestire qualsiasi richiesta.
+
+    • Caching: REST sfrutta i meccanismi di cache del protocollo HTTP. Le risposte possono essere salvate temporaneamente (in cache) dal client o da nodi intermedi, riducendo il numero di richieste dirette al server e migliorando drasticamente le prestazioni.
+
+    • Sistema a livelli (Layered system): È possibile inserire tra client e server vari livelli intermedi (come proxy o load balancer) per gestire sicurezza, bilanciamento del carico o caching, senza che il client o il server se ne accorgano.
+
+
+3. Indipendenza
+
+REST promuove l'interoperabilità e il disaccoppiamento tra i componenti di un sistema.
+
+    • Indipendenza di piattaforma e linguaggio: Poiché REST si basa sullo standard universale HTTP, un client scritto in JavaScript su un browser può comunicare senza problemi con un server scritto in Python, Java o qualsiasi altro linguaggio, e viceversa. La tecnologia sottostante diventa irrilevante.
+
+    • Evoluzione indipendente: Il team che sviluppa il client e quello che sviluppa il server possono lavorare e rilasciare aggiornamenti in modo indipendente. 
+                               Finché il "contratto" dell'API non viene rotto, il client può evolvere senza temere di rompere il server, e il server può essere aggiornato senza costringere tutti i client a modificarsi.
+
+##################################
+#                                #
+#  VINCOLI: STATELESS E RISORSE  #
+#                                #
+##################################
+
+Questi "vincoli" sono principi di progettazione che, se seguiti, garantiscono che un'architettura sia scalabile, semplice e affidabile, proprio come il web stesso.
+
+1. Il Vincolo "Stateless" (Senza Stato)
+Questo è uno dei vincoli più importanti e significa che ogni richiesta inviata dal client al server deve contenere tutte le informazioni necessarie affinché il server possa comprenderla ed elaborarla.
+
+Nessuna Sessione sul Server: Il server non memorizza alcuna informazione sullo stato del client tra una richiesta e l'altra. Non sa chi sei o cosa hai fatto prima. 
+Ogni richiesta è un evento isolato e indipendente. Se hai bisogno di autenticazione, ad esempio, il client deve inviare le credenziali (come un token di autenticazione) in ogni singola richiesta.
+
+--- Perché è fondamentale? ---
+
+• Scalabilità: Poiché il server non deve gestire sessioni, qualsiasi richiesta può essere inviata a qualsiasi server. Questo rende molto più semplice distribuire il carico su più macchine e aggiungere nuovi server man mano che il traffico aumenta.
+
+• Affidabilità: Se una richiesta fallisce, il client può semplicemente inviarla di nuovo, magari a un altro server, senza che ci siano problemi di "sessioni interrotte".
+
+• Semplicità: La logica del server è più semplice perché non deve preoccuparsi di creare, gestire e distruggere le sessioni degli utenti.
+
+
+--- 2. L'Interazione basata su Risorse ---
+
+Questo punto è strettamente legato al vincolo di Interfaccia Uniforme, che impone che la comunicazione avvenga in modo standardizzato. La parte cruciale di questo vincolo è che tutte le operazioni ruotano attorno al concetto di risorsa.
+
+Tutto è una Risorsa: In REST, ogni "cosa" con cui si vuole interagire è una risorsa: un utente, un prodotto, un articolo, una foto. Ogni risorsa è identificata da un indirizzo univoco (URL), come /utenti/123 o /prodotti/45.
+
+Manipolare Risorse, non Produrle Sempre: Il punto chiave non è tanto che ogni richiesta debba produrre una risorsa, ma che ogni richiesta opera su una risorsa usando i verbi standard del protocollo HTTP.
+
+    • GET /utenti/123: Recupera la rappresentazione della risorsa "utente 123".
+    • POST /utenti: Crea una nuova risorsa "utente". (Qui sì che si produce una risorsa).
+    • PUT /utenti/123: Aggiorna o sostituisce completamente la risorsa "utente 123".
+    • DELETE /utenti/123: Elimina la risorsa "utente 123".
+
+L'idea fondamentale è che l'interfaccia è prevedibile e coerente perché si basa sulla manipolazione di "oggetti" (le risorse) tramite un set di operazioni standard (i verbi HTTP).
+
+############################
+#                          #
+#  ARCHITETTURA STATELESS  #
+#                          #
+############################
+
+In questa architettura, ogni richiesta inviata dal client al server deve contenere tutte le informazioni necessarie per essere compresa ed elaborata. Il server non conserva alcuna memoria delle interazioni precedenti.
+
+Vantaggi:
+
+        • Scalabilità: È il vantaggio più grande. Se il numero di richieste aumenta, si possono aggiungere nuovi server senza problemi. Poiché nessuna informazione è legata a un server specifico, qualsiasi server può gestire qualsiasi richiesta.
+        • Affidabilità: Se un server si guasta, la richiesta può essere semplicemente inviata a un altro server funzionante senza che l'utente se ne accorga.
+        • Visibilità: Ogni richiesta è autonoma e comprensibile senza contesto, il che semplifica il monitoraggio e il debugging.
+
+
+Svantaggi:
+
+        • Prestazioni: Il client deve inviare informazioni aggiuntive (come token di autenticazione) in ogni richiesta, aumentando leggermente la quantità di dati trasferiti.
+
+###########################
+#                         #
+#  ARCHITETTURA STATEFUL  #
+#                         #
+###########################
+
+In questa architettura, il server crea e mantiene una sessione per ogni client. Il server "si ricorda" chi è il client e cosa ha fatto nelle richieste precedenti.
+
+Vantaggi:
+        • Performance: Le richieste possono essere più leggere perché il server conosce già il contesto e lo stato della sessione.
+        • Esperienza Utente: Permette un'interazione più fluida e contestualizzata, simile a una conversazione continua.
+
+
+Svantaggi:
+        • Scalabilità Limitata: È molto più difficile scalare. Se un client è legato a un server specifico, non si può semplicemente reindirizzare la sua prossima richiesta a un altro server, perché quest'ultimo non conoscerebbe lo stato della sessione.
+        • Complessità e Costi: La gestione delle sessioni aumenta la complessità del server. Aggiungere nuovi server è più costoso e complicato.
+        • Fragilità: Se il server che mantiene la sessione si guasta, tutte le informazioni di stato del client vengono perse, costringendolo a ricominciare da capo.
+
+##############################
+#                            #
+#  PERCHè SERVIZI STATELESS  #
+#                            #
+##############################
+
+Perché c’è un vantaggio economico!
+
+Nei servizi statefull le varie chiamate usavano la sessione sul server per salvare dati parziali e la sessione è molto costosa!
+
+Nei servizi REST la sessione non si usa, in quanto non necessaria. I servizi sono stateless e la gestione della conversazione viene spostata sul client (che è un programma su una macchina)
+
+        • Le azioni ‘su più step’ usano la memoria del client e, solo alla fine, parte la chiamata al server (come chiamata stateless)
+        • Chi scrive il servizio (sul server) è totalmente disaccoppiato dal client Vantaggio economico + disaccoppiamento Client/Server
+
+###################
+#                 #
+#  SCALA LIVELLI  #
+#                 #
+###################
+
+Fielding teorizzò una scala di livelli di compatibilità allo stile REST.
+
+• Livello zero(il "Far West "): sistemi a basso grado di maturità in cui tutte le risorse tecnologiche sono disponibili, e tutti gli stili sono ammessi
+
+• Livello tre: stato di totale maturità. Sistemi che rispettano i vincoli e dunque possono chiamarsi RESTful
+
+I livelli 1 e 2 si realizzano sempre, mentre per il livello 3 si può valutare se/come realizzarlo.
+
+La Scala di Maturità di Richardson (Richardson Maturity Model) è un modello che classifica le API web in base a quanto aderiscono ai principi dello stile REST.
+Non si tratta di una "legge", ma di un modo utile per capire i diversi gradi di maturità di un'API. 
+
+#####################################################
+#                                                   #
+#  LIVELLO 0: LA PALUDE DEL POX (THE SWAMP OF POX)  #
+#                                                   #
+#####################################################
+
+Questo è il punto di partenza, il livello più basso di maturità. "POX" sta per Plain Old XML (ma oggi si potrebbe dire anche Plain Old JSON).
+
+• Come funziona: A questo livello, si usa l'HTTP come un semplice "tunnel" per eseguire chiamate a procedure remote (RPC). Tipicamente, esiste un unico endpoint (un solo URL) e tutte le operazioni, che siano di lettura, scrittura o cancellazione, vengono inviate tramite il metodo POST.
+
+• Significato: L'API non sfrutta quasi nessuna delle caratteristiche del web. È solo un modo per far parlare due sistemi, ma manca di struttura e chiarezza. È definita una "palude" perché è un approccio poco strutturato e potenzialmente confusionario.
+
+I sistemi POX:
+        • Scambiano messaggi in modo sincrono attraverso il protocollo HTTP
+        • Non possiedono il concetto di risorsa (ma di funzione)
+        • Non sfruttano i verbi HTTP (tipicamente agiscono solo con GET e POST)
+
+
+####################################
+#                                  #
+#  LIVELLO 1: RISORSE (RESOURCES)  #
+#                                  #
+####################################
+
+Questo è il primo, fondamentale passo verso un'architettura REST per superare la "palude" del Livello 0 e organizzare l'intero servizio attorno al concetto di risorsa.
+
+• Come funziona: Si smette di usare un singolo URL per tutto e si inizia a modellare il sistema attorno al concetto di risorsa. Ogni risorsa (un utente, un prodotto, un ordine) ottiene un proprio identificatore univoco (URL). 
+Anziché fare una richiesta POST a /servizio con dentro le istruzioni, si interagisce direttamente con gli indirizzi delle risorse: /utenti/123 o /prodotti/45.
+
+• Significato: Si introduce una struttura chiara e gerarchica. L'API inizia a essere più intuitiva e leggibile, perché gli indirizzi stessi descrivono su cosa si sta operando.
+
+Una risorsa è qualunque "cosa" o "oggetto" del nostro dominio che vogliamo esporre e rendere accessibile sul web: un libro, un utente, le previsioni meteo, un corso universitario. È l'elemento centrale di un'architettura REST.
+
+Esempi
+        • un libro venduto on-line,
+        • le previsioni meteo di Londra,
+        • un item oggetto di un’asta eBay,
+        • i dati identificativi di un volo aereo,
+        • un valore di cambio valuta,
+        • i prezzi di un prodotto finanziario e le informazioni relative allo stesso,
+        • la spiegazione di un termine tratta da Wikipedia
+
+--- L'Identificativo Univoco: l'URI ---
+
+La direttiva principale del Livello 1 è assegnare a ogni singola risorsa un identificativo univoco, ovvero un URI (Uniform Resource Identifier). L'URI è uno standard globale che funziona come un indirizzo specifico per ogni risorsa.
+
+La sua struttura è composta da due parti:
+                                            • Parte fissa: Indica il "luogo" dove si trova il servizio (es. https://www.amazon.it).
+                                            • Parte variabile: Identifica in modo univoco la risorsa specifica (es. /guida-pratica-microservizi-REST/dp/B0CR6Q6KBX).
+
+Dal punto di vista del server, le risorse possono essere viste come oggetti del dominio “esposte” nel modello REST
+
+--- Regole e Convenzioni per gli URI ---
+
+Per mantenere l'interfaccia chiara e prevedibile, si seguono delle regole stilistiche comuni.
+
+• Nomi al plurale per le collezioni: Per accedere a una lista di risorse, si usa il nome plurale della risorsa. (Esempio: .../professors)
+• ID per risorse specifiche: Per un'azione su una singola risorsa, si aggiunge il suo ID all'URL della collezione. (Esempio: .../professors/123)
+• Query string per parametri: Per filtrare o inviare parametri opzionali, si usano le query string (i valori dopo il ?). (Esempio: .../professors/123?newMail=Giordano@uni.na.it)
+
+Body per dati complessi: Se si devono inviare dati strutturati (come un oggetto JSON per creare una nuova risorsa), questi vengono inseriti nel corpo (body) della richiesta.
+
+--- URI progressivi per risorse correlate ---
+
+Spesso le risorse sono in relazione tra loro (es. un professore HA delle materie). Per accedere a dati correlati, si usa una struttura di URI "progressiva" che segue la relazione.
+
+                • Regola: http://domain/risorsaPrimaria/idPrimaria/risorsaCorrelata
+                • Esempio: Per ottenere tutte le materie insegnate dal professore con id 123, si invoca (http://universita.napoli.it/professori/123/materie)
+
+L'uso di URI standardizzati offre vantaggi enormi:
+            • Comprensibili agli umani: Un URI ben fatto è leggibile e fa intuire quale risorsa si sta richiedendo.
+            • Leggibili dalle macchine: Un browser sa che un link http://... è un indirizzo web da visitare.
+            • Standard globale: Permettono a un servizio di richiamare una risorsa presente su qualsiasi server nel mondo.
+
+Negoziazione del contenuto: L'HTTP permette di specificare nell'header il tipo di contenuto che ci si aspetta, consentendo al server di rispondere nel formato più appropriato (es. JSON, HTML, un video, etc.).
+Sono associati all’ HTTP che possiede il Content Type Negotiation (ad esempio, se il link punta ad un video, verrà interpretato con un lettore video)
+E’ possibile assegnare informazioni aggiuntive nell’header HTTP.
+
+##############################
+#                            #
+#  CONTENT-TYPE NEGOTIATION  #
+#                            #
+##############################
+
+L'header HTTP è una sezione di metadati che accompagna ogni richiesta e risposta. È un contenitore di informazioni aggiuntive che forniscono contesto all'interazione. 
+Oltre a Accept e Content-Type per la negoziazione, si possono usare innumerevoli altri header per molti scopi, ad esempio:
+
+• Authorization: Per inviare credenziali di accesso (come un token) e autenticare la richiesta.
+• Cache-Control: Per dare istruzioni su come e per quanto tempo la risposta può essere salvata in cache.
+• User-Agent: Per descrivere quale tipo di client sta effettuando la richiesta (es. Chrome, Firefox, un'app mobile).
+
+In pratica, mentre l'URI dice cosa si vuole, gli header HTTP specificano come, chi e in quale formato lo si vuole, rendendo la comunicazione potente e flessibile.
+
+###########################
+#                         #
+#  LIVELLO 2: VERBI HTTP  #
+#                         #
+###########################
+
+A questo livello, non solo si usano indirizzi distinti per le risorse, ma si sfruttano anche i metodi (o verbi) del protocollo HTTP per specificare l'intenzione dell'operazione.
+
+Come funziona: Invece di usare POST per ogni azione, si usa il verbo HTTP appropriato:
+
+        • GET per leggere una risorsa.
+        • POST per creare una nuova risorsa.
+        • PUT o PATCH per aggiornare una risorsa esistente.
+        • DELETE per eliminare una risorsa.
+
+Significato: L'API diventa ancora più espressiva e standard. Sfrutta a pieno le semantiche del protocollo HTTP, rendendo le interazioni prevedibili. 
+La maggior parte delle API REST "commerciali" oggi si ferma a questo livello, perché offre un ottimo equilibrio tra pragmatismo e aderenza ai principi REST.
+
+--- Verbi HTTP GET ---
+
+Il metodo GET serve per leggere o recuperare dati dal server. È l'operazione di sola lettura per eccellenza.
+
+Scopo: Recuperare la rappresentazione di una risorsa identificata dall'URI.
+
+Esempi:
+    - Leggere i dettagli di un prodotto in vendita.
+    - Ottenere la lista di tutti gli esami sostenuti da uno studente.
+
+Importante: Se l'URI si riferisce a un processo che esegue un calcolo, la risposta GET deve contenere i risultati di tale processo.
+
+--- Verbi HTTP POST ---
+
+Il metodo POST serve per inviare dati al server per creare una nuova risorsa o per eseguire azioni che non rientrano negli altri verbi.
+
+Scopo: Creare una nuova entità come "figlia" della risorsa specificata nell'URI (es. creare un commento per un post). Può essere usato anche per aggiornamenti parziali se PATCH non è supportato.
+
+Body: A differenza di GET, una richiesta POST può includere un "corpo" (body) per trasportare dati complessi, superando i limiti di lunghezza di un URL.
+
+Esempi Tipici:
+
+    - Invio dei dati di un form di registrazione.
+    - Pubblicazione di un commento su un blog.
+    - Caricamento di un file (upload).
+
+--- Verbi HTTP PUT e PATCH ---
+
+Entrambi servono per modificare una risorsa esistente, ma con una differenza fondamentale.
+
+PUT: Esegue una modifica totale. Il client invia nel corpo della richiesta la rappresentazione completa e aggiornata della risorsa. Se la risorsa specificata nell'URI esiste, viene interamente sostituita. Se non esiste, il server dovrebbe crearla.
+
+Risposte comuni:
+
+    - 200 OK o 204 No Content se l'aggiornamento ha successo
+    - 201 Created se la risorsa viene creata.
+
+PATCH: Esegue una modifica parziale. Il client invia solo i campi che intende modificare, senza dover fornire l'intera rappresentazione della risorsa. Ha solo la logica di aggiornamento.
+
+--- Verbi HTTP DELETE ---
+
+Il metodo DELETE serve per eliminare una risorsa specifica dal server.
+
+Scopo: Rimuovere permanentemente la risorsa identificata dall'URI.
+
+Risposte comuni: 
+
+    - 200 OK se La risorsa è stata eliminata (la risposta può contenere un messaggio di conferma).
+    - 202 Accepted: La richiesta è stata accettata, ma l'eliminazione non è ancora stata completata (utile per operazioni lunghe).
+    - 204 No Content: La risorsa è stata eliminata con successo e la risposta non include alcun corpo.
+
+Anche se il server risponde con successo, non c'è una garanzia assoluta che la risorsa sia stata fisicamente cancellata dal disco in quell'istante, ma solo che non è più accessibile.
+
+########################################
+#                                      #
+#  LIVELLO 2: SICUREZZA E INDEPOTENZA  #
+#                                      #
+########################################
+
+A Livello 2 diventano cruciali due criteri che caratterizzano i verbi HTTP.
+
+Sicurezza (Safety): Un metodo è sicuro se la sua esecuzione non modifica lo stato della risorsa sul server.
+
+    - L'unico metodo sicuro per definizione è GET. Si possono fare mille richieste GET a una risorsa senza alterarla.
+
+Idempotenza (Idempotence): Un metodo è idempotente se eseguire la stessa richiesta più volte produce lo stesso risultato di eseguirla una sola volta.
+
+    - Sono idempotenti: GET, PUT, DELETE. Se si invia 3 volte la stessa richiesta DELETE per un utente, l'effetto finale è lo stesso della prima volta: l'utente viene eliminato.
+    - NON è idempotente: POST. Se si invia 3 volte la stessa richiesta POST per creare un commento, verranno creati 3 commenti identici, alterando lo stato del server a ogni chiamata.
+
+
+##########################################
+#                                        #
+#  LIVELLO 2: DIFFERENZA TRA POST E PUT  #
+#                                        #
+##########################################
+
+Anche se formalmente sia POST che PUT possono essere usati per inserire o modificare dati, la loro differenza fondamentale risiede nel concetto di idempotenza, che definisce il loro comportamento e il loro utilizzo corretto.
+
+PUT è una funzione IDEMPOTENTE → si usa per azioni con comportamento prevedibile. L'operazione PUT è associata a un'azione di update completo. Il client invia l'intera rappresentazione di una risorsa a un URL specifico.
+    - Se la risorsa esiste, viene sostituita con quella inviata.
+    - Se la risorsa non esiste, viene creata. 
+    
+La chiave è che inviare la stessa richiesta PUT 1, 10 o 100 volte produrrà sempre lo stesso identico stato finale sul server.
+
+POST è una funzione NON IDEMPOTENTE → si usa per azioni con comportamento non idempotente. 
+
+L'operazione POST è associata a un'azione di creazione (o a processi generici). Ogni volta che si invia una richiesta POST, ci si aspetta che venga creata una nuova risorsa o che avvenga una nuova azione.
+    - Se invii la stessa richiesta POST per pubblicare un commento 3 volte, creerai 3 commenti identici. Lo stato del server cambia a ogni richiesta.
+
+#####################################
+#                                   #
+#  LIVELLO 2: VANTAGGI INDEPOTENZA  #
+#                                   #
+#####################################
+
+L'idempotenza non è un concetto puramente accademico; ha un vantaggio pratico enorme, soprattutto nella gestione degli errori di rete.
+
+    - SAFE (Sicurezza nelle ripetizioni): La proprietà di idempotenza rende le integrazioni tra sistemi molto più robuste e sicure.
+
+    - INTEGRATION (Semplificazione della logica): Semplifica la semantica dei connettori, perché il client sa come comportarsi in caso di incertezza.
+
+Esempio pratico: Un client esegue un'operazione di aggiornamento (PUT) ma, a causa di un problema di rete, non riceve una risposta in tempo (timeout). Il client si trova in un limbo:
+
+    - La richiesta è arrivata e il server l'ha processata?
+    - La richiesta non è mai arrivata?
+
+Senza l'idempotenza, il client non saprebbe cosa fare. Riprovare potrebbe causare una duplicazione o un errore.
+
+Grazie all'idempotenza, il client può tranquillamente inviare di nuovo la stessa identica richiesta PUT senza alcun rischio. 
+Se la prima era andata a buon fine, la seconda semplicemente sovrascriverà i dati con gli stessi valori. Se la prima non era arrivata, la seconda completerà l'operazione. 
+In entrambi i casi, lo stato finale del server sarà quello corretto.
+
+######################################################################
+#                                                                    #
+#  LIVELLO 3: CONTROLLI IPERMEDIALI (HYPERMEDIA CONTROLS - HATEOAS)  #
+#                                                                    #
+######################################################################
+
+Questo è il livello finale, la "gloria di REST" (Glory of REST). È ciò che, secondo i puristi, rende un'API veramente RESTful.
+
+Come funziona: Il concetto chiave è HATEOAS (Hypermedia as the Engine of Application State). Significa che la risposta del server non contiene solo i dati richiesti, ma anche i link (controlli ipermediali) alle azioni successive che si possono compiere su quella risorsa.
+
+Esempio: Se richiedi i dati di un ordine (GET /ordini/789), la risposta potrebbe contenere non solo i dettagli dell'ordine, ma anche i link per annullarlo, modificarlo o tracciarne la spedizione.
+
+Significato: Il client è completamente disaccoppiato dal server. 
+Non ha bisogno di avere gli URL "hardcoded" nel suo codice. 
+Può evolvere semplicemente seguendo i link che il server gli fornisce. 
+Questo rende il sistema incredibilmente flessibile e resiliente ai cambiamenti.
+
+Facciamo l'esempio della segreteria universitaria. Supponiamo che un client chieda tutte le sessioni d'esame per una materia specifica.
+Un server che implementa HATEOAS potrebbe non restituire subito tutti i dettagli di ogni sessione, ma una lista di link per eseguire azioni su ciascuna di esse. 
+Questo riduce il carico iniziale sulla rete. La risposta conterrebbe un elenco di sessioni e, per ognuna, i link per:
+
+    - Ottenere i dettagli completi della sessione.
+    - Ottenere i dettagli dell'aula abbinata.
+    - Prenotare la sessione di esame.
+
+L'Oggetto JSON Restituito
+
+Se il client segue uno di questi link per ottenere i dettagli di una sessione, la risposta del server sarà strutturata per essere "auto-descrittiva".
+Il client non ha bisogno di sapere in anticipo come si prenota un esame; scopre l'URL per farlo direttamente dalla risposta che riceve.
+
+#########################
+#                       #
+#  LIVELLO 3: VANTAGGI  #
+#                       #
+#########################
+
+Implementare il Livello 3 offre vantaggi strategici significativi.
+
+1. Disaccoppiamento tra Client e Server: Questo è il vantaggio più grande. Il client non ha bisogno di avere URL "hardcoded" nel proprio codice. 
+Se il team del server decide di cambiare la struttura degli URL (ad esempio, da /reserve a /booking/new), non romperà i client, perché questi seguiranno semplicemente il nuovo link fornito dinamicamente dal server. Questo permette al server di evolvere autonomamente.
+
+2. Riduzione del Carico di Rete: Invece di restituire oggetti complessi e pesanti, il server può fornire una risorsa più leggera con i link alle informazioni di dettaglio. 
+Sarà poi il client, in base alle reali esigenze, a decidere se e quali dati aggiuntivi recuperare seguendo i link.
+
+#################
+#               #
+#  CONCLUSIONI  #
+#               #
+#################
+
+In definitiva, lo stile REST, culminando nel Livello 3 con HATEOAS, promuove un'architettura che rispecchia quella del World Wide Web stesso, basata su principi potenti:
+
+    - Separazione delle Responsabilità: Il client si occupa dell'interfaccia utente, il server della logica di business. Questo semplifica l'implementazione e la manutenzione di entrambi.
+
+    - Elaborazione Intermedia: Forza i messaggi a essere auto-descrittivi (stateless, con metodi e media type standard), permettendo a componenti intermedi (come proxy e cache) di operare in modo efficiente.
+
+    - Proprietà Fondamentali: Le architetture RESTful ereditano le migliori proprietà dell'infrastruttura web: semplicità, scalabilità (capacità di gestire un carico crescente), portabilità (indipendenza dalla tecnologia) e performance elevate.
+
+##########
+#        #
+#  CURL  #
+#        #
+##########
+
+Curl è uno strumento a riga di comando che permette di trasferire dati con URL. In parole povere, è un modo per comunicare con i server web direttamente dal tuo terminale. 
+Come un browser web senza interfaccia grafica, perfetto per automatizzare compiti e testare API.
+La sua sintassi è piuttosto semplice: 
+    - curl [opzioni] [URL]. 
+    
+Le opzioni modificano il comportamento di curl, mentre l'URL indica la risorsa a cui vuoi accedere.
+Ad esempio, per scaricare una pagina web, useresti curl seguito dall'indirizzo della pagina. Oppure, per inviare dati a un server, useresti l'opzione -X per specificare il metodo HTTP (come POST o PUT) e l'opzione -d per includere i dati da inviare.
+
+#######################
+#                     #
+#  RICHIESTE OPTIONS  #
+#                     #
+#######################
+
+OPTIONS è uno dei metodi HTTP, come GET, POST, PUT, DELETE.
+La sua funzione è chiedere informazioni sul server senza modificare dati. Il Browser Invia OPTIONS Automaticamente
+
+--- Cosa Fa OPTIONS ---
+
+Quando invii una richiesta OPTIONS a un server, stai chiedendo:
+
+    - "Quali metodi HTTP accetti per questo endpoint?"
+    - "Quali headers posso inviarti?"
+    - "Da quali domini accetti richieste?"
+
+Raramente hai necessità di inviare OPTIONS direttamente. Potresti farlo per:
+        • Debug: Verificare cosa permette un'API
+        • Sviluppo: Capire le capacità di un endpoint
+        • Tool di test: Ispezionare configurazioni server
+
+########################
+#                      #
+#  SAME-ORIGIN POLICY  #
+#                      #
+########################
+
+La Same-Origin Policy è una politica di sicurezza implementata dai browser che impedisce a una pagina web di fare richieste a un dominio diverso da quello che ha servito la pagina.
+
+Due URL hanno la stessa origine se condividono:
+
+    ● Protocollo (http/https)
+    ● Dominio
+    ● Porta
+
+Usato per motivi: 
+
+     - Sicurezza: Previene attacchi malevoli dove un sito potrebbe:
+     
+        - Rubare dati da altri siti aperti nel browser
+        - Fare richieste non autorizzate a nome dell'utente
+        - Accedere a risorse private
+
+--- Cos'è CORS? ---
+
+CORS (Cross-Origin Resource Sharing) è un meccanismo che permette a un server di indicare esplicitamente quali origini possono accedere alle sue risorse, "rilassando" la Same-Origin Policy in modo controllato.
