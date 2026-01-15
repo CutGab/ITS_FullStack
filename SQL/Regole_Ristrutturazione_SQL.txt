@@ -1,0 +1,27 @@
+1. Quando si ristruttura una generalizzazione per sostituzione:
+
+    - Se Disjoint/Complete o Disjoint:
+            - 1..1 {ID1} dalla parte della freccia
+            - 0..1 dall'altra
+
+    - Se Complete: 
+            - 1..1 {ID1}
+            - 0..* dall'altra
+
+2. Quando si ristruttura una generalizzazione per fusione:
+
+    - La classe Figlia diventa un'attributo della classe padre booleano, e gli attributi della classe Figlia diventano attributi della classe Padre opzionali.
+
+3. Quando si accorpa in SQL, le associazioni che hanno 0..* vengono accorpate all'interno della tabella con 1..1
+
+4.  Quando si accorpa in SQL, le associazioni che hanno 1..1  - 1..1 si accorpa da entrambi i lati.
+
+5. Quando due classi non hanno associazioni 1..1 si crea una tabella per l'associazione che come chiavi ha la coppia di chiavi di entrambe le tabelle.
+
+6. Le Association Class non si toccano, i suoi attributi diventano attributi della classe che ha 1..1 
+
+7. Le Association Class non hanno ID
+
+8. Le generalizzazioni non hanno il loro ID ma prendolo l'ID dalla classe che ha 1..1 {ID1}
+
+9. Si scrive all'interno della tabella che ha 0..1 - 0..* (v.incl(chiave) occorre in "tabella associazione" (variabile che fa riferimento alla chaive))

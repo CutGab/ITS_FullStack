@@ -1,3 +1,4 @@
+-- Active: 1767946474283@@Localhost@5432@accademia
 CREATE table Persona (
 
 	id PosInteger primary key,

@@ -1,3 +1,4 @@
+-- Active: 1767946474283@@Localhost@5432@cittaverde
 -- Query 1 --
 select * from areaverde a, soggettoverde s
 where s.area = a.id
@@ -80,5 +81,16 @@ GROUP BY(i.id);
 
 -- Query 7 --
 
-select *
-from assegna a, interven
+WITH intervalli AS (
+    SELECT 
+        a.operatore,
+        a.interventoassegnato,
+        ia.id_intervento,
+        ia.fine - a.istante AS durata
+    FROM assegna a, interventoassegnato ia
+    WHERE a.interventoassegnato = ia.id_intervento
+    AND ia.fine IS NOT NULL
+)
+SELECT *
+FROM intervalli
+WHERE durata = (SELECT MAX(durata) FROM intervalli);

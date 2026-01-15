@@ -1,0 +1,71 @@
+- API 
+- API Web
+- Cross Origin/Preflight
+- Verbi
+- Livelli Maturità
+- DNS
+- RECORD A/AA/AAA
+
+1. Cosa è il Cloud Computing?
+
+Modello di erogazione di risorse informatiche.
+Scalabile, On-demand
+
+
+2. Iaas, Paas, Saas cosa sono?
+
+    - INFRASTRUCTURE AS A SERVICE
+    - PLATFORM AS A SERVICE
+    - SOFTWARE AS A SERVICE
+
+    Con Infrastructure as a service il provider fornisce solamente i mattoni base (computer virtuali vuoti, spazio disco, rete).
+    Tu devi gestire il resto (sistema operativo, database etc.)
+
+    Con Platform as a service il provider ti dà un'ambiente preconfigurato,
+    Tu devi solo caricare il tuo codice e configurare le impostazioni.
+    (Usato in genere da sviluppatori in quanto è già tutto pronto) (Es. Google Pass)
+
+    Software as a Service il provider ti dà un programma già pronto da utilizzare tramite browser.
+    Il tutto è già gestito (software, database, server, sicurezza)
+    (Es. Gmail, Netflix, Google Drive)
+
+3. On-Premise?
+
+    Significa Il server, l'hardware lo ho in casa (in loco), quindi sei tu che dovrai gestire il tutto (configurazione, manutenzione, disaster recovery).
+
+4. Cosa vuol dire Scalabile?
+
+    Che in base alla domanda si possono aumentare o diminuire le risorse necessarie.
+
+5. Perché il Cloud abbassa i costi iniziali?
+
+Non acquisti hardware oltre al server se non qualcuno che sappia usare la piattaforma del cloud.
+
+
+6. Cosa è l'Elasticità? 
+
+    Collegata alla scalabilità, è ciò che ci permette di rendere scalabile il sistema.
+
+7. Cosa gestisce il Provider nel Cloud Pubblico?
+
+    L'infrastruttura fisica.
+
+8. Come si chiama la dipendenza da un provider specifico?
+
+    Vendor Lock-In.
+
+9. Quali sono le caratteristiche del Cloud?
+
+    - Computing (Potenza di calcolo)
+    - Storage (Lo spazio dove conservi i dati) 
+    - Network (La gestione di come i server sono collegati fra loro)
+
+10. Cosa è l'API? (ESCE SICURO!!!!!!!!!!!!!!!!!!!!!!!!!)
+
+Application Programming Interface, sono regole di comunicazione affinché due sistemi possano comunicare e interagire.
+
+11. Record A:
+
+    La traduzione da IP a Indirizzo (stringa di testo) (Punta all'IPV4)
+
+    AAAA (Punta all'IPV6)

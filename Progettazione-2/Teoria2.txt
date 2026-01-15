@@ -360,15 +360,6 @@ Anziché fare una richiesta POST a /servizio con dentro le istruzioni, si intera
 
 Una risorsa è qualunque "cosa" o "oggetto" del nostro dominio che vogliamo esporre e rendere accessibile sul web: un libro, un utente, le previsioni meteo, un corso universitario. È l'elemento centrale di un'architettura REST.
 
-Esempi
-        • un libro venduto on-line,
-        • le previsioni meteo di Londra,
-        • un item oggetto di un’asta eBay,
-        • i dati identificativi di un volo aereo,
-        • un valore di cambio valuta,
-        • i prezzi di un prodotto finanziario e le informazioni relative allo stesso,
-        • la spiegazione di un termine tratta da Wikipedia
-
 --- L'Identificativo Univoco: l'URI ---
 
 La direttiva principale del Livello 1 è assegnare a ogni singola risorsa un identificativo univoco, ovvero un URI (Uniform Resource Identifier). L'URI è uno standard globale che funziona come un indirizzo specifico per ogni risorsa.
@@ -506,7 +497,7 @@ Sicurezza (Safety): Un metodo è sicuro se la sua esecuzione non modifica lo sta
 Idempotenza (Idempotence): Un metodo è idempotente se eseguire la stessa richiesta più volte produce lo stesso risultato di eseguirla una sola volta.
 
     - Sono idempotenti: GET, PUT, DELETE. Se si invia 3 volte la stessa richiesta DELETE per un utente, l'effetto finale è lo stesso della prima volta: l'utente viene eliminato.
-    - NON è idempotente: POST. Se si invia 3 volte la stessa richiesta POST per creare un commento, verranno creati 3 commenti identici, alterando lo stato del server a ogni chiamata.
+    - NON è idempotente: POST e PATCH. Se si invia 3 volte la stessa richiesta POST per creare un commento, verranno creati 3 commenti identici, alterando lo stato del server a ogni chiamata.
 
 
 ##########################################
@@ -559,9 +550,11 @@ In entrambi i casi, lo stato finale del server sarà quello corretto.
 
 Questo è il livello finale, la "gloria di REST" (Glory of REST). È ciò che, secondo i puristi, rende un'API veramente RESTful.
 
-Come funziona: Il concetto chiave è HATEOAS (Hypermedia as the Engine of Application State). Significa che la risposta del server non contiene solo i dati richiesti, ma anche i link (controlli ipermediali) alle azioni successive che si possono compiere su quella risorsa.
+Come funziona: Il concetto chiave è HATEOAS (Hypermedia as the Engine of Application State). 
+Significa che la risposta del server non contiene solo i dati richiesti, ma anche i link (controlli ipermediali) alle azioni successive che si possono compiere su quella risorsa.
 
-Esempio: Se richiedi i dati di un ordine (GET /ordini/789), la risposta potrebbe contenere non solo i dettagli dell'ordine, ma anche i link per annullarlo, modificarlo o tracciarne la spedizione.
+Esempio: Se richiedi i dati di un ordine (GET /ordini/789), la risposta potrebbe contenere non solo i dettagli dell'ordine, 
+ma anche i link per annullarlo, modificarlo o tracciarne la spedizione.
 
 Significato: Il client è completamente disaccoppiato dal server. 
 Non ha bisogno di avere gli URL "hardcoded" nel suo codice. 
